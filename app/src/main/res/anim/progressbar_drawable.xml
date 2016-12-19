@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/img_progressbar_shenma"
+    android:pivotX="50%"
+    android:pivotY="50%" />
+
+    <!-- pivotX表示旋转的中心点X坐标距离自身左边缘的位置
+		  比如你想以图象的中心为旋转中心，就是50%
+	 -->

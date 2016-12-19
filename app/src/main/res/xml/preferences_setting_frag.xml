@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="分组1">
+        <ListPreference
+            android:dialogTitle="从以下工具中选择"
+            android:entries="@array/entries_ListPreference"
+            android:entryValues="@array/entries_ListPreference"
+            android:key="settings_ide"
+            android:summary="空白~"
+            android:title="你最喜欢的开发工具" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="分组2">
+        <CheckBoxPreference
+            android:checked="false"
+            android:defaultValue="false"
+            android:key="settings_data"
+            android:summaryOff="开个几把"
+            android:summaryOn="飞起来"
+            android:title="开不开车" />
+        <EditTextPreference
+            android:dialogTitle="输入你的心情"
+            android:key="settings_feeling"
+            android:summary="空白~"
+            android:title="你今天心情如何" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="更多">
+        <Preference
+            android:key="settings_author"
+            android:summary="好号学习天天向上"
+            android:title="shiqkuangsan" />
+        <Preference
+            android:key="settings_suggestion"
+            android:summary="10001"
+            android:title="反馈和建议" />
+        <Preference
+            android:key="settings_version"
+            android:summary="1.0.0"
+            android:title="版本号" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

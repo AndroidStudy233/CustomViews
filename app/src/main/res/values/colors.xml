@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary_light">#9d4a5bb8</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="color_press_menu_tab">#33ADCFD6</color>
+    <color name="color_orange_deep">#f57257</color>
+    <color name="color_orange">#9ef57257</color>
+
+    <color name="window_background">#FFF5F5F5</color>
+
+    <color name="color_pink">#f52ce4</color>
+
+    <color name="swipe_schema_red">#ffff0000</color>
+    <color name="swipe_schema_green">#ff00ff00</color>
+    <color name="swipe_schema_blue">#ff0000ff</color>
+
+</resources>

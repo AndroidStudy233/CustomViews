@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="80dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_item_up"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="#aa000000"
+        android:gravity="center"
+        android:text="置顶"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_item_delete"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="#eeff0000"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</LinearLayout>

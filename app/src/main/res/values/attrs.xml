@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyOnOffView">
+        <attr name="switch_bg" format="reference"/>
+        <attr name="switch_slide" format="reference"/>
+        <attr name="switch_state" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="MyPullRefreshListView">
+        <attr name="tv_head" format="string"/>
+        <attr name="tv_foot" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="AutoRatioLayout">
+        <attr name="ratio" format="float"/>
+    </declare-styleable>
+
+</resources>

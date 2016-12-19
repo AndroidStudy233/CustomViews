@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--
+    Here is a bug,if layout_width=wrap_content,layout_height=wrap_content
+    PhotoView imageInfo not right
+    Try working on...
+    -->
+    <com.shiqkuangsan.mycustomviews.photoview.PhotoView
+        android:id="@+id/iv_piclooker_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <com.shiqkuangsan.mycustomviews.photoview.MaterialProgressBar
+        android:id="@+id/pb_piclooker"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center" />
+</FrameLayout>

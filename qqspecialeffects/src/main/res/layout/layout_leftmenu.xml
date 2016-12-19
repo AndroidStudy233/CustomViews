@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_left"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻1" />
+
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻2" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻3" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻4" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻5" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻6" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻7" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻3" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻4" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻5" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻6" />
+
+        <TextView
+            style="@style/tv_leftmenu_menu"
+            android:text="新闻7" />
+
+    </LinearLayout>
+</ScrollView>

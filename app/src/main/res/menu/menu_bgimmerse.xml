@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.shiqkuangsan.mycustomviews.ui.activity.immerse.BgImmerseActivity">
+
+    <!--actionViewClass最关键，实现了主要的搜索视图功能-->
+    <item
+        android:id="@+id/menu_bgimmerse_search"
+        android:orderInCategory="80"
+        android:title="搜索"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_bgimmerse_1"
+        android:orderInCategory="100"
+        android:title="测试菜单1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_bgimmerse_2"
+        android:orderInCategory="100"
+        android:title="测试菜单2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_bgimmerse_3"
+        android:orderInCategory="100"
+        android:title="测试菜单3"
+        app:showAsAction="never" />
+
+</menu>

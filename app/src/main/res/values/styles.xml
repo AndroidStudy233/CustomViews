@@ -1,0 +1,130 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 正常的App主题 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!-- App主题没有ActionBar的 -->
+    <style name="AppTheme_NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
+    </style>
+
+
+    <!--图片选择页面的activity主题-->
+    <style name="theme_picchose_act" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 状态栏颜色 -->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!-- toolbar（actionbar）背景颜色 -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <!-- 底部导航栏的颜色 -->
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@color/colorPrimary
+        </item>
+    </style>
+
+    <!--菜单TextView的style-->
+    <style name="style_menu_tab">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/selector_bg_menutab</item>
+        <item name="android:drawablePadding">25dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">#adcfd6</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+
+    <!--绿色按钮的button-->
+    <style name="style_green_btn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@drawable/selector_btn_common</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">#7f4444</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <!--带权重的白色TextView-->
+    <style name="style_tv_white_weight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_normal_btn_blue</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:onClick">onClick</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+
+    <!--没写宽度的正常button-->
+    <style name="style_nomal_btn_nowidth">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/selector_normal_btn_blue</item>
+    </style>
+
+
+    <!--emma的沉浸式界面主题针对5.0以上-->
+    <style name="coordinator_emma_immerse" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
+        <item name="android:windowAllowReturnTransitionOverlap" tools:targetApi="lollipop">true
+        </item>
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">
+            @android:transition/move
+        </item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">
+            @android:transition/move
+        </item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent
+        </item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
+    </style>
+
+    <!--下拉菜单样式-->
+    <style name="OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <!--兼容Api 21之前的版本 (Spinner也有该属性)-->
+        <item name="overlapAnchor">false</item>
+        <!-- Api 21 以上专用-->
+        <!--<item name="android:overlapAnchor">false</item>-->
+
+        <!--.. 另外还有这么几个属性-->
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <!-- 溢出菜单离toolbar的距离-->
+        <item name="android:dropDownVerticalOffset">0dp</item>
+        <!-- 溢出菜单的背景色-->
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

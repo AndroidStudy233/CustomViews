@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_immerse_itemlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp"
+        android:src="@mipmap/img_oumu_logo2" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/iv_immerse_itemlogo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_immerse_itembig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试数据1"
+            android:textColor="#d1d1d1"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/tv_immerse_itemsmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="测试数据1"
+            android:textColor="#d1d1d1"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_immerse_itemapple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="15dp"
+        android:src="@mipmap/img_apple_logo2" />
+
+</RelativeLayout>

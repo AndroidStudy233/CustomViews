@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_coordinator_1"
+        android:orderInCategory="100"
+        android:title="测试菜单1"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_coordinator_2"
+        android:orderInCategory="100"
+        android:title="测试菜单2"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_coordinator_3"
+        android:orderInCategory="100"
+        android:title="测试菜单3"
+        app:showAsAction="never" />
+
+</menu>

@@ -1,0 +1,2 @@
+include ':app', ':baiducityselector', ':testmodule'
+include ':qqspecialeffects', 'swipebackactivity'

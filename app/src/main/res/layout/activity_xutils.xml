@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_xutils_sendget"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="get请求" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_xutils_sendpost"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="post请求" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_xutils_upload"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="上传文件" />
+
+        <TextView
+            android:id="@+id/tv_xutils_progress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0%"
+            android:textColor="#818181"
+            android:textSize="20sp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btn_xutils_download"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="下载文件" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_xutils_image"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="加载图片" />
+
+        <Button
+            android:id="@+id/btn_xutils_circle"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="加载圆形图" />
+
+        <Button
+            android:id="@+id/btn_xutils_gif"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:text="加载gif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_xutils_db"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="init" />
+
+        <Button
+            android:id="@+id/btn_xutils_dbadd"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="增" />
+
+        <Button
+            android:id="@+id/btn_xutils_dbupdate"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="改" />
+
+        <Button
+            android:id="@+id/btn_xutils_dbquery"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="查" />
+
+        <Button
+            android:id="@+id/btn_xutils_dbdelete"
+            style="@style/style_nomal_btn_nowidth"
+            android:layout_width="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:text="删" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_xutils_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="麻烦先get请求,再init,然后增删改查随意"
+        android:textColor="#555"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iv_xutils_display"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

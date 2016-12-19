@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:shiqkuangsan="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.shiqkuangsan.mycustomviews.ui.custom.MyOnOffView
+        android:id="@+id/custom_switch"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        shiqkuangsan:switch_bg="@drawable/bg_swith_onoff"
+        shiqkuangsan:switch_slide="@drawable/img_switch_btn"
+        shiqkuangsan:switch_state="false"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
