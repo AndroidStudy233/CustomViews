@@ -91,12 +91,6 @@ Android在打release包时，可能会出现这种错误。
 
 ---
 
-## 登录注册页新控件TextInputLayout
-
-
-
-
----
 ## Android修改AVD的路径
 
 android 虚拟机的保存目录默认的是C:\Documents and Settings\用户名\.android。如想自己更改AVD的位置只需要做如下三步操作即可。
@@ -1706,6 +1700,59 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 		ViewPropertyAnimator.animate(ll_menu_edit).translationY(ll_menu_edit.getWidth()).setDuration(200);
 
 ---
+
+
+## 登录注册页新控件TextInputLayout
+
+>android.support.design.widget.TextInputLayout, 里边只能放一个EditText
+
+	<android.support.design.widget.TextInputLayout
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="用户名"
+            android:inputType="textEmailAddress"
+  	 />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="邮箱"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+* 使用:在activiy中find控件tl_name.getEditText().getText().toString();
+* 如果检查用户名或者密码失败可以调用tl_name.setError("用户名不正确！");
+* 此外,hintColor和errorColor也可以在activity的style(theme)中设置.
+		
+		<item name="android:textColorHint">#00ffff</item>
+        <item name="textColorError">#ff0000</item>
+
+注意: 在点击登录按钮的操作中要自己收起输入法
+
+	private void hideKeyboard() {
+	    View view = getCurrentFocus();
+	    if (view != null) {
+	        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).
+	            hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	    }
+	}
+
+---
+
 
 ## SwipeRefreshLayout简单使用
 
