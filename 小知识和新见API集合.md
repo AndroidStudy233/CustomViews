@@ -91,6 +91,12 @@ Android在打release包时，可能会出现这种错误。
 
 ---
 
+## 登录注册页新控件TextInputLayout
+
+
+
+
+---
 ## Android修改AVD的路径
 
 android 虚拟机的保存目录默认的是C:\Documents and Settings\用户名\.android。如想自己更改AVD的位置只需要做如下三步操作即可。
