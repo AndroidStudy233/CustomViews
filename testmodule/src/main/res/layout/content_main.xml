@@ -6,25 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="2"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.shiqkuangsan.testmodule.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <com.shiqkuangsan.testmodule.WaveViewDemo
+    <com.shiqkuangsan.testmodule.BaseirWaveView
         android:id="@+id/wave_demo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1" />
-    <com.shiqkuangsan.testmodule.BeSaier
-        android:id="@+id/wave_my"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1" />
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp" />
+
 </LinearLayout>

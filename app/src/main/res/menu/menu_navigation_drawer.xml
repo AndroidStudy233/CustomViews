@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/navigation_night"
-        android:icon="@drawable/vector_icon_navigation_night"
-        android:title="夜间模式" />
-    <item
-        android:id="@+id/navigation_abandon"
-        android:icon="@drawable/vector_icon_navigation_abandon"
-        android:title="勿扰模式" />
-    <item
-        android:id="@+id/navigation_share"
-        android:icon="@drawable/vector_icon_navigation_share"
-        android:title="分享应用" />
+    <item android:title="Basic">
+        <menu>
+            <item
+                android:id="@+id/navigation_night"
+                android:icon="@drawable/vector_icon_navigation_night"
+                android:title="夜间模式" />
+            <item
+                android:id="@+id/navigation_abandon"
+                android:icon="@drawable/vector_icon_navigation_abandon"
+                android:title="勿扰模式" />
+            <item
+                android:id="@+id/navigation_share"
+                android:icon="@drawable/vector_icon_navigation_share"
+                android:title="分享应用" />
+        </menu>
+    </item>
 
     <!--添加Group之后有条分割线-->
     <group

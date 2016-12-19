@@ -94,6 +94,16 @@ public class CoordinatorActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_coordinator_main);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // 加载菜单
         getMenuInflater().inflate(R.menu.menu_coordinator, menu);

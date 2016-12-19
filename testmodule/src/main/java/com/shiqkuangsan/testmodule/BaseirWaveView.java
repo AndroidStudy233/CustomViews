@@ -13,19 +13,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 
-/*************************************************
- * <p>版权所有：2016-深圳市赛为安全技术服务有限公司</p>
- * <p>项目名称：安全眼</p>
- * <p/>
- * <p>创建人：余志伟</p>
- * <p>创建时间 : 2016/12/14</p>
- * <p>修改人：       </p>
- * <p>修改时间：   </p>
- * <p>修改备注：   </p>
- *
- * @version V3.1
- *********************************/
-public class WaveViewDemo extends View implements View.OnClickListener{
+/**
+ * 贝赛尔曲线的应用之运动的波浪
+ */
+public class BaseirWaveView extends View implements View.OnClickListener{
     /**
      * 波峰
      */
@@ -45,17 +36,17 @@ public class WaveViewDemo extends View implements View.OnClickListener{
 
     private int mWaterColor = 0xBB0000FF;
 
-    public WaveViewDemo(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BaseirWaveView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
 
-    public WaveViewDemo(Context context, AttributeSet attrs) {
+    public BaseirWaveView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public WaveViewDemo(Context context) {
+    public BaseirWaveView(Context context) {
         super(context);
         init();
     }

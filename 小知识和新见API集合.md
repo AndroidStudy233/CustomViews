@@ -452,6 +452,9 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+### 不要忘记	@android:drawable/ 下面有很多小图标哦
+
+---
 # ImageView中的几种ScaleType的意思
 
 >ImageView的scaleType的属性有好几种，分别是matrix（默认）、center、centerCrop、centerInside、fitCenter、fitEnd、fitStart、fitXY
