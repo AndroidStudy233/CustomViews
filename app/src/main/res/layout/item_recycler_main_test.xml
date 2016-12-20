@@ -32,11 +32,8 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/img800x470_1" />
-
             </com.shiqkuangsan.mycustomviews.ui.custom.AutoRatioLayout>
-
         </LinearLayout>
-
     </android.support.v7.widget.CardView>
 
     <TextView
