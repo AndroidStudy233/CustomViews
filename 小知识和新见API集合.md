@@ -169,6 +169,15 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+## Gradle配置clean操作删除build文件
+
+>project的build.gradle文件中添加
+
+	task clean(type: Delete) {
+    	delete rootProject.buildDir
+	}
+
+---
 ## XML布局文件中tools:属性
 
 根部局中加入tools命名空间,是为了区分布局中的预览和实际使用.有点迷,举个栗子
@@ -237,10 +246,40 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
-### 设置该背景的View点击会有一个轻微的点击动画效果.MD风格的响应式
+## Material Design风格(MD风格)设计实例
+
+1. 设置该背景的View点击会有一个轻微的点击动画效果.MD风格的响应式
 
 	android:background="?android:attr/selectableItemBackground"
 
+2. 上面的效果同样可以使用ripple样式的xml实现,但是ripple节点是API21之后才有的属性,其中ripple节点的color指的是波纹的颜色(必须是8位颜色值),里边的drawable属性指的是正常状态下按钮的背景,也可以自己画shape也可以用图片
+
+	// 给按钮设置background,直接引用这个xml
+
+	<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@android:color/darker_gray">
+
+	<!--<item android:drawable="@android:color/white"/>-->
+
+	    <item>
+	        <shape android:shape="rectangle">
+	            <solid android:color="#FFFFFF" />
+	            <corners android:radius="4dp" />
+	        </shape>
+	    </item>
+
+	</ripple>
+
+3. Circular Reveal动画效果,主要是ViewAnimationUtils的使用.
+	
+	Animator animator = ViewAnimationUtils.createCircularReveal(
+                        btn_main, 0, 0, 0, (float) Math.hypot(btn_main.getWidth(), btn_main.getHeight()));
+    animator.setInterpolator(new AccelerateInterpolator());
+    animator.setDuration(600);
+    animator.start();
+
+参数:1. view对象; 2. 圆形动画的开始地点x坐标(基于view的); 3. y坐标; 4. 动画开始的半径; 5. 动画结束的半径. (开始为0结束值适当则是显示动画;开始值适当结束为0则是隐藏动画)
+	
 ---
 
 ### 屏幕适配中的不同分辨率dimens

@@ -1,5 +1,6 @@
 package com.shiqkuangsan.testmodule;
 
+import android.animation.Animator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,16 +9,32 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.BufferedReader;
+
+import static android.R.attr.id;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button btn_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initViews();
+    }
+
+    private void initViews() {
+        // Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // fab
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,27 +48,20 @@ public class MainActivity extends AppCompatActivity {
         BaseirWaveView waveView = (BaseirWaveView) findViewById(R.id.wave_demo);
         waveView.setRunning();
 
+        btn_main = (Button) findViewById(R.id.btn_ripple_main);
+        btn_main.setOnClickListener(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_ripple_main:
+                Animator animator = ViewAnimationUtils.createCircularReveal(
+                        btn_main, 0, 0, 0, (float) Math.hypot(btn_main.getWidth(), btn_main.getHeight()));
+                animator.setInterpolator(new AccelerateInterpolator());
+                animator.setDuration(600);
+                animator.start();
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
