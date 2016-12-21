@@ -157,7 +157,7 @@ public class SlideMenuView extends ViewGroup {
     @Override
     public void computeScroll() {
         super.computeScroll();
-w
+
         // 在你设置的持续时间内该值一直为true
         if (scroller.computeScrollOffset()) {
             /*

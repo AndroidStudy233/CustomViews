@@ -18,7 +18,7 @@ import android.view.WindowManager;
  * 3. getStatusBarHeight() 获取状态栏高度
  * <p>
  * 5.0处理: 5.0以上由于新特性可以直接通过申请flag来设置状态栏的颜色
- * 4.4.4处理: 4.4.4以上通过申请flag使状态栏半透明,然后设置activity的根部局颜色配合FitsSystemWindows
+ * 4.4.4处理: 4.4.4以上通过申请flag使状态栏半透明,然后设置activity的根部局颜色配合fitsSystemWindows
  * 属性来达到颜色沉浸的效果.
  *
  * 使用:
