@@ -99,8 +99,8 @@
 
         <activity
             android:name="com.shiqkuangsan.baiducityselector.CitySelectorActivity"
-            android:windowSoftInputMode="adjustPan|stateUnspecified"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme_NoActionBar"
+            android:windowSoftInputMode="adjustPan|stateUnspecified" />
 
         <activity
             android:name=".ui.activity.TestSwipeBackActivity"
@@ -111,7 +111,13 @@
 
         <activity android:name=".ui.activity.SettingsActivity" />
 
-        <!--百度地图相关的service和mata-data-->
+        <!--高德地图相关的service和meta-->
+        <service android:name="com.amap.api.location.APSService" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="f43853597dc1380b67ea401072fd44e5"/>
+
+        <!--百度地图相关的service和mata-->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

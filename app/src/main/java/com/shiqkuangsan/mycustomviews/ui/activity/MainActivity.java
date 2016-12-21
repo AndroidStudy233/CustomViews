@@ -12,7 +12,12 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
-// 主界面,并且负责演示炫酷菜单
+import static android.R.id.list;
+import static com.baidu.location.h.j.v;
+
+/**
+ * 主界面.
+ */
 public class MainActivity extends BaseActivity {
 
     private AMapLocationClient mLocationClient;
@@ -29,13 +34,16 @@ public class MainActivity extends BaseActivity {
 
 
     private void initLocation() {
+        /*
+            注意这只是个测试,没有做6.0系统的兼容.6.0以下是没问题的
+         */
         mLocationClient = new AMapLocationClient(this);
         AMapLocationClientOption option = new AMapLocationClientOption();
         option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-//        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
-//        option.setOnceLocation(true);
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
+        option.setOnceLocation(true);
         option.setNeedAddress(true);
-        option.setInterval(10000);
+        option.setInterval(20000);
         mLocationClient.setLocationListener(new AMapLocationListener() {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {
@@ -47,12 +55,14 @@ public class MainActivity extends BaseActivity {
                         MyLogUtil.d("district: " + district);
                     } else {
                         //定位失败
-                        MyLogUtil.e("高德地图定位失败咯~~");
+                        MyLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()
+                                + ", errInfo:" + aMapLocation.getErrorInfo());
                     }
                 }
             }
         });
         mLocationClient.setLocationOption(option);
+
         mLocationClient.startLocation();
     }
 
@@ -60,6 +70,17 @@ public class MainActivity extends BaseActivity {
     public void processClick(View v) {
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mLocationClient.stopLocation();//停止定位后，本地定位服务并不会被销毁
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mLocationClient.onDestroy();//销毁定位客户端，同时销毁本地定位服务。
+    }
 
     /**
      * 轮播图

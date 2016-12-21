@@ -963,6 +963,22 @@ fastjson
 
 ---
 
+## 获取开发版调试版的SHA1值
+
+1. 调试版: 进入你的.android目录下(如果你没设置默认在c盘),打开命令行输入
+
+	keytool -list -v -keystore debug.keystore
+
+密码就是android
+
+2. 开发版: 随便在哪儿打开命令行,输入
+
+	keytool -list -v -keystore	(这后面跟的是你的keystore的全路径)
+
+密码就是你自己设置的密码
+
+
+---
 # Bitmap和Base64之间的转换
 
 		/** 
