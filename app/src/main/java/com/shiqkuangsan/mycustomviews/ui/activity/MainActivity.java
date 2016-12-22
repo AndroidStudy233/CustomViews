@@ -51,8 +51,8 @@ public class MainActivity extends BaseActivity {
                     if (aMapLocation.getErrorCode() == 0) {
                         String city = aMapLocation.getCity();
                         String district = aMapLocation.getDistrict();
-                        MyLogUtil.d("city: " + city);
-                        MyLogUtil.d("district: " + district);
+                        MyLogUtil.d("高德city: " + city);
+                        MyLogUtil.d("高德district: " + district);
                     } else {
                         //定位失败
                         MyLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()

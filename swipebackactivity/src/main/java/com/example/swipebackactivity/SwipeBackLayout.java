@@ -86,6 +86,10 @@ public class SwipeBackLayout extends FrameLayout {
 
     private Activity mActivity;
 
+    public Activity getmActivity() {
+        return mActivity;
+    }
+
     private boolean mEnable = true;
 
     private View mContentView;

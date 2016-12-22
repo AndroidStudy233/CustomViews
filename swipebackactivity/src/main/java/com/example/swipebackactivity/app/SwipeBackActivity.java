@@ -19,6 +19,8 @@ import com.example.swipebackactivity.Utils.StatusBarUtil;
  * 自带右滑返回上一个界面的Activity
  * 使用:直接继承自SwipeBackActivity即可,用在项目中可以让你的BaseActivity集成这个
  * 控制是否支持手势getSwipeBackLayout().setEnableGesture(false);
+ *
+ * 5.0以下的版本滑动之前的界面会黑屏. 暂且支持5.0+
  */
 public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
 

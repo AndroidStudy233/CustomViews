@@ -380,15 +380,15 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
         mCityAdapter.updateLocateState(LocateState.SUCCESS, location.getCity());
 
         // 地址描述
-        MyLogUtil.d("Addr: " + location.getAddrStr());
+        MyLogUtil.d("百度Addr: " + location.getAddrStr());
         // 位置信息其他描述
-        MyLogUtil.d("Describe: " + location.getLocationDescribe());
+        MyLogUtil.d("百度Describe: " + location.getLocationDescribe());
         // POI数据
         List<Poi> list = location.getPoiList();
         if (list != null) {
             for (Poi p : list) {
                 String s = p.getId() + " " + p.getName() + " " + p.getRank();
-                MyLogUtil.d("poi: " + s);
+                MyLogUtil.d("百度poi: " + s);
             }
         }
     }

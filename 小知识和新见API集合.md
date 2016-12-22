@@ -278,8 +278,95 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
     animator.setDuration(600);
     animator.start();
 
-参数:1. view对象; 2. 圆形动画的开始地点x坐标(基于view的); 3. y坐标; 4. 动画开始的半径; 5. 动画结束的半径. (开始为0结束值适当则是显示动画;开始值适当结束为0则是隐藏动画)
+	参数:1. view对象; 2. 圆形动画的开始地点x坐标(基于view的); 3. y坐标; 4. 动画开始的半径; 5. 动画结束的半径. (开始为0结束值适当则是显示动画;开始值适当结束为0则是隐藏动画)
 	
+4. Material 主题
+
+	* 系统自带的主题
+
+		* @android:style/Theme.Material
+		
+		* @android:style/Theme.Material.Light
+		
+		* @android:style/Theme.Material.Light.DarkActionBar
+	
+	* 常用的样式属性
+
+			 <style name="RedTheme" parent="android:Theme.Material">
+
+			    <!-- 状态栏颜色，会被statusBarColor效果覆盖-->
+			    <item name="android:colorPrimaryDark">@color/status_red</item>
+			    <!-- 状态栏颜色，继承自colorPrimaryDark -->
+			    <item name="android:statusBarColor">@color/status_red</item>
+			    <!-- actionBar颜色 -->
+			    <item name="android:colorPrimary">@color/action_red</item>
+			    <!-- 背景颜色 -->
+			    <item name="android:windowBackground">@color/window_bg_red</item>
+			    <!-- 底部栏颜色 -->
+			    <item name="android:navigationBarColor">@color/navigation_red</item>
+			
+			    <!-- ListView的分割线颜色，switch滑动区域色-->
+			    <item name="android:colorForeground">@color/fg_red</item>
+			    <!-- popMenu的背景色 -->
+			    <item name="android:colorBackground">@color/bg_red</item>
+			
+			    <!-- 控件默认颜色 ，效果会被colorControlActivated取代  -->
+			    <item name="android:colorAccent">@color/control_activated_red</item>
+			
+			    <!-- 控件默认时颜色  -->
+			    <item name="android:colorControlNormal">@color/control_normal_red</item>
+			    <!-- 控件按压时颜色，会影响水波纹效果，继承自colorAccent  -->
+			    <item name="android:colorControlHighlight">@color/control_highlight_red</item>
+			    <!-- 控件选中时颜色 -->
+			    <item name="android:colorControlActivated">@color/control_activated_red</item>
+			    <!-- Button的默认背景 -->
+			    <item name="android:colorButtonNormal">@color/button_normal_red</item>
+			
+			    <!-- Button，textView的文字颜色  -->
+			    <item name="android:textColor">@color/white_text</item>
+			    <!-- RadioButton checkbox等控件的文字 -->
+			    <item name="android:textColorPrimaryDisableOnly">@color/white_text</item>
+			    <!-- actionBar的标题文字颜色 -->
+			    <item name="android:textColorPrimary">@color/white_text</item>
+			</style>
+	 
+5. 这个应该是5.0的新特性
+
+	* 首先是Z轴属性
+		
+			android:elevation   //静态Z轴的高度。相对于父控件的高度
+			android:translationZ    //Z轴偏移的高度。
+
+	* 然后是阴影轮廓
+		
+			android:outlineProvider：有四个值
+			none：不显示阴影
+			background ：按照显示区域来绘制阴影
+			bounds ：在View的边界描绘阴影
+			paddedBounds： 在View边界描绘阴影，但会计算paddingTop和paddingLeft
+
+	* 取色器
+
+			//在子线程可以使用同步操作
+			 Palette p = Palette.from(bitmap).generate();
+			
+			 //在主线程使用异步操作
+			 Palette.from(bitmap).generate(new PaletteAsyncListener() {
+			     public void onGenerated(Palette p) {
+			         // Use generated instance
+			
+			     }
+			 });
+			
+			
+			//gradle 添加依赖
+			dependencies {  
+			    compile 'com.android.support:palette-v7:24.0.0'
+			}
+
+
+			//获取某个像素点的颜色值
+			int color=Bitmap.getPixel(int x, int y);
 ---
 
 ### 屏幕适配中的不同分辨率dimens
