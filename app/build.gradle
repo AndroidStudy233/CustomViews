@@ -44,4 +44,8 @@ dependencies {
     compile project(':swipebackactivity')
     // 图片缩放
     compile 'com.bm.photoview:library:1.4.1'
+    // facebook的弹簧动画库
+//    compile 'com.facebook.rebound:rebound:0.3.8'
+    // View碎裂效果
+    compile 'tyrantgit:explosionfield:1.0.1'
 }

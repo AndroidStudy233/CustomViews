@@ -21,8 +21,10 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.SlideInLeftAnimationAdapter;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
+import static com.baidu.location.h.j.S;
 import static com.shiqkuangsan.mycustomviews.R.color.swipe_schema_blue;
 
 /**
@@ -100,8 +102,8 @@ public class RecyclerViewActivity extends BaseActivity {
         });
 //        recycler_main.setAdapter(adapter);
         // 使用第三方库中简单的动画来设置适配器,其对象可以setDuration、setInterpolator,甚至可以继续传入形成装饰者
-//        recycler_main.setAdapter(new SlideInLeftAnimationAdapter(adapter));
-        recycler_main.setAdapter(new ScaleInAnimationAdapter(adapter));
+//        recycler_main.setAdapter(new ScaleInAnimationAdapter(adapter));
+        recycler_main.setAdapter(new SlideInLeftAnimationAdapter(adapter));
 
         /*
             这里有个非常重要的问题,如果你想使用增删动画,那么在增删操作的时候

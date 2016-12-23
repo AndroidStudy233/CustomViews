@@ -1,6 +1,5 @@
-package com.shiqkuangsan.mycustomviews.photoview;
+package com.shiqkuangsan.mycustomviews.ui.custom.photoview;
 
-import android.util.Log;
 import android.view.MotionEvent;
 
 /**

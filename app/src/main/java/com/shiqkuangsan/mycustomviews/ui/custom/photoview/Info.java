@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.photoview;
+package com.shiqkuangsan.mycustomviews.ui.custom.photoview;
 
 /**
  * Created by shiqkuangsan on 2016/9/21.

@@ -9,9 +9,9 @@ import android.widget.GridView;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.PicGridAdapter;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
-import com.shiqkuangsan.mycustomviews.photoview.Info;
-import com.shiqkuangsan.mycustomviews.photoview.PhotoView;
-import com.shiqkuangsan.mycustomviews.photoview.ViewPagerFragment;
+import com.shiqkuangsan.mycustomviews.ui.custom.photoview.Info;
+import com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView;
+import com.shiqkuangsan.mycustomviews.ui.custom.photoview.ViewPagerFragment;
 
 import java.util.ArrayList;
 

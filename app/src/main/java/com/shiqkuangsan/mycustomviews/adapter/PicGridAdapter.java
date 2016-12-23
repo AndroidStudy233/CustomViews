@@ -12,12 +12,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.photoview.PhotoView;
+import com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView;
 
 import java.util.List;
-
-import static com.baidu.location.h.j.V;
-import static com.baidu.location.h.j.p;
 
 /**
  * Created by shiqkuangsan on 2016/9/13.

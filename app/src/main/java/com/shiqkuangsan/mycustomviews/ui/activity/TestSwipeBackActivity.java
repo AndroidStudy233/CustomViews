@@ -40,7 +40,7 @@ public class TestSwipeBackActivity extends SwipeBackActivity {
 //        actionBar.setTitle("大猪SB");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fab_explose);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

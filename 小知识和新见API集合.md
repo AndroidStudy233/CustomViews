@@ -246,6 +246,62 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+
+## android中的动画插值器Interpolator.
+
+<div>
+	<img src='/others/images/interpolator.gif'  width="400px" style='border: #67F2F7 solid 2px'/>
+</div>
+
+1. AccelerateDecelerateInterpolator 加速减速插补器（先慢后快再慢）
+
+2. AccelerateInterpolator 加速插补器（先慢后快）
+
+3. AnticipateInterpolator 向前插补器（先往回跑一点，再加速向前跑）
+
+4. AnticipateOvershootInterpolator 向前向后插补器（先往回跑一点，再向后跑一点，再回到终点）
+
+5. BounceInterpolator 反弹插补器（在动画结束的时候回弹几下，如果是竖直向下运动的话，就是玻璃球下掉弹几下的效果）
+
+6. CycleInterpolator 循环插补器（按指定的路径以指定时间（或者是偏移量）的1/4、变速地执行一遍，再按指定的轨迹的相反反向走1/2的时间，再按指定的路径方向走完剩余的1/4的时间，最后回到原点。假如：默认是让a从原点往东跑100米。它会先往东跑100米，然后往西跑200米，再往东跑100米回到原点。可在代码中指定循环的次数）
+
+7. DecelerateInterpolator 减速插补器（先快后慢）
+
+8. LinearInterpolator 直线插补器（匀速）
+
+9. OvershootInterpolator 超出插补器（向前跑直到越界一点后，再往回跑）
+
+10. FastOutLinearInInterpolator MaterialDesign基于贝塞尔曲线的插补器 效果：依次 慢慢快
+
+11. FastOutSlowInInterpolator MaterialDesign基于贝塞尔曲线的插补器 效果：依次 慢快慢
+
+12. LinearOutSlowInInterpolator MaterialDesign基于贝塞尔曲线的插补器 效果：依次 快慢慢
+
+
+使用方法1: 
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<set xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:fillAfter="true"
+	    android:interpolator="@android:anim/accelerate_interpolator">//对当前动画设置插补器
+	    <translate
+	        android:duration="2000"
+	        android:fromXDelta="50%"
+	        android:fromYDelta="0%"
+	        android:interpolator="@android:anim/accelerate_interpolator"// 对当前节点设置插补器
+	        android:toXDelta="500%"
+	        android:toYDelta="0%" />
+	</set>
+
+
+使用方法2:
+
+	Animation mAnimation = AnimationUtils.loadAnimation(this, R.anim.xxx);//引用动画文件
+	mAnimation.setInterpolator(new AccelerateDecelerateInterpolator());//代码设置插补器
+	view.startAnimation(mAnimation);
+
+---
+
 ## Material Design风格(MD风格)设计实例
 
 1. 设置该背景的View点击会有一个轻微的点击动画效果.MD风格的响应式
@@ -256,10 +312,9 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 	// 给按钮设置background,直接引用这个xml
 
-	<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@android:color/darker_gray">
+		<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@android:color/darker_gray">
 
-	<!--<item android:drawable="@android:color/white"/>-->
+		<!--<item android:drawable="@android:color/white"/>-->
 
 	    <item>
 	        <shape android:shape="rectangle">
@@ -272,11 +327,14 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 3. Circular Reveal动画效果,主要是ViewAnimationUtils的使用.
 	
-	Animator animator = ViewAnimationUtils.createCircularReveal(
-                        btn_main, 0, 0, 0, (float) Math.hypot(btn_main.getWidth(), btn_main.getHeight()));
-    animator.setInterpolator(new AccelerateInterpolator());
-    animator.setDuration(600);
-    animator.start();
+		Animator animator = ViewAnimationUtils.createCircularReveal(
+	                        btn_main, 0, 0, 0, (float) Math.hypot(btn_main.getWidth(), btn_main.getHeight()));
+	    animator.setInterpolator(new AccelerateInterpolator());
+	    animator.setDuration(600);
+	    animator.start();
+
+		// 多个元素用
+		 Pair.create(((View) iv1),"my_iv")
 
 	参数:1. view对象; 2. 圆形动画的开始地点x坐标(基于view的); 3. y坐标; 4. 动画开始的半径; 5. 动画结束的半径. (开始为0结束值适当则是显示动画;开始值适当结束为0则是隐藏动画)
 	
@@ -347,6 +405,13 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 	* 取色器
 
+			Vibrant(充满活力的)
+			Vibrant dark(充满活力的黑)
+			Vibrant light(充满活力的亮)
+			Muted(柔和的)
+			Muted dark(柔和的黑)
+			Muted lighr(柔和的亮)
+
 			//在子线程可以使用同步操作
 			 Palette p = Palette.from(bitmap).generate();
 			
@@ -354,7 +419,13 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 			 Palette.from(bitmap).generate(new PaletteAsyncListener() {
 			     public void onGenerated(Palette p) {
 			         // Use generated instance
-			
+					 Palette.Swatch vibrant = Palette.getVibrantSwatch();
+					// swatch下有这么几个方法
+					getPopulation(): 样本中的像素数量
+					getRgb(): 颜色的RBG值
+					getHsl(): 颜色的HSL值
+					getBodyTextColor(): 主体文字的颜色值
+					getTitleTextColor(): 标题文字的颜色值
 			     }
 			 });
 			
@@ -365,8 +436,48 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 			}
 
 
-			//获取某个像素点的颜色值
+			// 额外提一提一个方法: 获取某个像素点的颜色值
 			int color=Bitmap.getPixel(int x, int y);
+
+
+6. 5.0+版本Activity的共享元素和场景转换动画
+
+	* Activity转场动画
+	
+	第一步: 从A跳转到B,以前一直用overridepxxx()这个方法.5.0以后不用了可以直接配置.A启动B的操作改成下面的方式.
+		
+		ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this);
+		startActivity(new Intent(MainActivity.this, TransitionActivity.class), options.toBundle());
+
+	第二步: 在B的theme中直接配置下面的属性/或者使用代码设置
+	
+		<item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowEnterTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
+        <item name="android:windowExitTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
+
+		getWindow().setEnterTransition(new Explode().setDuration(1200));  
+		getWindow().setExitTransition(new Explode().setDuration(1200));  
+
+	
+	* Activity共享元素.道理一样
+	
+	第一步: 配置两个共享元素的transitionName属性,名称必须一样.
+
+	第二步: 还是theme的配置.
+
+		<item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">@android:transition/move</item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">@android:transition/move</item>
+
+	第三步: 启动B的方法使用这个,带着共享元素的transition名字去启动
+
+		ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, fab_main, "transition_name_fab"); 
+		startActivity(new Intent(getApplicationContext(), TransitionActivity.class), options.toBundle()); 
+		// 这是只有一个fab_main View的情况,如果有多个共享元素.用Pair.create(),这是可变参数
+
+	
+		
+
 ---
 
 ### 屏幕适配中的不同分辨率dimens
@@ -457,6 +568,19 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ---
 
 ### 执行了动画的组件调用setVisibility()设置隐藏等状态的的时候,需要先调用clearAnimation();
+---
+
+## 在Activity绘制完成的全局监听
+
+        ViewTreeObserver observer = view.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                final int w = view.getMeasuredWidth();
+                final int h = view.getMeasuredHeight();
+            }
+        });
 
 ---
 
@@ -854,7 +978,7 @@ fastjson
 
 ---
 
-## ToolBar简介
+## Toolbar简介
 
 1. 在Activity的布局文件中使用
 		
@@ -881,7 +1005,7 @@ fastjson
 		
 		// 其中这两个属性需要注意 1. theme: 因为默认是黑色该属性可以控制返回键/菜单键等白色
 		// 2. popupTheme: 下拉菜单的主题如背景色白色
-		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+		app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"(ThemeOverlay.AppCompat.Light就是黑色的返回键)
 		app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
 
 3. 响应overflow下拉菜单: 在res/menu中建立menu布局文件. 设置item

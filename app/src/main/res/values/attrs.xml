@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--自定义小开关属性-->
     <declare-styleable name="MyOnOffView">
-        <attr name="switch_bg" format="reference"/>
-        <attr name="switch_slide" format="reference"/>
-        <attr name="switch_state" format="boolean"/>
+        <attr name="switch_bg" format="reference" />
+        <attr name="switch_slide" format="reference" />
+        <attr name="switch_state" format="boolean" />
     </declare-styleable>
 
+    <!--自定义下拉刷新属性-->
     <declare-styleable name="MyPullRefreshListView">
-        <attr name="tv_head" format="string"/>
-        <attr name="tv_foot" format="string"/>
+        <attr name="tv_head" format="string" />
+        <attr name="tv_foot" format="string" />
     </declare-styleable>
 
+    <!--自定义适配布局属性-->
     <declare-styleable name="AutoRatioLayout">
-        <attr name="ratio" format="float"/>
+        <attr name="ratio" format="float" />
     </declare-styleable>
 
 </resources>

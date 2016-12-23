@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.photoview;
+package com.shiqkuangsan.mycustomviews.ui.custom.photoview;
 
 import android.content.Context;
 import android.content.res.Resources;

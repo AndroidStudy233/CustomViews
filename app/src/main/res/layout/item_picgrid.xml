@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.shiqkuangsan.mycustomviews.photoview.PhotoView
+    <com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView
         android:id="@+id/iv_griditem"
         android:layout_marginLeft="2dp"
         android:layout_width="match_parent"

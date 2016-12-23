@@ -26,14 +26,33 @@
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
     <string name="title_activity_immerse">ImmerseActivity</string>
-    
+
     <array name="entries_ListPreference">
-        <item >Eclipse</item>
-        <item >Android Studio</item>
-        <item >Virtual Studio</item>
-        <item >IntelliJ IDEA</item>
+        <item>Eclipse</item>
+        <item>Android Studio</item>
+        <item>Virtual Studio</item>
+        <item>IntelliJ IDEA</item>
     </array>
 
     <string name="title_activity_swipeback1">大猪是不是傻</string>
+    <string name="title_activity_api21">Api21Activity</string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+    </string>
+    <string name="action_settings">Settings</string>
 
 </resources>

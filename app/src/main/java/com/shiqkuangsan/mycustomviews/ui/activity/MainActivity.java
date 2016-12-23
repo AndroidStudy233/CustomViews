@@ -1,6 +1,7 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 
 import com.amap.api.location.AMapLocation;
@@ -11,9 +12,6 @@ import com.shiqkuangsan.baiducityselector.CitySelectorActivity;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
-
-import static android.R.id.list;
-import static com.baidu.location.h.j.v;
 
 /**
  * 主界面.
@@ -206,6 +204,19 @@ public class MainActivity extends BaseActivity {
      */
     public void mdsettings(View view) {
         startActivity(new Intent(this, SettingsActivity.class));
+    }
+
+    /**
+     * api21以上的几个效果
+     *
+     * @param view
+     */
+    public void api21(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            // 5.0之后才可以进入这个界面
+            startActivity(new Intent(this, Api21ExploseActivity.class));
+        else
+            showToast("5.0一下系统不能使用~");
     }
 
 }

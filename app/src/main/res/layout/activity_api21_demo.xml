@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_api21_demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical"
+    tools:context="com.shiqkuangsan.mycustomviews.ui.activity.Api21ExploseActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <ImageButton
+            android:id="@+id/iv_explode_1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img_google" />
+
+        <ImageButton
+            android:id="@+id/iv_explode_2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img_gmail" />
+
+        <ImageButton
+            android:id="@+id/iv_explode_3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img_maps" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <ImageButton
+            android:id="@+id/iv_explode_4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img_music" />
+
+        <ImageButton
+            android:id="@+id/iv_explode_5"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/img_television" />
+
+        <ImageButton
+            android:id="@+id/iv_explode_6"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:transitionName="transition_youtube"
+            android:src="@mipmap/img_youtube" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_ripple_explode"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_ripple_main"
+        android:text="水波纹按钮"
+        android:textSize="20sp" />
+
+</LinearLayout>

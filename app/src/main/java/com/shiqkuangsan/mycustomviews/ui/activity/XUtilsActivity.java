@@ -70,7 +70,7 @@ public class XUtilsActivity extends AppCompatActivity {
     boolean isDbInited = false;
     private List<Province> list;
 
-    // 事件注解,默认type为OnClickListener,你可以自定义
+    // 事件注解,记住方法修饰必须为private, 默认type为OnClickListener,你可以自定义
 //    @Event(value = {R.id.btn_xutils_sendget, R.id.btn_xutils_sendpost}, type = View.OnClickListener.class)
     @Event(value = {R.id.btn_xutils_sendget, R.id.btn_xutils_sendpost, R.id.btn_xutils_upload,
             R.id.btn_xutils_download, R.id.btn_xutils_image, R.id.btn_xutils_circle, R.id.btn_xutils_gif,
