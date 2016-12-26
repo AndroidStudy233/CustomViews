@@ -40,7 +40,7 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.4.0'
     // recyclerview的adapter / item / viewholder动画
     compile 'jp.wasabeef:recyclerview-animators:2.2.5'
-    compile project(':baiducityselector')
+    compile project(':cityselector')
     compile project(':swipebackactivity')
     // 图片缩放
     compile 'com.bm.photoview:library:1.4.1'

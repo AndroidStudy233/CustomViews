@@ -27,7 +27,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initDataAndListener() {
-        initLocation();
+        // 高德地图的测试.
+//        initLocation();
     }
 
 
@@ -38,10 +39,9 @@ public class MainActivity extends BaseActivity {
         mLocationClient = new AMapLocationClient(this);
         AMapLocationClientOption option = new AMapLocationClientOption();
         option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
-        option.setOnceLocation(true);
-        option.setNeedAddress(true);
-        option.setInterval(20000);
+        option.setOnceLocation(true);// 设置只定位一次
+        option.setNeedAddress(true);// 设置返回地址信息
+//        option.setInterval(20000);// 设置定位间隔,默认为2000ms，最低1000ms。
         mLocationClient.setLocationListener(new AMapLocationListener() {
             @Override
             public void onLocationChanged(AMapLocation aMapLocation) {

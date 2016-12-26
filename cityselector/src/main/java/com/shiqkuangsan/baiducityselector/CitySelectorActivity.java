@@ -23,11 +23,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.location.Poi;
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+
 import com.shiqkuangsan.baiducityselector.adapter.CityListAdapter;
 import com.shiqkuangsan.baiducityselector.adapter.ResultListAdapter;
 import com.shiqkuangsan.baiducityselector.bean.City;
@@ -43,23 +43,20 @@ import java.util.List;
 /**
  * 城市选择页面
  * <p>
- * 1. 由于该module内部的定位功能使用了百度地图,需要开发者申请百度地图的appKey(原生的定位就不加了)
- * 该key的申请主要就是SHA1值(需要用到keystore)的获取和包名(你的要运行的module包名).详参见百度地图开放平台
+ * 1. 由于该module内部的定位功能使用了高德地图定位,需要开发者申请高德地图的appKey(原生的定位就不加了)
+ * 该key的申请主要就是SHA1值(需要用到keystore)的获取和包名(你的要运行的module包名).详参见高德地图开放平台
  * <p>
  * 2. 获取key之后,在你的应用清单文件中配置该activity(CitySelectorActivity,记得主题使用NoActionBar的
- * 因为我里面使用了Toolbar.),配置百度地图的service和meta-data,记住和activity是同级的.还有就是权限!!!
- * <service android:name="com.baidu.location.f"
- * android:enabled="true"
- * android:process=":remote"/>
+ * 因为我里面使用了Toolbar.),配置高德地图的service和meta-data,记住和activity是同级的.还有就是权限!!!
+ * <service android:name="com.amap.api.location.APSService" />
  * <meta-data
- * android:name="com.baidu.lbsapi.API_KEY"
- * android:value="你申请的appkey" />
+ * android:name="com.amap.api.v2.apikey"
+ * android:value="f43853597dc1380b67ea401072fd44e5" />
  * <p>
  * 3. 添加该module的依赖,调用的时候直接正常Intent启动过来就行了
  * <p>
  * 4. 城市的选择回调在onCitySelected()方法中,就是我吐司的地方.自行改成你需要的操作就行了.我这里的回调
  * 给的是城市名,本来是打算给City对象的.算了就这样吧.
- * 最后我想说有时候一直定位中...没找到关于定位sdkTimeout的回调接口
  * <p>
  * <p>
  * 另外提供一条根据坐标查询城市的接口
@@ -70,6 +67,9 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
      * 权限请求码
      */
     public static final int CODE_PERMISSION_LOCATION = 2333;
+    /**
+     * 没有权限打开设置界面请求码
+     */
     public static final int CODE_START_SETTINGS = 2334;
 
     private ListView mListView;
@@ -83,9 +83,8 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
     private List<City> mAllCities;
     private DBManager dbManager;
     private Toolbar toolbar;
-    // 百度地图相关
-    public LocationClient baiduClient = null;
-    public BDLocationListener myListener = new MyLocationListener();
+    // 高德地图相关
+    private AMapLocationClient gaodeClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +94,9 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
         initToolbar();
         initData();
         initView();
-        initBaiduLocation();
+        initGaodeLocation();
     }
+
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar_citypicker);
@@ -230,12 +230,12 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
      * 重新定位
      */
     private void locate() {
-        if (baiduClient != null) {
-            if (baiduClient.isStarted()) {
-                baiduClient.stop();
+        if (gaodeClient != null) {
+            if (gaodeClient.isStarted()) {
+                gaodeClient.stopLocation();
             }
             mCityAdapter.updateLocateState(LocateState.LOCATING, null);
-            baiduClient.start();
+            gaodeClient.startLocation();
         }
     }
 
@@ -272,30 +272,38 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
     }
 
     /**
-     * 初始化百度定位相关
+     * 初始化高德地图定位
      */
-    private void initBaiduLocation() {
-        baiduClient = new LocationClient(getApplicationContext());
-        baiduClient.registerLocationListener(myListener);
+    private void initGaodeLocation() {
+        gaodeClient = new AMapLocationClient(this);
+        AMapLocationClientOption option = new AMapLocationClientOption();
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+        option.setOnceLocation(true);// 设置只定位一次
+        option.setNeedAddress(true);// 设置返回地址信息
+        option.setHttpTimeOut(20000);// 定位超时
+//        option.setInterval(20000);// 设置定位间隔,默认为2000ms，最低1000ms。
+        gaodeClient.setLocationListener(new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                if (aMapLocation != null) {
+                    if (aMapLocation.getErrorCode() == 0) {
+                        String city = aMapLocation.getCity();
+                        String district = aMapLocation.getDistrict();
+                        mCityAdapter.updateLocateState(LocateState.SUCCESS, city);
+                        MyLogUtil.d("高德city: " + city);
+                        MyLogUtil.d("高德district: " + district);
+                    } else {
+                        //定位失败
+                        mCityAdapter.updateLocateState(LocateState.FAILED, null);
+                        MyLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()
+                                + ", errInfo:" + aMapLocation.getErrorInfo());
+                    }
+                }
+            }
+        });
+        gaodeClient.setLocationOption(option);
 
-        LocationClientOption option = new LocationClientOption();
-        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy
-        );//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
-        option.setCoorType("bd09ll");//可选，默认gcj02，设置返回的定位结果坐标系
-        int span = 0;
-        option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的
-        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要
-        option.setOpenGps(true);//可选，默认false,设置是否使用gps
-        option.setLocationNotify(true);//可选，默认false，设置是否当GPS有效时按照1S/1次频率输出GPS结果
-        option.setIsNeedLocationDescribe(true);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
-        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
-        option.setIgnoreKillProcess(false);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
-        option.SetIgnoreCacheException(false);//可选，默认false，设置是否收集CRASH信息，默认收集
-        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤GPS仿真结果，默认需要
-        option.setTimeOut(10000);
-        baiduClient.setLocOption(option);
-
-//        baiduClient.start();
+//        gaodeClient.startLocation();
         checkLocationPermission();
     }
 
@@ -325,72 +333,8 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (baiduClient != null)
-            baiduClient.stop();
-    }
-
-
-    class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-
-            switch (location.getLocType()) {
-                // GPS定位
-                case BDLocation.TypeGpsLocation:
-                    setupLocateInfo(location);
-                    break;
-
-                // WIFI定位
-                case BDLocation.TypeNetWorkLocation:
-                    // 可以获取运营商
-                    location.getOperators();
-                    setupLocateInfo(location);
-                    break;
-
-                // 离线定位
-                case BDLocation.TypeOffLineLocation:
-                    setupLocateInfo(location);
-                    break;
-
-                // 服务器error
-                case BDLocation.TypeServerError:
-                    mCityAdapter.updateLocateState(LocateState.FAILED, null);
-                    break;
-                // 网络异常
-                case BDLocation.TypeNetWorkException:
-                    mCityAdapter.updateLocateState(LocateState.FAILED, null);
-                    break;
-                // 无法定位(可能飞行模式)
-                case BDLocation.TypeCriteriaException:
-                    mCityAdapter.updateLocateState(LocateState.FAILED, null);
-                    break;
-            }
-
-        }
-    }
-
-    /**
-     * 设置定位信息.更新状态
-     *
-     * @param location BDLocation
-     */
-    private void setupLocateInfo(BDLocation location) {
-
-        mCityAdapter.updateLocateState(LocateState.SUCCESS, location.getCity());
-
-        // 地址描述
-        MyLogUtil.d("百度Addr: " + location.getAddrStr());
-        // 位置信息其他描述
-        MyLogUtil.d("百度Describe: " + location.getLocationDescribe());
-        // POI数据
-        List<Poi> list = location.getPoiList();
-        if (list != null) {
-            for (Poi p : list) {
-                String s = p.getId() + " " + p.getName() + " " + p.getRank();
-                MyLogUtil.d("百度poi: " + s);
-            }
-        }
+        if (gaodeClient != null)
+            gaodeClient.stopLocation();
     }
 
 }

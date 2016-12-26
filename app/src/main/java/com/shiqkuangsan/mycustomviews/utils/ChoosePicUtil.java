@@ -27,8 +27,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-import static com.baidu.location.h.j.A;
-
 /**
  * 选择图片的工具类
  * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面

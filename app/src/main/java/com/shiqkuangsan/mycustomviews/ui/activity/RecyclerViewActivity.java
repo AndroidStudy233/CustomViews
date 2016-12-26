@@ -20,11 +20,9 @@ import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.SlideInLeftAnimationAdapter;
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
-import static com.baidu.location.h.j.S;
 import static com.shiqkuangsan.mycustomviews.R.color.swipe_schema_blue;
 
 /**

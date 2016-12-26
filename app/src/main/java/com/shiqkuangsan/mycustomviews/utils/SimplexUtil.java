@@ -2,7 +2,6 @@ package com.shiqkuangsan.mycustomviews.utils;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.shiqkuangsan.mycustomviews.R;
