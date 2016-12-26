@@ -68,17 +68,6 @@ public class MainActivity extends BaseActivity {
     public void processClick(View v) {
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mLocationClient.stopLocation();//停止定位后，本地定位服务并不会被销毁
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mLocationClient.onDestroy();//销毁定位客户端，同时销毁本地定位服务。
-    }
 
     /**
      * 轮播图
