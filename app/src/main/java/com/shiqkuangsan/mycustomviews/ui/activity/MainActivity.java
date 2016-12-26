@@ -203,7 +203,11 @@ public class MainActivity extends BaseActivity {
      * @param view
      */
     public void mdsettings(View view) {
-        startActivity(new Intent(this, SettingsActivity.class));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            // 5.0之后才可以进入这个界面
+            startActivity(new Intent(this, MDSettingsActivity.class));
+        else
+            showToast("5.0一下系统不能使用~");
     }
 
     /**

@@ -2513,12 +2513,6 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 	
 	        webview.setWebChromeClient(new WebChromeClient() {
 
-		      	public boolean shouldOverrideUrlLoading(WebView view, String url) {
-			        // TODO Auto-generated method stub
-			        view.loadUrl(url);
-			        return true;
-		     	 }
-
 	            // 该方法可以不断拿到当前加载进度
 	            @Override
 	            public void onProgressChanged(WebView view, int newProgress) {

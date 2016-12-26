@@ -13,7 +13,7 @@ import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
  * @summary 使用PreferenceFragment编写设置页面(继承自SwipeBackActivity之后不好用PreferenceActivity)
  */
 
-public class SettingsActivity extends SwipeBackActivity {
+public class MDSettingsActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

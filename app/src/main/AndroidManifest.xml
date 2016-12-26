@@ -92,7 +92,7 @@
             android:theme="@style/AppTheme_NoActionBar" />
         <activity android:name=".ui.activity.testswipeback.Activity2" />
         <activity android:name=".ui.activity.testswipeback.Activity3" />
-        <activity android:name=".ui.activity.SettingsActivity" />
+        <activity android:name=".ui.activity.MDSettingsActivity" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
