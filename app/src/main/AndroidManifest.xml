@@ -41,18 +41,29 @@
         </activity>
         <activity
             android:name=".ui.activity.SwitchPictureActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
-        <activity android:name=".ui.activity.MyOnOffActivity" />
-        <activity android:name=".ui.activity.PullRefreshActivity" />
+            android:label="轮播图"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.MyOnOffActivity"
+            android:label="小开关" />
+        <activity
+            android:name=".ui.activity.PullRefreshActivity"
+            android:label="测试下拉刷新" />
         <activity
             android:name=".ui.activity.SlideMenuActivity"
             android:theme="@style/AppTheme_NoActionBar" />
-        <activity android:name=".ui.activity.PtrDemoActivity" />
-        <activity android:name=".ui.activity.PicChooserActivity" />
+        <activity
+            android:name=".ui.activity.PtrDemoActivity"
+            android:label="测试下拉刷新" />
+        <activity
+            android:name=".ui.activity.PicChooserActivity"
+            android:label="测试图片选择" />
         <activity
             android:name=".ui.activity.PicLookerActivity"
             android:theme="@style/AppTheme_NoActionBar" />
-        <activity android:name=".ui.activity.XUtilsActivity" />
+        <activity
+            android:name=".ui.activity.XUtilsActivity"
+            android:label="测试xUtils3" />
         <activity
             android:name=".ui.activity.qzone.MomentListActivity"
             android:theme="@style/theme_picchose_act" />
@@ -64,6 +75,7 @@
             android:theme="@style/coordinator_emma_immerse" />
         <activity
             android:name=".ui.activity.RecyclerViewActivity"
+            android:label="RecyclerView使用"
             android:theme="@style/AppTheme_NoActionBar" />
         <activity
             android:name=".ui.activity.ImmerseActivity"
@@ -88,11 +100,13 @@
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <activity
             android:name=".ui.activity.TestSwipeBackActivity"
-            android:label="@string/title_activity_swipeback1"
+            android:label="大猪是不是傻"
             android:theme="@style/AppTheme_NoActionBar" />
         <activity android:name=".ui.activity.testswipeback.Activity2" />
         <activity android:name=".ui.activity.testswipeback.Activity3" />
-        <activity android:name=".ui.activity.MDSettingsActivity" />
+        <activity
+            android:name=".ui.activity.MDSettingsActivity"
+            android:label="测试MD风格的设置" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
@@ -103,11 +117,18 @@
 
         <activity
             android:name=".ui.activity.api21.Api21Activity"
-            android:label="@string/title_activity_api21"
+            android:label="5.0简单测试页面"
             android:theme="@style/AppTheme_NoActionBar.transition" />
+
         <activity
             android:name=".ui.activity.Api21ExploseActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:label="测试碎裂效果和5.0"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.activity.RealmTestActivity"
+            android:label="realm数据库测试" />
+
     </application>
 
 </manifest>

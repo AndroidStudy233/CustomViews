@@ -28,7 +28,6 @@ public class Api21Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_api21);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_activity_explose);
-        toolbar.setTitle("5.0简单测试页面");
         toolbar.setTitleTextColor(0xde000000);
         toolbar.setNavigationIcon(R.drawable.img_back);
 

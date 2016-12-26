@@ -205,11 +205,8 @@ public class MainActivity extends BaseActivity {
      * @param view
      */
     public void mdsettings(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-            // 5.0之后才可以进入这个界面
-            startActivity(new Intent(this, MDSettingsActivity.class));
-        else
-            showToast("5.0一下系统不能使用~");
+        startActivity(new Intent(this, MDSettingsActivity.class));
+        showToast("平板貌似不支持~");
     }
 
     /**
@@ -225,4 +222,12 @@ public class MainActivity extends BaseActivity {
             showToast("5.0一下系统不能使用~");
     }
 
+    /**
+     * realm数据的测试
+     *
+     * @param view
+     */
+    public void realmtest(View view) {
+        startActivity(new Intent(this, RealmTestActivity.class));
+    }
 }

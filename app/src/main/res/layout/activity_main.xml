@@ -141,14 +141,14 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:onClick="swipeback"
-            android:text="滑动返回上个界面" />
+            android:text="滑动返回上界面" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:onClick="mdsettings"
-            android:text="MD风格设置页面" />
+            android:text="MD风格设置页" />
 
         <Button
             android:layout_width="0dp"
@@ -156,6 +156,21 @@
             android:layout_weight="1"
             android:onClick="api21"
             android:text="5.0以上效果" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_menu1"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="realmtest"
+            android:text="realm测试" />
 
     </LinearLayout>
 
