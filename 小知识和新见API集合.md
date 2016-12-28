@@ -69,6 +69,23 @@
 
 ---
 
+## date转格式
+
+	public static Date parseDate(String dateStr, String pattern){
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.getDefault());
+        try
+        {
+            return sdf.parse(dateStr);
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+---
+
 ## "app_name" is not translated in "zh" (Chinese) [MissingTranslation]解决办法
 
 Android在打release包时，可能会出现这种错误。 
@@ -88,6 +105,16 @@ Android在打release包时，可能会出现这种错误。
 	
 还是shape节点.不过这次属性是添加gradient.startcolor / endColor
 
+
+---
+
+## json中的一个JSONObject获取key
+
+ 	Iterator it = obj.keys();
+	List<String> keyListstr = new ArrayList<String>();  
+    while(it.hasNext()){  
+        keyListstr.add(it.next().toString());  
+    }  
 
 ---
 
@@ -1854,6 +1881,14 @@ xUtils -- 让开发更简单
 		Boolean MyAttr = array.getBoolean(R.styleable.申明name_属性名, defaultValue);
 		array.recycle(); // 回收下释放资源, 提高性能
 
+
+---
+
+## 一般数据库路径
+
+	String PACKAGE_NAME = "com.bbdtek.guanxinbing.patient";
+    String db_dir = "/data" + Environment.getDataDirectory().getAbsolutePath() + "/" + PACKAGE_NAME;
+    String db_name = "patient.db";
 
 ---
 

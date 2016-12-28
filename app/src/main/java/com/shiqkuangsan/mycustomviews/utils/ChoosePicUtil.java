@@ -185,7 +185,7 @@ public class ChoosePicUtil {
      * @param activity       当前activity
      * @param needCrop       获取完之后是否需要裁剪? true - 进入裁剪界面
      * @param needDeleteTemp 如果是拍照获取,获取完之后是否需要删除缓存照片? true - 删除
-     * @return Bitmap对象, null - 解析失败
+     * @return Bitmap对象, null - 解析失败(注意了返回的bitmap对象很容易OOM的)
      */
     public static Bitmap getBitmapFromResult(int requestCode, int resultCode, Intent data,
                                              Activity activity, boolean needCrop, boolean needDeleteTemp) {
