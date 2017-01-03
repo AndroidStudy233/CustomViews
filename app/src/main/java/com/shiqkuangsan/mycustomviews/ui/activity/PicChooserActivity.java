@@ -71,7 +71,7 @@ public class PicChooserActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        // TODO: 2016/12/27 获取的bitmap对象,或者path路径加载成bitmap,都会OOM 
+        // TODO: 2016/12/27 获取的bitmap对象,或者path路径加载成bitmap,很容易OOM
         // 使用ChosePicUtil   方式1
         Bitmap bitmap = ChoosePicUtil.getBitmapFromResult(requestCode, resultCode, data, this, false, true);
         if (bitmap != null)
@@ -89,4 +89,5 @@ public class PicChooserActivity extends BaseActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         ChoosePicUtil.onActRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
 }

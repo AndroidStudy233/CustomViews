@@ -1,5 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
 import android.service.carrier.CarrierService;
 import android.support.annotation.NonNull;
@@ -122,7 +123,7 @@ public class BottomSheetActivity extends AppCompatActivity {
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.rl_bottomsheet_head:
-                if (CURRENT_STATE == -1 || CURRENT_STATE == STATE_COLLAPSED) {
+                if(CURRENT_STATE == -1 || CURRENT_STATE == STATE_COLLAPSED) {
                     behavior.setState(STATE_EXPANDED);
                     CURRENT_STATE = STATE_EXPANDED;
                     return;
@@ -135,7 +136,7 @@ public class BottomSheetActivity extends AppCompatActivity {
 
             case R.id.tv_bottom_hello:
                 MyLogUtil.d("点击HelloWorld");
-                if (CURRENT_STATE != STATE_COLLAPSED){
+                if (CURRENT_STATE != STATE_COLLAPSED ) {
                     behavior.setState(STATE_COLLAPSED);
                     CURRENT_STATE = STATE_COLLAPSED;
                 }
