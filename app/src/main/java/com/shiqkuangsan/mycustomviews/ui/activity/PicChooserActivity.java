@@ -1,8 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
@@ -71,15 +69,8 @@ public class PicChooserActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        // TODO: 2016/12/27 获取的bitmap对象,或者path路径加载成bitmap,很容易OOM
-        // 使用ChosePicUtil   方式1
-        Bitmap bitmap = ChoosePicUtil.getBitmapFromResult(requestCode, resultCode, data, this, false, true);
-        if (bitmap != null)
-            iv_image.setImageBitmap(bitmap);
-
-        // 使用ChosePicUtil   方式2
-//        String path = ChoosePicUtil.getPathFromResult(requestCode, resultCode, data, this);
-//        iv_image.setImageBitmap(BitmapFactory.decodeFile(path));
+//        ChoosePicUtil.loadImageViewWithCrop(requestCode,resultCode,data,this,iv_image,false,true);
+        ChoosePicUtil.loadImageView(requestCode,resultCode,data,this,iv_image);
 //        ChoosePicUtil.deleteTemp();
         super.onActivityResult(requestCode, resultCode, data);
     }

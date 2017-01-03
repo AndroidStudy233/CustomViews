@@ -22,20 +22,34 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 /**
- * 选择图片的工具类
- * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面
- * step2. 在你的onActivityResult()方法处调用:
- *          choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象,直接使用即可.
- *          choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.
- * (choice2不支持裁剪且从相册获取使用过之后,使用过之后,使用过之后(重要的事情)若想删除缓存需要手动调用deleteTemp())
+ * Created by dell on 2016/11/6.
  *
+ * @author shiqkuangsan
+ * @summary: 开发中经常会遇到让用户从自己图库还是拍照获取图片的需求, 每次写写写...因此写了个选择图片的工具类
+ * <p>
+ * 使用:
+ * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面
+ * <p>
+ * step2. 如果你只是需要选择图片拿到图片的bitmap对象/图片的绝对路径,那你需要在你的onActivityResult()方法处调用:
+ * choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象.(注意直接加载到ImageView容易OOM)
+ * choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.(当然直接加载到ImageView容易OOM)
+ * (choice2不支持裁剪且从相册获取使用过之后,使用过之后,使用过之后(重要的事情)若想删除缓存需要手动调用deleteTemp())
+ * <p>
+ * step3. 如果你是需要选择完图片之后加载到ImageView上,我也为你提供了两个方法并且解决了OOM的问题,同样也是在onActivityResult()处调用
+ * 1> String loadImageView()不支持裁剪但是可以返回图片的绝对路径,使用完,使用完,使用完(重要的事情),若想删除缓存需要手动调用deleteTemp()
+ * 2> void loadImageViewWithCrop()支持裁剪,支持自动删除缓存图片.
+ * <p>
  * 关于android6.0动态权限申请的问题,图库选择图片的逻辑已经处理了,拍照获取大多定制机目前不需要处理,暂且是注释状态
+ * 另外需要提的裁剪框的大小你如果不满意自己可以调,在crop()方法中
  */
 public class ChoosePicUtil {
 
@@ -106,7 +120,7 @@ public class ChoosePicUtil {
                                             intent.setData(uri);
                                         }
                                     })
-                                    .setNegativeButton("取消",null)
+                                    .setNegativeButton("取消", null)
                                     .create()
                                     .show();
                         } else {
@@ -187,8 +201,8 @@ public class ChoosePicUtil {
      * @param needDeleteTemp 如果是拍照获取,获取完之后是否需要删除缓存照片? true - 删除
      * @return Bitmap对象, null - 解析失败(注意了返回的bitmap对象很容易OOM的)
      */
-    public static Bitmap getBitmapFromResult(int requestCode, int resultCode, Intent data,
-                                             Activity activity, boolean needCrop, boolean needDeleteTemp) {
+    public static Bitmap getBitmapFromResult(int requestCode, int resultCode, Intent data, Activity activity,
+                                             int imageViewWidth, int imageViewHeight, boolean needCrop, boolean needDeleteTemp) {
         if (resultCode != Activity.RESULT_OK)
             return null;
 
@@ -205,7 +219,9 @@ public class ChoosePicUtil {
 
                     else
                         try {
-                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(uri));
+                            InputStream stream = resolver.openInputStream(uri);
+                            bitmap = readBitmapFromStream(stream, imageViewWidth, imageViewHeight);
+//                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(uri));
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -221,7 +237,9 @@ public class ChoosePicUtil {
 
                     else
                         try {
-                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(Uri.fromFile(tempFile)));
+                            InputStream stream = resolver.openInputStream(Uri.fromFile(tempFile));
+                            bitmap = readBitmapFromStream(stream, imageViewWidth, imageViewHeight);
+//                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(Uri.fromFile(tempFile)));
                             if (needDeleteTemp)
                                 try {
                                     tempFile.delete();
@@ -334,6 +352,110 @@ public class ChoosePicUtil {
             cursor.close();
         }
         return path;
+    }
+
+    /**
+     * 带有裁剪功能的加载图片方法,如果你需要知道图片路径请调用另一个方法
+     *
+     * @param requestCode    请求码
+     * @param resultCode     结果码
+     * @param data           data数据
+     * @param activity       Activity
+     * @param view           需要加载的imageView
+     * @param needCrop       是否需要裁剪
+     * @param needDeleteTemp 是否需要删除缓存
+     */
+    public static void loadImageViewWithCrop(int requestCode, int resultCode, Intent data, Activity activity,
+                                             ImageView view, boolean needCrop, boolean needDeleteTemp) {
+        Bitmap bitmap = getBitmapFromResult(requestCode, resultCode, data, activity, view.getWidth(), view.getHeight(), needCrop, needDeleteTemp);
+        if (bitmap != null)
+            view.setImageBitmap(bitmap);
+    }
+
+    /**
+     * 加载图片但是不支持裁剪功能,不过可以返回图片的路径
+     *
+     * @param requestCode 请求码
+     * @param resultCode  结果吗
+     * @param data        data数据
+     * @param activity    Activity
+     * @param view        需要加载的imageView
+     * @return 图片的绝对路径
+     */
+    public static String loadImageView(int requestCode, int resultCode, Intent data, Activity activity, ImageView view) {
+        String path = getPathFromResult(requestCode, resultCode, data, activity);
+        if (path != null) {
+            Bitmap bitmap = readBitmapFromFilePath(path, view.getWidth(), view.getHeight());
+            view.setImageBitmap(bitmap);
+            return path;
+        } else
+            return null;
+    }
+
+    /**
+     * 获取缩放后的本地图片
+     *
+     * @param filePath 文件路径
+     * @param width    要加载的imageView的宽
+     * @param height   要加载的imageView的高
+     * @return 缩放后的bitmap对象
+     */
+    private static Bitmap readBitmapFromFilePath(String filePath, int width, int height) {
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+            BitmapFactory.decodeFileDescriptor(fis.getFD(), null, options);
+            float srcWidth = options.outWidth;
+            float srcHeight = options.outHeight;
+            int inSampleSize = 1;
+
+            if (srcHeight > height || srcWidth > width) {
+                if (srcWidth > srcHeight) {
+                    inSampleSize = Math.round(srcHeight / height);
+                } else {
+                    inSampleSize = Math.round(srcWidth / width);
+                }
+            }
+
+            options.inJustDecodeBounds = false;
+            options.inSampleSize = inSampleSize;
+
+            return BitmapFactory.decodeFileDescriptor(fis.getFD(), null, options);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 获取缩放后的本地图片
+     *
+     * @param inputStream 携带图片数据的流
+     * @param width       要加载的imageView的宽
+     * @param height      要加载的imageView的高
+     * @return 缩放后的bitmap对象
+     */
+    private static Bitmap readBitmapFromStream(InputStream inputStream, int width, int height) {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(inputStream, null, options);
+        float srcWidth = options.outWidth;
+        float srcHeight = options.outHeight;
+        int inSampleSize = 1;
+
+        if (srcHeight > height || srcWidth > width) {
+            if (srcWidth > srcHeight) {
+                inSampleSize = Math.round(srcHeight / height);
+            } else {
+                inSampleSize = Math.round(srcWidth / width);
+            }
+        }
+
+        options.inJustDecodeBounds = false;
+        options.inSampleSize = inSampleSize;
+
+        return BitmapFactory.decodeStream(inputStream, null, options);
     }
 
     /**
