@@ -1,16 +1,15 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
 
 /**
- * Created by ${USER} on ${DATE}.
+ * Created by shiqkuangsan on 2016/12/30.
  *
- * @author shiqkuangsan
- * @description:
+ * author shiqkuangsan
+ * description:
  */
 public class RealmTestActivity extends AppCompatActivity {
 

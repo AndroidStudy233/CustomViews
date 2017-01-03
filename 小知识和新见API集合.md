@@ -917,17 +917,6 @@ fastjson
     intent.setData(uri);
 
 ---
-### TabLayout的两个需要注意的属性
-
-		Android Material Design 中的TabLayout有两个比较有用的属性 app:tabMode、app:tabGravity，
-		（1）app:tabMode有两个值：fixed和scrollable。
-		（2）app:tabGravity有两个值：fill和center。
-		比较常用的是app:tabMode设置值scrollable，以及app:tabGravity设置值center。
-		比如，当app:tabMode设置值scrollable表示此TabLayout中当子view超出屏幕边界时候，将提供滑动以便滑出不可见的那些子view。
-		而app:tabGravity设置值center，在有些情况下，比如TabLayout中子view较少需要居中显示时候的情景。
-		
-
----
 ## 将汉字转化成汉语拼音
 
 > // http://www.360doc.com/content/09/0216/20/15103_2563474.shtml#
@@ -2247,7 +2236,76 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
             }
         });
 
+
+
 ---
+### TabLayout的两个需要注意的属性
+
+		Android Material Design 中的TabLayout有两个比较有用的属性 app:tabMode、app:tabGravity，
+		（1）app:tabMode有两个值：fixed和scrollable。
+		（2）app:tabGravity有两个值：fill和center。
+		比较常用的是app:tabMode设置值scrollable，以及app:tabGravity设置值center。
+		比如，当app:tabMode设置值scrollable表示此TabLayout中当子view超出屏幕边界时候，将提供滑动以便滑出不可见的那些子view。
+		而app:tabGravity设置值center，在有些情况下，比如TabLayout中子view较少需要居中显示时候的情景。
+		
+
+---
+
+## android自带的底部上拉容器.
+
+>在Api23以后,supportLibrary中添加了一款位于Activity底部的上拉容器----BottomSheet.其实之前的CoordinatorLayout的艾玛沃森下面的就是引用了BottomSheet.
+
+效果展示: 
+
+<div>
+	<img src='/others/images/BottomSheet1.png'  width="300px" style='border: #67F2F7 solid 2px'/>
+</div>
+
+<div>
+	<img src='/others/images/BottomSheet2.png'  height="500px" style='border: #67F2F7 solid 2px'/>
+</div>
+
+
+* Step1: 前提,BottomSheet的父布局必须是CoordinatorLayout.
+
+* Step2: 定义好你要的底部布局,在父布局中使用 'include' 节点引用.当然你也可以直接定义在父布局中.随意. 重点是底部布局的根节点需要注意下面三个属性.如果前两个属性不定义,默认是全部显示并且不可被隐藏
+
+		// 是否可以被隐藏
+		app:behavior_hideable="true"
+		// 一开始展露出来的高度
+	    app:behavior_peekHeight="60dp"
+		// 行为标识.CoordinatorLayout通过该属性识别BottomSheet.
+	    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+
+* Step3: 在Activity中获取对象.加载底部布局的View.比如你是LinearLayout就通过指定的id找到他,或者你是另写的底部布局文件也可以加载这个Layout.不管是1/2你都会活得一个LinearLayout/View对象.调用BottomSheetBehavior.from(View view)方法获取BottomSheetBehavior对象,这种类型的可以加个泛型(随意)
+
+* 主要方法:
+
+		behavior.setBottomSheetCallback(); 
+
+	在这个CallBack中.onStateChanged()方法和onSlide()方法将会别回调,你可以拿到底部当前状态等数据.在onStateChanged方法中你将拿到当前更新后的newState和bottomSheet对象.可以根据当前状态做操作.
+		
+		behavior.setState();// 设置当前状态,BottomSheet会自动滑到相应状态下的位置
+		behavior.setHideable();// 设置是否可被隐藏
+		behavior.setPeekHeight();// 设置初始展示的高度
+
+
+* 状态说明
+
+	* STATE_HIDDEN: 默认禁用是的(使用app:behavior_hideable属性来启用 ), 如果这个启用，用户可以在 bottom sheet中下滑以完全隐藏bottom sheet。
+	
+	* STATE_COLLAPSED: 这是折叠状态 ，也是默认的状态。只是在底部边沿显示布局的一部分。其高度可以使用 app:behavior_peekHeight 属性来控制（默认是0）。　
+	
+	* STATE_DRAGGING: 这是中间状态，此时用户直接上下拖动 bottom sheet。
+	
+	* STATE_SETTLING: 视图被释放之后到达最终位置之间的瞬间。
+	
+	* STATE_EXPANDED: bottom sheet完全展开的状态。 整个bottom sheet都是可见的（如果它的高度小于包含它的CoordinatorLayout）或者整个CoordinatorLayout都是填满的。
+
+
+
+---
+
 ## AutoCompleteTextView
 
 >带有下拉框的一种EditText, 多用于查询搜索来回显的EditText

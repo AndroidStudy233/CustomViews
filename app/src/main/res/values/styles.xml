@@ -10,7 +10,7 @@
 
 
     <!-- App主题没有ActionBar的 -->
-    <style name="AppTheme_NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -22,11 +22,19 @@
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor" tools:targetApi="lollipop">#ece0e0</item>
         <item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>
-        <item name="android:windowEnterTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
-        <item name="android:windowExitTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
+        <item name="android:windowEnterTransition" tools:targetApi="lollipop">
+            @android:transition/slide_left
+        </item>
+        <item name="android:windowExitTransition" tools:targetApi="lollipop">
+            @android:transition/slide_left
+        </item>
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
-        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">@android:transition/move</item>
-        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">@android:transition/move</item>
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">
+            @android:transition/move
+        </item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">
+            @android:transition/move
+        </item>
     </style>
 
 

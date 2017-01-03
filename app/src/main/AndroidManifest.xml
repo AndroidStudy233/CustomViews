@@ -51,7 +51,7 @@
             android:label="测试下拉刷新" />
         <activity
             android:name=".ui.activity.SlideMenuActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.PtrDemoActivity"
             android:label="测试下拉刷新" />
@@ -60,7 +60,7 @@
             android:label="测试图片选择" />
         <activity
             android:name=".ui.activity.PicLookerActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.XUtilsActivity"
             android:label="测试xUtils3" />
@@ -76,16 +76,16 @@
         <activity
             android:name=".ui.activity.RecyclerViewActivity"
             android:label="RecyclerView使用"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.ImmerseActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.immerse.ColorImmerseActivity"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.immerse.BgImmerseActivity"
-            android:theme="@style/AppTheme_NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -96,12 +96,12 @@
         </activity>
         <activity
             android:name="com.shiqkuangsan.baiducityselector.CitySelectorActivity"
-            android:theme="@style/AppTheme_NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <activity
             android:name=".ui.activity.TestSwipeBackActivity"
             android:label="大猪是不是傻"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.activity.testswipeback.Activity2" />
         <activity android:name=".ui.activity.testswipeback.Activity3" />
         <activity
@@ -119,16 +119,17 @@
             android:name=".ui.activity.api21.Api21Activity"
             android:label="5.0简单测试页面"
             android:theme="@style/AppTheme_NoActionBar.transition" />
-
         <activity
             android:name=".ui.activity.Api21ExploseActivity"
             android:label="测试碎裂效果和5.0"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".ui.activity.RealmTestActivity"
             android:label="realm数据库测试" />
-
+        <activity
+            android:name=".ui.activity.BottomSheetActivity"
+            android:label="底部上拉布局"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
