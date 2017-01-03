@@ -2303,6 +2303,28 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 	* STATE_EXPANDED: bottom sheet完全展开的状态。 整个bottom sheet都是可见的（如果它的高度小于包含它的CoordinatorLayout）或者整个CoordinatorLayout都是填满的。
 
 
+---
+
+## BottomNavigationView
+
+>在CoordinatorLayout中解释并展示了NavigationView的使用.其实BottomNavigationView就是底部的导航标签.SupportLibrary 25增加(MD设计老早就有).
+
+1. 定义Navigation的菜单 menu .(一般3~5个导航条目)
+
+2. 布局文件中定义BottomNavigationView,默认的icon选中和Text选中都是colorAccent的值.另外默认高度是56dp.
+
+	<android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@android:color/black"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/navigation_bottom"/>
+
+3. 获取对象, mNavigationView.setOnNavigationItemSelectedListener().回调中会拿到MenuItem对象.其封装了菜单中的item的所有相关信息.
+
 
 ---
 
