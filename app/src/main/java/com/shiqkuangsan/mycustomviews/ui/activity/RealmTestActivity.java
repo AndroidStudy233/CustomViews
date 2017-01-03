@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
 
+import io.realm.RealmObject;
+
 /**
  * Created by shiqkuangsan on 2016/12/30.
  *
- * author shiqkuangsan
+ * author: shiqkuangsan
  * description:
  */
 public class RealmTestActivity extends AppCompatActivity {
@@ -17,5 +19,6 @@ public class RealmTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_realm_test);
+
     }
 }
