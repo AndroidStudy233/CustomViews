@@ -3,7 +3,11 @@ package com.shiqkuangsan.mycustomviews.utils;
 import android.util.Log;
 
 /**
- * 日志输出的util
+ * Created by shiqkuangsan on 2016/5/4.
+ * <p>
+ * ClassName: MyLogUtil
+ * Author: shiqkuangsan
+ * Description: 日志输出的util
  */
 public class MyLogUtil {
 	/** 日志输出级别NONE */

@@ -2393,6 +2393,9 @@ CollapsingToobarLayout的属性及用法:
 
 ---
 
+## 新布局Constraintlayout
+
+---
 ## AutoCompleteTextView
 
 >带有下拉框的一种EditText, 多用于查询搜索来回显的EditText

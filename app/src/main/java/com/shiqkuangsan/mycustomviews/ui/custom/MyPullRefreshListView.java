@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.utils.AnimationUtil;
+import com.shiqkuangsan.mycustomviews.utils.MyAnimationUtil;
 
 /**
  * Created by shiqkuangsan on 2016/5/6.
@@ -169,12 +169,12 @@ public class MyPullRefreshListView extends ListView implements AbsListView.OnScr
         switch (mode) {
             case PULL_TO_REFRESH:
                 tv_head_head.setText("下拉刷新");
-                AnimationUtil.rotateToBottom(iv_arrow);
+                MyAnimationUtil.rotateToBottom(iv_arrow);
                 break;
 
             case RELEASE_REFRESH:
                 tv_head_head.setText("松开刷新");
-                AnimationUtil.rotateToTop(iv_arrow);
+                MyAnimationUtil.rotateToTop(iv_arrow);
                 break;
 
             case REFRESHING:
