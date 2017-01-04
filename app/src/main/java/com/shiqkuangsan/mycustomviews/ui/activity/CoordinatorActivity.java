@@ -28,7 +28,9 @@ import java.util.List;
  * Created by shiqkuangsan on 2016/9/28.
  *
  * @author shiqkaungsan
- * @summary CoordinatorLayout测试界面, 头部显示图片, 上滑显示ToolBar, 下拉显示图片
+ * @summary CoordinatorLayout测试界面, 头部显示图片, 上滑显示ToolBar, 下拉显示图片.其实是用了layout_behavior
+ * 需要注意的时候为了实现这种滑动效果.CoordinatorLayout需要一个可滚动的子类.我这里的TabLayout绑定的fragment中就用了
+ * 一个叫做NestedScrollView的东西包裹.当然你也可以用RecyclerView.(ListView和ScrollView很遗憾)
  * 侧滑显示DrawerLayout,drawer采用NavigationView
  */
 public class CoordinatorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

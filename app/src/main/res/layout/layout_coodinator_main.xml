@@ -11,6 +11,7 @@
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <!--app:contentScrim 表示CollapsingToolbarLayout折叠以后，toolbar的颜色。-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
@@ -21,6 +22,7 @@
             app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
+            <!--layout_collapseMode，pin表示不动，parallax视差效果-->
             <ImageView
                 android:id="@+id/iv_coordinator_head"
                 android:layout_width="match_parent"

@@ -1900,6 +1900,17 @@ xUtils -- 让开发更简单
 
 ---
 
+## NestedScrollView嵌套RecyclerView冲突问题
+
+		// 升级support库到23.2以上
+
+		mLinearLayoutManager.setSmoothScrollbarEnabled(true);  
+        mLinearLayoutManager.setAutoMeasureEnabled(true);  
+        recycler_cardslist.setLayoutManager(mLinearLayoutManager);  
+        recycler_cardslist.setHasFixedSize(true);  
+        recycler_cardslist.setNestedScrollingEnabled(false);  
+
+---
 ## 触摸事件分发机制
 dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent 
 
@@ -2325,6 +2336,60 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 
 3. 获取对象, mNavigationView.setOnNavigationItemSelectedListener().回调中会拿到MenuItem对象.其封装了菜单中的item的所有相关信息.
 
+---
+
+## CoordinatorLayout + AppBarLayout / CollapsingToolbarLayout  
+
+###分析一下整个布局中CoordinatorLayout的作用:
+
+1. 因为CoordinatorLayout是一个超级的FrameLayout,所以我们只要设置android:layout_gravity="bottom|end"这个属性即可将FloatingActionBar放置在底部靠右的位置;
+
+2. 如果我们想要在手指向上滑动的时候Toolbar隐藏,就需要给Toolbar设置一个属性,app:layout_scrollFlags="scroll|enterAlways",来确定滚动出屏幕时候的动作,我们现在来解释一些这些参数:
+
+	* scroll: 所有想滚动出屏幕的view**都需要**设置这个flag， 没有设置这个flag的view将被固定在屏幕顶部。例如，TabLayout 没有设置这个值，将会停留在屏幕顶部。
+
+	* enterAlways: 配合scroll使用,设置这个flag时，任意向下的滚动都会导致该view变为可见，当向上滑的时候Toolbar就隐藏，下滑的时候显示，启用快速“返回模式”。
+
+	* enterAlwaysCollapsed: 这个flag定义的是何时进入（已经消失之后何时再次显示）,配合scroll使用,当你的视图已经设置minHeight属性又使用此标志时，那么view将在到达这个最小高度的时候开始显示，并且从这个时候开始慢慢展开，当滚动到顶部的时候完全展开。
+
+	* exitUntilCollapsed: 这个flag是定义何时退出，当你定义了一个minHeight，这个view将在滚动到达这个最小高度的时候消失。
+
+	* 注意:这些flag的模式一般是前两个一起使用或者 scroll与enterAlwaysCollapsed 一起使用,而最后一个flag只有在CollapsingToolbarLayout中才有用,所以这些flag的使用场景,一般都是固定的;
+
+3. 当然,为了使Toolbar可以滚动,还需要一个条件,就是CoordinatorLayout布局下需要包裹一个可以滑动的布局，比如 RecyclerView或者NestedScrollView(ListView及ScrollView不支持),CoordinatorLayout包含的子布局中带有滚动属性的View需要设置app:layout_behavior属性。示例中Viewpager设置了此属性:app:layout_behavior="@string/appbar_scrolling_view_behavior",这样一来AppBarLayout就能响应RecyclerView中的滚动事件,CoordinatorLayout在接受到滑动时会通知AppBarLayout 中可滑动的Toolbar可以滑出屏幕了;
+
+总结:如果想让Toolbar划出屏幕,需要做到以下4点
+
+1. CoordinatorLayout作为顶层的父布局
+
+2. 需要给Toolbar也就是想要划出屏幕的view设置flag值,app:layout_scrollFlags=”scroll|enterAlways”
+
+3. 需要给可滑动的组件设置一个layout_behavior的属性,示例中为viewpager,app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+4. 可滑动的组件目前经测试支持RecyclerView,NestedScrollView,示例中viewpager中包含的就是一个RecyclerView
+
+
+###CollapsingToolbarLayout–可折叠的Toolbar
+
+我们知道如果在某些详情页面,我们只是在AppbarLayout中使用了可隐藏/展示的Toolbar的话, 只能固定到屏幕顶端并且不能做出好的动画效果,而且无法控制不同元素如何响应collapsing(折叠)的细节，所以为了达到此目的，CollapsingToolbarLayout就应运而生.
+
+CollapsingToolbarLayout一般都是需要包括一个Toolbar,这样就可以实现一个可折叠的Toolbar,一般都是作为AppbarLayout的子view使用,CollapsingToolbarLayout的子视图类似于LinearLayout垂直方向排放。
+
+CollapsingToobarLayout的属性及用法:
+
+1. Collapsing title：ToolBar的标题，CollapsingToolbarLayout和Toolbar在一起使用的时候，title会在展开的时候自动变得比较大，而在折叠的时候让字体变小过渡到默认值。注意，你必须在CollapsingToolbarLayout上调用setTitle()，而不是在Toolbar上进行设置。
+
+2. Content scrim：ToolBar被折叠到顶部固定时候的背景，你可以调用setContentScrim(Drawable)方法改变背景或者 在属性中使用app:contentScrim=”?attr/colorPrimary”来改变背景。
+
+3. Status bar scrim：状态栏的背景，调用方法setStatusBarScrim(Drawable)。
+
+4. Parallax scrolling children：CollapsingToolbarLayout滑动时，子视图的视觉因子，可以通过属性app:layout_collapseParallaxMultiplier=”0.7”来改变。值的范围[0.0,1.0]，值越大视差越大。
+
+5. CollapseMode ：子视图的折叠模式，需要在子视图设置; 
+“pin”：固定模式，在折叠的时候最后固定在顶端；
+“parallax”：视差模式，在折叠的时候会有个视差折叠的效果。我们可以在布局中使用属性app:layout_collapseMode=”parallax”来改变。
+
+6. layout_anchor : 这个是CoordinatorLayout提供的属性,与layout_anchorGravity 一起使用,可以用来放置与其他视图关联在一起的悬浮视图（如 FloatingActionButton）或者头像
 
 ---
 

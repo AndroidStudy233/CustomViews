@@ -31,7 +31,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 /**
- * Created by dell on 2016/11/6.
+ * Created by shiqkuangsan on 2016/11/6.
  *
  * @author shiqkuangsan
  * @summary: 开发中经常会遇到让用户从自己图库还是拍照获取图片的需求, 每次写写写...因此写了个选择图片的工具类
@@ -41,7 +41,7 @@ import java.io.InputStream;
  * <p>
  * step2. 如果你只是需要选择图片拿到图片的bitmap对象/图片的绝对路径,那你需要在你的onActivityResult()方法处调用:
  * choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象.(注意直接加载到ImageView容易OOM)
- * choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.(当然直接加载到ImageView容易OOM)
+ * choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.(有了路径你就可以用图片加载框架加载拉)
  * (choice2不支持裁剪且从相册获取使用过之后,使用过之后,使用过之后(重要的事情)若想删除缓存需要手动调用deleteTemp())
  * <p>
  * step3. 如果你是需要选择完图片之后加载到ImageView上,我也为你提供了两个方法并且解决了OOM的问题,同样也是在onActivityResult()处调用
