@@ -40,7 +40,7 @@ public class EncodeUtil {
     }
 
     /**
-     * 对字符串加密,加密算法使用MD5,SHA-1,SHA-256,默认使用SHA-256
+     * 对字符串加密,加密算法可以使用MD5,SHA-1,SHA-256,默认使用SHA-256
      *
      * @param strSrc  要加密的字符串
      * @param encName 加密类型

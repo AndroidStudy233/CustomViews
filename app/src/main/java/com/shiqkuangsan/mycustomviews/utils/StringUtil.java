@@ -2,8 +2,6 @@ package com.shiqkuangsan.mycustomviews.utils;
 
 import java.util.Locale;
 
-import static com.loc.f.i;
-
 /**
  * Created by shiqkuangsan on 2017/1/3.
  * <p>

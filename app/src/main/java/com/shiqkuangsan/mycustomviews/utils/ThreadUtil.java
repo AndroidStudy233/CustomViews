@@ -44,7 +44,7 @@ public class ThreadUtil {
     /**
      * 我的线程池
      */
-    public static class ThreadPool {
+    private static class ThreadPool {
 
         int corePoolSize;
         int maximumPoolSize;

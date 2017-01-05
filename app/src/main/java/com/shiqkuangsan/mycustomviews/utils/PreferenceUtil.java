@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
  */
 public class PreferenceUtil {
 
+
     public static void writeInt(Context context, String k, int v) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
@@ -20,58 +21,58 @@ public class PreferenceUtil {
         editor.apply();
     }
 
-    public static void writeBoolean(Context context, String fileName, String k, boolean v) {
+    public static void writeBoolean(Context context, String k, boolean v) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(k, v);
         editor.apply();
     }
 
-    public static void writeString(Context context, String fileName, String k, String v) {
+    public static void writeString(Context context, String k, String v) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(k, v);
         editor.apply();
     }
 
-    public static int readInt(Context context, String fileName, String k) {
+    public static int readInt(Context context, String k) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getInt(k, 0);
     }
 
-    public static int readInt(Context context, String fileName, String k, int defv) {
+    public static int readInt(Context context, String k, int defv) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getInt(k, defv);
     }
 
-    public static boolean readBoolean(Context context, String fileName, String k) {
+    public static boolean readBoolean(Context context, String k) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getBoolean(k, false);
     }
 
-    public static boolean readBoolean(Context context, String fileName, String k, boolean defBool) {
+    public static boolean readBoolean(Context context, String k, boolean defBool) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getBoolean(k, defBool);
     }
 
-    public static String readString(Context context, String fileName, String k) {
+    public static String readString(Context context, String k) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return preferences.getString(k, (String)null);
+        return preferences.getString(k, (String) null);
     }
 
-    public static String readString(Context context, String fileName, String k, String defV) {
+    public static String readString(Context context, String k, String defV) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(k, defV);
     }
 
-    public static void remove(Context context, String fileName, String k) {
+    public static void remove(Context context, String k) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.remove(k);
         editor.apply();
     }
 
-    public static void clean(Context context, String fileName) {
+    public static void clean(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
