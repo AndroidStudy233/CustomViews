@@ -1,7 +1,5 @@
 package com.shiqkuangsan.mycustomviews.utils;
 
-import com.shiqkuangsan.baiducityselector.utils.*;
-
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

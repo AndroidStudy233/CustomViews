@@ -141,7 +141,7 @@ public class RegexUtil {
      * @param pre 用户输入的字符串
      * @return 过滤之后的字符串
      */
-    public static String checkPasWordPre(String pre) {
+    public static String checkPassWordPre(String pre) {
         try {
             // 只允许字母、数字和汉字
             String regEx = "[^a-zA-Z0-9\u4E00-\u9FA5]";

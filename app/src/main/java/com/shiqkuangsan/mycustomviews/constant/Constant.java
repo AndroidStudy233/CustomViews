@@ -40,4 +40,7 @@ public interface Constant {
     String imgurl_1920x1080_1 = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1481962191&di=b5b6d17b3e0d222243abdd4876acb68a&src=http://img.pconline.com.cn/images/upload/upc/tx/wallpaper/1210/08/c1/14307187_1349676294927.jpg";
     /**1920x1080_2*/
     String imgurl_1920x1080_2 = "http://f.hiphotos.baidu.com/zhidao/pic/item/80cb39dbb6fd52662583e86bad18972bd4073621.jpg";
+
+    /**测试realm的库名*/
+    String name_test_realm = "test.realm";
 }
