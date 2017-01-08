@@ -60,7 +60,7 @@ public class RealmTestActivity extends AppCompatActivity {
         realm = RealmManager.getInstance(Constant.name_test_realm, 1).getRealm();
     }
 
-    @Event(value = {R.id.btn_realm_insert,R.id.btn_realm_query,R.id.btn_realm_queryAll,R.id.btn_realm_delete})
+    @Event(value = {R.id.btn_realm_insert, R.id.btn_realm_query, R.id.btn_realm_queryAll, R.id.btn_realm_delete})
     private void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_realm_insert:
@@ -92,7 +92,7 @@ public class RealmTestActivity extends AppCompatActivity {
                         @Override
                         public void execute(Realm realm) {
                             Doctor doc = realm.where(Doctor.class).equalTo("name", name2).findFirst();
-                            if (doc!=null) {
+                            if (doc != null) {
                                 et_name.setText(doc.getName());
                                 et_age.setText(doc.getAge());
                                 et_hospital.setText(doc.getHospital());
@@ -151,6 +151,7 @@ public class RealmTestActivity extends AppCompatActivity {
         et_age.setText("");
         et_hospital.setText("");
         et_skill.setText("");
+        tv_result.setText("");
     }
 
     private boolean isAllInputValid(String name, String age, String hos, String skill) {
@@ -158,7 +159,7 @@ public class RealmTestActivity extends AppCompatActivity {
     }
 
     private boolean isNameValid(String name) {
-        return !StringUtil.isEmpty(name) && name.length() <= 10;
+        return !StringUtil.isEmpty(name);
     }
 
     private boolean isAgeValid(String age) {
@@ -166,11 +167,11 @@ public class RealmTestActivity extends AppCompatActivity {
     }
 
     private boolean isHospitalValid(String hospital) {
-        return !StringUtil.isEmpty(hospital) && hospital.length() <= 20;
+        return !StringUtil.isEmpty(hospital);
     }
 
     private boolean isSkillValid(String skill) {
-        return !StringUtil.isEmpty(skill) && skill.length() <= 20;
+        return !StringUtil.isEmpty(skill);
     }
 
 
