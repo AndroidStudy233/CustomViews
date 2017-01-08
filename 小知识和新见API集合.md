@@ -574,10 +574,16 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 	* "adjustPan": 该Activity主窗口并不调整屏幕的大小以便留出软键盘的空间。相反，当前窗口的内容将自动移动以便当前焦点从不被键盘覆盖和用户能总是看到输入内容的部分。这个通常是不期望比调整大小，因为用户可能关闭软键盘以便获得与被覆盖内容的交互操作。
 
 
-3.  收起输入法
+3.  收起输入法(传入绑定的edittext)
  
 		((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).  
-		hideSoftInputFromWindow(view.getWindowToken,InputMethodManager.HIDE_NOT_ALWAYS);
+		hideSoftInputFromWindow(editText.getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
+
+	传一个activity
+	View view = activity.getWindow().peekDecorView();
+ 	 if (view != null) {
+	   (InputMethodManager) getSystemServic(ActivityBase.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	  }
 
 ---
 ## LinearLayout等布局中的ImageButton或者CheckBox等抢占条目的焦点 / 点击侦听

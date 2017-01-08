@@ -33,9 +33,21 @@ public class InputMethodUtil {
         Selection.setSelection(editable, editable.toString().length());
     }
 
+    /**
+     * 关闭软键盘(有指定的输入框)
+     *
+     * @param context  上下文
+     * @param editText 输入框
+     */
+    public static void closeSoftKeyboard(Context context, EditText editText) {
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (inputMethodManager.isActive()) {
+            inputMethodManager.hideSoftInputFromWindow(editText.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 
     /**
-     * 关闭软键盘
+     * 关闭软键盘(多个输入框)
      *
      * @param activity Activity
      */
