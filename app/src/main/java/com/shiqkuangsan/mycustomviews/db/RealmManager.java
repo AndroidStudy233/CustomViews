@@ -1,52 +1,71 @@
 package com.shiqkuangsan.mycustomviews.db;
 
 import com.shiqkuangsan.baiducityselector.utils.MyLogUtil;
+import com.shiqkuangsan.mycustomviews.bean.Doctor;
+
+import java.util.Set;
 
 import io.realm.DynamicRealm;
+import io.realm.FieldAttribute;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmMigration;
+import io.realm.RealmObjectSchema;
+import io.realm.RealmSchema;
+
+import static io.realm.DoctorRealmProxy.getFieldNames;
 
 /**
  * Created by shiqkuangsan on 2017/1/6.
  * <p>
  * ClassName: RealmManager
  * Author: shiqkuangsan
- * Description: realm数据库管理者
+ * Description: realm数据库管理者,记得先去Application初始化
  */
 public class RealmManager {
 
-    private static Realm realm;
+    private static RealmManager manager;
 
-    public static Realm getInstance(String realmName, int version) {
-        if (realm == null) {
+    public static RealmManager getInstance(String realmName, int version) {
+        if (manager == null) {
             synchronized (RealmManager.class) {
-                if (realm == null) {
-                    realm = init(realmName,version);
+                if (manager == null) {
+                    manager = new RealmManager();
+                    init(realmName, version);
                 }
             }
         }
-        return realm;
+        return manager;
     }
 
+    private Realm realm;
 
     /**
      * 初始化realm,如果你的app不同的账号登录同一台设备需要建立不同的数据库(根据名称来区分)
      *
      * @param realmName 数据库名称
      * @param version   版本号
-     * @return realm对象
      */
-    private static Realm init(String realmName, int version) {
+    private static void init(String realmName, int version) {
         RealmConfiguration configuration = new RealmConfiguration.Builder()
                 .name(realmName)// 配置名字
                 .encryptionKey(new byte[64])// 加密用字段,不是64位会报错
                 .schemaVersion(version)//版本号
+                // 数据bean结构变化时原本的realm数据库文件还存在时调用.
                 .migration(new RealmMigration() {
                     @Override
                     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
                         MyLogUtil.d("oldVersion: " + oldVersion);
                         MyLogUtil.d("newVersion: " + newVersion);
+                        RealmObjectSchema schema = realm.getSchema().get("Doctor");
+                        Set<String> names = schema.getFieldNames();
+                        if (names.contains("id"))
+                            schema.removeField("id");
+                        if (names.contains("name") && !schema.getPrimaryKey().equals("name")){
+                            schema.removePrimaryKey();
+                            schema.addPrimaryKey("name");
+                        }
+
                     }
                 })  // 迁移
 //                .modules()    // 结构
@@ -54,7 +73,11 @@ public class RealmManager {
                 .build();
         Realm.setDefaultConfiguration(configuration);
 //        Context.getFilesDir() 目录下的realmName.realm数据库
-        return Realm.getDefaultInstance();
     }
 
+    public Realm getRealm() {
+        if (realm == null)
+            realm = Realm.getDefaultInstance();
+        return realm;
+    }
 }

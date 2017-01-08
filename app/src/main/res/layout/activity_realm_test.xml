@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:id="@+id/activity_realm_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.shiqkuangsan.mycustomviews.ui.activity.RealmTestActivity">
+        android:orientation="vertical">
 
 
         <LinearLayout
@@ -34,6 +34,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="医生名字(10字之内)"
+                    android:inputType="textPersonName"
+                    android:lines="1"
+                    android:maxLength="10"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -56,6 +59,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="医生年龄(18~150)"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="3"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -78,6 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="所在医院名称(10字之内)"
+                    android:lines="1"
+                    android:maxLength="10"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -100,6 +108,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:hint="医生专长(10字之内)"
+                    android:lines="1"
+                    android:maxLength="10"
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -112,7 +122,9 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
-            android:text="以下操作都是基于医生名,插入的医生名不能相同,修改根据你输入的医生名去查找有就更新新信息" />
+            android:text="
+            注意,为了省事所有的格式判断都很简单,希望测试的不要乱输入... \n
+            另外以下操作都是基于医生名,插入的医生名不能相同否则视为更新" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,7 +138,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/selector_normal_btn_blue"
                 android:padding="5dp"
-                android:text="插入"
+                android:text="插入/更新"
                 android:textColor="#fff"
                 android:textSize="18sp" />
 
@@ -160,17 +172,6 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/btn_realm_update"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/selector_normal_btn_blue"
-                android:padding="5dp"
-                android:text="修改(医生名)"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-
-            <Button
                 android:id="@+id/btn_realm_queryAll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,10 +185,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_realm_all"
+            android:id="@+id/tv_realm_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp" />
+            android:layout_marginTop="10dp"
+            android:textSize="22sp"
+            tools:text="查询结果: " />
 
     </LinearLayout>
 

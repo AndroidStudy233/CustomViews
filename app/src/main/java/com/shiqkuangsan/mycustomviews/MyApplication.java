@@ -14,12 +14,16 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.shiqkuangsan.mycustomviews.constant.Constant;
+import com.shiqkuangsan.mycustomviews.db.RealmManager;
 
 import org.xutils.x;
 
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
+
+import io.realm.Realm;
 
 
 /**
@@ -36,6 +40,15 @@ public class MyApplication extends Application {
         x.Ext.setDebug(true);
 
         handler = new Handler();
+
+        Realm.init(this);
+        Realm realm = RealmManager.getInstance(Constant.name_test_realm, 1).getRealm();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                realm.deleteAll();
+            }
+        });
     }
 
     /**

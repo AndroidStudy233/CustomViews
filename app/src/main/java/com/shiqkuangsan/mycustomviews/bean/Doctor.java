@@ -1,7 +1,5 @@
 package com.shiqkuangsan.mycustomviews.bean;
 
-import java.security.PrivilegedAction;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -15,15 +13,27 @@ import io.realm.annotations.Required;
  */
 public class Doctor extends RealmObject {
 
-    @PrimaryKey
     private int _id;
 
-    @Required
+    @PrimaryKey
+    @Required   // 表示该字段需要被赋值
     private String name;
+    @Required
+    private String age;
 
-    private int age;
     private String hospital;
     private String skill;
+    private int gender;
+
+    public Doctor() {
+    }
+
+    public Doctor( String name, String age, String hospital, String skill) {
+        this.name = name;
+        this.age = age;
+        this.hospital = hospital;
+        this.skill = skill;
+    }
 
     public String getName() {
         return name;
@@ -33,11 +43,11 @@ public class Doctor extends RealmObject {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
