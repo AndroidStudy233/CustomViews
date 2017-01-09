@@ -741,7 +741,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
-### 不要忘记	@android:drawable/ 下面有很多小图标哦
+### 不要忘记	@android:drawable/ 下面有很多系统为准备的小图标哦
 
 ---
 # ImageView中的几种ScaleType的意思
