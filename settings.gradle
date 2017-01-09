@@ -1,2 +1,2 @@
-include ':app', ':cityselector', ':testmodule'
-include ':qqspecialeffects', 'swipebackactivity'
+include ':app', ':cityselector', ':swipebackactivity'
+include ':qqspecialeffects', ':testmodule'

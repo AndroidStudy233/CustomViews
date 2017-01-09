@@ -582,7 +582,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 	传一个activity
 	View view = activity.getWindow().peekDecorView();
  	 if (view != null) {
-	   (InputMethodManager) getSystemServic(ActivityBase.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+	   (InputMethodManager) getSystemServic(Context.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	  }
 
 ---
