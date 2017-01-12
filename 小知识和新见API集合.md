@@ -741,6 +741,29 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+## ListView的onItemClick方法中的4个参数问题
+
+假如有一个listview，该listview中含a,b,c,d这4个item。
+
+如果你点了b这个item。如下：
+
+（1）public  void onItemClick (AdapterView<?> parent,  
+
+/* parent相当于listview 适配器的一个指针，可以通过它来获得listview里装着的一切东西*/
+
+（2）View view,     
+
+/* view是你点b item的view的句柄，就是你可以用这个view，来获得b里的控件的id后操作控件*/
+
+（3） int position,   
+
+/* position是b在适配器里的位置（生成listview时，适配器一个一个的做item，然后把他们按顺序排好队，在放到listview里，意思就是这个b是第position号做好的）*/
+
+（4） long id     
+
+/* id是b在listview 里的第几行的位置（很明显是第2行），在没有headerView，用户添加的view以及footerView的情况下position和id的值是一样的。*/
+
+---
 ### 不要忘记	@android:drawable/ 下面有很多系统为准备的小图标哦
 
 ---

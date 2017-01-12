@@ -39,6 +39,8 @@ import java.io.InputStream;
  * 使用:
  * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面
  * <p>
+ *     只是需要选择图片--step2          需要加载选择的图片到ImageView--step3
+ * <p>
  * step2. 如果你只是需要选择图片拿到图片的bitmap对象/图片的绝对路径,那你需要在你的onActivityResult()方法处调用:
  * choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象.(注意直接加载到ImageView容易OOM)
  * choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.(有了路径你就可以用图片加载框架加载拉)
