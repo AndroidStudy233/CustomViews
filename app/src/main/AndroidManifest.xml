@@ -129,7 +129,14 @@
         <activity
             android:name=".ui.activity.BottomSheetActivity"
             android:label="底部上拉布局"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.activity.ConstraintActivity"
+            android:label="Constraint学习" />
+        <activity
+            android:name=".ui.activity.QQEffectsActivity"
+            android:label="QQ简单特效" />
+
     </application>
 
 </manifest>

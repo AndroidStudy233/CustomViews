@@ -8,9 +8,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.swipebackactivity.app.SwipeBackActivity;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.activity.testswipeback.Activity2;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.app.SwipeBackActivity;
 
 /**
  * Created by shiqkuangsan on 2016/11/16.
@@ -51,7 +51,7 @@ public class TestSwipeBackActivity extends SwipeBackActivity {
 
         initMainStyle(fab, toolbar, true, true, null, 0xff92B4DA);
 
-        startActivity(new Intent(this,Activity2.class));
+        startActivity(new Intent(this, Activity2.class));
     }
 
 

@@ -158,6 +158,7 @@
             android:text="5.0以上效果" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -171,12 +172,35 @@
             android:layout_weight="1"
             android:onClick="bottomSheet"
             android:text="底部菜单" />
+
         <Button
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:onClick="realmtest"
             android:text="realm测试" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="qqeffects"
+            android:text="qq简单特效" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_menu1"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="constraint"
+            android:text="Constraint" />
 
     </LinearLayout>
 

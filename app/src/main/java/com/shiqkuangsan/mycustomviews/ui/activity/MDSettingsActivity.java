@@ -1,10 +1,9 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 
-import com.example.swipebackactivity.app.SwipeBackActivity;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.app.SwipeBackActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
 
 /**

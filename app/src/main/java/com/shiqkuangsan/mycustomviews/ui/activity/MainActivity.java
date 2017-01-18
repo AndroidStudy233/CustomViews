@@ -230,6 +230,7 @@ public class MainActivity extends BaseActivity {
     public void realmtest(View view) {
         startActivity(new Intent(this, RealmTestActivity.class));
     }
+
     /**
      * 底部上拉菜单测试
      *
@@ -238,4 +239,24 @@ public class MainActivity extends BaseActivity {
     public void bottomSheet(View view) {
         startActivity(new Intent(this, BottomSheetActivity.class));
     }
+
+    /**
+     * ConstraintLayout
+     *
+     * @param view
+     */
+    public void constraint(View view) {
+        startActivity(new Intent(this, ConstraintActivity.class));
+    }
+
+    /**
+     * QQ特效
+     *
+     * @param view
+     */
+    public void qqeffects(View view) {
+        startActivity(new Intent(this, QQEffectsActivity.class));
+    }
+
+
 }

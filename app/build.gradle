@@ -42,11 +42,11 @@ dependencies {
     // recyclerview的adapter / item / viewholder动画
     compile 'jp.wasabeef:recyclerview-animators:2.2.5'
     compile project(':cityselector')
-    compile project(':swipebackactivity')
     // 图片缩放
     compile 'com.bm.photoview:library:1.4.1'
     // facebook的弹簧动画库
-//    compile 'com.facebook.rebound:rebound:0.3.8'
+    //    compile 'com.facebook.rebound:rebound:0.3.8'
     // View碎裂效果
     compile 'tyrantgit:explosionfield:1.0.1'
+    compile files('libs/nineoldandroids-2.4.0.jar')
 }
