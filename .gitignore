@@ -8,5 +8,3 @@ local.properties
 testmodule/build/
 /app/src/androidTest/java/androidTest/ApplicationTest.java
 /app/src/test/java/test/ExampleUnitTest.java
-/rxandroid&mvp/src/test/java/test/ExampleUnitTest.java
-/rxandroid&mvp/src/androidTest/java/androidTest/ApplicationTest.java
