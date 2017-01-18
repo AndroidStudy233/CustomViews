@@ -1,2 +1,2 @@
-include ':app', ':cityselector', ':rxandroid&mvp'
+include ':app', ':cityselector'
 include ':testmodule'

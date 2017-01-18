@@ -3,11 +3,14 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
         // realm插件
         classpath "io.realm:realm-gradle-plugin:2.2.1"
+        // retrolambda
+        classpath 'me.tatarka:gradle-retrolambda:3.4.0'
     }
 }
 
