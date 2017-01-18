@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId "com.shiqkuangsan.mycustomviews"
-        minSdkVersion 17
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -23,30 +23,38 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile rootProject.ext.dependencies.appcompatv7
+    compile rootProject.ext.dependencies.recyclerview
+    compile rootProject.ext.dependencies.design
+    compile rootProject.ext.dependencies.cardview
+
+    // xUtils
+    compile rootProject.ext.dependencies.xUtils
     // 汉字转拼音
     compile 'com.github.promeg:tinypinyin:1.0.0'
     // 下拉刷新
     compile 'in.srain.cube:ultra-ptr:1.0.11'
+    // ImageLoader
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
     // 图片选择器
     compile 'cn.bingoogolapple:bga-adapter:1.1.0@aar'
     compile 'cn.bingoogolapple:bga-photopicker:1.1.3@aar'
     // 6.0简易申请权限
     compile 'pub.devrel:easypermissions:0.2.0'
-    compile 'org.xutils:xutils:3.3.36'
+
     compile 'com.alibaba:fastjson:1.2.17'
-    compile 'com.android.support:design:25.0.0'
-    compile 'com.android.support:cardview-v7:23.4.0'
     // recyclerview的adapter / item / viewholder动画
     compile 'jp.wasabeef:recyclerview-animators:2.2.5'
-    compile project(':cityselector')
     // 图片缩放
     compile 'com.bm.photoview:library:1.4.1'
     // facebook的弹簧动画库
     //    compile 'com.facebook.rebound:rebound:0.3.8'
     // View碎裂效果
     compile 'tyrantgit:explosionfield:1.0.1'
-    compile files('libs/nineoldandroids-2.4.0.jar')
+
+    compile project(':cityselector')
 }
