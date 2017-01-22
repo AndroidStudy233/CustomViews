@@ -1013,6 +1013,31 @@ fastjson
 
 ---
 
+## Glide简单用法
+
+1. 引用
+
+		repositories {
+		  mavenCentral() // jcenter() works as well because it pulls from Maven Central
+		}
+		
+		dependencies {
+		  compile 'com.github.bumptech.glide:glide:3.7.0'
+		  compile 'com.android.support:support-v4:19.1.0'
+		}
+
+2. 使用
+
+	  	Glide
+	    .with(myFragment)
+	    .load(url)
+	    .centerCrop()
+	    .placeholder(R.drawable.loading_spinner)
+	    .crossFade()
+	    .into(myImageView);
+
+
+---
 ## 在Activity中代码设置取消titlebar
 
 在setContentView(R.layout.main);前加入如下两行代码：

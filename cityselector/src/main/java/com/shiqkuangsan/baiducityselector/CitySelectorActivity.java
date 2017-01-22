@@ -194,13 +194,14 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
     }
 
     /**
-     * 百度定位需要定位权限,6.0动态申请
+     * 高德定位需要定位权限,6.0动态申请
      */
     public void checkLocationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                 locate();
+
             else {
                 // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波 在6.0之前的版本永远返回的是fasle
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION)

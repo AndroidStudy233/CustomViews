@@ -52,14 +52,14 @@ public class PicGridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            PhotoView p = new PhotoView(parent.getContext());
+            PhotoView photoView = new PhotoView(parent.getContext());
             float sum = parent.getContext().getResources().getDisplayMetrics().widthPixels -
                     parent.getContext().getResources().getDimensionPixelSize(R.dimen.dip_50);
             int width = (int) (sum / 3);
-            p.setScaleType(ImageView.ScaleType.FIT_CENTER);
             AbsListView.LayoutParams params = new AbsListView.LayoutParams(width, width - 50);
-            p.setLayoutParams(params);
-            convertView = p;
+            photoView.setLayoutParams(params);
+            photoView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            convertView = photoView;
         }
         PhotoView p = (PhotoView) convertView;
         p.setEnabled(false);
@@ -67,7 +67,8 @@ public class PicGridAdapter extends BaseAdapter {
                 new SimpleImageLoadingListener() {
                     @Override
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        view.setEnabled(true);//only loadedImage is available we can click item
+                        //only loadedImage is available we can click item
+                        view.setEnabled(true);
                     }
                 });
         return p;
