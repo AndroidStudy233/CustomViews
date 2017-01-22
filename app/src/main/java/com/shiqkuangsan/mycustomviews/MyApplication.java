@@ -83,7 +83,7 @@ public class MyApplication extends Application {
      *
      * @return ImageLoader图片的默认配置
      */
-    public static DisplayImageOptions getPicOptionsWithLoading() {
+    public static DisplayImageOptions getOptionsOfImageLoader() {
         return new DisplayImageOptions.Builder()
                 .showImageOnLoading(R.drawable.pic_loading) //设置图片在下载期间显示的图片
                 .showImageForEmptyUri(R.drawable.pic_loading_fail)//设置图片Uri为空或是错误的时候显示的图片

@@ -2,6 +2,7 @@ package com.shiqkuangsan.mycustomviews.utils;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.shiqkuangsan.mycustomviews.R;
@@ -241,12 +242,12 @@ public class SimplexUtil {
      * @param options 加载参数
      * @param callback 请求回调,可以直接new SimpleFileCallBack< Drawable >(),泛型是规定必须Drawable
      */
-    public static void loadImage(ImageView image, String url, ImageOptions options,@NonNull Callback.CommonCallback<Drawable> callback) {
+    public static void loadImage(ImageView image, String url, ImageOptions options,@Nullable Callback.CommonCallback<Drawable> callback) {
         x.image().bind(image, url, options, callback);
     }
 
     /**
-     * xUtils3图片的默认配置
+     * xUtils3图片的默认配置,使用了加载中显示图和加载失败显示图.
      *
      * @return xUtils3图片的默认配置
      */
@@ -257,7 +258,7 @@ public class SimplexUtil {
                 .setRadius(dip2px(radius))// 四个圆角半径,圆形图时无效
                 .setIgnoreGif(false)// 是否忽略gif格式
                 .setCrop(true)// 是否对图片进行裁剪,如果ImageView的大小不是定义为wrap_content, 不要crop.
-                .setPlaceholderScaleType(ImageView.ScaleType.MATRIX)// 加载中/错误时显示的图片的缩放类型
+                .setPlaceholderScaleType(ImageView.ScaleType.FIT_CENTER)// 加载中/错误时显示的图片的缩放类型
                 .setLoadingDrawableId(R.drawable.pic_loading)// 加载中显示图
                 .setFailureDrawableId(R.drawable.pic_loading_fail)// 加载失败显示图
                 .setUseMemCache(true)// 使用内存缓存

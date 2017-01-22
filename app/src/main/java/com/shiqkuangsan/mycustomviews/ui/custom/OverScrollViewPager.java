@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.custom.photoview;
+package com.shiqkuangsan.mycustomviews.ui.custom;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -37,7 +37,7 @@ public class OverScrollViewPager extends ViewPager {
         this.pagerCount = pagerCount;
     }
 
-    //这是当前是第几页，请在onPageSelect方法中调用它。
+    //这是当前是第几页，请在onPageSelected方法中调用它。
     public void setCurrentIndex(int currentItem) {
         this.currentItem = currentItem;
     }
@@ -48,11 +48,17 @@ public class OverScrollViewPager extends ViewPager {
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent arg0) {
-        if (arg0.getAction() == MotionEvent.ACTION_DOWN) {
-            preX = arg0.getX();//记录起点
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        // 防止手势识别器处理触摸事件异常
+        try {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                preX = event.getX();//记录起点
+            }
+            return super.onInterceptTouchEvent(event);
+        } catch (IllegalArgumentException ex) {
+            ex.printStackTrace();
+            return false;
         }
-        return super.onInterceptTouchEvent(arg0);
     }
 
     @Override

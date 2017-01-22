@@ -1,19 +1,14 @@
 package com.shiqkuangsan.mycustomviews.db;
 
-import com.shiqkuangsan.baiducityselector.utils.MyLogUtil;
-import com.shiqkuangsan.mycustomviews.bean.Doctor;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 import java.util.Set;
 
 import io.realm.DynamicRealm;
-import io.realm.FieldAttribute;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmMigration;
 import io.realm.RealmObjectSchema;
-import io.realm.RealmSchema;
-
-import static io.realm.DoctorRealmProxy.getFieldNames;
 
 /**
  * Created by shiqkuangsan on 2017/1/6.

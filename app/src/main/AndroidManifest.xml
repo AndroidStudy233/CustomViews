@@ -118,7 +118,7 @@
         <activity
             android:name=".ui.activity.api21.Api21Activity"
             android:label="5.0简单测试页面"
-            android:theme="@style/AppTheme_NoActionBar.transition" />
+            android:theme="@style/AppTheme.NoActionBar.transition" />
         <activity
             android:name=".ui.activity.Api21ExploseActivity"
             android:label="测试碎裂效果和5.0"
@@ -136,7 +136,8 @@
         <activity
             android:name=".ui.activity.QQEffectsActivity"
             android:label="QQ简单特效" />
-
+        <activity android:name=".ui.activity.piclook.PhotoDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar.transition"/>
     </application>
 
 </manifest>

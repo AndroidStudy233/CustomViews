@@ -21,6 +21,7 @@ import tyrantgit.explosionfield.ExplosionField;
 /**
  * 5.0Activity切换动画和共享元素转场动画.以及圆形揭示/隐藏
  * view碎裂效果是explosionfield类库做的
+ * 'tyrantgit:explosionfield:1.0.1'
  */
 @TargetApi(21)
 public class Api21ExploseActivity extends AppCompatActivity {

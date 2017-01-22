@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.custom.photoview;
+package com.shiqkuangsan.mycustomviews.ui.custom;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -20,13 +20,15 @@ import android.view.View;
  * Material Progress
  * by Bruce too
  * 使用方法：
- * pic1.不确定进度的使用
- *  只需要设置view 就Ok  另外可设置 颜色setBarColor.宽度setBarWidth.速度等等...
+ * 1.不确定进度的使用
+ * 只需要布局文件设置view就Ok  另外可设置 颜色setBarColor.宽度setBarWidth.速度等等...
+ * <p>
  * 2.确定进度的使用
  * setInstantProgress()初始化进度条，会自动停止 spin()的拉伸动画
  * setProgerss()设置进度   setCallback()设置进度更新回调
  */
 public class MaterialProgressBar extends View {
+
     private static final String TAG = MaterialProgressBar.class.getSimpleName();
 
     /**
@@ -215,9 +217,9 @@ public class MaterialProgressBar extends View {
     private void parseAttributes() {
         // We transform the default values from DIP to pixels
         DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
-        barWidth = dpToPx(barWidth,getResources());
-        rimWidth = dpToPx(rimWidth,getResources());
-        circleRadius = dpToPx(circleRadius,getResources());
+        barWidth = dpToPx(barWidth, getResources());
+        rimWidth = dpToPx(rimWidth, getResources());
+        circleRadius = dpToPx(circleRadius, getResources());
         fillRadius = false;
 
         float baseSpinSpeed = spinSpeed / 360.0f;
@@ -231,9 +233,9 @@ public class MaterialProgressBar extends View {
 
         linearProgress = false;
 
-      //  if (a.getBoolean(R.styleable.ProgressWheel_matProg_progressIndeterminate, false)) {
-            spin();
-      //  }
+        //  if (a.getBoolean(R.styleable.ProgressWheel_matProg_progressIndeterminate, false)) {
+        spin();
+        //  }
 
         // Recycle
 //        a.recycle();
@@ -735,7 +737,7 @@ public class MaterialProgressBar extends View {
          * Method to call when the progress reaches a value
          * in order to avoid float precision issues, the progress
          * is rounded to a float with two decimals.
-         *
+         * <p>
          * In indeterminate mode, the callback is called each time
          * the wheel completes an animation cycle, with, the progress value is -pic1.0f
          *
@@ -744,7 +746,7 @@ public class MaterialProgressBar extends View {
         public void onProgressUpdate(float progress);
     }
 
-    public int dpToPx(float dp, Resources resources){
+    public int dpToPx(float dp, Resources resources) {
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
         return (int) px;
     }

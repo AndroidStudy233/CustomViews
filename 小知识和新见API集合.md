@@ -586,6 +586,15 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 	  }
 
 ---
+
+## 代码设置全屏
+
+		// 去标题
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 去状态
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+---
 ## LinearLayout等布局中的ImageButton或者CheckBox等抢占条目的焦点 / 点击侦听
 
 1. 如果imageButton / CheckBox逻辑和条目的点击逻辑一样, 可以直接屏蔽掉他们的焦点, 在布局文件中设置属性

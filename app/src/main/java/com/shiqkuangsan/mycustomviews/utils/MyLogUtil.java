@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * Created by shiqkuangsan on 2016/5/4.
  * <p>
- * ClassName: MyLogUtil
+ * ClassName: CLogUtil
  * Author: shiqkuangsan
  * Description: 日志输出的util
  */
@@ -24,7 +24,7 @@ public class MyLogUtil {
 	public static final int LEVEL_VERBOSE = 5;
 
 	/** 日志输出时的TAG */
-	private static String mTag = "MyLogUtil";
+	private static String mTag = "CLogUtil";
 
 	/** 是否允许输出log,该值控制着是否允许打印log*/
 	private static int mDebuggable = LEVEL_VERBOSE;

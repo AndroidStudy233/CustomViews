@@ -1,8 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.database.CursorIndexOutOfBoundsException;
 import android.os.Bundle;
-import android.service.carrier.CarrierService;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
@@ -15,9 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.shiqkuangsan.baiducityselector.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.ui.custom.MyPullRefreshListView;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -28,7 +25,6 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_DRAGGING;
 import static android.support.design.widget.BottomSheetBehavior.STATE_EXPANDED;
 import static android.support.design.widget.BottomSheetBehavior.STATE_HIDDEN;
 import static android.support.design.widget.BottomSheetBehavior.STATE_SETTLING;
-
 
 /**
  * Created by shiqkuangsan on 2017/01/03.

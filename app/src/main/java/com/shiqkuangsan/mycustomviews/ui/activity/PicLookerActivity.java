@@ -1,5 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -9,9 +10,11 @@ import android.widget.GridView;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.PicGridAdapter;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.ui.activity.piclook.PhotoDetailActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.photoview.Info;
 import com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView;
 import com.shiqkuangsan.mycustomviews.ui.custom.photoview.ViewPagerFragment;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 import java.util.ArrayList;
 
@@ -46,23 +49,28 @@ public class PicLookerActivity extends BaseActivity {
         gv_pics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Bundle bundle = new Bundle();
+//                bundle.putStringArrayList("imgs", picsList);
+//
+//                bundle.putParcelable("info", ((PhotoView) view).getInfo());
+//                bundle.putInt("position", position);
+//                imgImageInfos.clear();
+//                for (int i = 0; i < picsList.size(); i++) {
+//                    if (i < parent.getFirstVisiblePosition() || i > parent.getLastVisiblePosition()) {
+//                        imgImageInfos.add(new Info());
+//                    } else {
+//                        imgImageInfos.add(((PhotoView) parent.getChildAt(i - parent.getFirstVisiblePosition())).getInfo());
+//                    }
+//                }
+//                parent.getChildAt(position);
+//                bundle.putParcelableArrayList("infos", imgImageInfos);
+//                getSupportFragmentManager().beginTransaction().replace(Window.ID_ANDROID_CONTENT, ViewPagerFragment.getInstance(bundle), "ViewPagerFragment")
+//                        .addToBackStack(null).commit();
+                Intent intent = new Intent(PicLookerActivity.this, PhotoDetailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putStringArrayList("imgs", picsList);
-
-                bundle.putParcelable("info", ((PhotoView) view).getInfo());
-                bundle.putInt("position", position);
-                imgImageInfos.clear();
-                for (int i = 0; i < picsList.size(); i++) {
-                    if (i < parent.getFirstVisiblePosition() || i > parent.getLastVisiblePosition()) {
-                        imgImageInfos.add(new Info());
-                    } else {
-                        imgImageInfos.add(((PhotoView) parent.getChildAt(i - parent.getFirstVisiblePosition())).getInfo());
-                    }
-                }
-                parent.getChildAt(position);
-                bundle.putParcelableArrayList("infos", imgImageInfos);
-                getSupportFragmentManager().beginTransaction().replace(Window.ID_ANDROID_CONTENT, ViewPagerFragment.getInstance(bundle), "ViewPagerFragment")
-                        .addToBackStack(null).commit();
+                bundle.putStringArrayList("photos", picsList);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

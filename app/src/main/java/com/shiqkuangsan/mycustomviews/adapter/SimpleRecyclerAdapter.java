@@ -8,19 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.shiqkuangsan.baiducityselector.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.ImgAndText;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
 
-import org.xutils.x;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.data;
-import static android.R.attr.switchMinWidth;
 
 /**
  * Created by shiqkuangsan on 2016/10/13.

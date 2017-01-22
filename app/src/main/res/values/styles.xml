@@ -18,7 +18,7 @@
         <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
     </style>
 
-    <style name="AppTheme_NoActionBar.transition" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme.NoActionBar.transition" parent="AppTheme.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor" tools:targetApi="lollipop">#ece0e0</item>
         <item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>

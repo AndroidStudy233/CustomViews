@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center" />
 
-    <com.shiqkuangsan.mycustomviews.ui.custom.photoview.MaterialProgressBar
+    <com.shiqkuangsan.mycustomviews.ui.custom.MaterialProgressBar
         android:id="@+id/pb_piclooker"
         android:layout_width="80dp"
         android:layout_height="80dp"

@@ -35,7 +35,7 @@ import com.shiqkuangsan.baiducityselector.bean.LocateState;
 import com.shiqkuangsan.baiducityselector.custom.PermissionSettingsDialog;
 import com.shiqkuangsan.baiducityselector.custom.SideLetterBar;
 import com.shiqkuangsan.baiducityselector.db.DBManager;
-import com.shiqkuangsan.baiducityselector.utils.MyLogUtil;
+import com.shiqkuangsan.baiducityselector.utils.CLogUtil;
 import com.shiqkuangsan.baiducityselector.utils.ToastUtil;
 
 import java.util.List;
@@ -291,12 +291,12 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
                         String city = aMapLocation.getCity();
                         String district = aMapLocation.getDistrict();
                         mCityAdapter.updateLocateState(LocateState.SUCCESS, city);
-                        MyLogUtil.d("高德city: " + city);
-                        MyLogUtil.d("高德district: " + district);
+                        CLogUtil.d("高德city: " + city);
+                        CLogUtil.d("高德district: " + district);
                     } else {
                         //定位失败
                         mCityAdapter.updateLocateState(LocateState.FAILED, null);
-                        MyLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()
+                        CLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()
                                 + ", errInfo:" + aMapLocation.getErrorInfo());
                     }
                 }
