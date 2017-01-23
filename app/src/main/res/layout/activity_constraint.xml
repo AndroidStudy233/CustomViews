@@ -7,16 +7,10 @@
     android:orientation="vertical"
     tools:context="com.shiqkuangsan.mycustomviews.ui.activity.ConstraintActivity">
 
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#606060">
-
-        <uk.co.senab.photoview.PhotoView
-            android:id="@+id/photov_test"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </FrameLayout>
-
+        android:gravity="center"
+        android:text="待完成"
+        android:textSize="30sp" />
 </LinearLayout>
