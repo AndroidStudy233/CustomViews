@@ -109,6 +109,14 @@ public class PhotoDetailActivity extends AppCompatActivity {
 //                getWindow().setSharedElementEnterTransition(new Slide().setDuration(500));
 //                getWindow().setSharedElementExitTransition(new Slide().setDuration(500));
 //            }
+            /*
+                对于PhotoView类库还可以直接使用一个ImageView,然后通过PhotoViewAttacher达到PhotoView的效果
+                PhotoViewAttacher mAttacher = new PhotoViewAttacher(photo_test);
+                // 继承自PhotoViewAttacher类的listener即可
+                mAttacher.setOnMatrixChangeListener(new MatrixChangeListener());
+                mAttacher.setOnPhotoTapListener(new PhotoTapListener());
+                mAttacher.setOnSingleFlingListener(new SingleFlingListener());
+             */
             photo_detail.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
                 @Override
                 public void onPhotoTap(View view, float x, float y) {

@@ -1,11 +1,8 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
@@ -14,9 +11,6 @@ import com.shiqkuangsan.mycustomviews.adapter.PicGridAdapter;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.piclook.PhotoDetailActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.photoview.Info;
-import com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView;
-import com.shiqkuangsan.mycustomviews.ui.custom.photoview.ViewPagerFragment;
-import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 import java.util.ArrayList;
 
