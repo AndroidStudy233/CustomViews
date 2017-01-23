@@ -18,6 +18,7 @@
         <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
     </style>
 
+    <!--共享元素的主题.activity是左边划入划出,共享是移动过来-->
     <style name="AppTheme.NoActionBar.transition" parent="AppTheme.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor" tools:targetApi="lollipop">#ece0e0</item>
@@ -28,6 +29,7 @@
         <item name="android:windowExitTransition" tools:targetApi="lollipop">
             @android:transition/slide_left
         </item>
+
         <item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
         <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">
             @android:transition/move
@@ -36,7 +38,6 @@
             @android:transition/move
         </item>
     </style>
-
 
     <!--图片选择页面的activity主题-->
     <style name="theme_picchose_act" parent="Theme.AppCompat.Light.NoActionBar">
@@ -154,5 +155,5 @@
         <item name="shadow_right">@drawable/shadow_right</item>
         <item name="shadow_bottom">@drawable/shadow_bottom</item>
     </style>
-    
+
 </resources>

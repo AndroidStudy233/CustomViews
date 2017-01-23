@@ -12,7 +12,7 @@ import android.view.animation.TranslateAnimation;
  * 滑到左右两端可以继续滑一点点的ViewPager
  * 使用的时候只要调用下面两个方法就可以了
  * setpagerCount()      请在初始化的时候调用它
- * setCurrentIndex()    请在onPageSelect方法中调用它
+ * updateCurrentIndex()    请在onPageSelect方法中调用它
  */
 public class OverScrollViewPager extends ViewPager {
 
@@ -38,7 +38,7 @@ public class OverScrollViewPager extends ViewPager {
     }
 
     //这是当前是第几页，请在onPageSelected方法中调用它。
-    public void setCurrentIndex(int currentItem) {
+    public void updateCurrentIndex(int currentItem) {
         this.currentItem = currentItem;
     }
 

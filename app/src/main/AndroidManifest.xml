@@ -137,7 +137,7 @@
             android:name=".ui.activity.QQEffectsActivity"
             android:label="QQ简单特效" />
         <activity android:name=".ui.activity.piclook.PhotoDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar.transition"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

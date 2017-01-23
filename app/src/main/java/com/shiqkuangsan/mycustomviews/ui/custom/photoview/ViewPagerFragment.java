@@ -126,7 +126,7 @@ public class ViewPagerFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 tips.setText((position + 1) + "/" + imgs.size());
-                viewPager.setCurrentIndex(position);
+                viewPager.updateCurrentIndex(position);
             }
 
             @Override

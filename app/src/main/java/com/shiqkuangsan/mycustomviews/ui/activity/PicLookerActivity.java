@@ -1,6 +1,8 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,11 +21,11 @@ import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import java.util.ArrayList;
 
 /**
- * Created by shiqkuangsan on 2016/9/13.
- */
-
-/**
- * 图片查看界面(类似空间发自拍点击查看)
+ * Created by shiqkuangsan on 2017/1/22.
+ * <p>
+ * ClassName: PhotoDetailActivity
+ * Author: shiqkuangsan
+ * Description: 图片查看住页面
  */
 public class PicLookerActivity extends BaseActivity {
 
@@ -66,11 +68,20 @@ public class PicLookerActivity extends BaseActivity {
 //                bundle.putParcelableArrayList("infos", imgImageInfos);
 //                getSupportFragmentManager().beginTransaction().replace(Window.ID_ANDROID_CONTENT, ViewPagerFragment.getInstance(bundle), "ViewPagerFragment")
 //                        .addToBackStack(null).commit();
+
                 Intent intent = new Intent(PicLookerActivity.this, PhotoDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("photos", picsList);
                 intent.putExtras(bundle);
-                startActivity(intent);
+                intent.putExtra("position", position);
+                // 暂且不用
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    view.setTransitionName((String) view.getTag());
+//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(PicLookerActivity.this, view, (String) view.getTag());
+//                    startActivity(intent, options.toBundle());
+//                } else
+                    startActivity(intent);
+
             }
         });
     }

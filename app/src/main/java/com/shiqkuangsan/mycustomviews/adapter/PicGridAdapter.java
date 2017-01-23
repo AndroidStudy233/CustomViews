@@ -91,7 +91,7 @@ public class PicGridAdapter extends BaseAdapter {
         }
         final ImageView imageView = (ImageView) convertView;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            imageView.setTransitionName(picsList.get(position));
+            imageView.setTag(picsList.get(position));
         }
         SimplexUtil.loadImage(imageView, picsList.get(position), SimplexUtil.getSimpleImageOptions(2), new SimplexUtil.SimpleRequstCallBack<Drawable>() {
             @Override
