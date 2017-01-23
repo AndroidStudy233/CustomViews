@@ -102,7 +102,8 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
         toolbar = (Toolbar) findViewById(R.id.toolbar_citypicker);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.titleblue));
+
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.titleblue));
         toolbar.setTitleTextColor(0xffffffff);
     }
 
