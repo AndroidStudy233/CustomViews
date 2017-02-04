@@ -8,7 +8,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.shiqkuangsan.baiducityselector.CitySelectorActivity;
+import com.shiqkuangsan.cityselector.CitySelectorActivity;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;

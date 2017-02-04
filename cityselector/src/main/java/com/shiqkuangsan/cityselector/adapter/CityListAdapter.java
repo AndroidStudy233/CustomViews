@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.adapter;
+package com.shiqkuangsan.cityselector.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -9,11 +9,11 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.shiqkuangsan.baiducityselector.R;
-import com.shiqkuangsan.baiducityselector.bean.City;
-import com.shiqkuangsan.baiducityselector.bean.LocateState;
-import com.shiqkuangsan.baiducityselector.utils.PinyinUtils;
-import com.shiqkuangsan.baiducityselector.custom.WrapHeightGridView;
+import com.shiqkuangsan.cityselector.R;
+import com.shiqkuangsan.cityselector.bean.City;
+import com.shiqkuangsan.cityselector.bean.LocateState;
+import com.shiqkuangsan.cityselector.utils.PinyinUtils;
+import com.shiqkuangsan.cityselector.custom.WrapHeightGridView;
 
 import java.util.ArrayList;
 import java.util.HashMap;

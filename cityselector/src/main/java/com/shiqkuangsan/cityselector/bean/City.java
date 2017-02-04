@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.bean;
+package com.shiqkuangsan.cityselector.bean;
 
 /**
  * 城市bean类

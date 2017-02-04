@@ -95,7 +95,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.shiqkuangsan.baiducityselector.CitySelectorActivity"
+            android:name="com.shiqkuangsan.cityselector.CitySelectorActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <activity

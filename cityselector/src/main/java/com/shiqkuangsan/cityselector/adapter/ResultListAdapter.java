@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.adapter;
+package com.shiqkuangsan.cityselector.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.shiqkuangsan.baiducityselector.R;
-import com.shiqkuangsan.baiducityselector.bean.City;
+import com.shiqkuangsan.cityselector.R;
+import com.shiqkuangsan.cityselector.bean.City;
 
 import java.util.List;
 

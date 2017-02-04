@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.utils;
+package com.shiqkuangsan.cityselector.utils;
 
 import android.content.Context;
 import android.widget.Toast;

@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.custom;
+package com.shiqkuangsan.cityselector.custom;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.shiqkuangsan.baiducityselector.R;
+import com.shiqkuangsan.cityselector.R;
 
 /**
  * 抄袭的右侧字母bar

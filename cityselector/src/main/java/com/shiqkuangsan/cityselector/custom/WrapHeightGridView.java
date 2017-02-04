@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector.custom;
+package com.shiqkuangsan.cityselector.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;
