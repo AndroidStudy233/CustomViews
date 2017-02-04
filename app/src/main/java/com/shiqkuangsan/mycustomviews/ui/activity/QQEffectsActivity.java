@@ -1,10 +1,10 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -18,6 +18,7 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.custom.ScaleHeadListView;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayout;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayoutManager;
+import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import java.util.ArrayList;
 
@@ -58,7 +59,6 @@ public class QQEffectsActivity extends AppCompatActivity implements View.OnClick
 //        iv_toggle.setOnClickListener(this);
 
 
-
         lv_main = (ScaleHeadListView) findViewById(R.id.lv_qqe_main);
         adapter = new MyAdapter();
 
@@ -90,6 +90,7 @@ public class QQEffectsActivity extends AppCompatActivity implements View.OnClick
         public void handleMessage(Message msg) {
             lv_main.onRefreshCompleted();
             dataList.add("我是条目" + dataList.size());
+            ToastUtil.shortToast(QQEffectsActivity.this, "刷新成功");
             adapter.notifyDataSetChanged();
         }
     };
@@ -97,6 +98,7 @@ public class QQEffectsActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+
     }
 
 

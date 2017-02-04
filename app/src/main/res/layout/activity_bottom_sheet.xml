@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_bottom_sheet" />
+    <include layout="@layout/layout_bottomsheet_main" />
 
     <!--BottomSheet的初始显示高度是可以定义的-->
     <include layout="@layout/layout_bottomsheet_content" />

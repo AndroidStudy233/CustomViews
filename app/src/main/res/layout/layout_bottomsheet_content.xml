@@ -4,115 +4,115 @@
     android:id="@+id/ll_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#fff"
+    android:background="@android:color/transparent"
     android:orientation="vertical"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="60dp"
+    app:behavior_peekHeight="19dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
-
-    <RelativeLayout
-        android:id="@+id/rl_bottomsheet_head"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-        <TextView
-            android:id="@+id/tv_bottom_lookmore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:drawablePadding="10dp"
-            android:text="查看更多"
-            android:textSize="22sp" />
-
-        <ImageView
-            android:id="@+id/iv_bottom_content_arrow"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_bottom_lookmore"
-            android:src="@drawable/img_arrow_up" />
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="今天天气不错1"
-            android:textSize="22sp" />
-
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="#858585" />
+            android:layout_height="15dp" />
 
-        <TextView
+        <RelativeLayout
+            android:id="@+id/rl_bottomsheet_head"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_rec_normal">
+
+            <TextView
+                android:id="@+id/tv_bottom_lookmore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="10dp"
+                android:text="查看更多"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:id="@+id/iv_bottom_content_arrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_bottom_lookmore"
+                android:src="@drawable/img_arrow_up" />
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="今天天气不错2"
-            android:textSize="22sp" />
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rec_normal"
+            android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="#858585" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="今天天气不错3"
-            android:textSize="22sp" />
+                android:padding="8dp"
+                android:text="今天天气不错1"
+                android:textSize="21sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="#858585" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#858585" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="今天天气不错4"
-            android:textSize="22sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="今天天气不错2"
+                android:textSize="21sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="#858585" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#858585" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:padding="8dp"
-            android:text="今天天气不错5"
-            android:textSize="22sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="今天天气不错3"
+                android:textSize="21sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="#858585" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="#858585" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="今天天气不错4"
+                android:textSize="21sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
