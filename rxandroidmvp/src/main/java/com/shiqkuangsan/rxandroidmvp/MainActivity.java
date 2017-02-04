@@ -14,7 +14,7 @@ import static android.view.View.X;
  * <p>
  * ClassName: MainActivity
  * Author: shiqkuangsan
- * Description: 首页面
+ * Description: rx首页面
  */
 public class MainActivity extends AppCompatActivity {
 
