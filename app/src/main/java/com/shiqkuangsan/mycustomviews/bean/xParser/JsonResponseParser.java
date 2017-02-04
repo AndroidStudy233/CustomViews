@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.bean;
+package com.shiqkuangsan.mycustomviews.bean.xParser;
 
 import com.alibaba.fastjson.JSON;
 
@@ -10,14 +10,10 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 /**
- * Created by wyouflf on 15/11/5.
- */
-
-/**
  * Json解析器,如果你想自定义CallBack的泛型,需要使用这个转换
  * 如果实现 InputStreamResponseParser, 可实现自定义流数据转换.
  */
-class JsonResponseParser implements ResponseParser {
+public class JsonResponseParser implements ResponseParser {
 
     @Override
     public void checkResponse(UriRequest request) throws Throwable {

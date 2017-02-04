@@ -1,9 +1,6 @@
 package com.shiqkuangsan.mycustomviews.bean;
 
-/**
- * Created by shiqkuangsan on 2016/9/24.
- */
-
+import com.shiqkuangsan.mycustomviews.bean.xParser.JsonResponseParser;
 
 import org.xutils.db.annotation.Column;
 import org.xutils.db.annotation.Table;
