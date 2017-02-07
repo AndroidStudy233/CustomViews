@@ -3,6 +3,7 @@ package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -28,7 +29,7 @@ public class ColorImmerseActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_color_immerse);
         initView();
 
-        color = getResources().getColor(R.color.colorPrimary);
+        color = ContextCompat.getColor(this, R.color.colorPrimary);
         MyStatusBarUtil.setStatusColor(this, color);
     }
 

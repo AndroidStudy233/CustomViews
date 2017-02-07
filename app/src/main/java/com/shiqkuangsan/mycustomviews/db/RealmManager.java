@@ -36,7 +36,7 @@ public class RealmManager {
     private Realm realm;
 
     /**
-     * 初始化realm,如果你的app不同的账号登录同一台设备需要建立不同的数据库(根据名称来区分)
+     * 初始化realm,比如说如果你的app在不同的账号登录同一台设备就要需要建立不同的数据库(根据名称来区分)
      *
      * @param realmName 数据库名称
      * @param version   版本号

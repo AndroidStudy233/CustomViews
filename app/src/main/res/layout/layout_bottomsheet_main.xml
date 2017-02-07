@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="#939393"
-        android:text="HelloWorld"
+        android:text="从底部上啦吧"
         android:textColor="#fff"
         android:textSize="30sp" />
 

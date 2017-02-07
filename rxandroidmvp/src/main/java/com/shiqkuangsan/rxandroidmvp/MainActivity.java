@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  * <p>
  * ClassName: MainActivity
  * Author: shiqkuangsan
- * Description: 首页面
+ * Description: rx首页面
  */
 public class MainActivity extends AppCompatActivity {
 

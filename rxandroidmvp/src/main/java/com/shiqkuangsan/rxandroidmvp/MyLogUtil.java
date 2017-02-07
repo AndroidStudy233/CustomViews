@@ -10,18 +10,19 @@ import android.util.Log;
  * Description: 日志输出的util
  */
 public class MyLogUtil {
+
 	/** 日志输出级别NONE */
-	public static final int LEVEL_NONE = 0;
+	private static final int LEVEL_NONE = 0;
 	/** 日志输出级别E */
-	public static final int LEVEL_ERROR =1;
+	private static final int LEVEL_ERROR =1;
 	/** 日志输出级别W */
-	public static final int LEVEL_WARN = 2;
+	private static final int LEVEL_WARN = 2;
 	/** 日志输出级别I */
-	public static final int LEVEL_INFO = 3;
+	private static final int LEVEL_INFO = 3;
 	/** 日志输出级别D */
-	public static final int LEVEL_DEBUG = 4;
+	private static final int LEVEL_DEBUG = 4;
 	/** 日志输出级别V */
-	public static final int LEVEL_VERBOSE = 5;
+	private static final int LEVEL_VERBOSE = 5;
 
 	/** 日志输出时的TAG */
 	private static String mTag = "MyLogUtil";

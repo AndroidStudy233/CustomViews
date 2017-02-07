@@ -7,7 +7,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
-import com.shiqkuangsan.baiducityselector.utils.ToastUtil;
+import com.shiqkuangsan.cityselector.utils.ToastUtil;
 import com.shiqkuangsan.mycustomviews.R;
 
 /**

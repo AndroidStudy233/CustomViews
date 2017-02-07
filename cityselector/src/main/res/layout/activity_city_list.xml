@@ -42,7 +42,7 @@
             android:textStyle="bold"
             android:visibility="gone" />
 
-        <com.shiqkuangsan.baiducityselector.custom.SideLetterBar
+        <com.shiqkuangsan.cityselector.custom.SideLetterBar
             android:id="@+id/side_letter_bar"
             android:layout_width="@dimen/side_letter_bar_width"
             android:layout_height="match_parent"

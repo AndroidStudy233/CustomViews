@@ -1,4 +1,4 @@
-package com.shiqkuangsan.baiducityselector;
+package com.shiqkuangsan.cityselector;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -28,15 +28,15 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
-import com.shiqkuangsan.baiducityselector.adapter.CityListAdapter;
-import com.shiqkuangsan.baiducityselector.adapter.ResultListAdapter;
-import com.shiqkuangsan.baiducityselector.bean.City;
-import com.shiqkuangsan.baiducityselector.bean.LocateState;
-import com.shiqkuangsan.baiducityselector.custom.PermissionSettingsDialog;
-import com.shiqkuangsan.baiducityselector.custom.SideLetterBar;
-import com.shiqkuangsan.baiducityselector.db.DBManager;
-import com.shiqkuangsan.baiducityselector.utils.CLogUtil;
-import com.shiqkuangsan.baiducityselector.utils.ToastUtil;
+import com.shiqkuangsan.cityselector.adapter.CityListAdapter;
+import com.shiqkuangsan.cityselector.adapter.ResultListAdapter;
+import com.shiqkuangsan.cityselector.bean.City;
+import com.shiqkuangsan.cityselector.bean.LocateState;
+import com.shiqkuangsan.cityselector.custom.PermissionSettingsDialog;
+import com.shiqkuangsan.cityselector.custom.SideLetterBar;
+import com.shiqkuangsan.cityselector.db.DBManager;
+import com.shiqkuangsan.cityselector.utils.CLogUtil;
+import com.shiqkuangsan.cityselector.utils.ToastUtil;
 
 import java.util.List;
 
@@ -102,7 +102,8 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
         toolbar = (Toolbar) findViewById(R.id.toolbar_citypicker);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.titleblue));
+
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.titleblue));
         toolbar.setTitleTextColor(0xffffffff);
     }
 

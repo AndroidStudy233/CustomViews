@@ -482,6 +482,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
         <item name="android:windowEnterTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
         <item name="android:windowExitTransition" tools:targetApi="lollipop">@android:transition/slide_left</item>
 
+		or code:
 		getWindow().setEnterTransition(new Explode().setDuration(1200));  
 		getWindow().setExitTransition(new Explode().setDuration(1200));  
 
@@ -495,6 +496,10 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 		<item name="android:windowContentTransitions" tools:targetApi="lollipop">true</item>
         <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">@android:transition/move</item>
         <item name="android:windowSharedElementExitTransition" tools:targetApi="lollipop">@android:transition/move</item>
+
+		or code:
+		getWindow().setSharedElementEnterTransition(new Explode().setDuration(500));
+        getWindow().setSharedElementExitTransition(new Explode().setDuration(500));
 
 	第三步: 启动B的方法使用这个,带着共享元素的transition名字去启动
 

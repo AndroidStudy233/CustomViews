@@ -1,11 +1,11 @@
-package com.shiqkuangsan.baiducityselector.db;
+package com.shiqkuangsan.cityselector.db;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
-import com.shiqkuangsan.baiducityselector.bean.City;
+import com.shiqkuangsan.cityselector.bean.City;
 
 import java.io.File;
 import java.io.FileOutputStream;
