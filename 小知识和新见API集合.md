@@ -277,7 +277,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ## android中的动画插值器Interpolator.
 
 <div>
-	<img src='/others/images/interpolator.gif'  width="400px" style='border: #67F2F7 solid 2px'/>
+	<img src='/others/images/anime_interpolator.gif'  width="400px" style='border: #67F2F7 solid 2px'/>
 </div>
 
 1. AccelerateDecelerateInterpolator 加速减速插补器（先慢后快再慢）
@@ -846,7 +846,8 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 - 设置侧滑菜单的背景menu.setBackgroundColor(Color.BLACK);	setBackgroundResource
 
-- 至于侧滑动画的可以看源码实现
+- 至于侧滑
+- 动画的可以看源码实现
 
 ## SlidingMenu + Actionbarsherlock
 
