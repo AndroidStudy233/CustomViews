@@ -726,6 +726,37 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+## 判断进程是否运行,在后台?在前台?
+
+	private boolean isAppRunning(Context context) {
+        String packageName = context.getPackageName();
+        String topActivityClassName=getTopActivityName(context);
+
+        if (packageName!=null&&topActivityClassName!=null&&topActivityClassName.startsWith(packageName)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public  String getTopActivityName(Context context){
+        String topActivityClassName=null;
+        ActivityManager activityManager =
+                (ActivityManager)(context.getSystemService(android.content.Context.ACTIVITY_SERVICE )) ;
+        List<RunningTaskInfo> runningTaskInfos = activityManager.getRunningTasks(1) ;
+        if(runningTaskInfos != null){
+            ComponentName f=runningTaskInfos.get(0).topActivity;
+            topActivityClassName=f.getClassName();
+        }
+        return topActivityClassName;
+    }
+
+	//是否在前台运行,判断是否在前台运行 就判断栈顶的是否是这个包名
+	info.topActivity.getPackageName().equals("com.shiqkaungsan.hello")
+	//是否在后台运行,判断是否在后台运行 就判断栈中是否有这个包名
+	info.baseActivity.getPackageName().equals("com.shiqkaungsan.hello")
+
+---
 ## Service里面弹对话框(吐司是可以直接的)
 
 		AlertDialog dialog = new AlertDialog.Builder(this).setTitle("标题").setMessage("内容").setPositiveButton("确定", null).create();
