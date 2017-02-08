@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv= (TextView) findViewById(R.id.tv);
+        tv= (TextView) findViewById(R.id.tv_hello);
         button = (Button) findViewById(R.id.btn);
         baseImp();//  这些全都是在同一个线程的观察者 ，本篇概念看完  能了解基本用法，下一遍异步观察~ RxSchedulerActivity
         button.setOnClickListener(new View.OnClickListener() {
