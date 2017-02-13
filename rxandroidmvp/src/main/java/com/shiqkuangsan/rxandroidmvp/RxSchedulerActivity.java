@@ -31,6 +31,7 @@ public class RxSchedulerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rxscheduler);
         imageView = (ImageView) findViewById(R.id.img);
         changeScheduler();
+        
     }
     /**  
      * 在不指定线程的情况下， RxJava 遵循的是线程不变的原则，即：在哪个线程调用 subscribe()，就在哪个线程生产事件；
@@ -98,5 +99,6 @@ public class RxSchedulerActivity extends AppCompatActivity {
                         imageView.setImageDrawable(drawable);
                     }
                 });
+
     }
 }

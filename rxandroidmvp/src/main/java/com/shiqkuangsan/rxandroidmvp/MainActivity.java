@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.shiqkuangsan.rxandroidmvp.retrofit.RetrofitActivity;
+
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -25,17 +27,25 @@ public class MainActivity extends AppCompatActivity {
     private  Observable observable ;
     private  Observer observer;
     private Button button;
+    private Button button1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv= (TextView) findViewById(R.id.tv_hello);
         button = (Button) findViewById(R.id.btn);
+        button1 = (Button) findViewById(R.id.btn1);
         baseImp();//  这些全都是在同一个线程的观察者 ，本篇概念看完  能了解基本用法，下一遍异步观察~ RxSchedulerActivity
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RxSchedulerActivity.class));
+            }
+        });
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
             }
         });
     }

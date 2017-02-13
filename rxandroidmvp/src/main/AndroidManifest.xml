@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shiqkuangsan.rxandroidmvp">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RxSchedulerActivity"/>
+        <activity android:name=".retrofit.RetrofitActivity"/>
     </application>
 
 </manifest>
