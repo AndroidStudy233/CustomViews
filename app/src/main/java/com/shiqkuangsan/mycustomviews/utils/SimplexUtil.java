@@ -262,6 +262,7 @@ public class SimplexUtil {
                 .setLoadingDrawableId(R.drawable.pic_loading)// 加载中显示图
                 .setFailureDrawableId(R.drawable.pic_loading_fail)// 加载失败显示图
                 .setUseMemCache(true)// 使用内存缓存
+//                .setAnimation()// 顺带可以设置动画
                 .build();
     }
 
