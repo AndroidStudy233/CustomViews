@@ -1,6 +1,5 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +18,7 @@ import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -30,12 +30,9 @@ import java.util.Random;
 import static com.shiqkuangsan.mycustomviews.R.id.btn_xutils_db;
 
 /**
- * Created by shiqkuangsan on 2016/9/20.
- */
-
-/**
  * 学习使用xUtils的界面,配合笔记里面的说明食用味道更佳
  */
+@ContentView(R.layout.activity_xutils)  // UI注解
 public class XUtilsActivity extends AppCompatActivity {
 
     // View注解,需要在Activity的onCreate()方法中注入
@@ -61,7 +58,7 @@ public class XUtilsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xutils);
+//        setContentView(R.layout.activity_xutils);
         x.view().inject(this);
 
         btn_xutils_init.setText("init");

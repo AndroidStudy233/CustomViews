@@ -85,7 +85,6 @@
     }
 
 ---
-
 ## "app_name" is not translated in "zh" (Chinese) [MissingTranslation]解决办法
 
 Android在打release包时，可能会出现这种错误。 
@@ -723,6 +722,17 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ---
 
 ### AS有时候会出现点9图片冲刷失败crush failed,那是因为该图片存在Alpha通道,在执行app:mergeDebugResources的时候出错,那是因为点9图片不正规
+
+1. 可以将有问题的点9图片重新画好
+
+2. 可以直接配置忽略
+
+		对应module的build.gradle文件，在buildToolsVersion下面加入以下两句：
+
+		aaptOptions.cruncherEnabled = false     
+
+		aaptOptions.useNewCruncher = false
+
 
 ---
 
