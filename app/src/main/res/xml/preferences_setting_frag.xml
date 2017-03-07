@@ -25,6 +25,15 @@
             android:title="你今天心情如何" />
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="铃声设置">
+        <RingtonePreference
+            android:key="settings_ring"
+            android:ringtoneType="ringtone"
+            android:summary="默认铃声"
+            android:title="提示音" />
+    </PreferenceCategory>
+
+
     <PreferenceCategory android:title="更多">
         <Preference
             android:key="settings_author"

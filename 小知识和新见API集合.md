@@ -69,6 +69,13 @@
 
 ---
 
+## android给空包签名
+
+	jarsigner -verbose -keystore [keystorePath] -signedjar [apkOut] [apkIn] [alias]
+	也可以
+	jarsigner -verbose -keystore [keystorePath] [apkIn] [alias]
+
+---
 ## date转格式
 
 	public static Date parseDate(String dateStr, String pattern){

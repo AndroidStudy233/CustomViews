@@ -3,7 +3,6 @@
 .idea/
 *.iml
 build/
-app/build/
 local.properties
 /app/src/androidTest/java/androidTest/ApplicationTest.java
 /app/src/test/java/test/ExampleUnitTest.java

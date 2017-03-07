@@ -19,8 +19,14 @@ android {
         }
     }
 }
+repositories {
+    maven { url 'https://github.com/500px/500px-android-blur/raw/master/releases/' }
+}
 
 dependencies {
+    // 测试添加. temp
+    compile 'com.fivehundredpx:blurringview:1.0.0'
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

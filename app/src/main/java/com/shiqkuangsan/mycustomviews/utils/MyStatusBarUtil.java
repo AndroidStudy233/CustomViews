@@ -57,7 +57,8 @@ public class MyStatusBarUtil {
             activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //            activity.getWindow().setStatusBarColor(calculateStatusColor(color, statusBarAlpha));
             activity.getWindow().setStatusBarColor(color);
-            // 4.4.4的处理
+
+            // 4.4.4的处理. 有的手机拿到的rootView没有孩子  要通过getwindws.getdecorView获取.
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             ViewGroup rootView = (ViewGroup) activity.getWindow().findViewById(android.R.id.content);

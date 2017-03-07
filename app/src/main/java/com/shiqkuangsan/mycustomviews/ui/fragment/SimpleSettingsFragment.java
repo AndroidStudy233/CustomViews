@@ -1,11 +1,16 @@
 package com.shiqkuangsan.mycustomviews.ui.fragment;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.RingtonePreference;
+import android.widget.Toast;
 
 import com.shiqkuangsan.cityselector.utils.ToastUtil;
 import com.shiqkuangsan.mycustomviews.R;
@@ -77,6 +82,16 @@ public class SimpleSettingsFragment extends PreferenceFragment {
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 ListPreference prefer = (ListPreference) preference;
                 prefer.setSummary((CharSequence) newValue);
+                return true;
+            }
+        });
+
+        findPreference("settings_ring").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                Ringtone ringtone = RingtoneManager.getRingtone(getActivity(), Uri.parse((String) newValue));
+                RingtonePreference prefer = (RingtonePreference) preference;
+                prefer.setSummary(ringtone.getTitle(getActivity()));
                 return true;
             }
         });
