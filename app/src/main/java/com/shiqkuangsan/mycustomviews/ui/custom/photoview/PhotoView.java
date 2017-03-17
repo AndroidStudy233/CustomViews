@@ -2137,7 +2137,7 @@ public class PhotoView extends ImageView {
 //        @Override
 //        public void run() {
 //            if (mClickListener != null) {
-//                mClickListener.onClick(PhotoView.this);
+//                mClickListener.initClick(PhotoView.this);
 //            }
 //        }
 //    };

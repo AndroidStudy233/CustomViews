@@ -49,7 +49,7 @@ public class CoordinatorActivity extends AppCompatActivity implements Navigation
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View custom) {
+//            public void initClick(View custom) {
 //                onBackPressed();
 //            }
 //        });

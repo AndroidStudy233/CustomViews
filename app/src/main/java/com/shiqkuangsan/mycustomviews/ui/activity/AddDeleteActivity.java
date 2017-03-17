@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.custom.CommentView;
-import com.shiqkuangsan.mycustomviews.ui.custom.onCommentViewClickListener;
 
 /*************************************************
  * <p>版权所有：2016-深圳市赛为安全技术服务有限公司</p>
@@ -24,7 +23,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.onCommentViewClickListener;
  *
  * @version V3.1
  *********************************/
-public class AddDeleteActivity extends AppCompatActivity implements onCommentViewClickListener {
+public class AddDeleteActivity extends AppCompatActivity implements CommentView.onCommentViewClickListener {
     private LinearLayout mRootView;
     private CommentView commentView;
 

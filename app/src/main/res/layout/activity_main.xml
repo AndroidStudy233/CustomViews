@@ -186,15 +186,10 @@
             android:layout_weight="1"
             android:onClick="qqeffects"
             android:text="qq简单特效" />
-        
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="adddelete"
-            android:text="Linearlayout动态添加删除" />
+
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -208,6 +203,13 @@
             android:layout_weight="1"
             android:onClick="constraint"
             android:text="Constraint" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="adddelete"
+            android:text="动态添加删除" />
 
     </LinearLayout>
 

@@ -6,19 +6,19 @@
     android:orientation="horizontal">
 
     <EditText
-        android:id="@+id/ev"
-        android:background="@drawable/dr_edittext_bg"
+        android:padding="4dp"
+        android:id="@+id/et_comment_content"
         android:layout_width="160dp"
         android:layout_height="50dp"
-        android:layout_weight="4" />
-    
+        android:layout_weight="4"
+        android:background="@drawable/bg_comment_edit" />
+
     <TextView
-        android:textColor="@color/blue"
-        android:clickable="true"
-        android:id="@+id/btnclick"
-        android:text="增加"
-        android:gravity="center"
+        android:id="@+id/btn_comment_todo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-       />
+        android:clickable="true"
+        android:gravity="center"
+        android:text="增加"
+        android:textColor="@color/blue" />
 </LinearLayout>

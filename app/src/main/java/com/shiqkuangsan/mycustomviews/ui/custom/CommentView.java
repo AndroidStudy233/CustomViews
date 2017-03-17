@@ -31,9 +31,10 @@ public class CommentView extends LinearLayout {
     private View commentView;
     private EditText mEditteView;
     private TextView mBtnView;
-    private boolean isAdd=true; //mEditteView内容 为空时视为add
+    private boolean isAdd = true; //mEditteView内容 为空时视为add
     private onCommentViewClickListener onCommentViewClickListener;
     private int position;
+
     public CommentView(Context context) {
         super(context);
         init(context);
@@ -49,21 +50,16 @@ public class CommentView extends LinearLayout {
         init(context);
     }
 
-    public CommentView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init(context);
-    }
-
-
-    public void init(Context context){
-        commentView = LayoutInflater.from(context).inflate(R.layout.comment_layout, null);
-        mEditteView = (EditText) commentView.findViewById(R.id.ev);
-        mBtnView = (TextView) commentView.findViewById(R.id.btnclick);
+    public void init(Context context) {
+        commentView = LayoutInflater.from(context).inflate(R.layout.layout_custom_comment, null);
+        mEditteView = (EditText) commentView.findViewById(R.id.et_comment_content);
+        mBtnView = (TextView) commentView.findViewById(R.id.btn_comment_todo);
         addView(commentView);
         setGravity(Gravity.CENTER);
-        onClick();
+        initClick();
     }
-    public void onClick(){
+
+    public void initClick() {
         mBtnView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,20 +95,40 @@ public class CommentView extends LinearLayout {
             }
         });
     }
-    public void setText(boolean isAdd){
-        if(isAdd){
-            mBtnView.setTextColor(R.color.blue);
+
+    public void setText(boolean isAdd) {
+        if (isAdd) {
+            mBtnView.setTextColor(getResources().getColor(R.color.blue));
             mBtnView.setText("增加");
-        }else
-        {
+        } else {
             mBtnView.setTextColor(Color.GRAY);
             mBtnView.setText("删除");
         }
     }
-    public void setOnCommentViewClickListener(onCommentViewClickListener onCommentViewClickListener){
+
+    public void setOnCommentViewClickListener(onCommentViewClickListener onCommentViewClickListener) {
         this.onCommentViewClickListener = onCommentViewClickListener;
     }
-    public void setPosition(int position){
+
+    public void setPosition(int position) {
         this.position = position;
+    }
+
+    /*************************************************
+     * <p>版权所有：2016-深圳市赛为安全技术服务有限公司</p>
+     * <p>项目名称：安全眼</p>
+     * <p/>
+     * <p>类描述：${todo}(用一句话描述该文件做什么)</p>
+     * <p>创建人：余志伟</p>
+     * <p>创建时间 : 2017/3/17</p>
+     * <p>修改人：       </p>
+     * <p>修改时间：   </p>
+     * <p>修改备注：   </p>
+     *
+     * @version V3.1
+     *********************************/
+    public interface onCommentViewClickListener {
+        void onDelete(CommentView commentView);
+        void onAdd();
     }
 }

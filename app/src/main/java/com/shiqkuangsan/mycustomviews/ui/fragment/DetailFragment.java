@@ -34,7 +34,7 @@ public class DetailFragment extends Fragment {
         tvInfo.setText(getArguments().getString("info"));
 //        tvInfo.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onClick(View v) {
+//            public void initClick(View v) {
 //                Snackbar.make(v,"hello",Snackbar.LENGTH_SHORT).show();
 //            }
 //        });
