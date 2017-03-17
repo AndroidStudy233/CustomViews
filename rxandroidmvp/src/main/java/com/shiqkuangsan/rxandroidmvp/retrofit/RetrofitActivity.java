@@ -23,7 +23,6 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /*************************************************
- * <p>类描述：${todo}(用一句话描述该文件做什么)</p>
  * <p>创建人：余志伟</p>
  * <p>创建时间 : 2017/2/9</p>
  * <p>修改人：       </p>
