@@ -186,6 +186,13 @@
             android:layout_weight="1"
             android:onClick="qqeffects"
             android:text="qq简单特效" />
+        
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="adddelete"
+            android:text="Linearlayout动态添加删除" />
 
     </LinearLayout>
     <LinearLayout

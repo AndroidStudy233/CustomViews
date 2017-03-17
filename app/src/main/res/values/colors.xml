@@ -16,5 +16,5 @@
     <color name="swipe_schema_red">#ffff0000</color>
     <color name="swipe_schema_green">#ff00ff00</color>
     <color name="swipe_schema_blue">#ff0000ff</color>
-
+    <color name="blue">#3F51B5</color>
 </resources>
