@@ -257,6 +257,8 @@ public class MainActivity extends BaseActivity {
     public void qqeffects(View view) {
         startActivity(new Intent(this, QQEffectsActivity.class));
     }
-
-
+    public void adddelete(View view) {
+        startActivity(new Intent(this, AddDeleteActivity.class));
+    }
+    
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/ev"
+        android:background="@drawable/dr_edittext_bg"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_weight="4" />
+    
+    <TextView
+        android:textColor="@color/blue"
+        android:clickable="true"
+        android:id="@+id/btnclick"
+        android:text="增加"
+        android:gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+       />
+</LinearLayout>

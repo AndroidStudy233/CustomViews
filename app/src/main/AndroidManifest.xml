@@ -138,6 +138,9 @@
             android:label="QQ简单特效" />
         <activity android:name=".ui.activity.piclook.PhotoDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.activity.AddDeleteActivity"
+            android:label="动态添加" />
     </application>
 
 </manifest>
