@@ -8,19 +8,21 @@
     tools:context="com.shiqkuangsan.rxandroidmvp.MainActivity">
 
     <TextView
-        android:id="@+id/tv_hello"
-        android:textSize="25sp"
+        android:id="@+id/tv_main_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:textSize="25sp" />
+
     <Button
-    android:id="@+id/btn"
-    android:text="进入异步观察 线程变换"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn1"
-        android:text="retrofit+rxjava"
+        android:id="@+id/btn_main_change"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="进入异步观察 线程变换" />
+
+    <Button
+        android:id="@+id/btn_main_rxretro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="retrofit+rxjava" />
 </LinearLayout>

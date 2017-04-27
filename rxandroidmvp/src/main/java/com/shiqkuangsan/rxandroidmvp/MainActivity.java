@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.shiqkuangsan.rxandroidmvp.retrofit.RetrofitActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -23,31 +26,46 @@ import rx.functions.Action1;
  * Description: rx首页面
  */
 public class MainActivity extends AppCompatActivity {
-    private TextView tv;
+
+    @BindView(R.id.tv_main_hello)
+    TextView tv_main_hello;
+    @BindView(R.id.btn_main_change)
+    Button btn_main_change;
+    @BindView(R.id.btn_main_rxretro)
+    Button btn_main_rxretro;
+
     private Observable observable;
     private Observer observer;
-    private Button button;
-    private Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tv = (TextView) findViewById(R.id.tv_hello);
-        button = (Button) findViewById(R.id.btn);
-        button1 = (Button) findViewById(R.id.btn1);
+        ButterKnife.bind(this);
+
         baseImp();//  这些全都是在同一个线程的观察者 ，本篇概念看完  能了解基本用法，下一遍异步观察~ RxSchedulerActivity
-        button.setOnClickListener(new View.OnClickListener() {
+        btn_main_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RxSchedulerActivity.class));
             }
         });
-        button1.setOnClickListener(
+        btn_main_rxretro.setOnClickListener(
                 (View view) -> startActivity(new Intent(MainActivity.this, RetrofitActivity.class))
         );
     }
 
+    // 建议使用ButterKnife来定义点击事件
+//    @OnClick({R.id.btn_main_change, R.id.btn_main_rxretro})
+//    public void onClick(View view) {
+//        switch (view.getId()){
+//            case R.id.btn_main_change:
+//                break;
+//
+//            case R.id.btn_main_rxretro:
+//                break;
+//        }
+//    }
 
     /*** rx 概念:
      *   Observable (可观察者，即被观察者)、
@@ -102,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(String s) {
-                tv.setText(s);
+                tv_main_hello.setText(s);
                 MyLogUtil.i("被观察者发生改变，观察者接下来的动作>>>" + s);
             }
         };
