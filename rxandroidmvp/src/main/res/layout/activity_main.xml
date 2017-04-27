@@ -30,7 +30,7 @@
         android:id="@+id/btn_main_operator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="retrofit+rxjava" />
+        android:text="Rx操作符" />
 
 
 </LinearLayout>

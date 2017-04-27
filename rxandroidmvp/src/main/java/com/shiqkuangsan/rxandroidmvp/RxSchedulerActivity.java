@@ -77,7 +77,7 @@ public class RxSchedulerActivity extends AppCompatActivity {
             public void call(Subscriber<? super Drawable> subscriber) {
                 try {
                     Thread.sleep(10 * 1000);//这里线程由subscribeOn决定
-                    Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+                    Drawable drawable = getResources().getDrawable(R.drawable.pic_sample);
                     subscriber.onNext(drawable);
                     subscriber.onCompleted();
                 } catch (InterruptedException e) {
