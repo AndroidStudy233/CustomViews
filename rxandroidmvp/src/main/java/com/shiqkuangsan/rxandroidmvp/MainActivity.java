@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.shiqkuangsan.rxandroidmvp.retrofit.RetrofitActivity;
+import com.shiqkuangsan.rxandroidmvp.retrofit.RxJavaOperatorActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_main_change;
     @BindView(R.id.btn_main_rxretro)
     Button btn_main_rxretro;
+    @BindView(R.id.btn_main_operator)
+    Button btn_main_operator;
 
     private Observable observable;
     private Observer observer;
@@ -53,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         });
         btn_main_rxretro.setOnClickListener(
                 (View view) -> startActivity(new Intent(MainActivity.this, RetrofitActivity.class))
+        );
+
+        btn_main_operator.setOnClickListener(
+                (View view) -> startActivity(new Intent(MainActivity.this, RxJavaOperatorActivity.class))
         );
     }
 
