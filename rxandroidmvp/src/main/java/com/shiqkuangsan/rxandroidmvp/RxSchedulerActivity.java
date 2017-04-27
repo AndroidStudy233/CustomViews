@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import butterknife.BindView;
@@ -12,6 +13,7 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
@@ -69,6 +71,27 @@ public class RxSchedulerActivity extends AppCompatActivity {
                     @Override
                     public void call(Integer number) {
                         Log.d("aaa", "number:" + number);
+                    }
+                });
+
+        // doOnSubscribe, 就像subscriber的onstart()方法, 但是onstart不能确定是在哪儿执行的,
+        // 所以会有线程问题, 然而doOnSubscribe后面可以指定线程
+        Observable.just(1, 2, 3, 4)
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        // 比如有这么个操作需要在主线程执行
+                        // progressBar.setVisibility(View.VISIBLE);
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread()) // 指定doOnSubscribe的操作在主线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Integer>() {
+                    @Override
+                    public void call(Integer integer) {
+                        // 比如这里又要隐藏
+                        // progressBar.setVisibility(View.INVISIBLE);
                     }
                 });
 
