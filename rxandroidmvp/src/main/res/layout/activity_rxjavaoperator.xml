@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timer" />
+
+        <Button
+            android:id="@+id/interval"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="interval" />
+
+        <Button
+            android:id="@+id/range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="range" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/concat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="concat" />
+
+        <Button
+            android:id="@+id/startWith"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="startWith" />
+
+        <Button
+            android:id="@+id/zip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zip" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="filter" />
+        <Button
+            android:id="@+id/ofType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ofType" />
+        <Button
+            android:id="@+id/take"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="take" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/takeLast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="takeLast" />
+        <Button
+            android:id="@+id/takeFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="takeFirst" />
+        <Button
+            android:id="@+id/firstfirstOrDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="first/firstOrDefault" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/distinct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distinct" />
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="skip" />
+        <Button
+            android:id="@+id/elementAtelementAtOrDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="first/elementAt/elementAtOrDefault" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/distinctUntilChanged"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="distinctUntilChanged" />
+        <Button
+            android:id="@+id/throttleFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="throttleFirst" />
+     
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/throttleWithTimeoutdebounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="throttleWithTimeout/debounce" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/timeout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timeout" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="all" />
+        <Button
+            android:id="@+id/exists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="exists" />
+        <Button
+            android:id="@+id/contains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="contains" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sequenceEqual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sequenceEqual" />
+        <Button
+            android:id="@+id/isEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="isEmpty" />
+        <Button
+            android:id="@+id/amb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="amb" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/takeUntil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="takeUntil" />
+        <Button
+            android:id="@+id/takeWhile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="takeWhile" />
+        <Button
+            android:id="@+id/reduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="reduce" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="collect" />
+        <Button
+            android:id="@+id/toList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toList" />
+        <Button
+            android:id="@+id/toSortedList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toSortedList" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/toMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="toMap" />
+        <Button
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="map" />
+        <Button
+            android:id="@+id/scan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scan" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/groupBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="groupBy" />
+        <Button
+            android:id="@+id/onErrorResumeNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onErrorResumeNext" />
+        <Button
+            android:id="@+id/onErrorReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="onErrorReturn" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="retry" />
+        <Button
+            android:id="@+id/retryWhen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="retryWhen" />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>
