@@ -32,26 +32,42 @@ public class RxTest3 {
     }
 
     /**
-     * 实现被观察者    方式1: create 方式
+     * 实现观察者模式    方式1: create 方式
      */
     private static void method1() {
         // 创建被观察者,这里的泛型要和下面观察者中的泛型保持一致
-        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                if (!subscriber.isUnsubscribed()) {
-                    // 如果还存在订阅关系的话
-                    subscriber.onNext("hello");
-                    subscriber.onNext("rxjava");
-                    if (getJsonData() == null) {
-                        subscriber.onError(new NullPointerException());
-                    } else {
-                        subscriber.onNext(getJsonData());
+//        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
+//            @Override
+//            public void call(Subscriber<? super String> subscriber) {
+//                if (!subscriber.isUnsubscribed()) {
+//                    // 如果还存在订阅关系的话
+//                    subscriber.onNext("hello");
+//                    subscriber.onNext("rxjava");
+//                    if (getJsonData() == null) {
+//                        subscriber.onError(new NullPointerException());
+//                    } else {
+//                        subscriber.onNext(getJsonData());
+//                    }
+//                    subscriber.onCompleted();
+//                }
+//            }
+//        });
+        // 箭头函数你好
+        Observable<String> observable = Observable.create(
+                (Subscriber<? super String> subscriber) -> {
+                    if (!subscriber.isUnsubscribed()) {
+                        // 如果还存在订阅关系的话
+                        subscriber.onNext("hello");
+                        subscriber.onNext("rxjava");
+                        if (getJsonData() == null) {
+                            subscriber.onError(new NullPointerException());
+                        } else {
+                            subscriber.onNext(getJsonData());
+                        }
+                        subscriber.onCompleted();
                     }
-                    subscriber.onCompleted();
                 }
-            }
-        });
+        );
 
         // 创建观察者
         Subscriber<String> subscriber = new Subscriber<String>() {
@@ -98,7 +114,7 @@ public class RxTest3 {
     }
 
     /**
-     * 实现被观察者    方式2: just方式
+     * 实现观察者模式    方式2: just方式
      */
     private static void method2() {
         // 将会依次调用 onNext(hello) --> onNext(world) --> onNext(rxjava) --> oncomplete
@@ -140,31 +156,23 @@ public class RxTest3 {
 //        observable.subscribe(onNextAction);
 //        observable.subscribe(onNextAction, onErrorAction);
 //        observable.subscribe(onNextAction, onErrorAction, onCompletedAction);
+
         Observable.just("hello3", "world3", "rxjava3")
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        System.out.println("观察到改变: " + s);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        System.out.println("步入歧途onError");
-                        throwable.printStackTrace();
-                    }
-                }, new Action0() {
-                    @Override
-                    public void call() {
-                        System.out.println("已完成onCompleted");
-                    }
-                });
+                .subscribe(
+                        (String s) -> System.out.println("观察到改变: " + s),
+                        (Throwable throwable) -> {
+                            System.out.println("步入歧途onError");
+                            throwable.printStackTrace();
+                        },
+                        () -> System.out.println("已完成onCompleted")
+                );
     }
 
     /**
-     * 实现被观察者    方式3: from方式
+     * 实现观察者模式    方式3: from方式
      * from方式支持两种格式
      * <p>
-     * 1. 集合
+     * 1.集合
      * <p>
      * 2.数组
      */
@@ -197,7 +205,7 @@ public class RxTest3 {
 
     /**
      * 其他方式:
-     * 1. Observable.interval(1, 3, TimeUnit.SECONDS);
+     * 1. Observable.interval(1, 2, TimeUnit.SECONDS);
      * 延迟时间,间隔时间,时间单位...结果会每隔1s拿到一个秒值整数
      * <p>
      * 2. Observable.range(10, 3);
@@ -209,7 +217,7 @@ public class RxTest3 {
      * timer: 如下timer()
      */
     void fitler() {
-        Observable.just(1, 2, 3, 4)
+        Observable.just(1, 2, 3, 4, 5)
                 .filter(new Func1<Integer, Boolean>() {
                     @Override
                     public Boolean call(Integer integer) {

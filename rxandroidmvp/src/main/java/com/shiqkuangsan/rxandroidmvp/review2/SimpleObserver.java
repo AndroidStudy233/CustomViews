@@ -25,7 +25,7 @@ public class SimpleObserver implements Observer {
         // 只观察SimpleObservable
         SimpleObservable observable = (SimpleObservable) o;
         if (observable.isFinish())
-            System.out.println("didi: " + observable.getProgress() + "% --- " + observable.isFinish());
+            System.out.println("滴滴: " + observable.getProgress() + "% --- " + observable.isFinish());
         else
             System.out.println(observable.getProgress() + "%");
     }

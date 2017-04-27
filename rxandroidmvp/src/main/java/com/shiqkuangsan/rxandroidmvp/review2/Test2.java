@@ -13,7 +13,7 @@ public class Test2 {
         SimpleObservable observable = new SimpleObservable();
         SimpleObserver observer = new SimpleObserver(observable);
 
-        for (int i = 0; i < 101; i++) {
+        for (int i = 1; i < 101; i++) {
             observable.setProgress(i);
             if (i == 100)
                 observable.setFinish(true);
