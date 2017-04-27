@@ -1,5 +1,6 @@
 package androidTest;
 
+import android.preference.PreferenceManager;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
