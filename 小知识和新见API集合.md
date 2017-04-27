@@ -71,9 +71,9 @@
 
 ## android给空包签名
 
-	jarsigner -verbose -keystore [keystorePath] -signedjar [apkOut] [apkIn] [alias]
+	jarsigner -verbose -keystore 'keystorePath' -signedjar 'apkOut' 'apkIn' 'alias'
 	也可以
-	jarsigner -verbose -keystore [keystorePath] [apkIn] [alias]
+	jarsigner -verbose -keystore 'keystorePath' 'apkIn' 'alias'
 
 ---
 ## date转格式
@@ -162,9 +162,29 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ### support-V4包中的某个class---duplicate, ctrl + N 复制包名
 
 ---
+
+### dlopen failed.  xxx.so  has text relocations
+
+说明编译.so文件时使用了较低版本sdk 
+而project 中的配置 targetSdkVersionxxx 大于so编译时使用的sdkversion，所以只需要把功能中 
+的targetSdkVersion降低即可 
+
+	defaultConfig { 
+		applicationId “com.example” 
+		minSdkVersion 16 
+		targetSdkVersion 22    这个调低点
+		versionCode 1 
+		versionName “1.0” 
+	}
+
+---
 ### 查看调试版和发布版的SHA1值
 
+	// 调试版 在.android目录下(一般都是没有密码的.)
 	keytool -list -v -keystore debug.keystore
+	
+	// 正式版 就是你的keystore路径目录下
+	keytool -list -v -keystore xxxx.keystore
 
 ---
 ## 查看指定端口占用情况
@@ -202,6 +222,15 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+### 底部导航栏中间的按钮突出效果
+
+>通过合理的布局当然可以实现.这里说个简便方法
+
+	android:clipChildren = false;
+
+相对布局中使用该属性. 底部是个LinearLayout, 其中5个按钮宽度按weight分配, 可以给中间的按钮设置 'layout_gravity' 属性为bottom, 然后指定他的高度比LinearLayout高就行
+
+---
 ## Gradle配置clean操作删除build文件
 
 >project的build.gradle文件中添加
