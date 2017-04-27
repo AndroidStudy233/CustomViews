@@ -25,7 +25,7 @@ public class RetrofitTest1 {
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
         weatherApi.getCityWeather("深圳")
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.computation())
+                .observeOn(Schedulers.immediate())
                 .subscribe(new Action1<WeatherBean>() {
                     @Override
                     public void call(WeatherBean weatherBean) {

@@ -1,4 +1,4 @@
-package com.shiqkuangsan.rxandroidmvp.retrofit;
+package com.shiqkuangsan.rxandroidmvp.RxDetail;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

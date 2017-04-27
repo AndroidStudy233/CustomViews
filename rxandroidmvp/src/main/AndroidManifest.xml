@@ -15,9 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RxSchedulerActivity"/>
+        <activity android:name=".RxDetail.RxSchedulerActivity"/>
         <activity android:name=".retrofit.RetrofitActivity"/>
-        <activity android:name=".retrofit.RxJavaOperatorActivity"/>
+        <activity android:name=".RxDetail.RxJavaOperatorActivity"/>
     </application>
 
 </manifest>

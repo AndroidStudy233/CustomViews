@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.shiqkuangsan.rxandroidmvp.RxDetail.RxJavaOperatorActivity;
+import com.shiqkuangsan.rxandroidmvp.RxDetail.RxSchedulerActivity;
 import com.shiqkuangsan.rxandroidmvp.retrofit.RetrofitActivity;
-import com.shiqkuangsan.rxandroidmvp.retrofit.RxJavaOperatorActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;

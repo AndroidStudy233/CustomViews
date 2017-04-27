@@ -1,4 +1,4 @@
-package com.shiqkuangsan.rxandroidmvp;
+package com.shiqkuangsan.rxandroidmvp.RxDetail;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.shiqkuangsan.rxandroidmvp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +78,7 @@ public class RxSchedulerActivity extends AppCompatActivity {
 
         // doOnSubscribe, 就像subscriber的onstart()方法, 但是onstart不能确定是在哪儿执行的,
         // 所以会有线程问题, 然而doOnSubscribe后面可以指定线程
+        // 当然相对应的还有doOnNext().
         Observable.just(1, 2, 3, 4)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe(new Action0() {
