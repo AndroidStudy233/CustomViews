@@ -176,7 +176,7 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
     public void zip() {
         Observable<Integer> observable = Observable.just(1, 2, 3);
         Observable<Integer> observable1 = Observable.just(4, 5, 6, 7);
-        Observable.zip(observable, observable1, new Func2<Integer, Integer, String>() {
+        Observable.zip(observable1, observable, new Func2<Integer, Integer, String>() {
             @Override
             public String call(Integer integer, Integer integer2) {
                 return integer + " >> " + integer2;
@@ -184,7 +184,7 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
         }).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                MyLogUtil.d("zip: " + s);
+                MyLogUtil.i("zip: " + s);
             }
         });
     }
