@@ -16,19 +16,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/timer"
+            android:id="@+id/btn_rxoperator_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="timer" />
 
         <Button
-            android:id="@+id/interval"
+            android:id="@+id/btn_rxoperator_interval"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="interval" />
 
         <Button
-            android:id="@+id/range"
+            android:id="@+id/btn_rxoperator_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="range" />
@@ -42,19 +42,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/concat"
+            android:id="@+id/btn_rxoperator_concat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="concat" />
 
         <Button
-            android:id="@+id/startWith"
+            android:id="@+id/btn_rxoperator_startWith"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="startWith" />
 
         <Button
-            android:id="@+id/zip"
+            android:id="@+id/btn_rxoperator_zip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="zip" />
@@ -65,17 +65,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/filter"
+            android:id="@+id/btn_rxoperator_filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="filter" />
         <Button
-            android:id="@+id/ofType"
+            android:id="@+id/btn_rxoperator_ofType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ofType" />
         <Button
-            android:id="@+id/take"
+            android:id="@+id/btn_rxoperator_take"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="take" />
@@ -86,17 +86,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/takeLast"
+            android:id="@+id/btn_rxoperator_takeLast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="takeLast" />
         <Button
-            android:id="@+id/takeFirst"
+            android:id="@+id/btn_rxoperator_takeFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="takeFirst" />
         <Button
-            android:id="@+id/firstfirstOrDefault"
+            android:id="@+id/btn_rxoperator_firstOrDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="first/firstOrDefault" />
@@ -107,17 +107,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/distinct"
+            android:id="@+id/btn_rxoperator_distinct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="distinct" />
         <Button
-            android:id="@+id/skip"
+            android:id="@+id/btn_rxoperator_skip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="skip" />
         <Button
-            android:id="@+id/elementAtelementAtOrDefault"
+            android:id="@+id/btn_rxoperator_elementOrDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="first/elementAt/elementAtOrDefault" />
@@ -129,12 +129,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/distinctUntilChanged"
+            android:id="@+id/btn_rxoperator_distinctUntilChanged"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="distinctUntilChanged" />
         <Button
-            android:id="@+id/throttleFirst"
+            android:id="@+id/btn_rxoperator_throttleFirst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="throttleFirst" />
@@ -145,7 +145,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
     <Button
-        android:id="@+id/throttleWithTimeoutdebounce"
+        android:id="@+id/btn_rxoperator_throttleWithTimeout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="throttleWithTimeout/debounce" />
@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/timeout"
+            android:id="@+id/btn_rxoperator_timeout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="timeout" />
@@ -166,17 +166,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/all"
+            android:id="@+id/btn_rxoperator_all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="all" />
         <Button
-            android:id="@+id/exists"
+            android:id="@+id/btn_rxoperator_exists"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="exists" />
         <Button
-            android:id="@+id/contains"
+            android:id="@+id/btn_rxoperator_contains"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="contains" />
@@ -187,17 +187,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/sequenceEqual"
+            android:id="@+id/btn_rxoperator_sequenceEqual"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="sequenceEqual" />
         <Button
-            android:id="@+id/isEmpty"
+            android:id="@+id/btn_rxoperator_isEmpty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="isEmpty" />
         <Button
-            android:id="@+id/amb"
+            android:id="@+id/btn_rxoperator_amb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="amb" />
@@ -209,17 +209,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/takeUntil"
+            android:id="@+id/btn_rxoperator_takeUntil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="takeUntil" />
         <Button
-            android:id="@+id/takeWhile"
+            android:id="@+id/btn_rxoperator_takeWhile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="takeWhile" />
         <Button
-            android:id="@+id/reduce"
+            android:id="@+id/btn_rxoperator_reduce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="reduce" />
@@ -231,17 +231,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/collect"
+            android:id="@+id/btn_rxoperator_collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="collect" />
         <Button
-            android:id="@+id/toList"
+            android:id="@+id/btn_rxoperator_toList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="toList" />
         <Button
-            android:id="@+id/toSortedList"
+            android:id="@+id/btn_rxoperator_toSortedList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="toSortedList" />
@@ -252,17 +252,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/toMap"
+            android:id="@+id/btn_rxoperator_toMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="toMap" />
         <Button
-            android:id="@+id/map"
+            android:id="@+id/btn_rxoperator_map"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="map" />
         <Button
-            android:id="@+id/scan"
+            android:id="@+id/btn_rxoperator_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="scan" />
@@ -273,17 +273,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/groupBy"
+            android:id="@+id/btn_rxoperator_groupBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="groupBy" />
         <Button
-            android:id="@+id/onErrorResumeNext"
+            android:id="@+id/btn_rxoperator_onErrorResumeNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="onErrorResumeNext" />
         <Button
-            android:id="@+id/onErrorReturn"
+            android:id="@+id/btn_rxoperator_onErrorReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="onErrorReturn" />
@@ -294,12 +294,12 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/retry"
+            android:id="@+id/btn_rxoperator_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="retry" />
         <Button
-            android:id="@+id/retryWhen"
+            android:id="@+id/btn_rxoperator_retryWhen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="retryWhen" />

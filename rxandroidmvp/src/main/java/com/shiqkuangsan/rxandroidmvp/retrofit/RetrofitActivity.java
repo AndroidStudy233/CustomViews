@@ -32,6 +32,7 @@ import rx.schedulers.Schedulers;
  * @version V3.1
  *********************************/
 public class RetrofitActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +48,9 @@ public class RetrofitActivity extends AppCompatActivity {
         return new Retrofit.Builder().baseUrl(baseUrl)
                 //增加返回值为String支持
                 .addConverterFactory(ScalarsConverterFactory.create())
-                        //增加返回值为Gson的支持（返回值是实体类）
+                //增加返回值为Gson的支持（返回值是实体类）
                 .addConverterFactory(GsonConverterFactory.create())
-                        //增加返回值为obserable<T>支持
+                //增加返回值为obserable<T>支持
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
@@ -78,14 +79,14 @@ public class RetrofitActivity extends AppCompatActivity {
                     }
                 });
     }
+
     /**
-     *@desc: rx+reftrofit  返回后在进行 map操作
-     *@author: yzw
-     *@modify: 2017/2/10 11:38
-     *@param: 
-     *@return 
+     * @desc: rx+reftrofit  返回后在进行 map操作
+     * @author: yzw
+     * @modify: 2017/2/10 11:38
+     * @param:
      **/
-    public void rxRetroMap(Retrofit retrofit){
+    public void rxRetroMap(Retrofit retrofit) {
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
         weatherApi.getCityWeather("深圳").map(new Func1<WeatherBean, WeatherBean.DataBean>() {
             @Override
@@ -106,25 +107,26 @@ public class RetrofitActivity extends AppCompatActivity {
                     }
                 });
     }
+
     /**
-     *@desc: rx+reftrofit  返回后在进行 FlatMap操作
-     *@author: yzw
-     *@modify: 2017/2/10 11:38
-     *@param:
-     *@return
+     * @return
+     * @desc: rx+reftrofit  返回后在进行 FlatMap操作
+     * @author: yzw
+     * @modify: 2017/2/10 11:38
+     * @param:
      **/
-    public void rxRetrofitFlatMap(Retrofit retrofit){
+    public void rxRetrofitFlatMap(Retrofit retrofit) {
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
         weatherApi.getCityWeather("深圳")
                 .flatMap(new Func1<WeatherBean, Observable<WeatherBean.DataBean>>() {
-            @Override
-            public Observable<WeatherBean.DataBean> call(WeatherBean weatherBean) {
-                //这里一般返回的数据是个集合时才用flatmap
-                List<WeatherBean.DataBean> list = new ArrayList<WeatherBean.DataBean>();
-                list.add(weatherBean.getData());
-                return Observable.from(list);
-            }
-        }).map(new Func1<WeatherBean.DataBean, String>() {
+                    @Override
+                    public Observable<WeatherBean.DataBean> call(WeatherBean weatherBean) {
+                        //这里一般返回的数据是个集合时才用flatmap
+                        List<WeatherBean.DataBean> list = new ArrayList<WeatherBean.DataBean>();
+                        list.add(weatherBean.getData());
+                        return Observable.from(list);
+                    }
+                }).map(new Func1<WeatherBean.DataBean, String>() {
             @Override
             public String call(WeatherBean.DataBean dataBean) {
                 return dataBean.getCity();
@@ -143,6 +145,7 @@ public class RetrofitActivity extends AppCompatActivity {
                     }
                 });
     }
+
     /**
      * @return
      * @desc: callback方式回调

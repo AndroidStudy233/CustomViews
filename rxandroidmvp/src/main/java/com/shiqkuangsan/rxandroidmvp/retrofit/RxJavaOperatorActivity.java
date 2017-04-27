@@ -10,6 +10,8 @@ import com.shiqkuangsan.rxandroidmvp.R;
 
 import java.util.concurrent.TimeUnit;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.functions.Func2;
@@ -25,63 +27,56 @@ import rx.functions.Func2;
  * @version V3.1
  *********************************/
 public class RxJavaOperatorActivity extends AppCompatActivity {
-    private Button mTimer;
-    private Button mInterval;
-    private Button mRange;
-    private Button mConcat;
-    private Button mStartWith;
-    private Button mZip;
-    
+
+    @BindView(R.id.btn_rxoperator_timer)
+    Button btn_timer;
+    @BindView(R.id.btn_rxoperator_interval)
+    Button btn_interval;
+    @BindView(R.id.btn_rxoperator_range)
+    Button btn_range;
+    @BindView(R.id.btn_rxoperator_concat)
+    Button btn_concat;
+    @BindView(R.id.btn_rxoperator_startWith)
+    Button btn_startWith;
+    @BindView(R.id.btn_rxoperator_zip)
+    Button btn_zip;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjavaoperator);
-        mTimer = (Button) findViewById(R.id.timer);
-        mInterval = (Button) findViewById(R.id.interval);
-        mRange = (Button) findViewById(R.id.range);
-        mConcat = (Button) findViewById(R.id.concat);
-        mStartWith= (Button) findViewById(R.id.startWith);
-        mZip= (Button) findViewById(R.id.zip);
-        bindEvent();
+
     }
 
-    public void bindEvent() {
-        mTimer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @OnClick({R.id.btn_rxoperator_timer, R.id.btn_rxoperator_interval, R.id.btn_rxoperator_range,
+            R.id.btn_rxoperator_concat, R.id.btn_rxoperator_startWith, R.id.btn_rxoperator_zip})
+    public void bindEvent(View view) {
+        switch (view.getId()) {
+            case R.id.btn_rxoperator_timer:
                 timer();
-            }
-        });
-        mInterval.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+
+            case R.id.btn_rxoperator_interval:
                 interval();
-            }
-        });
-        mRange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+
+            case R.id.btn_rxoperator_range:
                 range();
-            }
-        });
-        mConcat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+
+            case R.id.btn_rxoperator_concat:
                 concat();
-            }
-        });
-        mStartWith.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+
+            case R.id.btn_rxoperator_startWith:
                 startWith();
-            }
-        });
-        mZip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                break;
+
+            case R.id.btn_rxoperator_zip:
                 zip();
-            }
-        });
+                break;
+
+        }
     }
 
     /**
@@ -150,12 +145,13 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
             }
         });
     }
+
     /**
-     *@desc: startWith： 在数据序列的开头增加一项数据。startWith的内部也是调用了concat
-     *@author: yzw
-     *@modify: 2017/4/26 16:13
-     *@param: 
-     *@return 
+     * @return
+     * @desc: startWith： 在数据序列的开头增加一项数据。startWith的内部也是调用了concat
+     * @author: yzw
+     * @modify: 2017/4/26 16:13
+     * @param:
      **/
     public void startWith() {
         Observable<Integer> observable = Observable.just(1, 2, 3);
@@ -166,21 +162,22 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
             }
         });
     }
+
     /**
-     *@desc: 使用一个函数组合多个Observable发射的数据集合，然后再发射这个结果。如果多个Observable发射的数据量不一样
+     * @return
+     * @desc: 使用一个函数组合多个Observable发射的数据集合，然后再发射这个结果。如果多个Observable发射的数据量不一样
      * ，则以最少的Observable为标准进行压合。内部通过OperatorZip进行压合。
-     *@author: yzw
-     *@modify: 2017/4/26 16:27
-     *@param: 
-     *@return 
+     * @author: yzw
+     * @modify: 2017/4/26 16:27
+     * @param:
      **/
     public void zip() {
         Observable<Integer> observable = Observable.just(1, 2, 3);
-        Observable<Integer> observable1 = Observable.just(4, 5, 6,7);
+        Observable<Integer> observable1 = Observable.just(4, 5, 6, 7);
         Observable.zip(observable1, observable, new Func2<Integer, Integer, String>() {
             @Override
             public String call(Integer integer, Integer integer2) {
-                return integer+">>"+integer2;
+                return integer + ">>" + integer2;
             }
         }).subscribe(new Action1<String>() {
             @Override
