@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'me.tatarka.retrolambda'  // lambda
+apply plugin: 'android-apt' // Butterknife
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -34,11 +35,17 @@ dependencies {
     })
     compile rootProject.ext.dependencies.testCompile
     compile rootProject.ext.dependencies.appcompatv7
+    // rxjava / rxandroid
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
+
     compile 'com.google.code.gson:gson:2.8.0'
+    // ButterKnife
     compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    // picasso
     compile 'com.squareup.picasso:picasso:2.5.2'
+
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
     //retrofit依赖
     compile 'com.squareup.retrofit2:retrofit:2.1.0'

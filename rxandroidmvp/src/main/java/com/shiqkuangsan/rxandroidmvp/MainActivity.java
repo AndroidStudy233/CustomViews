@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv_main_hello)
     TextView tv_main_hello;
     @BindView(R.id.btn_main_change)
-    Button btn_main_change;
+    public Button btn_main_change;
     @BindView(R.id.btn_main_rxretro)
     Button btn_main_rxretro;
 
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         baseImp();//  这些全都是在同一个线程的观察者 ，本篇概念看完  能了解基本用法，下一遍异步观察~ RxSchedulerActivity
+
         btn_main_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

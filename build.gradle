@@ -11,6 +11,8 @@ buildscript {
         classpath "io.realm:realm-gradle-plugin:2.2.1"
         // retrolambda
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
+        // Butterknife
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 

@@ -6,11 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.shiqkuangsan.rxandroidmvp.MyLogUtil;
 import com.shiqkuangsan.rxandroidmvp.R;
 
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Action1;
@@ -45,7 +47,7 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rxjavaoperator);
-
+        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.btn_rxoperator_timer, R.id.btn_rxoperator_interval, R.id.btn_rxoperator_range,
@@ -174,15 +176,15 @@ public class RxJavaOperatorActivity extends AppCompatActivity {
     public void zip() {
         Observable<Integer> observable = Observable.just(1, 2, 3);
         Observable<Integer> observable1 = Observable.just(4, 5, 6, 7);
-        Observable.zip(observable1, observable, new Func2<Integer, Integer, String>() {
+        Observable.zip(observable, observable1, new Func2<Integer, Integer, String>() {
             @Override
             public String call(Integer integer, Integer integer2) {
-                return integer + ">>" + integer2;
+                return integer + " >> " + integer2;
             }
         }).subscribe(new Action1<String>() {
             @Override
             public void call(String s) {
-                Log.d("JG", s);// 1>>4,2>>5,3>>6
+                MyLogUtil.d("zip: " + s);
             }
         });
     }
