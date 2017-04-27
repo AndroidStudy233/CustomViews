@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".RxSchedulerActivity"/>
         <activity android:name=".retrofit.RetrofitActivity"/>
+        <activity android:name=".retrofit.RxJavaOperatorActivity"/>
     </application>
 
 </manifest>
