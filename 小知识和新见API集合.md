@@ -2099,7 +2099,7 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 * singeTask 单一任务栈，在当前任务栈里面只能有一个实例存在
 	* 当开启activity的时候，就去检查在任务栈里面是否有实例已经存在，如果有实例存在就复用这个已经存在的activity，并且把这个activity上面的所有的别的activity都清空，复用这个已经存在的activity。保证整个任务栈里面只有一个实例存在
 	* 应用场景：浏览器的activity
-	* 如果一个activity的创建需要占用大量的系统资源（cpu，内存）一般配置这个activity为singletask的启动模式。webkit内核 c代码
+	* 如果一个activity的创建需要占用大量的系统资源（cpu，内存）一般配置这个activity为singleTask的启动模式。webkit内核 c代码
 
 * singleInstance启动模式非常特殊， activity会运行在自己的任务栈里面，并且这个任务栈里面只有一个实例存在
 	* 如果你要保证一个activity在整个手机操作系统里面只有一个实例存在，使用singleInstance
