@@ -1,11 +1,13 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.os.SystemClock;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
@@ -15,7 +17,9 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.SimpleRecyclerAdapter;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.ImgAndText;
+import com.shiqkuangsan.mycustomviews.ui.custom.OnRecyclerItemTouchCallBack;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
+import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -56,6 +60,8 @@ public class RecyclerViewActivity extends BaseActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerlayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         toggle.syncState();
         drawerlayout.addDrawerListener(toggle);
+
+        ToastUtil.shortToast(this, "单击双击, 侧滑拖拽");
     }
 
     @Override
@@ -66,6 +72,8 @@ public class RecyclerViewActivity extends BaseActivity {
         // 填充drawer页面数据
         fillDrawerView();
     }
+
+    final long[] hits = new long[2];
 
     private void fillContentView() {
         View view = View.inflate(this, R.layout.layout_recycler_main, null);
@@ -93,11 +101,27 @@ public class RecyclerViewActivity extends BaseActivity {
         adapter = new SimpleRecyclerAdapter(this, new SimpleRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position, ImgAndText bean) {
-                // 注意下面红字说明
-                MyLogUtil.d("position: " + position);
-                adapter.removeItem(position);
+                /*
+                    这里有个要注意的地方就是,在adapter中设置侦听的时候你要是用onBindViewHolder方法中的参数position
+                    那么remove之后会position错乱BUG.这是RecyclerView的一个大坑...要用holder.getAdapterPosition传递
+                 */
+                System.arraycopy(hits, 1, hits, 0, hits.length - 1);
+                hits[hits.length - 1] = SystemClock.uptimeMillis();
+                if (hits[0] >= SystemClock.uptimeMillis() - 500) {
+                    MyLogUtil.d("position: " + position);
+                    adapter.removeItem(position);
+                } else {
+                    ToastUtil.shortToast(RecyclerViewActivity.this, "点击了图片");
+                }
             }
         });
+
+        // 设置拖拽监听, 首先定义一个callback定义拖拽功能, callback中定义listener与adapter传递事件
+        // 然后将callback传给helper, 并由helper绑定recycle
+        ItemTouchHelper.Callback callback = new OnRecyclerItemTouchCallBack(adapter);
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(recycler_main);
+
 //        recycler_main.setAdapter(adapter);
         // 使用第三方库中简单的动画来设置适配器,其对象可以setDuration、setInterpolator,甚至可以继续传入形成装饰者
 //        recycler_main.setAdapter(new ScaleInAnimationAdapter(adapter));
@@ -106,8 +130,6 @@ public class RecyclerViewActivity extends BaseActivity {
         /*
             这里有个非常重要的问题,如果你想使用增删动画,那么在增删操作的时候
             你就不能使用notifyDataSetChanged,不然动画不会执行的,需要使用notifyItemRemoved(posi)、notifyItemInserted(posi)
-            这里有个要注意的地方就是,在adapter中设置侦听的时候你要是用onBindViewHolder方法中的参数position
-            那么remove之后会position错乱BUG.这是RecyclerView的一个大坑
          */
         // 设置条目动画,增删的时候会用到
         SlideInLeftAnimator animator = new SlideInLeftAnimator();

@@ -237,12 +237,14 @@ public class SimplexUtil {
 
     /**
      * 加载网络图片的方法,
-     * @param image 展示的ImageView
-     * @param url 请求链接(本地图片采用"file://sdcard/copy.jpg" / "assets://test.gif"的格式)
-     * @param options 加载参数
+     *
+     * @param image    展示的ImageView
+     * @param url      请求链接(本地图片采用"file://sdcard/copy.jpg" / "assets://test.gif"的格式)
+     * @param options  加载参数
      * @param callback 请求回调,可以直接new SimpleFileCallBack< Drawable >(),泛型是规定必须Drawable
      */
-    public static void loadImage(ImageView image, String url, ImageOptions options,@Nullable Callback.CommonCallback<Drawable> callback) {
+    public static void loadImage(ImageView image, String url, ImageOptions options,
+                                 @Nullable Callback.CommonCallback<Drawable> callback) {
         x.image().bind(image, url, options, callback);
     }
 

@@ -11,9 +11,11 @@ import android.widget.TextView;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.ImgAndText;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
+import com.shiqkuangsan.mycustomviews.ui.custom.OnRecyclerItemTouchCallBack;
 import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ import java.util.List;
  * 泛型ViewHolder也要继承自RecyclerView下的ViewHolder
  */
 
-public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.SimpleRecyclerViewHolder> {
+public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.SimpleRecyclerViewHolder> implements OnRecyclerItemTouchCallBack.OnItemDragListener {
 
     private OnItemClickListener listener;
     private Context context;
@@ -64,6 +66,35 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
             list.add(bean);
         }
+    }
+
+    /**
+     * 拖拽定义的监听. 条目移动时回调
+     *
+     * @param fromPosition 从哪
+     * @param toPosition   到哪
+     * @return 位置是否改变
+     */
+    @Override
+    public boolean onMove(int fromPosition, int toPosition) {
+        // 交换mItems数据的位置
+        Collections.swap(list, fromPosition, toPosition);
+        // 交换RecyclerView列表中item的位置
+        notifyItemMoved(fromPosition, toPosition);
+        return true;
+    }
+
+    /**
+     * 拖拽定义的监听. 条目移动时回调
+     *
+     * @param position 之前位置
+     */
+    @Override
+    public void onSwipe(int position) {
+        // 删除mItems数据
+        list.remove(position);
+        // 删除RecyclerView列表对应item
+        notifyItemRemoved(position);
     }
 
     public interface OnItemClickListener {
@@ -151,4 +182,6 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
             tv_card_text = (TextView) itemView.findViewById(R.id.tv_recycler_cardtext);
         }
     }
+
+
 }
