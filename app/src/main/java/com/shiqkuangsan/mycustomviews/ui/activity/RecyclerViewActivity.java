@@ -121,6 +121,20 @@ public class RecyclerViewActivity extends BaseActivity {
         ItemTouchHelper.Callback callback = new OnRecyclerItemTouchCallBack(adapter);
         ItemTouchHelper helper = new ItemTouchHelper(callback);
         helper.attachToRecyclerView(recycler_main);
+        /*
+            细节注意, 上述方式是通过长按条目来实现拖拽, 比如条目右边有个图标, 希望按住图标实现拖拽呢?
+            adapter的holder中设置图标触摸事件setOnTouchListener. 这就需要在onTouch方法中调用上面helper的
+            onStartDrag方法, 怎么调用呢? adapter定义一个接口OnIconDragHandler. 里边定义
+            onHandleDrag(RecyclerView.ViewHolder viewHolder); 然后通过构造传进来.
+            这样再让当前activity实现接口, 调用helper的onStartDrag方法. 然后new adapter的时候传过去.
+            最后具体一下图标的ouTouch方法
+             如果按下
+                if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN){
+                    回调RecyclerViewActivity中的onHandleDrag方法
+                    让mItemTouchHelper执行拖拽操作
+                    handler.startDrag(holder);
+                }
+         */
 
 //        recycler_main.setAdapter(adapter);
         // 使用第三方库中简单的动画来设置适配器,其对象可以setDuration、setInterpolator,甚至可以继续传入形成装饰者
