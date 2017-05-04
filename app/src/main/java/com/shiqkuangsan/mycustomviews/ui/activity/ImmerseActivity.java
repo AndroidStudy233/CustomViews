@@ -33,7 +33,7 @@ public class ImmerseActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolBar_immerse);
         toolbar.setTitle("沉浸式测试");
-        color = getResources().getColor(R.color.colorPrimary);
+        color = getResources().getColor(R.color.color_orange);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ImmerseActivity extends AppCompatActivity {
      * @param view
      */
     public void statustransparent(View view) {
-        MyStatusBarUtil.setStatusTransparent(this,true);
+        MyStatusBarUtil.setStatusTransparent(this, false);
     }
 
     /**

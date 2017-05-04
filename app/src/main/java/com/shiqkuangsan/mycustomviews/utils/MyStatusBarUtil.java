@@ -20,11 +20,11 @@ import android.view.WindowManager;
  * 5.0处理: 5.0以上由于新特性可以直接通过申请flag来设置状态栏的颜色
  * 4.4.4处理: 4.4.4以上通过申请flag使状态栏半透明,然后设置activity的根部局颜色配合fitsSystemWindows
  * 属性来达到颜色沉浸的效果.
- *
+ * <p>
  * 使用:
  * 1.颜色沉浸,你写完activity布局,指定好根节点的background(一般就是白色)属性,最外层再加一层布局如LinearLayout,
  * 然后再Activity的onCreate()中直接调用setStatusColor(this, color);即可
- *
+ * <p>
  * 2.背景沉浸,activity根布局设置background背景图属性,设置fitsSystemWindows-true,然后再加一层LinearLayout之类的,
  * onCreate()中直接调用setStatusTransparent(this, false);
  * 参考demo中的ColorImmerseActivity / BgImmerseActivity
@@ -104,7 +104,7 @@ public class MyStatusBarUtil {
             // 半透明导航栏
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             ViewGroup rootView = (ViewGroup) activity.getWindow().findViewById(android.R.id.content);
             View childAt = rootView.getChildAt(0);
