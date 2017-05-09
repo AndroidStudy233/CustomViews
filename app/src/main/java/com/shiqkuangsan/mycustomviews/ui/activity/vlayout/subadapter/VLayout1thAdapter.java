@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
@@ -61,10 +63,15 @@ public class VLayout1thAdapter extends DelegateAdapter.Adapter<VLayout1thAdapter
          */
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         int width = wm.getDefaultDisplay().getWidth();
-
-        holder.viewPager.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, (int) (width / 1.7)));
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, (int) (width / 1.7));
+        holder.viewPager.setLayoutParams(params);
         holder.viewPager.setAdapter(new ViewPagerAdapter(context));
+    }
+
+    @Override
+    protected void onBindViewHolderWithOffset(VLayoutViewHolder holder, int position, int offsetTotal) {
+        holder.tv_text.setText(String.valueOf(offsetTotal));
     }
 
     @Override
@@ -85,10 +92,12 @@ public class VLayout1thAdapter extends DelegateAdapter.Adapter<VLayout1thAdapter
     class VLayoutViewHolder extends RecyclerView.ViewHolder {
 
         private final ViewPager viewPager;
+        private final TextView tv_text;
 
         VLayoutViewHolder(View itemView) {
             super(itemView);
             viewPager = (ViewPager) itemView.findViewById(R.id.pager_vlayout1th);
+            tv_text = (TextView) itemView.findViewById(R.id.tv_vlayout_title);
         }
     }
 

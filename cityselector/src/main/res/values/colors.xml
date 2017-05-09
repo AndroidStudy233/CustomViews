@@ -5,7 +5,7 @@
     <color name="shadow">#AAEBEBEB</color>
     <color name="common_bg">#FAFAFA</color>
     <color name="content_bg">#F3F3F3</color>
-    <color name="gray">#8c8c8c</color>
+    <color name="gray_light">#998c8c8c</color>
     <color name="purple_light">#F5D9FB</color>
     <color name="gray_deep">#5c5c5c</color>
     <color name="alpha_gray">#CC646464</color>

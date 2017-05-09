@@ -15,5 +15,5 @@
         android:layout_marginTop="32dp"
         android:text="@string/nothing_found"
         android:textSize="16sp"
-        android:textColor="@color/gray" />
+        android:textColor="@color/gray_light" />
 </LinearLayout>
