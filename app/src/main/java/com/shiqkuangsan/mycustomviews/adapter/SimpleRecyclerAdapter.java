@@ -26,7 +26,8 @@ import java.util.List;
  * 泛型ViewHolder也要继承自RecyclerView下的ViewHolder
  */
 
-public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.SimpleRecyclerViewHolder> implements OnRecyclerItemTouchCallBack.OnItemDragListener {
+public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.SimpleRecyclerViewHolder>
+        implements OnRecyclerItemTouchCallBack.OnItemDragListener {
 
     private OnItemClickListener listener;
     private Context context;
@@ -182,6 +183,5 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
             tv_card_text = (TextView) itemView.findViewById(R.id.tv_recycler_cardtext);
         }
     }
-
 
 }

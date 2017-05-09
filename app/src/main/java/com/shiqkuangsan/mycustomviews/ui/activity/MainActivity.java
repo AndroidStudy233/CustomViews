@@ -257,8 +257,23 @@ public class MainActivity extends BaseActivity {
     public void qqeffects(View view) {
         startActivity(new Intent(this, QQEffectsActivity.class));
     }
+
+    /**
+     * 增删小demo
+     *
+     * @param view
+     */
     public void adddelete(View view) {
         startActivity(new Intent(this, AddDeleteActivity.class));
     }
-    
+
+    /**
+     * VLayout
+     *
+     * @param view
+     */
+    public void vlayout(View view) {
+        startActivity(new Intent(this, VLayoutMainActivity.class));
+    }
+
 }

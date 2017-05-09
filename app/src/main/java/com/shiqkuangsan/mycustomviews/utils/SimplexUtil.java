@@ -176,7 +176,7 @@ public class SimplexUtil {
     /**
      * 下载一个文件的方法,请求如果需要其他参数的话,方法还是需要修改的
      *
-     * @param url      上传url
+     * @param url      下载的url
      * @param filePath 文件的保存路径
      * @param callback 请求回调,简单的可以直接new SimpleFileCallBack< T >(),自己重写需要的方法.泛型一般File
      * @param <T>      返回泛型
@@ -200,37 +200,30 @@ public class SimplexUtil {
 
         @Override
         public void onWaiting() {
-
         }
 
         @Override
         public void onStarted() {
-
         }
 
         @Override
         public void onLoading(long total, long current, boolean isDownloading) {
-
         }
 
         @Override
         public void onSuccess(T result) {
-
         }
 
         @Override
         public void onError(Throwable ex, boolean isOnCallback) {
-
         }
 
         @Override
         public void onCancelled(CancelledException cex) {
-
         }
 
         @Override
         public void onFinished() {
-
         }
     }
 

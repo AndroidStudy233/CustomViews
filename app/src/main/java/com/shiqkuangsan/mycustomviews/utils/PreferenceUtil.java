@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
  * <p>
  * ClassName: PreferenceUtil
  * Author: shiqkuangsan
- * Description: preference工具类,用的是默认的保存路径 包名+"_preferences".
+ * Description: preference工具类,用的是默认的名字 包名+"_preferences".
  */
 public class PreferenceUtil {
 
@@ -72,7 +72,7 @@ public class PreferenceUtil {
         editor.apply();
     }
 
-    public static void clean(Context context) {
+    public static void cleanAll(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();

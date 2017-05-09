@@ -1,5 +1,6 @@
 package com.shiqkuangsan.mycustomviews.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -48,9 +49,12 @@ public class MyStatusBarUtil {
      *
      * @param activity       需要设置的activity
      * @param color          状态栏颜色值
-     * @param statusBarAlpha 状态栏透明度,预留值,可以附加半透明效果
+     * @param statusBarAlpha 状态栏透明度,预留值,可以附加半透明效果(5.0+)
      */
     private static void setColor(Activity activity, int color, int statusBarAlpha) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            return;
+        }
         // 5.0以上的处理
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -58,8 +62,8 @@ public class MyStatusBarUtil {
 //            activity.getWindow().setStatusBarColor(calculateStatusColor(color, statusBarAlpha));
             activity.getWindow().setStatusBarColor(color);
 
-            // 4.4.4的处理. 有的手机拿到的rootView没有孩子  要通过getwindws.getdecorView获取.
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 4.4的处理. 有的手机拿到的rootView没有孩子  要通过getwindws.getdecorView获取.
+        } else {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             ViewGroup rootView = (ViewGroup) activity.getWindow().findViewById(android.R.id.content);
             View childAt = rootView.getChildAt(0);// activity根布局
@@ -97,6 +101,7 @@ public class MyStatusBarUtil {
     /**
      * 使状态栏透明
      */
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     private static void transparentStatusBar(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -104,7 +109,7 @@ public class MyStatusBarUtil {
             // 半透明导航栏
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
-        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+        } else {
             activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             ViewGroup rootView = (ViewGroup) activity.getWindow().findViewById(android.R.id.content);
             View childAt = rootView.getChildAt(0);

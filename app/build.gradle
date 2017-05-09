@@ -68,6 +68,10 @@ dependencies {
 //    compile 'com.github.chrisbanes:PhotoView:1.3.1'
     // 小白点指示器
     compile 'com.romandanylyk:pageindicatorview:0.0.9'
+    // alibaba的vlayout库
+    compile ('com.alibaba.android:vlayout:1.0.5@aar') {
+        transitive = true
+    }
 
     compile project(':cityselector')
 }

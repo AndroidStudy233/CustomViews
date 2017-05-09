@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:shiqkuangsan="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.shiqkuangsan.mycustomviews.ui.custom.AutoRatioLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        shiqkuangsan:ratio="1.7">
+
+        <ImageView
+            android:id="@+id/iv_vlayout1th_cardimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/img800x470_1" />
+    </com.shiqkuangsan.mycustomviews.ui.custom.AutoRatioLayout>
+
+</LinearLayout>
