@@ -27,9 +27,6 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-
-import static android.os.Build.VERSION_CODES.N;
 
 /**
  * Created by shiqkuangsan on 2017/5/9.

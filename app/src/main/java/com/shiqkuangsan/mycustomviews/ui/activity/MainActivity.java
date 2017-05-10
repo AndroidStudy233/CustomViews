@@ -276,4 +276,13 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, VLayoutMainActivity.class));
     }
 
+    /**
+     * Recycler的ItemDecoration用法
+     *
+     * @param view
+     */
+    public void itemdecoration(View view) {
+        startActivity(new Intent(this, RecyclerItemDecorationActivity.class));
+    }
+
 }
