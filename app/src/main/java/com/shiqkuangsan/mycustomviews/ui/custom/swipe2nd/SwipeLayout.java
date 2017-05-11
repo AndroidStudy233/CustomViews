@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.custom.swipe;
+package com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;

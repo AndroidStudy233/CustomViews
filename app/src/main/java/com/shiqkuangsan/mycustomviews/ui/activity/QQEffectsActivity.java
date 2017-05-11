@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.custom.ScaleHeadListView;
-import com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayout;
-import com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayoutManager;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayout;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayoutManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import java.util.ArrayList;

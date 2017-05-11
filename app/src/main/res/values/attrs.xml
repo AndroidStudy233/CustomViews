@@ -21,19 +21,25 @@
 
     <!--滑动返回SwipeLayout的自定义属性-->
     <declare-styleable name="SwipeBackLayout">
-        <attr name="edge_size" format="dimension"/>
+        <attr name="edge_size" format="dimension" />
         <attr name="edge_flag">
             <enum name="left" value="0" />
             <enum name="right" value="1" />
             <enum name="bottom" value="2" />
             <enum name="all" value="3" />
         </attr>
-        <attr name="shadow_left" format="reference"/>
-        <attr name="shadow_right" format="reference"/>
-        <attr name="shadow_bottom" format="reference"/>
+        <attr name="shadow_left" format="reference" />
+        <attr name="shadow_right" format="reference" />
+        <attr name="shadow_bottom" format="reference" />
     </declare-styleable>
     <!--滑动返回SwipeLayout的样式,R.style.SwipeBackLayout-->
-    <attr name="SwipeBackLayoutStyle" format="reference"/>
+    <attr name="SwipeBackLayoutStyle" format="reference" />
 
+    <!--侧滑删除自定义属性-->
+    <declare-styleable name="SwipeMenuView">
+        <attr name="swipeEnable" format="boolean" />
+        <attr name="ios" format="boolean" />
+        <attr name="leftSwipe" format="boolean" />
+    </declare-styleable>
 
 </resources>

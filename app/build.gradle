@@ -72,6 +72,8 @@ dependencies {
     compile ('com.alibaba.android:vlayout:1.0.5@aar') {
         transitive = true
     }
+    // 超级RecyclerView库, 可实现各种效果
+    compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
 
     compile project(':cityselector')
 }

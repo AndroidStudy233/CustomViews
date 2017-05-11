@@ -232,6 +232,13 @@
             android:onClick="itemdecoration"
             android:text="Recycler装饰" />
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="recyclersideslip"
+            android:text="侧滑和粘性头部" />
+
     </LinearLayout>
 
 </LinearLayout>

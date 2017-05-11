@@ -5,7 +5,7 @@
     android:descendantFocusability="blocksDescendants"
     android:layout_height="wrap_content">
 
-    <com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayout
+    <com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayout
         android:id="@+id/custom_swipelayout"
         android:descendantFocusability="blocksDescendants"
         android:layout_width="match_parent"
@@ -15,6 +15,6 @@
 
         <include layout="@layout/item_qq_list_delete" />
 
-    </com.shiqkuangsan.mycustomviews.ui.custom.swipe.SwipeLayout>
+    </com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayout>
 
 </LinearLayout>

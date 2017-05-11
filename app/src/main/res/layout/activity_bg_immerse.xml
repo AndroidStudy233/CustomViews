@@ -23,8 +23,8 @@
         <ListView
             android:id="@+id/lv_bgimmerse_test"
             android:layout_width="match_parent"
-            android:divider="#d1d1d1"
             android:layout_height="wrap_content"
+            android:divider="#d1d1d1"
             android:dividerHeight="1dp" />
 
     </LinearLayout>

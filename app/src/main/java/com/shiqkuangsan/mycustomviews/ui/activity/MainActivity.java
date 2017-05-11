@@ -285,4 +285,13 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, RecyclerItemDecorationActivity.class));
     }
 
+    /**
+     * Recycler的ItemDecoration用法
+     *
+     * @param view
+     */
+    public void recyclersideslip(View view) {
+        startActivity(new Intent(this, RecyclerSideslipSectionActivity.class));
+    }
+
 }

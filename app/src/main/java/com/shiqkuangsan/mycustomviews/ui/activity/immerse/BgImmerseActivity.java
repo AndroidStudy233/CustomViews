@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,6 +48,7 @@ public class BgImmerseActivity extends AppCompatActivity implements SearchView.O
         initToolBar();
 
         MyStatusBarUtil.setStatusTransparent(this, false);
+//        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
 
     List<String> dataList = new ArrayList<>();
