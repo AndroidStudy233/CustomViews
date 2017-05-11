@@ -70,7 +70,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     }
 
     /**
-     * 拖拽定义的监听. 条目移动时回调
+     * 拖拽定义的监听. 条目长按移动时回调
      *
      * @param fromPosition 从哪
      * @param toPosition   到哪
@@ -86,7 +86,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
     }
 
     /**
-     * 拖拽定义的监听. 条目移动时回调
+     * 拖拽定义的监听. 条目滑动移除时回调
      *
      * @param position 之前位置
      */

@@ -35,6 +35,7 @@ import static com.shiqkuangsan.mycustomviews.R.color.swipe_schema_blue;
  * @author shiqkuangsan
  * @summary 学习RecyclerView的界面, 重要是列表item的布局AutoRatioLayout, 实现根据
  * 具体宽度和比例(布局中属性定义)来达到自动计算高度的效果,图片展示使用CardView.
+ * 添加了条目的侧滑移除功能和长按拖拽功能.
  */
 public class RecyclerViewActivity extends BaseActivity {
 
