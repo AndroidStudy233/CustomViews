@@ -37,7 +37,7 @@ public class RecyclerSideslipSectionActivity extends AppCompatActivity {
         recycler_sideslip.setPullRefreshEnabled(true);
         DividerDecoration divider = new DividerDecoration.Builder(this)
                 .setHeight(3.0f)
-                .setPadding(0)
+                .setPadding(0f)
                 .setColor(0xff445566)
                 .build();
         recycler_sideslip.addItemDecoration(divider);
@@ -45,5 +45,6 @@ public class RecyclerSideslipSectionActivity extends AppCompatActivity {
         // item高度不变是时候设置这句可以提高性能
         recycler_sideslip.setHasFixedSize(true);
         recycler_sideslip.setLayoutManager(new LinearLayoutManager(this));
+
     }
 }

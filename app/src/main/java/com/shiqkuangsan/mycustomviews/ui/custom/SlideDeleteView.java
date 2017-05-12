@@ -16,7 +16,7 @@ import android.widget.Scroller;
 /**
  * 演示带左侧滑菜单的界面
  */
-public class SlideMenuView extends ViewGroup {
+public class SlideDeleteView extends ViewGroup {
 
     private View leftMenu;
     private View main;
@@ -24,17 +24,17 @@ public class SlideMenuView extends ViewGroup {
     private float currentX;
     private Scroller scroller;
 
-    public SlideMenuView(Context context) {
+    public SlideDeleteView(Context context) {
         super(context);
         init();
     }
 
-    public SlideMenuView(Context context, AttributeSet attrs) {
+    public SlideDeleteView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SlideMenuView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SlideDeleteView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

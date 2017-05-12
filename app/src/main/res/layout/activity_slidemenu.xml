@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.shiqkuangsan.mycustomviews.ui.custom.SlideMenuView
+    <com.shiqkuangsan.mycustomviews.ui.custom.SlideDeleteView
         android:id="@+id/slidemenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,7 +12,7 @@
         <include layout="@layout/layout_left_menu" />
         <include layout="@layout/layout_main_content" />
 
-    </com.shiqkuangsan.mycustomviews.ui.custom.SlideMenuView>
+    </com.shiqkuangsan.mycustomviews.ui.custom.SlideDeleteView>
 
 
 </LinearLayout>

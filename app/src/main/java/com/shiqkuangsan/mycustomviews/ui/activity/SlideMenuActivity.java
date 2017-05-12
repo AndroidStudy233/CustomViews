@@ -6,14 +6,14 @@ import android.widget.ImageButton;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
-import com.shiqkuangsan.mycustomviews.ui.custom.SlideMenuView;
+import com.shiqkuangsan.mycustomviews.ui.custom.SlideDeleteView;
 
 /**
  * Created by shiqkuangsan on 2016/5/6.
  */
 public class SlideMenuActivity extends BaseActivity {
 
-    private SlideMenuView slidemenu;
+    private SlideDeleteView slidemenu;
     private ImageButton ib_back;
     private Button btn_back;
 
@@ -21,7 +21,7 @@ public class SlideMenuActivity extends BaseActivity {
     public void initView() {
         setContentView(R.layout.activity_slidemenu);
 
-        slidemenu = (SlideMenuView) findViewById(R.id.slidemenu);
+        slidemenu = (SlideDeleteView) findViewById(R.id.slidemenu);
         ib_back = (ImageButton) findViewById(R.id.ib_back);
         btn_back = (Button) findViewById(R.id.btn_back);
     }
@@ -40,7 +40,7 @@ public class SlideMenuActivity extends BaseActivity {
                 break;
 
             case R.id.btn_back:
-                if (slidemenu.getCurrent_Mode() == SlideMenuView.IN_MENU_MODE)
+                if (slidemenu.getCurrent_Mode() == SlideDeleteView.IN_MENU_MODE)
                     slidemenu.changeState();
                 break;
 
