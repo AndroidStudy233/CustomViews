@@ -145,7 +145,7 @@
             android:label="条目装饰分割线" />
         <activity
             android:name=".ui.activity.RecyclerSideslipSectionActivity"
-            android:label="粘性头部+侧滑" />
+            android:label="粘性头部 + 侧滑" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

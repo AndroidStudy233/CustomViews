@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd;
+package com.shiqkuangsan.mycustomviews.ui.custom.swipe2;
 
 /**
  * Created by shiqkuangsan on 2017/1/18.

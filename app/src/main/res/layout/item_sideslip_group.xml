@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_sideslip_group_title"
+        android:id="@+id/tv_sideslip_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#775599"

@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.custom.swipe1st;
+package com.shiqkuangsan.mycustomviews.ui.custom.swipe1;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

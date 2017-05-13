@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.custom.ScaleHeadListView;
-import com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayout;
-import com.shiqkuangsan.mycustomviews.ui.custom.swipe2nd.SwipeLayoutManager;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipe2.SwipeLayout;
+import com.shiqkuangsan.mycustomviews.ui.custom.swipe2.SwipeLayoutManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class QQEffectsActivity extends AppCompatActivity implements View.OnClick
         public void handleMessage(Message msg) {
             lv_main.onRefreshCompleted();
             dataList.add("我是条目" + dataList.size());
-            ToastUtil.shortToast(QQEffectsActivity.this, "刷新成功");
+            ToastUtil.toastShort(QQEffectsActivity.this, "刷新成功");
             adapter.notifyDataSetChanged();
         }
     };

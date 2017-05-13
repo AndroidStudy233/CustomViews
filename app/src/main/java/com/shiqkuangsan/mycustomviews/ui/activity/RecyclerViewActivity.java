@@ -62,7 +62,7 @@ public class RecyclerViewActivity extends BaseActivity {
         toggle.syncState();
         drawerlayout.addDrawerListener(toggle);
 
-        ToastUtil.shortToast(this, "单击双击, 侧滑拖拽");
+        ToastUtil.toastShort(this, "单击双击, 侧滑拖拽");
     }
 
     @Override
@@ -112,7 +112,7 @@ public class RecyclerViewActivity extends BaseActivity {
                     MyLogUtil.d("position: " + position);
                     adapter.removeItem(position);
                 } else {
-                    ToastUtil.shortToast(RecyclerViewActivity.this, "点击了图片");
+                    ToastUtil.toastShort(RecyclerViewActivity.this, "点击了图片");
                 }
             }
         });

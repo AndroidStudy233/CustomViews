@@ -20,7 +20,7 @@ public class ToastUtil {
      * @param context 上下文
      * @param message 内容
      */
-    public static void shortToast(Context context, String message) {
+    public static void toastShort(Context context, String message) {
         if (toast == null) {
             toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
         } else {
@@ -35,7 +35,7 @@ public class ToastUtil {
      * @param context    上下文
      * @param resourceId 字符串id
      */
-    public static void shortToast(Context context, int resourceId) {
+    public static void toastShort(Context context, int resourceId) {
         if (toast == null) {
             toast = Toast.makeText(context, resourceId, Toast.LENGTH_SHORT);
         } else {
@@ -50,7 +50,7 @@ public class ToastUtil {
      * @param context 上下文
      * @param message 内容
      */
-    public static void longToast(Context context, String message) {
+    public static void toastLong(Context context, String message) {
         if (toast == null) {
             toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         } else {
@@ -65,7 +65,7 @@ public class ToastUtil {
      * @param context    上下文
      * @param resourceId 字符串id
      */
-    public static void longToast(Context context, int resourceId) {
+    public static void toastLong(Context context, int resourceId) {
         if (toast == null) {
             toast = Toast.makeText(context, resourceId, Toast.LENGTH_LONG);
         } else {

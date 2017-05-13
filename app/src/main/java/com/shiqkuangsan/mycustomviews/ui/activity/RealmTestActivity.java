@@ -69,7 +69,7 @@ public class RealmTestActivity extends AppCompatActivity {
                 String hospital = et_hospital.getText().toString().trim();
                 String skill = et_skill.getText().toString().trim();
                 if (!isAllInputValid(name, age, hospital, skill)) {
-                    ToastUtil.shortToast(this, "以上信息有格式不对,请核对");
+                    ToastUtil.toastShort(this, "以上信息有格式不对,请核对");
                     return;
                 }
                 final Doctor doctor = new Doctor(name, age, hospital, skill);
@@ -78,7 +78,7 @@ public class RealmTestActivity extends AppCompatActivity {
                     public void execute(Realm realm) {
                         realm.copyToRealmOrUpdate(doctor);
                         refreshUI();
-                        ToastUtil.shortToast(RealmTestActivity.this, "插入成功");
+                        ToastUtil.toastShort(RealmTestActivity.this, "插入成功");
                         InputMethodUtil.closeSoftKeyboard(RealmTestActivity.this);
                     }
                 });
@@ -100,11 +100,11 @@ public class RealmTestActivity extends AppCompatActivity {
                                 tv_result.setText("查询结果: " + "\t" + "Doctor: " + doc.getName());
                                 InputMethodUtil.closeSoftKeyboard(RealmTestActivity.this);
                             } else
-                                ToastUtil.shortToast(RealmTestActivity.this, "尚未存储");
+                                ToastUtil.toastShort(RealmTestActivity.this, "尚未存储");
                         }
                     });
                 else
-                    ToastUtil.shortToast(RealmTestActivity.this, "无效的名称");
+                    ToastUtil.toastShort(RealmTestActivity.this, "无效的名称");
                 break;
 
             case R.id.btn_realm_queryAll:
@@ -118,7 +118,7 @@ public class RealmTestActivity extends AppCompatActivity {
                     tv_result.setText(text);
                     InputMethodUtil.closeSoftKeyboard(RealmTestActivity.this);
                 } else
-                    ToastUtil.shortToast(RealmTestActivity.this, "尚无数据");
+                    ToastUtil.toastShort(RealmTestActivity.this, "尚无数据");
                 break;
 
             case R.id.btn_realm_delete:
@@ -129,18 +129,18 @@ public class RealmTestActivity extends AppCompatActivity {
                         public void execute(Realm realm) {
                             Doctor doc = realm.where(Doctor.class).equalTo("name", name3).findFirst();
                             if (StringUtil.isEmpty(doc.getName()))
-                                ToastUtil.shortToast(RealmTestActivity.this, "尚未存储");
+                                ToastUtil.toastShort(RealmTestActivity.this, "尚未存储");
                             else {
                                 doc.deleteFromRealm();
                                 refreshUI();
-                                ToastUtil.shortToast(RealmTestActivity.this, "删除成功");
+                                ToastUtil.toastShort(RealmTestActivity.this, "删除成功");
                                 InputMethodUtil.closeSoftKeyboard(RealmTestActivity.this);
                             }
 
                         }
                     });
                 else
-                    ToastUtil.shortToast(RealmTestActivity.this, "无效的名称");
+                    ToastUtil.toastShort(RealmTestActivity.this, "无效的名称");
                 break;
 
         }
