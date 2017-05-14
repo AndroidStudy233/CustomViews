@@ -831,6 +831,13 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 		
 ---
 
+## 使用本地的gradle-3.3-all.zip
+
+替换项目中 android/gradle/wrapper/gradle-wrapper.properties 的 distributionUrl ，
+即  distributionUrl=file\:///D:/gradle/gradle-2.14.1-all.zip 
+
+---
+
 ### 打开已有的数据库 
 
 		SQLiteDatabase.openDatabase()
