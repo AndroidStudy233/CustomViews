@@ -9,12 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.Province;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.db.SimpleDbHelper;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.SimplexUtil.SimpleRequestParams;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -24,9 +26,11 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.alibaba.fastjson.JSON.toJSON;
 import static com.shiqkuangsan.mycustomviews.R.id.btn_xutils_db;
 
 /**
@@ -223,6 +227,34 @@ public class XUtilsActivity extends AppCompatActivity {
                         super.onError(ex, isOnCallback);
                     }
                 });
+    }
+
+    /**
+     * 演示
+     * 如果一个接口需要传一个对象或者一个数组. 就得把它转成json数据, 然后用setBodyContent
+     */
+    private void sendGetUseArr() {
+        SimpleRequestParams params = new SimpleRequestParams.Builder(Constant.mlnx_province_url).build();
+        params.setAsJsonContent(true);
+        String jsonString = JSON.toJSONString(new Province());
+        String jString1 = JSON.toJSONString(new ArrayList<Province>());
+        String jString2 = JSON.toJSONString(new String[]{"233"});
+
+        params.setBodyContent(jsonString);
+        SimplexUtil.sendGet(params, new SimplexUtil.SimpleRequstCallBack<List<Province>>() {
+            @Override
+            public void onSuccess(List<Province> result) {
+                if (!isDbInited)
+                    list = result;
+                if (result != null && result.size() > 0)
+                    showToast(result.get(new Random().nextInt(result.size() - 1)).toString());
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                super.onError(ex, isOnCallback);
+            }
+        });
     }
 
     /**

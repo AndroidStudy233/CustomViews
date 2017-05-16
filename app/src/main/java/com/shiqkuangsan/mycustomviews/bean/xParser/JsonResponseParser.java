@@ -26,7 +26,7 @@ public class JsonResponseParser implements ResponseParser {
      * @param resultClass 返回值类型
      * @param result      字符串json数据
      * @return 根据定义的泛型返回响应的数据
-     * @throws Throwable
+     * @throws Throwable 异常
      */
     @Override
     public Object parse(Type resultType, Class<?> resultClass, String result) throws Throwable {

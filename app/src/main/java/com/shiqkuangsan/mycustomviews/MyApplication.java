@@ -20,8 +20,6 @@ import com.shiqkuangsan.mycustomviews.db.RealmManager;
 import org.xutils.x;
 
 import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
 
 import io.realm.Realm;
 
