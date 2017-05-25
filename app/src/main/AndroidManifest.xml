@@ -147,6 +147,9 @@
             android:name=".ui.activity.RecyclerSideslipSectionActivity"
             android:label="粘性头部 + 侧滑" />
 
+        <activity
+            android:name=".ui.activity.CustomChatActivity"
+            android:label="自定义图表" />
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
         <meta-data

@@ -231,6 +231,12 @@
             android:layout_weight="1"
             android:onClick="itemdecoration"
             android:text="Recycler装饰" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:onClick="customchat"
+            android:text="自定义图表" />
 
         <Button
             android:layout_width="0dp"

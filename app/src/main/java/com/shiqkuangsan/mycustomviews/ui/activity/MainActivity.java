@@ -294,4 +294,8 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, RecyclerSideslipSectionActivity.class));
     }
 
+    public void customchat(View view) {
+        startActivity(new Intent(this, CustomChatActivity.class));
+    }
+    
 }
