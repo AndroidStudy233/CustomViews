@@ -297,5 +297,7 @@ public class MainActivity extends BaseActivity {
     public void customchat(View view) {
         startActivity(new Intent(this, CustomChatActivity.class));
     }
-    
+    public void indicator(View view) {
+        startActivity(new Intent(this, IndicatorActivity.class));
+    }
 }

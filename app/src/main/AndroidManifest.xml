@@ -150,6 +150,9 @@
         <activity
             android:name=".ui.activity.CustomChatActivity"
             android:label="自定义图表" />
+        <activity
+            android:name=".ui.activity.IndicatorActivity"
+            android:label="引导页" />
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
         <meta-data
