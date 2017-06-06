@@ -243,7 +243,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:onClick="recyclersideslip"
-            android:text="侧滑和粘性头部" />
+            android:text="侧滑粘性头部" />
 
     </LinearLayout>
 

@@ -18,8 +18,10 @@ import rx.Observable;
  * @version V3.1
  *********************************/
 public interface WeatherApi {
+
     @GET("/weather_mini")
     Observable<WeatherBean> getCityWeather(@Query("city") String city);
+
     @GET("/weather_mini")
     Call<WeatherBean> getCityWeatherCall(@Query("city") String city);
 }
