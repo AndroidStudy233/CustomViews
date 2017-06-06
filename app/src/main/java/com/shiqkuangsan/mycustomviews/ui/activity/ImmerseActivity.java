@@ -51,7 +51,7 @@ public class ImmerseActivity extends AppCompatActivity {
      * @param view
      */
     public void statustransparent(View view) {
-        MyStatusBarUtil.setStatusTransparent(this, false);
+        MyStatusBarUtil.setStatusTransparent(this, true);
     }
 
     /**
