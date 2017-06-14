@@ -300,4 +300,14 @@ public class MainActivity extends BaseActivity {
     public void indicator(View view) {
         startActivity(new Intent(this, IndicatorActivity.class));
     }
+
+    /**
+     * 弹出多个按钮的菜单
+     *
+     * @param view
+     */
+    public void boommenu(View view) {
+        startActivity(new Intent(this, BoomMenuActivity.class));
+    }
+
 }

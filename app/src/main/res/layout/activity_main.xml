@@ -1,267 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context=".ui.activity.MainActivity">
 
     <LinearLayout
-        android:id="@+id/ll_menu1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="switchpicture"
-            android:text="轮播图" />
+        <LinearLayout
+            android:id="@+id/ll_menu1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="myonoff"
-            android:text="开关" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="switchpicture"
+                android:text="轮播图" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="droprefresh"
-            android:text="下拉刷新" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="myonoff"
+                android:text="开关" />
 
-    </LinearLayout>
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="droprefresh"
+                android:text="下拉刷新" />
 
-    <LinearLayout
-        android:id="@+id/ll_menu2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="slidemenu"
-            android:text="侧滑菜单" />
+        <LinearLayout
+            android:id="@+id/ll_menu2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="ptrtest"
-            android:text="Ptr测试" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="slidemenu"
+                android:text="侧滑菜单" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="picchoser"
-            android:text="图片选择" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="ptrtest"
+                android:text="Ptr测试" />
 
-    </LinearLayout>
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="picchoser"
+                android:text="图片选择" />
 
-    <LinearLayout
-        android:id="@+id/ll_menu3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="piclooker"
-            android:text="图片查看" />
+        <LinearLayout
+            android:id="@+id/ll_menu3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="xutils"
-            android:text="xUtils测试" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="piclooker"
+                android:text="图片查看" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="coordinator"
-            android:text="coordinator" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="xutils"
+                android:text="xUtils测试" />
 
-    </LinearLayout>
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="coordinator"
+                android:text="Coordinator" />
 
-    <LinearLayout
-        android:id="@+id/ll_menu4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="recycler"
-            android:text="recycler" />
+        <LinearLayout
+            android:id="@+id/ll_menu4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="immerse"
-            android:text="沉浸式" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="recycler"
+                android:text="Recycler" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="citypicker"
-            android:text="城市选择" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="immerse"
+                android:text="沉浸式" />
 
-    </LinearLayout>
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="citypicker"
+                android:text="城市选择" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="swipeback"
-            android:text="滑动返回上页" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ll_menu1"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="mdsettings"
-            android:text="MD风格设置页" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="swipeback"
+                android:text="滑动返回上页" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="api21"
-            android:text="5.0以上效果" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="mdsettings"
+                android:text="MD风格设置页" />
 
-    </LinearLayout>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:onClick="api21"
+                android:text="5.0以上效果" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="bottomSheet"
-            android:text="底部菜单" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="realmtest"
-            android:text="realm测试" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="bottomSheet"
+                android:text="底部菜单" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="qqeffects"
-            android:text="qq简单特效" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="realmtest"
+                android:text="realm测试" />
 
-    </LinearLayout>
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="qqeffects"
+                android:text="qq简单特效" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="constraint"
-            android:text="Constraint" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="adddelete"
-            android:text="动态添加删除" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="constraint"
+                android:text="Constraint" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="vlayout"
-            android:text="VLayout学习" />
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="adddelete"
+                android:text="动态添加删除" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="vlayout"
+                android:text="VLayout学习" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="itemdecoration"
-            android:text="Recycler装饰" />
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="customchat"
-            android:text="自定义图表" />
+        </LinearLayout>
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="recyclersideslip"
-            android:text="侧滑粘性头部" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="itemdecoration"
+                android:text="Recycler装饰" />
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="customchat"
+                android:text="自定义图表" />
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="recyclersideslip"
+                android:text="侧滑粘性头部" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="indicator"
+                android:text="indicator引导页" />
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="boommenu"
+                android:text="BoomMenu" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_menu1"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:onClick="indicator"
-            android:text="indicator引导页" />
-
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

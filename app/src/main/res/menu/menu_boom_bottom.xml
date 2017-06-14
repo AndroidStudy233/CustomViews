@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_movie"
+        android:icon="@drawable/icon_movie"
+        android:title="Movies" />
+    <item
+        android:id="@+id/menu_music"
+        android:icon="@drawable/icon_music"
+        android:title="Music" />
+    <item
+        android:id="@+id/menu_picture"
+        android:icon="@drawable/icon_picture"
+        android:title="Picture" />
+    <item
+        android:id="@+id/menu_book"
+        android:icon="@drawable/icon_book"
+        android:title="Books" />
+    <item
+        android:id="@+id/menu_newspaper"
+        android:icon="@drawable/icon_newspaper"
+        android:title="Newpaper" />
+</menu>

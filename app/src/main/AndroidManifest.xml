@@ -146,7 +146,6 @@
         <activity
             android:name=".ui.activity.RecyclerSideslipSectionActivity"
             android:label="粘性头部 + 侧滑" />
-
         <activity
             android:name=".ui.activity.CustomChatActivity"
             android:label="自定义图表" />
@@ -155,10 +154,12 @@
             android:label="引导页" />
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
+
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="f43853597dc1380b67ea401072fd44e5" />
 
+        <activity android:name=".ui.activity.BoomMenuActivity"></activity>
     </application>
 
 </manifest>
