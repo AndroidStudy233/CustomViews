@@ -51,7 +51,7 @@ public class RecyclerSideslipSectionActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        // 不使用下拉刷新. 会有个小bug
+        // 不使用本身下拉刷新. 会有个小bug, 下拉刷新用的ptr包裹
         recycler_sideslip.setPullRefreshEnabled(false);
 
         DividerDecoration divider = new DividerDecoration.Builder(this)

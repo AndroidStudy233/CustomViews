@@ -38,7 +38,7 @@ public class RecyclerItemDecorationActivity extends AppCompatActivity {
         NormalRecyclerAdapter adapter = new NormalRecyclerAdapter(this);
         recycler_main.setAdapter(adapter);
         // 给条目加上分割线
-        NormalLineDecoration.enableDrawOver = false; // 是否观看DrawOver效果
+        NormalLineDecoration.enableDrawOver = false; // 是否观看DrawOver方法的效果
         NormalLineDecoration lineDecoration = new NormalLineDecoration(this, LinearLayoutManager.VERTICAL, 3, 0xffE4E1E9);
         recycler_main.addItemDecoration(lineDecoration);
     }
