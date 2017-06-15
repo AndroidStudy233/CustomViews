@@ -75,6 +75,8 @@ dependencies {
     }
     // 超级RecyclerView库, 可实现各种效果
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    // BoomMenu
+    compile 'com.nightonke:boommenu:2.1.0'
 
     compile project(':cityselector')
 }
