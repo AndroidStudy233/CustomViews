@@ -14,7 +14,7 @@
             android:id="@+id/iv_headView"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/pig" />
+            android:src="@drawable/pig_dazhu" />
 
         <TextView
             android:id="@+id/tv_user"

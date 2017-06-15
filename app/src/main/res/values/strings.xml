@@ -38,7 +38,7 @@
 
     </string>
 
-    <string name="json_city_china">[{"id":29,"name":"上海市"},{"id":9,"name":"云南省"},{"id":7,"name":
+    <string name="json_province_china">[{"id":29,"name":"上海市"},{"id":9,"name":"云南省"},{"id":7,"name":
         "内蒙古"},{"id":30,"name":"北京市"},{"id":16,"name":"吉林省"},{"id":13,"name":"四川省"},
         {"id":19,"name":"天津市"},{"id":33,"name":"宁夏"},{"id":25,"name":"安徽省"},{"id":22,"name":"山东省"},
         {"id":35,"name":"山西省"},{"id":28,"name":"广东省"},{"id":34,"name":"广西市"},
@@ -78,4 +78,20 @@
         与艾玛沃特森仅看过几场电影。曾经暗恋过扮演哈利波特中德拉科·马尔福的汤姆·费尔顿。前男友及绯闻男友：
         Tom Ducker、Johnny Borrell、Francis Boulle、Jay Barrymore、拉斐尔·西布莱恩、Johnny Simmons，
         现任男友是威尔·亚当沃茨。[23] </string>
+
+    <string name="text_inside_circle_button_text_normal">Text Inside Circle Button(Normal)</string>
+    <string name="text_inside_circle_button_text_highlighted">Text Inside Circle Button(Highlighted)</string>
+    <string name="text_inside_circle_button_text_unable">Text Inside Circle Button(Unable)</string>
+
+    <string name="text_outside_circle_button_text_normal">Text Outside Circle Button(Normal)</string>
+    <string name="text_outside_circle_button_text_highlighted">Text Outside Circle Button(Highlighted)</string>
+    <string name="text_outside_circle_button_text_unable">Text Outside Circle Button(Unable)</string>
+
+    <string name="text_ham_button_text_normal">Ham Button Text(Normal)</string>
+    <string name="text_ham_button_text_highlighted">Ham Button Text(Highlighted)</string>
+    <string name="text_ham_button_text_unable">Ham Button Text(Unable)</string>
+    <string name="text_ham_button_sub_text_normal">Ham Button Sub Text(Normal)</string>
+    <string name="text_ham_button_sub_text_highlighted">Ham Button Sub Text(Highlighted)</string>
+    <string name="text_ham_button_sub_text_unable">Ham Button Sub Text(Unable)</string>
+
 </resources>
