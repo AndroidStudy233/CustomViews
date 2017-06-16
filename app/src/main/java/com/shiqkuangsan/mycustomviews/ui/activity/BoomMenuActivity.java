@@ -1,21 +1,25 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.TextOutsideCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.ButtonEnum;
+import com.nightonke.boommenu.Piece.PiecePlaceEnum;
+import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 /**
  * Created by shiqkuangsan on 2017/6/14.
@@ -28,8 +32,8 @@ public class BoomMenuActivity extends AppCompatActivity {
 
     @ViewInject(R.id.navigation_menu)
     BottomNavigationView navigationView;
-    @ViewInject(R.id.floating_boommenu)
-    FloatingActionButton floating_boommenu;
+    @ViewInject(R.id.bmb_boom)
+    BoomMenuButton bmb_boom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +41,35 @@ public class BoomMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_boom_menu);
         x.view().inject(this);
 
-        init();
+        initNavigation();
+        initBoomButton();
     }
 
-    private void init() {
+    private void initBoomButton() {
+        bmb_boom.setCancelable(false);
+        bmb_boom.setButtonEnum(ButtonEnum.TextOutsideCircle);
+        bmb_boom.setPiecePlaceEnum(PiecePlaceEnum.DOT_6_1);
+        bmb_boom.setButtonPlaceEnum(ButtonPlaceEnum.SC_6_1);
+        for (int i = 0; i < bmb_boom.getPiecePlaceEnum().pieceNumber() - 1; i++) {
+            bmb_boom.addBuilder(BuilderManager.getTextOutsideCircleButtonBuilder());
+        }
+        bmb_boom.addBuilder(new TextOutsideCircleButton.Builder()
+                .normalImageRes(R.drawable.bat)
+                .normalText("点我啊")
+                .listener(new OnBMClickListener() {
+                    @Override
+                    public void onBoomButtonClick(int index) {
+                        MyApplication.getHandler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startActivity(new Intent(BoomMenuActivity.this, BoomMenu2ndActivity.class));
+                            }
+                        }, 800);
+                    }
+                }));
+    }
+
+    private void initNavigation() {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -70,12 +99,5 @@ public class BoomMenuActivity extends AppCompatActivity {
             }
         });
         navigationView.setSelectedItemId(R.id.menu_picture);
-
-        floating_boommenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtil.toastShort(BoomMenuActivity.this, "Floating");
-            }
-        });
     }
 }

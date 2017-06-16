@@ -152,14 +152,20 @@
         <activity
             android:name=".ui.activity.IndicatorActivity"
             android:label="引导页" />
+        <activity
+            android:name=".ui.activity.BoomMenuActivity"
+            android:label="BoomMenu界面1" />
+        <activity
+            android:name=".ui.activity.BoomMenu2ndActivity"
+            android:label="BoomMenu界面2" />
+
+
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="f43853597dc1380b67ea401072fd44e5" />
-
-        <activity android:name=".ui.activity.BoomMenuActivity"></activity>
     </application>
 
 </manifest>

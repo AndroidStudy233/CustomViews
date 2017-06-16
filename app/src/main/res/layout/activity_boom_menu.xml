@@ -17,15 +17,14 @@
         app:itemTextColor="@color/white"
         app:menu="@menu/menu_boom_bottom" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floating_boommenu"
+
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb_boom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="80dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/select_floating_button"
-        app:srcCompat="@drawable/icon_edit" />
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="10dp" />
 
 </RelativeLayout>
