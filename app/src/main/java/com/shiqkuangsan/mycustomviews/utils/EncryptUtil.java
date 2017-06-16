@@ -21,7 +21,7 @@ public class EncryptUtil {
      * @param str 字符串
      * @return 加密后的字符串
      */
-    public static String md5Encryption(@NonNull String str) {
+    public static String md5Encrypt(@NonNull String str) {
         return encrypt(str, "MD5");
     }
 
@@ -31,7 +31,7 @@ public class EncryptUtil {
      * @param str 字符串
      * @return 加密后的字符串
      */
-    public static String sha_1Encryption(@NonNull String str) {
+    public static String sha_1Encrypt(@NonNull String str) {
         return encrypt(str, "SHA-1");
     }
 
@@ -41,7 +41,7 @@ public class EncryptUtil {
      * @param str 字符串
      * @return 加密后的字符串
      */
-    public static String sha_256Encryption(@NonNull String str) {
+    public static String sha_256Encrypt(@NonNull String str) {
         return encrypt(str, "SHA-256");
     }
 
@@ -51,12 +51,12 @@ public class EncryptUtil {
      * @param str 字符串
      * @return 加密后的字符串
      */
-    public static String base64Encryption(@NonNull String str) {
+    public static String base64Encrypt(@NonNull String str) {
         return Arrays.toString(Base64.encode(str.getBytes(), Base64.DEFAULT));
     }
 
     /**
-     * 对字符串进行Base64加密
+     * 对字符串进行Base64解密
      *
      * @param str 字符串
      * @return 解密后的字符串

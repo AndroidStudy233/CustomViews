@@ -13,7 +13,6 @@ import android.preference.PreferenceManager;
  */
 public class PreferenceUtil {
 
-
     public static void writeInt(Context context, String k, int v) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();

@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -245,6 +246,7 @@ public class DateUtil {
 
     /**
      * 把时间的毫秒值转化成日期String
+     *
      * @param time 当前的时间
      * @return 当前的天 yyyy-MM-dd
      */
@@ -257,12 +259,13 @@ public class DateUtil {
 
     /**
      * 把时间的毫秒值转化成日期String
+     *
      * @param time 时间
      * @return 返回到毫秒 yyyy-MM-dd HH-mm-ss-SSS
      */
     public static String formatToSSecond(long time) {
 
-        return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss-SSS",Locale.getDefault()).format(time);
+        return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss-SSS", Locale.getDefault()).format(time);
 
     }
 
@@ -307,7 +310,7 @@ public class DateUtil {
      * @return 获取距现在某一小时的时刻
      */
     public static String getNextHour(String format, int h) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format,Locale.getDefault());
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
         Date date = new Date();
         date.setTime(date.getTime() + h * 60 * 60 * 1000);
         return sdf.format(date);
@@ -321,7 +324,7 @@ public class DateUtil {
      * @return 获取时间戳
      */
     public static String getTimeString() {
-        SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL,Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL, Locale.getDefault());
         Calendar calendar = Calendar.getInstance();
         return df.format(calendar.getTime());
 
@@ -454,7 +457,7 @@ public class DateUtil {
      * @return 提取字符串日期
      */
     public static Date parse(String strDate, String pattern) {
-        SimpleDateFormat df = new SimpleDateFormat(pattern,Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat(pattern, Locale.getDefault());
         try {
             return df.parse(strDate);
         } catch (ParseException e) {
@@ -479,5 +482,96 @@ public class DateUtil {
         long t1 = c.getTime().getTime();
         return (int) (t / 1000 - t1 / 1000) / 3600 / 24;
 
+    }
+
+    /**
+     * 以朋友圈时间格式时间(刚刚/xx分钟前/xx小时前/凌晨...)
+     *
+     * @param date 日期字符串
+     * @return 格式化后的日期
+     */
+    public static String formatDateTime(Date date) {
+        String text;
+        long dateTime = date.getTime();
+        if (isSameDay(dateTime)) {
+            Calendar calendar = GregorianCalendar.getInstance();
+            if (inOneMinute(dateTime, calendar.getTimeInMillis())) {
+                return "刚刚";
+            } else if (inOneHour(dateTime, calendar.getTimeInMillis())) {
+                return String.format(Locale.getDefault(), "%d分钟之前", Math.abs(dateTime - calendar.getTimeInMillis()) / 60000);
+            } else {
+                calendar.setTime(date);
+                int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY);
+                if (hourOfDay > 17) {
+                    text = "晚上 hh:mm:ss";
+                } else if (hourOfDay >= 0 && hourOfDay <= 6) {
+                    text = "凌晨 hh:mm:ss";
+                } else if (hourOfDay > 11 && hourOfDay <= 17) {
+                    text = "下午 hh:mm:ss";
+                } else {
+                    text = "上午 hh:mm:ss";
+                }
+            }
+        } else if (isYesterday(dateTime)) {
+            text = "昨天 HH:mm:ss";
+        } else if (isSameYear(dateTime)) {
+            text = "M月d日 HH:mm:ss";
+        } else {
+            text = "yyyy-M-d HH:mm:ss";
+        }
+
+        // 注意，如果使用android.text.format.DateFormat这个工具类，在API 17之前它只支持adEhkMmszy
+        return new SimpleDateFormat(text, Locale.CHINA).format(date);
+    }
+
+    private static boolean inOneMinute(long time1, long time2) {
+        return Math.abs(time1 - time2) < 60000;
+    }
+
+    private static boolean inOneHour(long time1, long time2) {
+        return Math.abs(time1 - time2) < 3600000;
+    }
+
+    private static boolean isSameDay(long time) {
+        long startTime = floorDay(Calendar.getInstance()).getTimeInMillis();
+        long endTime = ceilDay(Calendar.getInstance()).getTimeInMillis();
+        return time > startTime && time < endTime;
+    }
+
+    private static boolean isYesterday(long time) {
+        Calendar startCal;
+        startCal = floorDay(Calendar.getInstance());
+        startCal.add(Calendar.DAY_OF_MONTH, -1);
+        long startTime = startCal.getTimeInMillis();
+
+        Calendar endCal;
+        endCal = ceilDay(Calendar.getInstance());
+        endCal.add(Calendar.DAY_OF_MONTH, -1);
+        long endTime = endCal.getTimeInMillis();
+        return time > startTime && time < endTime;
+    }
+
+    private static boolean isSameYear(long time) {
+        Calendar startCal;
+        startCal = floorDay(Calendar.getInstance());
+        startCal.set(Calendar.MONTH, Calendar.JANUARY);
+        startCal.set(Calendar.DAY_OF_MONTH, 1);
+        return time >= startCal.getTimeInMillis();
+    }
+
+    private static Calendar floorDay(Calendar startCal) {
+        startCal.set(Calendar.HOUR_OF_DAY, 0);
+        startCal.set(Calendar.MINUTE, 0);
+        startCal.set(Calendar.SECOND, 0);
+        startCal.set(Calendar.MILLISECOND, 0);
+        return startCal;
+    }
+
+    private static Calendar ceilDay(Calendar endCal) {
+        endCal.set(Calendar.HOUR_OF_DAY, 23);
+        endCal.set(Calendar.MINUTE, 59);
+        endCal.set(Calendar.SECOND, 59);
+        endCal.set(Calendar.MILLISECOND, 999);
+        return endCal;
     }
 }
