@@ -17,9 +17,14 @@ import com.shiqkuangsan.mycustomviews.ui.fragment.ViewPagerFragment;
  * @version V3.1
  */
 public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private final String[] TITLES = { "全部", "成都", "重庆","全部1", "成都1", "重庆1","全部2", "成都2", "重庆2",};
+    private String[] TITLES = {"全部", "成都", "重庆", "全部1", "成都1", "重庆1", "全部2", "成都2", "重庆2",};
+
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
+    }
+
+    public void setTITLES(String[] titles){
+        TITLES = titles;
     }
 
     @Override
@@ -30,9 +35,8 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
-        bundle.putInt("position",position);
-        ViewPagerFragment fragment = new ViewPagerFragment(bundle);
-        return fragment;
+        bundle.putInt("position", position);
+        return ViewPagerFragment.getInstance(position);
     }
 
     @Override

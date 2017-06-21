@@ -200,8 +200,10 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
     public void checkLocationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                    && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                    && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+
                 locate();
+            }
 
             else {
                 // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波 在6.0之前的版本永远返回的是fasle
@@ -219,9 +221,10 @@ public class CitySelectorActivity extends AppCompatActivity implements View.OnCl
                             .setRequestCode(CODE_START_SETTINGS)
                             .build()
                             .show();
-                } else
+                } else {
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION}, CODE_PERMISSION_LOCATION);
+                }
             }
             // 6.0以下直接百度定位
         } else

@@ -23,22 +23,25 @@ import com.shiqkuangsan.mycustomviews.R;
  */
 public class ViewPagerFragment extends Fragment {
 
-   private View view;
-    private Bundle bundle;
-    public ViewPagerFragment() {
-        this.bundle = bundle;
+    private View view;
+
+    public static ViewPagerFragment getInstance(int position) {
+        ViewPagerFragment fragment = new ViewPagerFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("position", position);
+        fragment.setArguments(bundle);
+        return fragment;
     }
-    public ViewPagerFragment(Bundle bundle) {
-        this.bundle = bundle;
-    }
+
     private int pisotion;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_viewpager_indicator,container,false);
+        view = inflater.inflate(R.layout.fragment_viewpager_indicator, container, false);
         TextView textView = (TextView) view.findViewById(R.id.tv_fragment);
-        pisotion = bundle.getInt("position");
-        textView.setText("这是第"+pisotion+"个fragment");
+        pisotion = getArguments().getInt("position");
+        textView.setText("这是第" + pisotion + "个fragment");
         return view;
     }
 

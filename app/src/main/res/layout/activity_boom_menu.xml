@@ -7,6 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.BoomMenuActivity">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_boommenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation_menu"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation_menu"
         android:layout_width="match_parent"

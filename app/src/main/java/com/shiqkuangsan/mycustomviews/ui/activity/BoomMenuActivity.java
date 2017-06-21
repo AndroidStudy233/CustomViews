@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -15,6 +16,7 @@ import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.adapter.ViewPagerAdapter;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
@@ -34,6 +36,10 @@ public class BoomMenuActivity extends AppCompatActivity {
     BottomNavigationView navigationView;
     @ViewInject(R.id.bmb_boom)
     BoomMenuButton bmb_boom;
+    @ViewInject(R.id.viewpager_boommenu)
+    ViewPager viewpager_boommenu;
+
+    MenuItem prevMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,37 @@ public class BoomMenuActivity extends AppCompatActivity {
 
         initNavigation();
         initBoomButton();
+        initViewPager();
+    }
+
+    private void initViewPager() {
+        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.setTITLES(new String[]{"Movies","Music","Picture","Books","Newpaper"});
+        viewpager_boommenu.setAdapter(pagerAdapter);
+        viewpager_boommenu.setCurrentItem(2);
+        viewpager_boommenu.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                } else {
+                    navigationView.getMenu().getItem(0).setChecked(false);
+                }
+                navigationView.getMenu().getItem(position).setChecked(true);
+                prevMenuItem = navigationView.getMenu().getItem(position);
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void initBoomButton() {
@@ -77,22 +114,27 @@ public class BoomMenuActivity extends AppCompatActivity {
                     case R.id.menu_movie:
                         ToastUtil.toastShort(BoomMenuActivity.this, "Moview");
                         navigationView.setItemBackgroundResource(R.color.sienna);
+                        viewpager_boommenu.setCurrentItem(0);
                         break;
                     case R.id.menu_music:
                         ToastUtil.toastShort(BoomMenuActivity.this, "Music");
                         navigationView.setItemBackgroundResource(R.color.red);
+                        viewpager_boommenu.setCurrentItem(1);
                         break;
                     case R.id.menu_picture:
                         ToastUtil.toastShort(BoomMenuActivity.this, "Picutre");
                         navigationView.setItemBackgroundResource(R.color.colorPrimary);
+                        viewpager_boommenu.setCurrentItem(2);
                         break;
                     case R.id.menu_book:
                         ToastUtil.toastShort(BoomMenuActivity.this, "Book");
                         navigationView.setItemBackgroundResource(R.color.green);
+                        viewpager_boommenu.setCurrentItem(3);
                         break;
                     case R.id.menu_newspaper:
                         ToastUtil.toastShort(BoomMenuActivity.this, "News");
                         navigationView.setItemBackgroundResource(R.color.darkorchid);
+                        viewpager_boommenu.setCurrentItem(4);
                         break;
                 }
                 return true;
@@ -100,4 +142,5 @@ public class BoomMenuActivity extends AppCompatActivity {
         });
         navigationView.setSelectedItemId(R.id.menu_picture);
     }
+
 }
