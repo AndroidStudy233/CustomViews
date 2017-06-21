@@ -7,6 +7,7 @@ package com.shiqkuangsan.mycustomviews.utils;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -39,7 +40,7 @@ import java.io.InputStream;
  * 使用:
  * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面
  * <p>
- *     只是需要选择图片--step2          需要加载选择的图片到ImageView--step3
+ * 只是需要选择图片--step2          需要加载选择的图片到ImageView--step3
  * <p>
  * step2. 如果你只是需要选择图片拿到图片的bitmap对象/图片的绝对路径,那你需要在你的onActivityResult()方法处调用:
  * choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象.(注意直接加载到ImageView容易OOM)
@@ -103,11 +104,11 @@ public class ChoosePicUtil {
     public static void startActivityFor(int MATCHING_CODE, final Activity activity) {
         switch (MATCHING_CODE) {
             case MATCHING_CODE_GALLERY:
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
                         openGallery(activity);
-                    else {
+                    } else {
                         // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波
                         // 一般建议弹个对话框告诉用户 该方法在6.0之前的版本永远返回的是fasle
                         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -120,6 +121,7 @@ public class ChoosePicUtil {
                                             Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                             Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
                                             intent.setData(uri);
+                                            activity.startActivity(intent);
                                         }
                                     })
                                     .setNegativeButton("取消", null)
@@ -133,30 +135,48 @@ public class ChoosePicUtil {
                     }
                     return;
                 }
+
+                // 6.0之前的版本直接走这里
                 openGallery(activity);
                 break;
 
             case MATCHING_CODE_CAMERA:
-                // 6.0调用相机的处理, 部分国产机子不需要这个验证,暂且注释
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
-//                        openGallery(activity);
-//                    else {
-//                        // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波
-//                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
-//
-//                        } else {
-//                            // 申请授权
-//                            ActivityCompat.requestPermissions(activity,
-//                                    new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA_6_0);
-//                        }
-//                    }
-//                    return;
-//                }
+                // 6.0调用相机的处理
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+
+                        openCamera(activity);
+                    } else {
+                        // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.CAMERA)) {
+                            AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
+                            dialog.setTitle("权限提醒")
+                                    .setMessage("请您允许我们使用您的摄像头功能,否则将无法拍照~")
+                                    .setPositiveButton("权限设置", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                            Uri uri = Uri.fromParts("package", activity.getPackageName(), null);
+                                            intent.setData(uri);
+                                            activity.startActivity(intent);
+                                        }
+                                    })
+                                    .setNegativeButton("取消", null)
+                                    .create()
+                                    .show();
+                        } else {
+                            // 申请授权
+                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA_6_0);
+                        }
+                    }
+                    return;
+                }
 
                 // 6.0之前的版本直接走这里
                 openCamera(activity);
                 break;
+            default:
+                Toast.makeText(activity, "匹配码有误!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -178,18 +198,33 @@ public class ChoosePicUtil {
      * @param activity activity
      */
     private static void openCamera(Activity activity) {
-        // 6.0之前,激活相机并判断存储卡是否可以用
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+//            Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             if (tempFile != null)
                 tempFile = null;
             // 创建资源标识,设置额外信息
             tempFile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
-            Uri uri = Uri.fromFile(tempFile);
+
+            /*
+                FileUriExposedException
+                6.0以后当你跨package域传递file://的URI时，接收者得到的将是一个无权访问的路径，
+                因此，这将会触发FileUriExposedException.
+                解决方法1: 使用ContentProvider传递uri(如下)
+                解决方法2: 使用官方提供的FileProvider(较麻烦)
+             */
+//            Uri uri = Uri.fromFile(tempFile);
+//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//            activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
+
+            ContentValues contentValues = new ContentValues(1);
+            contentValues.put(MediaStore.Images.Media.DATA, tempFile.getAbsolutePath());
+            Uri uri = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
-        } else
+        } else {
             Toast.makeText(activity, "未检测到储存卡", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
