@@ -1508,7 +1508,10 @@ fastjson
 
 	最终bm就是我们需要的Bitmap对象了。
 
+### 打包时移除无用的资源文件
 
+	buildTypes下对应的Type(一般release设置这个)下添加配置: 
+	shrinkResources true
 
 ### 从资源中获取Bitmap
 

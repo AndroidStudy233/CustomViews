@@ -1,10 +1,29 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Gradle加载顺序: 1.settings.gradle    2.project的gradle    3.依次每个module的gradle
 
+// 定义了 Android 编译工具的类路径, repositories中的jCenter是一个著名的 Maven 仓库(bintray.com维护)
 buildscript {
+    // 仓库
     repositories {
-        jcenter()
-        mavenCentral()
+        jcenter()   // 最著名的 Maven仓库, 由bintray.com维护
+        mavenCentral()  // 另一个著名的 Maven仓库, 由sonatype.org维护
+        // 除了以上2个标准服务器,还可以用其他放在自己服务器上的仓库, 比如Twitter的Fabric.io
+        // 如果仓库有密码需要添加url同级变量credentials里面跟账号密码
+        // credentials{
+        //  username 'xxx'
+        //  password 'xxx'
+        // }
+        maven {
+            url "https://jitpack.io"
+        }
+        // 还可以使用相对路径的本地仓库(里面直接放aar文件), 当然我这儿的others里面没
+        // 然后引用的时候  module的dependencies中添加 compile(name:'xxx', ext:'aar')
+        // tips: 1.name没有后缀名哦   2.其实可以直接在module的gradle文件中使用fileTree方法配置
+//        flatDir {
+//            dirs 'others'
+//        }
     }
+    // 依赖, 一般依赖的库名都是 组名:库名:版本号, 其中版本号可以使用通配符保证获取最新如2.2.1 -> 2.2.+ / 2.2+ / +
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.1'
         // realm插件
@@ -16,6 +35,7 @@ buildscript {
     }
 }
 
+// 其中定义的属性会被应用到所有moudle中, 一般我们的project就一个
 allprojects {
     repositories {
         jcenter()
@@ -26,7 +46,7 @@ allprojects {
     }
 }
 
-// 统一配置版本号
+// 统一配置版本号, 使用rootProject.ext.android / dependencies.xxx
 ext {
     android = [
             compileSdkVersion: 25,
@@ -52,4 +72,14 @@ ext {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+// 添加一个task, 编译后即 Gradle视图下的root/Tasks/other/hello
+task hello {
+    println 'Hello Hello'
+}
+
+// 表示该task在执行阶段才会执行任务, 上面的编译过程直接执行
+task helloworld << {
+    println 'Hello World'
 }

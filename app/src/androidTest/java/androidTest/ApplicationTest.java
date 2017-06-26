@@ -2,8 +2,6 @@ package androidTest;
 
 import android.support.test.runner.AndroidJUnit4;
 
-import com.fivehundredpx.android.blur.BlurringView;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -16,6 +14,5 @@ import org.junit.runner.RunWith;
 public class ApplicationTest {
     @Test
     public void useAppContext() throws Exception {
-        BlurringView view;
     }
 }
