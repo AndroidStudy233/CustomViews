@@ -18,7 +18,7 @@
 
 1. MySQL---MySQL是最受欢迎的开源SQL数据库管理系统，它由 MySQL AB开发、发布和支持。MySQL AB是一家基于MySQL开发人员的商业公司.MySQL是一个关系数据库管理系统。MySQL是开源的。已经被Oracle收购。
 
-2. SQL Server---SQL Server是由微软开发的数据库管理系统,它只能在Windows上运行.
+2. SQL Server---SQL Server是由微软开发的数据库管理系统,它只能在Wdows上运行.
 
 3. Oracle---提起数据库，第一个想到的公司，一般都会是Oracle(甲骨文)。该公司成立于1977年，最初是一家专门开发数据库的公司。Oracle在数据库领域一直处于领先地位。 Oracle数据库成为世界上使用最广泛的关系数据系统之一。
 
@@ -91,6 +91,8 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 
 ---
 ### 五、数据库定义语言(库的操作) DDL 
+
+>[]里面的内容为可加可不加
 
 1. 创建一个库
 	
@@ -288,7 +290,7 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 		
 	alter table t_user modify photo varchar(20);
 		
-7.修改列的名称
+7.修改列(名称 + 类型)
 		
 	alter table 表名 change  旧列名  新列名 数据类型；
 		
@@ -348,7 +350,31 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 			clothsize int default 175; 
 			name varchar(10) not null,		-- 员工姓名
 		);
+
+5. 外键约束
+
+>比如一张用户表有多个订单,用户表和订单表之间是通过订单表中一个叫做user__id的字段来实现关联的. 可是如果删除了一个用户id为233的用户,那么订单中user_id为233的所有订单都成了废数据.为了避免这种情况.产生了外键约束-- foreign key.(一般而言在开发阶段不添加该约束方便测试,待上线时添加)
+
+
+格式: alter table 从表名称 add foreign key(外键名称) references 主表名称(主键);
+(如果从表已经有垃圾数据了,那么无法关联)  
+
+添加外键之后:
+
+	1. 主表中不能删除从表中已引用的数据
+
+	2. 从表中不能添加主表中主键值没有的数据
 		
+
+>又比如一张订单表中有多个商品,一个商品又会出现在不同的订单中. 相对于上面的一对多,这就是多对多的概念了.这种情况一般会引入一个中间表.
+
+格式和上面一样
+
+alter table middle add foreign key(or_id) references orders(id);
+
+alter table middle add foreign key(pr_id) references products(id);
+
+
 ---
 ### 主键自动增长 (掌握)
 >tip
@@ -461,7 +487,7 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 		| character_set_system     | utf8    内部系统编码
 	
 	
->结论: 	如果使用cmd 命令控制台操作 数据库,注意character\_set\_client 和  character\_set\_results  需要设置成GBK, 因为我们的命令控制航使用gbk码表显示中文.
+>结论: 	如果使用cmd 命令控制台操作 数据库,注意character\_set\_client 和  character\_set\_results  需要设置成GBK, 因为我们的命令控制行使用gbk码表显示中文.
 
 使用如下命令设置:
 
@@ -490,14 +516,14 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 	update t_user set name='rose';(不加条件就是尼玛所有name都改)
 
 	CREATE TABLE employee (
-	   id INT,
-	   NAME VARCHAR(20),
+	   id INT primary key,
+	   name VARCHAR(20),
 	   gender VARCHAR(20),
 	   birthday DATE,
 	   entry_date DATE,
 	   job VARCHAR(30),
 	   salary DOUBLE,
-	   RESUME LONGTEXT
+	   resume LONGTEXT
 	);
 
 	INSERT INTO employee VALUES(1,'zs','male','1980-12-12','2000-12-12','coder',4000,NULL);
@@ -509,20 +535,20 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 -- 要求
 -- 将所有员工薪水修改为5000元。
 	
-	
+	update t_user set salary = 5000;
 
 -- 将姓名为’zs’的员工薪水修改为3000元。
 
-	
+	update t_user set salary = 3000 where name = 'zs';
 
 -- 将姓名为’ls’的员工薪水修改为4000元,job改为ccc。
 
-	
+	update t_user set salary = 4000, job = ccc where name = 'ls';
 
 -- 将wu的薪水在原有基础上增加1000元。
 	
 	
-
+	update t_user set salary = (salary + 1000) where name = 'wu';
 
 ---
 ## 删除表记录相关
@@ -648,6 +674,7 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 		下面的效率更高. *需要运算.
 
 * 查询所有行指定列
+
 	select sname from stu;
 
 ### 2
@@ -666,7 +693,7 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 
 * 查询性别为女，并且年龄小于50的记录
 
-		select * from stu where gender='female'  and age<50;
+		select * from stu where gender='female'  and age < 50;
 
 * 查询学号为S_1001，或者姓名为liSi的记录
 
@@ -718,9 +745,9 @@ DML 数据库操纵语言 Data Manipulation Language || insert update delete sel
 
 
 >where 字段 like '表达式'; 
-% => 通配 通配任意个字符.
-_ => 通配 通配单个字符.
-说明: LIKE 条件后 根模糊查询表达式,  "_"==> 代表一个任意字符
+% 通配 通配任意个字符.
+_ 通配 通配单个字符.
+说明: LIKE 条件后 根模糊查询表达式,  "_" 代表一个任意字符
 
 
 ### 3
@@ -756,7 +783,7 @@ _ => 通配 通配单个字符.
 		 select distinct gender from stu; =>去除重复的记录
 	
 
-* 查看雇员的月薪与佣金之和
+* 查看雇员的年薪与佣金之和
 
 
 		select sal*12+comm from emp; 
@@ -768,14 +795,11 @@ _ => 通配 通配单个字符.
 		
 		*这个函数在所有数据库通用吗？
 			不通用.
+
 * 给列名添加别名
 		
 		select sal*12 + IFNULL(comm,0) as '年收入' from emp;
 	
-		** select sal*12 + IFNULL(comm,0)  '年收入' from emp;
-		
-		select sal*12 + IFNULL(comm,0)  年收入 from emp;
-
 
 ### 5
 
@@ -919,3 +943,56 @@ _ => 通配 通配单个字符.
 
 			select * from emp limit 10,5;
 
+
+## 关联查询
+
+>一张用户表,一张订单表,订单表中的user_id字段为外键关联用户表中的id
+
+1. 内连接
+
+	查询用户的订单,没有订单的用户不显示.
+
+	select user.* ,oder.* from user,order where user.id = order.user_id;(隐式) 
+
+	select user.* ,order.* from user join order on user.id = order.user_id;(显式)
+
+2. 左外连接
+	
+	select tabone.* ,tabtwo.* from tabone left join tabletwo on tabone.xx = tabtwo.xx;
+
+	查询所有用户的订单详情.
+	左外连接:先展示join join join左边表user的所有数据,再根据关联查询的条件join右边表order,有符合的就显示出来,没有符合的显示为NULL
+
+	select user.* ,order.* from user left join order on user.id = order.user_id;
+
+
+3. 右外连接
+
+	select tabone.* ,tabtwo.* from tabtwo right join tabone on tabone.xx = tabtwo.xx;
+
+	查询所有订单的用户详情.
+	右外连接:先展示join join join右边表order的所有数据,再根据关联查询的条件join左边表user,有符合的就显示出来,没有符合的显示为NULL
+
+	select order.* ,user.* from user right join order on user.id = order.user_id;
+	
+	其实两个差不多.用左连接实现
+	select order.* ,user.* from order left join user on user.id = order.user_id;
+
+
+4. 子查询
+
+	* 查询用户为张三的订单详情
+
+	select * from order where user_id = (select id from user where name = '张三');
+
+	* 查询订单价格大于1000的所有用户信息
+
+	select * from user where id in (select user_id from order where price > 1000);
+
+	* 查询订单价格大于1000的订单信息及相关用户的的信息
+	
+	select order.* ,user.* from order,user where user.id = order.user_id and order.price > 1000;
+	
+	// 方式2 利用中间表
+
+	select  user.* ,tmp.* from user,(select * from order where price > 1000) as tmp where user.id = tmp.user_id;
