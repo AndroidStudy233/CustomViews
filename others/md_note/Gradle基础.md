@@ -11,6 +11,7 @@ Gradle的特点:
 6. 基于groovy脚本构建，其build脚本使用groovy语言编写
 7. 具有广泛的领域模型支持你的构建
 
+## 除下所述, 很多东西直接写在了build.gradle中一目了然
 
 ## 1. module类型的区分
 
@@ -179,14 +180,14 @@ module中使用:
 
 * local.properties定义keystore信息文件路径
 
-		keystore.props.file=../keystore.properties
+		keystore.props.file=../../keystore.properties
 
 * keystore.properties保存keystore信息
 
-		store=../buildsystem/release.jks
 		alias=xxx
-		storePass=xxx
 		pass=xxx
+		store=../buildsystem/release.jks
+		storePass=xxx
 
 * buildsystem下保存了
 
@@ -274,3 +275,17 @@ module中使用:
 这样你就直接可以用放在该module\libs下的aar文件了,在dependencies中直接添加.其中xxx是文件名
 
 	 compile (name:'xxxxxxxxx',ext:'aar')
+
+## Gradle性能提升
+
+1. 放开该行->由于gradle运行在Java虚拟机上的,这个是指定java虚拟机初始化堆内存
+
+    org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+
+2. 放开该行->设置gradle可并发处理多个任务
+
+    org.gradle.parallel=true
+
+3. 添加该行->设置守护进程,加速gradle编译
+
+    org.gradle.daemon=true
