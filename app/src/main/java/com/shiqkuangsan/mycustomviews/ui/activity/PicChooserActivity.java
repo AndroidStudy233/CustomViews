@@ -70,7 +70,7 @@ public class PicChooserActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 //        ChoosePicUtil.loadImageViewWithCrop(requestCode,resultCode,data,this,iv_image,false,true);
-        ChoosePicUtil.loadImageView(requestCode,resultCode,data,this,iv_image);
+        ChoosePicUtil.loadImageView(requestCode, resultCode, data, this, iv_image);
 //        ChoosePicUtil.deleteTemp();
         super.onActivityResult(requestCode, resultCode, data);
     }

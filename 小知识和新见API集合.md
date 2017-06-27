@@ -2119,23 +2119,28 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 
 ## Error:The number of method references in a .dex file cannot exceed 64K.
 
-1. 在app的build.gradle中
+1. 在app的build.gradle中, 在 defaultConfig 中添加
 
-         （1）在dependencies 中添加  
+    multiDexEnabled true
 
-                compile 'com.android.support:multidex:1.0.0'
+2. 在你的Application类中添加(如果你的minSdkVersion >= 21, 那么这一步忽略)
 
-         （2）在 defaultConfig 中添加
+    (1) dependencies 中添加依赖 compile 'com.android.support:multidex:1.0.1'
 
-                multiDexEnabled true
+    (2) 替换Manifest中的application(分为下面是那种情况)
 
-2. 编译后在你的Application类中添加
+        <1> 你没有自己的Application类, 直接替换成
+            android:name="android.support.multidex.MultiDexApplication"
 
-		 @Override
-	     protected void attachBaseContext(Context base) {
-	         super.attachBaseContext(base);
-	         MultiDex.install(this) ;
-	     }
+        <2> 你有自己的MyApplication类, 继承自MultiDexApplication即可
+
+        <3> 你的MyApplication已经有基类, 没事如下操作即可
+
+             @Override
+             protected void attachBaseContext(Context base) {
+                 super.attachBaseContext(base);
+                 MultiDex.install(this) ;
+             }
 
 ---
 
