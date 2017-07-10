@@ -289,3 +289,8 @@ module中使用:
 3. 添加该行->设置守护进程,加速gradle编译
 
     org.gradle.daemon=true
+
+### 一般 编译/运行 项目失败的时候, 如果不知道到底是什么错了可以采用下面的方法查看
+
+    gradlew (运行报错会有what went wrong, 会有个':名字: 具体task', 这儿就填报错的task)
+    后面跟你要查看的方式(有三种): --stacktrace    /   --info  /   --debug

@@ -61,11 +61,15 @@
 		boolean Pinyin.isChinese(char c)
 
 ---
+
 ## xml画圆角矩形
 1. 在res/drawable目录下新建xml文件, 选择shape节点, 然后在根节点shape中设置shape属性
 
 2. 添加corner属性设置圆角, 添加solid节点设置背景颜色等等
 
+---
+
+### adb -s emulator-5554 install app-debug.apk    
 
 ---
 
@@ -566,6 +570,51 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ### 屏幕适配中的不同分辨率dimens
 
 ![dimens](/others/images/dimens.png)
+
+## 屏幕适配 ##
+
+- 图片适配
+
+	- 开启4种分辨率的模拟器
+	- 在drawable的多个目录下放置内容不同但命名相同的图片
+	- 运行程序,查看在不同模拟器上的显示效果
+	- 常规做法: 美工只做一套1280*720的图片,放置在drawable-xhdpi的目录下, ImageView宽高指定为确定的值, 不包裹屏幕
+
+- 布局适配
+
+	- 针对特定分辨率,创建layout文件夹: layout-800x480, layout-land(表示横屏)
+	- 800x480 和其他分辨率模拟器对比
+	- 常规做法: 该方式不到万不得已,一般不用
+
+- 尺寸(dimens)适配
+
+	- 设备密度:
+
+			float density = getResources().getDisplayMetrics().density;
+
+	- dp = px / 设备密度
+
+	- 常规设备密度: 320x240(0.75), 480x320(1), 800x480(1.5), 1280x720(2)
+	- 设置dp值, 在不同屏幕上查看显示的比例
+	- 创建文件夹values-1280x720, 在dimens.xml中制定尺寸, 适配屏幕
+	- 常规做法: 此方法比布局适配更常用. 美工提供像素px值, 我们使用前需要用px除以设备密度,转换成dp后,写在布局文件中
+
+	- 案例分析: 智慧北京新手引导页小圆点处理
+
+- 权重适配
+
+	 	android:weightSum="3" //表示总权重数
+		常规做法: 当布局有严格比例分配时, 可以使用权重来处理
+
+- 代码适配
+
+		int width = getWindowManager().getDefaultDisplay().getWidth();
+		int height = getWindowManager().getDefaultDisplay().getHeight();
+		tv1.setLayoutParams(new LayoutParams((int)(width*0.5), (int)(height*0.2)));
+
+		常规做法: 如果是自定义的控件, 没有使用xml布局文件时, 可以在代码中动态设置宽高
+
+		案例分析: 智慧北京侧边栏宽度处理
 
 ---
 ## ListView显示与输入法的调整(类似于短信/QQ聊天界面很实用)
