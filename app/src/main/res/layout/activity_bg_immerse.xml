@@ -12,7 +12,7 @@
         android:fitsSystemWindows="true"
         android:orientation="vertical">
 
-        如果出现按钮颜色黑色问题, 自定义主题继承下面这个, 添加colorControlNormal属性: 值->按钮颜色
+        <!--如果出现按钮颜色黑色问题, 自定义主题继承下面这个, 添加colorControlNormal属性: 值->按钮颜色-->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_bgimmerse"
             android:layout_width="match_parent"
