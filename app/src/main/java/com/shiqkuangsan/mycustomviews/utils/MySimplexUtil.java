@@ -24,7 +24,7 @@ import static org.xutils.common.util.DensityUtil.dip2px;
 /**
  * 简单的xUtils3使用工具类,让开发更快捷
  */
-public class SimplexUtil {
+public class MySimplexUtil {
 
     /**
      * 发送一个get请求

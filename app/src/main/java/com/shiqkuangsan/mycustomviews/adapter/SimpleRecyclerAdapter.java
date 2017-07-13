@@ -12,7 +12,7 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.ImgAndText;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.ui.custom.OnRecyclerItemTouchCallBack;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -155,7 +155,7 @@ public class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAd
 
         final ImgAndText bean = list.get(position);
 
-        SimplexUtil.loadImage(holder.iv_card_img, bean.imgUrl, SimplexUtil.getSimpleImageOptions(8), null);
+        MySimplexUtil.loadImage(holder.iv_card_img, bean.imgUrl, MySimplexUtil.getSimpleImageOptions(8), null);
         holder.tv_card_text.setText(bean.imgName);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

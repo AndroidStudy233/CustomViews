@@ -1,26 +1,20 @@
 package com.shiqkuangsan.mycustomviews.ui.activity.piclook;
 
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.RelativeLayout;
 
 import com.rd.PageIndicatorView;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.custom.MaterialProgressBar;
 import com.shiqkuangsan.mycustomviews.ui.custom.OverScrollViewPager;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -128,7 +122,7 @@ public class PhotoDetailActivity extends AppCompatActivity {
                     onBackPressed();
                 }
             });
-            SimplexUtil.loadImage(photo_detail, list_pics.get(position), SimplexUtil.getSimpleImageOptions(0), new SimplexUtil.SimpleRequstCallBack<Drawable>() {
+            MySimplexUtil.loadImage(photo_detail, list_pics.get(position), MySimplexUtil.getSimpleImageOptions(0), new MySimplexUtil.SimpleRequstCallBack<Drawable>() {
                 @Override
                 public void onSuccess(Drawable result) {
                     probar_loading.setVisibility(View.GONE);

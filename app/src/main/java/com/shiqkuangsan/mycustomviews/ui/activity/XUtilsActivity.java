@@ -15,8 +15,8 @@ import com.shiqkuangsan.mycustomviews.bean.Province;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.db.SimpleDbHelper;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil.SimpleRequestParams;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil.SimpleRequestParams;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -101,19 +101,19 @@ public class XUtilsActivity extends AppCompatActivity {
 
             // 展示图片
             case R.id.btn_xutils_image:
-                SimplexUtil.loadImage(iv_xutils_display, Constant.display_image_url, SimplexUtil.getSimpleImageOptions(8), null);
-//                SimplexUtil.loadImage(iv_xutils_display, "file://sdcard/copy.jpg",
-//                        SimplexUtil.getSimpleImageOptions(), null);// 加载本地图片,记得前缀file://,最好用Enviroment.get表示sdcard
+                MySimplexUtil.loadImage(iv_xutils_display, Constant.display_image_url, MySimplexUtil.getSimpleImageOptions(8), null);
+//                MySimplexUtil.loadImage(iv_xutils_display, "file://sdcard/copy.jpg",
+//                        MySimplexUtil.getSimpleImageOptions(), null);// 加载本地图片,记得前缀file://,最好用Enviroment.get表示sdcard
                 break;
 
             // 展示圆形图片
             case R.id.btn_xutils_circle:
-                SimplexUtil.loadImage(iv_xutils_display, Constant.display_circlr_image_url, SimplexUtil.getSimpleCircleImageOptions(), null);
+                MySimplexUtil.loadImage(iv_xutils_display, Constant.display_circlr_image_url, MySimplexUtil.getSimpleCircleImageOptions(), null);
                 break;
 
             // 展示gif图片
             case R.id.btn_xutils_gif:
-                SimplexUtil.loadImage(iv_xutils_display, Constant.display_gif_url, SimplexUtil.getSimpleImageOptions(8), null);
+                MySimplexUtil.loadImage(iv_xutils_display, Constant.display_gif_url, MySimplexUtil.getSimpleImageOptions(8), null);
                 break;
 
             // 创建数据库
@@ -207,13 +207,13 @@ public class XUtilsActivity extends AppCompatActivity {
      * 发送get请求
      */
     private void sendGetRequest() {
-        SimplexUtil.sendGet(new SimplexUtil.SimpleRequestParams.Builder(Constant.mlnx_province_url)
+        MySimplexUtil.sendGet(new MySimplexUtil.SimpleRequestParams.Builder(Constant.mlnx_province_url)
                         .addHeader("", "")// 为了演示用法
                         .addQueryStringParameter("", "")
                         .addBodyParameter("", "")
                         .build(),
 
-                new SimplexUtil.SimpleRequstCallBack<List<Province>>() {
+                new MySimplexUtil.SimpleRequstCallBack<List<Province>>() {
                     @Override
                     public void onSuccess(List<Province> result) {
                         if (!isDbInited)
@@ -241,7 +241,7 @@ public class XUtilsActivity extends AppCompatActivity {
         String jString2 = JSON.toJSONString(new String[]{"233"});
 
         params.setBodyContent(jsonString);
-        SimplexUtil.sendGet(params, new SimplexUtil.SimpleRequstCallBack<List<Province>>() {
+        MySimplexUtil.sendGet(params, new MySimplexUtil.SimpleRequstCallBack<List<Province>>() {
             @Override
             public void onSuccess(List<Province> result) {
                 if (!isDbInited)
@@ -273,7 +273,7 @@ public class XUtilsActivity extends AppCompatActivity {
         if (file.exists())
             if (file.delete())// 为了演示,下载了点按钮删除再下载
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-                    SimplexUtil.downloadFile(Constant.download_file_url, savePath, new SimplexUtil.SimpleFileCallBack<File>() {
+                    MySimplexUtil.downloadFile(Constant.download_file_url, savePath, new MySimplexUtil.SimpleFileCallBack<File>() {
                         @Override
                         public void onStarted() {
                             tv_xutils_progress.setVisibility(View.VISIBLE);

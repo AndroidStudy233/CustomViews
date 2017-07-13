@@ -3,7 +3,7 @@ package com.shiqkuangsan.mycustomviews.db;
 import android.content.Context;
 
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 
 import org.xutils.DbManager;
 
@@ -44,7 +44,7 @@ public class SimpleDbHelper {
      * @param context 上下文
      */
     private static void init(Context context, String dbName) {
-        manager = SimplexUtil.getSimpleDbManager(dbName, context.getFilesDir(), 1, new DbManager.DbUpgradeListener() {
+        manager = MySimplexUtil.getSimpleDbManager(dbName, context.getFilesDir(), 1, new DbManager.DbUpgradeListener() {
             @Override
             public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
 

@@ -1,7 +1,6 @@
 package com.shiqkuangsan.mycustomviews.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
@@ -10,17 +9,10 @@ import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.FitCenter;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
-import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.ui.custom.photoview.PhotoView;
-import com.shiqkuangsan.mycustomviews.utils.SimplexUtil;
+import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 
 import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * Created by shiqkuangsan on 2016/9/13.
@@ -93,7 +85,7 @@ public class PicGridAdapter extends BaseAdapter {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             imageView.setTag(picsList.get(position));
         }
-        SimplexUtil.loadImage(imageView, picsList.get(position), SimplexUtil.getSimpleImageOptions(2), new SimplexUtil.SimpleRequstCallBack<Drawable>() {
+        MySimplexUtil.loadImage(imageView, picsList.get(position), MySimplexUtil.getSimpleImageOptions(2), new MySimplexUtil.SimpleRequstCallBack<Drawable>() {
             @Override
             public void onSuccess(Drawable result) {
                 imageView.setEnabled(true);
