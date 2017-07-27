@@ -27,9 +27,10 @@ import java.util.List;
 
 /**
  * Created by shiqkuangsan on 2016/9/28.
- *
- * @author shiqkaungsan
- * @summary CoordinatorLayout测试界面, 头部显示图片, 上滑显示ToolBar, 下拉显示图片.其实是用了layout_behavior
+ * <p>
+ * ClassName: CoordinatorActivity
+ * Author: shiqkuangsan
+ * Description: CoordinatorLayout测试界面, 头部显示图片, 上滑显示ToolBar, 下拉显示图片.其实是用了layout_behavior
  * 需要注意的时候为了实现这种滑动效果.CoordinatorLayout需要一个可滚动的子类.我这里的TabLayout绑定的fragment中就用了
  * 一个叫做NestedScrollView的东西包裹.当然你也可以用RecyclerView.(ListView和ScrollView很遗憾)
  * 侧滑显示DrawerLayout,drawer采用NavigationView
@@ -62,7 +63,7 @@ public class CoordinatorActivity extends AppCompatActivity implements Navigation
         drawerlayout.addDrawerListener(toggle);
 
         // NavigationView设置条目点击侦听
-        NavigationView navigation_drawer =  (NavigationView) findViewById(R.id.navigation_drawer);
+        NavigationView navigation_drawer = (NavigationView) findViewById(R.id.navigation_drawer);
         navigation_drawer.setNavigationItemSelectedListener(this);
 
         // Collapsing标题
@@ -114,8 +115,14 @@ public class CoordinatorActivity extends AppCompatActivity implements Navigation
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // menuItem需要的操作在该方法中进行
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // 根据不同的id设置响应事件
+        // menuItem点击事件在该方法中进行
         switch (item.getItemId()) {
             case R.id.menu_coordinator_1:
                 break;

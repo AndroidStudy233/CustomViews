@@ -2,6 +2,9 @@ package test;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -23,5 +26,9 @@ public class ExampleUnitTest {
         System.out.println("a=" + a);
         System.out.println("b=" + b);
         System.exit(0);
+    }
+
+    public void test2(){
+        List list = new ArrayList();
     }
 }

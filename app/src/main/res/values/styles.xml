@@ -137,10 +137,11 @@
         <!--<item name="android:overlapAnchor">false</item>-->
 
         <!--.. 另外还有这么几个属性-->
-        <item name="android:dropDownHorizontalOffset">0dp</item>
         <!-- 溢出菜单离toolbar的距离-->
+        <item name="android:dropDownHorizontalOffset">0dp</item>
         <item name="android:dropDownVerticalOffset">0dp</item>
         <!-- 溢出菜单的背景色-->
+        <item name="android:popupBackground">@color/white</item>
     </style>
 
 

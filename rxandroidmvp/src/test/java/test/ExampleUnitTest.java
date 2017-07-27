@@ -4,6 +4,10 @@ import com.shiqkuangsan.rxandroidmvp.review2.Test2;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.attr.x;
 import static org.junit.Assert.*;
 
 /**

@@ -173,12 +173,12 @@ public class MainActivity extends BaseActivity {
     }
 
     /**
-     * 调试沉浸式的页面
+     * 调试沉浸式demo的页面
      *
      * @param view
      */
-    public void immerse(View view) {
-        startActivity(new Intent(this, ImmerseActivity.class));
+    public void myimmerse(View view) {
+        startActivity(new Intent(this, MyImmerseActivity.class));
     }
 
     /**
@@ -308,6 +308,15 @@ public class MainActivity extends BaseActivity {
      */
     public void boommenu(View view) {
         startActivity(new Intent(this, BoomMenuActivity.class));
+    }
+
+    /**
+     * 沉浸式界面
+     *
+     * @param view
+     */
+    public void immerse(View view) {
+        startActivity(new Intent(this, ImmerseActivity.class));
     }
 
 }

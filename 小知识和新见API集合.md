@@ -115,6 +115,13 @@ Android在打release包时，可能会出现这种错误。
 	
 还是shape节点.不过这次属性是添加gradient.startcolor / endColor
 
+---
+
+### MenuItem需要设置title / checked / 等属性时null异常
+
+这是因为onCreateOptionsMenu中去findViewById的话可能菜单还未渲染完毕, 所以不建议在该方法中操作view.
+
+onPrepareOptionsMenu() 建议在该方法中操作
 
 ---
 

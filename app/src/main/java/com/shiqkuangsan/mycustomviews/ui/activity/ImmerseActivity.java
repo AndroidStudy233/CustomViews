@@ -1,74 +1,31 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.os.Bundle;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.ui.activity.immerse.BgImmerseActivity;
-import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerseActivity;
-import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
 
 /**
- * Created by shiqkuangsan on 2016/9/28.
- *
- * @author shiqkaungsan
- * @summary 测试沉浸式的页面, 沉浸式分为两种, 每种又需要处理4.4.4 / 5.0,其中
- * 4.4.4呈现的是半透明状态栏, 而5.0以上呈现的是纯色状态栏(4.4.4以下不支持,定制机特殊)
- * 1. 着色沉浸式-沉浸颜色
- * 2. 背景沉浸式-沉浸背景
- * 具体实现戳ColorImmerseActivity / BgImmerseActivity
+ * Created by shiqkuangsan on 2017/7/27.
+ * <p>
+ * ClassName: ImmerseActivity
+ * Author: shiqkuangsan
+ * Description: 新的沉浸式实例页面
+ * <p>
+ * 前言: 沉浸式是Android Api19-4.4 以后出现的一种利用状态栏背景更好展示App的方式, 由于4.4的沉浸式是只能实现半透明的样式,
+ * 不太好看, 这次就不兼容了. 所以5.0以下的运行效果都一样
+ * 但是兼容方法想看的可以去{@link com.shiqkuangsan.mycustomviews.ui.activity.MyImmerseActivity}
+ * <p>
+ * 这里我们做三种沉浸式(名字自己瞎取的):
+ * 1. 颜色沉浸式. 状态栏背景颜色和Toolbar/Actionbar/CustomBar颜色保持一致的效果
+ * 2. 图片沉浸式. 状态栏背景包括下面的Toolbar/Actionbar/AppLayout/CustomBar一体采用图片的形式展现
+ * 3. 完全沉浸式. 基本处于全屏模式, 但是可以滑动调出状态栏&导航栏.
  */
 public class ImmerseActivity extends AppCompatActivity {
-
-    private Toolbar toolbar;
-    private int color;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immerse);
-
-        toolbar = (Toolbar) findViewById(R.id.toolBar_immerse);
-        toolbar.setTitle("沉浸式测试");
-        color = getResources().getColor(R.color.color_orange);
-    }
-
-    /**
-     * 测试着色功能
-     *
-     * @param view
-     */
-    public void statuscolor(View view) {
-        MyStatusBarUtil.setStatusColor(this, color);
-    }
-
-    /**
-     * 测试透明功能
-     *
-     * @param view
-     */
-    public void statustransparent(View view) {
-        MyStatusBarUtil.setStatusTransparent(this, true);
-    }
-
-    /**
-     * 进入着色沉浸效果页
-     *
-     * @param view
-     */
-    public void colorimmerse(View view) {
-        startActivity(new Intent(this, ColorImmerseActivity.class));
-    }
-
-    /**
-     * 进入背景沉浸效果页
-     *
-     * @param view
-     */
-    public void bgimmerse(View view) {
-        startActivity(new Intent(this, BgImmerseActivity.class));
     }
 }

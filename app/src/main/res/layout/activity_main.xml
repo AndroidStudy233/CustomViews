@@ -92,13 +92,13 @@
 
             <Button
                 style="@style/style_main_normal_button"
-                android:onClick="immerse"
-                android:text="沉浸式" />
+                android:onClick="myimmerse"
+                android:text="沉浸式前奏" />
 
             <Button
                 style="@style/style_main_normal_button"
-                android:onClick="citypicker"
-                android:text="城市选择" />
+                android:onClick="immerse"
+                android:text="沉浸式解析" />
 
         </LinearLayout>
 
@@ -202,6 +202,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="citypicker"
+                android:text="城市选择" />
 
             <Button
                 style="@style/style_main_normal_button"
