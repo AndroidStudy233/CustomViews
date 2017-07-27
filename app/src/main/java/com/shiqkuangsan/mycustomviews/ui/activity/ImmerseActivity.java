@@ -1,9 +1,16 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
+import android.app.ListActivity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 
 /**
  * Created by shiqkuangsan on 2017/7/27.
@@ -21,11 +28,24 @@ import com.shiqkuangsan.mycustomviews.R;
  * 2. 图片沉浸式. 状态栏背景包括下面的Toolbar/Actionbar/AppLayout/CustomBar一体采用图片的形式展现
  * 3. 完全沉浸式. 基本处于全屏模式, 但是可以滑动调出状态栏&导航栏.
  */
-public class ImmerseActivity extends AppCompatActivity {
+public class ImmerseActivity extends ListActivity {
+
+    String[] itemTexts = new String[]{
+//            VLayoutActivity.class.getSimpleName(),
+    };
+
+    Class[] activities = new Class[]{
+//            VLayoutActivity.class,
+    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_immerse);
+        setListAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemTexts));
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        startActivity(new Intent(this, activities[position]));
     }
 }
