@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
+package com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;

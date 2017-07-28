@@ -7,8 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.ui.activity.immerse.BgImmerseActivity;
-import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerseActivity;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse.BgImmerseActivity;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse.ColorImmerseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
 
 /**

@@ -1,4 +1,4 @@
-package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
+package com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse;
 
 import android.graphics.Color;
 import android.os.Bundle;

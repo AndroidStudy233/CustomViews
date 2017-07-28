@@ -49,7 +49,7 @@ public class MyStatusBarUtil {
      *
      * @param activity       需要设置的activity
      * @param color          状态栏颜色值
-     * @param statusBarAlpha 状态栏透明度,预留值,可以附加半透明效果(5.0+)
+     * @param statusBarAlpha 状态栏透明度, 预留值, 可以附加半透明效果(5.0+)
      */
     private static void setColor(Activity activity, int color, int statusBarAlpha) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
@@ -75,10 +75,10 @@ public class MyStatusBarUtil {
     /**
      * 设置状态栏全透明
      * <p>
-     * 适用于图片作为背景的界面,此时图片填充到状态栏
+     * 适用于图片作为背景的界面, 此时图片填充到状态栏
      *
      * @param activity    需要设置的activity
-     * @param setRootView 是否需要设置根布局适配.测试界面使用.实际一般给false
+     * @param setRootView 是否需要设置根布局适配. 测试界面使用. 实际一般给false
      */
     public static void setStatusTransparent(Activity activity, boolean setRootView) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
@@ -90,7 +90,7 @@ public class MyStatusBarUtil {
     }
 
     /**
-     * 设置根布局参数,这样就不需要在activity的布局文件中设置了
+     * 设置根布局参数, 这样就不需要在activity的布局文件中设置了
      */
     private static void setRootView(Activity activity) {
         ViewGroup rootView = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
@@ -131,7 +131,7 @@ public class MyStatusBarUtil {
     }
 
     /**
-     * 计算状态栏颜色,根据不同透明度和颜色算出应该显示的颜色,百度的一套算法
+     * 计算状态栏颜色, 根据不同透明度和颜色算出应该显示的颜色, 百度的一套算法
      *
      * @param color color值
      * @param alpha alpha值

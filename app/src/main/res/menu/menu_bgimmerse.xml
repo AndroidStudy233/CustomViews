@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.shiqkuangsan.mycustomviews.ui.activity.immerse.BgImmerseActivity">
+    tools:context="com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse.BgImmerseActivity">
 
     <!--actionViewClass最关键，实现了主要的搜索视图功能-->
     <item

@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerse1Act;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 
 /**
@@ -31,11 +32,11 @@ import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 public class ImmerseActivity extends ListActivity {
 
     String[] itemTexts = new String[]{
-//            VLayoutActivity.class.getSimpleName(),
+            "着色沉浸式->Toolbar+setColor"
     };
 
     Class[] activities = new Class[]{
-//            VLayoutActivity.class,
+            ColorImmerse1Act.class,
     };
 
     @Override

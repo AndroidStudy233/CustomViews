@@ -83,10 +83,10 @@
             android:name=".ui.activity.MyImmerseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.immerse.ColorImmerseActivity"
+            android:name=".ui.activity.immerse.myimmerse.ColorImmerseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activity.immerse.BgImmerseActivity"
+            android:name=".ui.activity.immerse.myimmerse.BgImmerseActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.app.searchable"
@@ -160,6 +160,13 @@
         <activity
             android:name=".ui.activity.BoomMenu2ndActivity"
             android:label="BoomMenu界面2" />
+        <activity
+            android:name=".ui.activity.ImmerseActivity"
+            android:label="沉浸式解析" />
+        <activity
+            android:name=".ui.activity.immerse.ColorImmerse1Act"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="着色沉浸式" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
@@ -168,7 +175,6 @@
             android:name="com.amap.api.v2.apikey"
             android:value="f43853597dc1380b67ea401072fd44e5" />
 
-        <activity android:name=".ui.activity.ImmerseActivity"></activity>
     </application>
 
 </manifest>
