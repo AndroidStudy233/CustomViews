@@ -22,6 +22,9 @@ import org.xutils.x;
  * Author: shiqkuangsan <p>
  * Description: 图片沉浸式 -> Toolbar. 该界面默认使用style配置形式实现. 代码设置优先级高于style.
  * 需要看代码设置效果的清单文件中AppNoActionBar.Immerse主题改成AppNoActionBar, 放开初始化沉浸式代码即可
+ * <p>
+ * tip: 这里布局文件中需要注意配置, 首先根布局要fitsSystemWindows, 这样的话会导致Toolbar高度不对,
+ * 所以Toolbar也要设置fitsSystemWindows + clipToPadding.
  */
 public class ImageImmerse1Act extends AppCompatActivity {
 
