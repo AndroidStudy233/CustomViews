@@ -2,17 +2,16 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerse1Act;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerse2Act;
-import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ImageImmerse1Act;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ImageImmerse2Act;
 
 /**
  * Created by shiqkuangsan on 2017/7/27. <p>
@@ -31,13 +30,17 @@ import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 public class ImmerseActivity extends ListActivity {
 
     String[] itemTexts = new String[]{
-            "着色沉浸式 -> 使用Toolbar",
-            "着色沉浸式 -> 自定义Topbar",
+            "1. 着色沉浸式 -> 使用Toolbar",
+            "2. 着色沉浸式 -> 自定义Topbar",
+            "3. 图片沉浸式 -> 使用Toolbar",
+            "4. 图片沉浸式 -> 自定义Topbar",
     };
 
     Class[] activities = new Class[]{
             ColorImmerse1Act.class,
             ColorImmerse2Act.class,
+            ImageImmerse1Act.class,
+            ImageImmerse2Act.class,
     };
 
     @Override

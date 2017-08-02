@@ -46,8 +46,11 @@ android {
                 variant.outputs.each { output ->
                     def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // 输出apk名称为AndroidStudy_v1.0_ _201706060606.apk
-                        def fileName = "AndroidStudy_v${defaultConfig.versionName}_${variant.productFlavors[0] ? variant.productFlavors[0].name : 'flavor'}_${getDate()}.apk"
+                        // 输出apk名称为AndroidStudy_v1.0_flavor_201706060606.apk
+//                        def fileName = "AndroidStudy_v${defaultConfig.versionName}_${variant.productFlavors[0] ? variant.productFlavors[0].name : 'flavor'}_${getDate()}.apk"
+//                        output.outputFile = new File(outputFile.parent, fileName)
+                        // 一般调试期间不要这样, 不然每次运行都会产生一个新apk, 用同名的导致覆盖就好了
+                        def fileName = "AndroidStudy_v${defaultConfig.versionName}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
@@ -60,13 +63,13 @@ android {
     // 下面定义了2个例子flavor. 这样对应上面的一个release版本, 就有会产生2个apk. 如果上面还定义debug type
     // 就会有2 x 2 = 4个apk. 一般用于多渠道打包
 //    productFlavors {
-//        flavor1 {
-//            不配置默认使用defaultConfig
-//            packageName "com.shiqkuangsan.mycustomviews"
+//        flavor1 {}
+//
+//        flavor2 {
+////            不配置默认使用defaultConfig
+//            applicationId "com.shiqkuangsan.mycustomviews"
 //            versionCode 233
 //        }
-//
-//        flavor2 {}
 //    }
 
     // 签名配置, 也可以在project structure中设置, 也可以直接打包的时候设置

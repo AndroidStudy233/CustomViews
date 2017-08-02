@@ -1,0 +1,20 @@
+package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+
+/**
+ * Created by shiqkuangsan on 2017/8/2. <p>
+ * ClassName: ImageImmerse2Act <p>
+ * Author: shiqkuangsan <p>
+ * Description: 图片沉浸式 -> Toolbar
+ */
+public class ImageImmerse2Act extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+}

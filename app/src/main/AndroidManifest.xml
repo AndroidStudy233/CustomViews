@@ -53,7 +53,7 @@
             android:label="测试下拉刷新" />
         <activity
             android:name=".ui.activity.SlideMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.PtrDemoActivity"
             android:label="测试下拉刷新" />
@@ -62,7 +62,7 @@
             android:label="测试图片选择" />
         <activity
             android:name=".ui.activity.PicLookerActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.XUtilsActivity"
             android:label="测试xUtils3" />
@@ -78,16 +78,16 @@
         <activity
             android:name=".ui.activity.RecyclerViewActivity"
             android:label="RecyclerView使用"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.MyImmerseActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.immerse.myimmerse.ColorImmerseActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.immerse.myimmerse.BgImmerseActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppNoActionBar">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -98,12 +98,12 @@
         </activity>
         <activity
             android:name="com.shiqkuangsan.cityselector.CitySelectorActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppNoActionBar"
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <activity
             android:name=".ui.activity.TestSwipeBackActivity"
             android:label="大猪是不是傻"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity android:name=".ui.activity.testswipeback.Activity2" />
         <activity android:name=".ui.activity.testswipeback.Activity3" />
         <activity
@@ -123,7 +123,7 @@
         <activity
             android:name=".ui.activity.BottomSheetActivity"
             android:label="底部上拉布局"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.ConstraintActivity"
             android:label="Constraint学习" />
@@ -132,7 +132,7 @@
             android:label="QQ简单特效" />
         <activity
             android:name=".ui.activity.piclook.PhotoDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.AddDeleteActivity"
             android:label="动态添加" />
@@ -165,12 +165,20 @@
             android:label="沉浸式解析" />
         <activity
             android:name=".ui.activity.immerse.ColorImmerse1Act"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppNoActionBar"
             android:label="着色沉浸式" />
         <activity
             android:name=".ui.activity.immerse.ColorImmerse2Act"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppNoActionBar"
             android:label="着色沉浸式" />
+        <activity
+            android:name=".ui.activity.immerse.ImageImmerse1Act"
+            android:theme="@style/AppNoActionBar.Immerse"
+            android:label="图片沉浸式" />
+        <activity
+            android:name=".ui.activity.immerse.ImageImmerse2Act"
+            android:theme="@style/AppNoActionBar"
+            android:label="图片沉浸式" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

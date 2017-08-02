@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -88,11 +89,15 @@ public class ColorImmerse1Act extends AppCompatActivity {
     @TargetApi(21)
     private void setStatusBarColor(int colorId, int alpha) {
         int color = getResources().getColor(colorId);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//        getWindow().setStatusBarColor(color);
-        getWindow().setStatusBarColor(calculateColorWithOpacity(color, alpha));
-        getWindow().setNavigationBarColor(calculateColorWithOpacity(color, alpha));
+        Window window = getWindow();
+        // 相当于style中配置windowTranslucentStatus -> true
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // 相当于style中配置windowTranslucentNavigation -> false
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // 手动设置状态颜色
+        window.setStatusBarColor(calculateColorWithOpacity(color, alpha));
+        // 手动设置导航栏颜色
+        window.setNavigationBarColor(calculateColorWithOpacity(color, alpha));
     }
 
 }
