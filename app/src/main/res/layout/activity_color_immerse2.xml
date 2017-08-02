@@ -11,15 +11,7 @@
         android:background="#FFFAFAFA"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_colorimmerse1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="着色沉浸式"
-            app:titleTextColor="#fff" />
+        <include layout="@layout/layout_normal_topbar" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,7 +27,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_immerse_red1"
+                android:id="@+id/btn_immerse_red2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -46,7 +38,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btn_immerse_green1"
+                android:id="@+id/btn_immerse_green2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -57,7 +49,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btn_immerse_blue1"
+                android:id="@+id/btn_immerse_blue2"
                 style="@style/style_main_normal_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

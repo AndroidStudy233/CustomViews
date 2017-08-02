@@ -211,7 +211,7 @@
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="indicator"
-                android:text="indicator引导页" />
+                android:text="indicator引导" />
 
             <Button
                 style="@style/style_main_normal_button"

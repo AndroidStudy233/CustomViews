@@ -11,15 +11,14 @@ import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerse1Act;
+import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ColorImmerse2Act;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 
 /**
- * Created by shiqkuangsan on 2017/7/27.
- * <p>
- * ClassName: ImmerseActivity
- * Author: shiqkuangsan
- * Description: 新的沉浸式实例页面
- * <p>
+ * Created by shiqkuangsan on 2017/7/27. <p>
+ * ClassName: ImmerseActivity <p>
+ * Author: shiqkuangsan <p>
+ * Description: 新的沉浸式实例页面 <p>
  * 前言: 沉浸式是Android Api19-4.4 以后出现的一种利用状态栏背景更好展示App的方式, 由于4.4的沉浸式是只能实现半透明的样式,
  * 不太好看, 这次就不兼容了. 所以5.0以下的运行效果都一样
  * 但是兼容方法想看的可以去{@link com.shiqkuangsan.mycustomviews.ui.activity.MyImmerseActivity}
@@ -32,11 +31,13 @@ import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui.VLayoutActivity;
 public class ImmerseActivity extends ListActivity {
 
     String[] itemTexts = new String[]{
-            "着色沉浸式->Toolbar+setColor"
+            "着色沉浸式 -> 使用Toolbar",
+            "着色沉浸式 -> 自定义Topbar",
     };
 
     Class[] activities = new Class[]{
             ColorImmerse1Act.class,
+            ColorImmerse2Act.class,
     };
 
     @Override

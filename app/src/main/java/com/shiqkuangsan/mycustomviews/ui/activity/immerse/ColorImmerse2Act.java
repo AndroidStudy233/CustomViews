@@ -4,11 +4,11 @@ import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
 
@@ -22,12 +22,14 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Created by shiqkuangsan on 2017/8/2. <p>
  * ClassName: ColorImmerse1Act <p>
  * Author: shiqkuangsan <p>
- * Description: 颜色沉浸式界面1 -> Toolbar下沉浸+NavigationBar
+ * Description: 颜色沉浸式界面2 -> 自定义Topbar
  */
-public class ColorImmerse1Act extends AppCompatActivity {
+public class ColorImmerse2Act extends AppCompatActivity {
 
-    @ViewInject(R.id.toolbar_colorimmerse1)
-    Toolbar toolbar;
+    @ViewInject(R.id.rl_immerse_topbar)
+    LinearLayout topbar;
+    @ViewInject(R.id.tv_immerse_title)
+    TextView title;
     @ViewInject(R.id.btn_immerse_red1)
     Button btn_red;
     @ViewInject(R.id.btn_immerse_green1)
@@ -38,46 +40,35 @@ public class ColorImmerse1Act extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_immerse1);
+        setContentView(R.layout.activity_color_immerse2);
         x.view().inject(this);
 
-        // 加个返回键, 需要onOptionsItemSelected添加返回支持
-        initToolbar();
     }
 
-    private void initToolbar() {
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Event(value = {R.id.btn_immerse_red1, R.id.btn_immerse_green1, R.id.btn_immerse_blue1})
+    @Event(value = {R.id.iv_immerse_back, R.id.btn_immerse_red2, R.id.btn_immerse_green2, R.id.btn_immerse_blue2})
     private void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_immerse_red1:
-                setToolbarColor(R.color.red);
+            case R.id.iv_immerse_back:
+                finish();
+                break;
+            case R.id.btn_immerse_red2:
+                setTopbarColor(R.color.red);
                 setStatusBarColor(R.color.red);
                 break;
-            case R.id.btn_immerse_green1:
-                setToolbarColor(R.color.green);
+            case R.id.btn_immerse_green2:
+                setTopbarColor(R.color.green);
                 setStatusBarColor(R.color.green);
                 break;
-            case R.id.btn_immerse_blue1:
-                setToolbarColor(R.color.blue);
+            case R.id.btn_immerse_blue2:
+                setTopbarColor(R.color.blue);
                 setStatusBarColor(R.color.blue, 0);
                 break;
         }
     }
 
-    private void setToolbarColor(int colorId) {
+    private void setTopbarColor(int colorId) {
         int color = getResources().getColor(colorId);
-        toolbar.setBackgroundColor(color);
+        topbar.setBackgroundColor(color);
     }
 
     @TargetApi(21)

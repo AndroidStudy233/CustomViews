@@ -167,6 +167,10 @@
             android:name=".ui.activity.immerse.ColorImmerse1Act"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="着色沉浸式" />
+        <activity
+            android:name=".ui.activity.immerse.ColorImmerse2Act"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="着色沉浸式" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

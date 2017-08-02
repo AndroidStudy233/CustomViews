@@ -75,4 +75,22 @@ public class UIUitl {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
+
+    /**
+     * 计算状态栏颜色, 根据给定的透明度和颜色算出应该显示的颜色
+     *
+     * @param color color值
+     * @param alpha alpha值 0-100 ↑
+     * @return 最终的状态栏颜色
+     */
+    public static int calculateColorWithOpacity(int color, int alpha) {
+        float a = 1 - alpha / 255f;
+        int red = color >> 16 & 0xff;
+        int green = color >> 8 & 0xff;
+        int blue = color & 0xff;
+        red = (int) (red * a + 0.5);
+        green = (int) (green * a + 0.5);
+        blue = (int) (blue * a + 0.5);
+        return 0xff << 24 | red << 16 | green << 8 | blue;
+    }
 }
