@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
 
@@ -16,13 +15,12 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import static com.loc.f.f;
-
 /**
  * Created by shiqkuangsan on 2017/8/3. <p>
  * ClassName: CompleteImmerseAct <p>
  * Author: shiqkuangsan <p>
  * Description: 完全沉浸式. 模拟器上可能会拉不回来状态栏和导航栏. 但是真机OK的
+ * 实现方式很简单, 重写onWindowFocusChanged 添加相应flag即可. 注意添加fitSystemWindows属性
  */
 public class CompleteImmerseAct extends AppCompatActivity {
 

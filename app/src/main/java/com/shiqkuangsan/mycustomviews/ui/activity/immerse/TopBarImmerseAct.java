@@ -25,7 +25,7 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Created by shiqkuangsan on 2017/8/2. <p>
  * ClassName: TopBarImmerseAct <p>
  * Author: shiqkuangsan <p>
- * Description: 纯色沉浸、半透明、全透明
+ * Description: 纯色沉浸、半透明、全透明. 道理和ToolbarImmerse一样的
  */
 public class TopBarImmerseAct extends AppCompatActivity {
 

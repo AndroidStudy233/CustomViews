@@ -17,8 +17,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
-import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -30,7 +28,8 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Created by shiqkuangsan on 2017/8/2. <p>
  * ClassName: ToolbarImmerseAct <p>
  * Author: shiqkuangsan <p>
- * Description: 纯色沉浸、半透明、全透明
+ * Description: 纯色沉浸 -> setStatusBarColor()、半透明 -> translucentBar()、全透明 -> transparentBar()
+ * 了解addFlags / clearFlags / View下的FLAG的使用和fitSystemWindows属性的配置即可.
  */
 public class ToolbarImmerseAct extends AppCompatActivity {
 
@@ -159,8 +158,10 @@ public class ToolbarImmerseAct extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void transparentBar() {
         Window window = getWindow();
+        // 去除2个半透明flag
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
         View decorView = window.getDecorView();
         /*
             flag1: 应用的主体内容占用系统状态栏的空间, 配合flag2一起用
