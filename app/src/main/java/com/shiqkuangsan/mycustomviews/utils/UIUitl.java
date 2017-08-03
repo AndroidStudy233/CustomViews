@@ -3,6 +3,7 @@ package com.shiqkuangsan.mycustomviews.utils;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
@@ -75,6 +76,38 @@ public class UIUitl {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
+
+    /**
+     * 获取状态栏高度
+     *
+     * @param context context
+     * @return 状态栏高度px值
+     */
+    public static int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        // 获得状态栏高度
+        int statusHeightId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(statusHeightId);
+    }
+
+    /**
+     * 获取导航栏高度
+     *
+     * @param context context
+     * @return 导航栏高度px值
+     */
+    public static int getNavigationBarHeight(Context context) {
+        Resources resources = context.getResources();
+        // 获得导航栏高度
+        int naviShowId = resources.getIdentifier("config_showNavigationBar", "bool", "android");
+        boolean naviShow = resources.getBoolean(naviShowId);
+        if (naviShow) {
+            int naviHeightId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+            return resources.getDimensionPixelSize(naviHeightId);
+        }
+        return -1;
+    }
+
 
     /**
      * 计算状态栏颜色, 根据给定的透明度和颜色算出应该显示的颜色

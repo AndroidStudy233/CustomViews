@@ -18,15 +18,11 @@ import org.xutils.x;
 
 /**
  * Created by shiqkuangsan on 2017/8/2. <p>
- * ClassName: ImageImmerse1Act <p>
+ * ClassName: DemoImmerseAct <p>
  * Author: shiqkuangsan <p>
- * Description: 图片沉浸式 -> Toolbar. 该界面默认使用style配置形式实现. 代码设置优先级高于style.
- * 需要看代码设置效果的清单文件中AppNoActionBar.Immerse主题改成AppNoActionBar, 放开初始化沉浸式代码即可
- * <p>
- * tip: 这里布局文件中需要注意配置, 首先根布局要fitsSystemWindows, 这样的话会导致Toolbar高度不对,
- * 所以Toolbar也要设置fitsSystemWindows + clipToPadding.
+ * Description: demo1
  */
-public class ImageImmerse1Act extends AppCompatActivity {
+public class DemoImmerseAct extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar_image_immerse1)
     Toolbar toolbar;
@@ -34,12 +30,12 @@ public class ImageImmerse1Act extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_background_immerse1);
+        setContentView(R.layout.activity_demo_immerse);
         x.view().inject(this);
 
-        initToolbar();// 添加返回键支持
+        initToolbar();
 
-//        immerse();// 实现沉浸式
+//        immerse(); // 已经通过配置style实现, 并且布局中设置fitSystemWindows
     }
 
     private void initToolbar() {
@@ -57,9 +53,12 @@ public class ImageImmerse1Act extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void immerse() {
         Window window = getWindow();
+        // 清除状态栏半透明
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // 导航栏半透明
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        // 状态栏全透明
         window.setStatusBarColor(Color.TRANSPARENT);
-//        window.setNavigationBarColor(calculateColorWithOpacity(color, alpha));
+//        window.setNavigationBarColor(Color.RED); // 添加半透明后设置颜色无效
     }
 }

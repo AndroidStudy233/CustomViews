@@ -164,7 +164,7 @@
     <color name="navy">#000080</color><!--海军色 -->
     <color name="black">#000000</color><!--黑色 -->
     <color name="transparent">#0000</color><!-- 透明 -->
-    <color name="transparent2">#8000</color><!-- 透明 -->
+    <color name="translucent">#8000</color><!-- 半透明 -->
     <!-- 上传图片添加的颜色 -->
     <color name="none_color">#00000000</color>
     <color name="plugin_camera_black">#000000</color>

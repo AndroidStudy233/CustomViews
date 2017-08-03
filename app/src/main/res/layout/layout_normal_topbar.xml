@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_immerse_back"
-        android:layout_width="14dp"
-        android:layout_height="24dp"
+        android:layout_width="12dp"
+        android:layout_height="22dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="15dp"
         android:scaleType="centerInside"
@@ -23,8 +23,8 @@
         android:layout_marginLeft="15dp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="着色沉浸式"
+        android:text="TopBar沉浸式"
         android:textColor="@color/white"
-        android:textSize="22sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

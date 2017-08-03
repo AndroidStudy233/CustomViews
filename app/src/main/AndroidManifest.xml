@@ -164,21 +164,18 @@
             android:name=".ui.activity.ImmerseActivity"
             android:label="沉浸式解析" />
         <activity
-            android:name=".ui.activity.immerse.ColorImmerse1Act"
-            android:theme="@style/AppNoActionBar"
-            android:label="着色沉浸式" />
+            android:name=".ui.activity.immerse.ToolbarImmerseAct"
+            android:theme="@style/AppNoActionBar" />
         <activity
-            android:name=".ui.activity.immerse.ColorImmerse2Act"
-            android:theme="@style/AppNoActionBar"
-            android:label="着色沉浸式" />
+            android:name=".ui.activity.immerse.TopBarImmerseAct"
+            android:theme="@style/AppNoActionBar" />
         <activity
-            android:name=".ui.activity.immerse.ImageImmerse1Act"
-            android:theme="@style/AppNoActionBar.Immerse"
-            android:label="图片沉浸式" />
+            android:name=".ui.activity.immerse.DemoImmerseAct"
+            android:theme="@style/AppNoActionBar.Immerse" />
         <activity
-            android:name=".ui.activity.immerse.ImageImmerse2Act"
-            android:theme="@style/AppNoActionBar"
-            android:label="图片沉浸式" />
+            android:name=".ui.activity.immerse.CompleteImmerseAct"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppNoActionBar" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
