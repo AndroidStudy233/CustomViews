@@ -2486,8 +2486,9 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 ### TabLayout的两个需要注意的属性
 
 		Android Material Design 中的TabLayout有两个比较有用的属性 app:tabMode、app:tabGravity，
-		（1）app:tabMode有两个值：fixed和scrollable。
+		（1）app:tabMode有两个值：fixed和 scrollable 。
 		（2）app:tabGravity有两个值：fill和center。
+
 		比较常用的是app:tabMode设置值scrollable，以及app:tabGravity设置值center。
 		比如，当app:tabMode设置值scrollable表示此TabLayout中当子view超出屏幕边界时候，将提供滑动以便滑出不可见的那些子view。
 		而app:tabGravity设置值center，在有些情况下，比如TabLayout中子view较少需要居中显示时候的情景。
@@ -2585,7 +2586,9 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 
 	* enterAlwaysCollapsed: 这个flag定义的是何时进入（已经消失之后何时再次显示）,配合scroll使用,当你的视图已经设置minHeight属性又使用此标志时，那么view将在到达这个最小高度的时候开始显示，并且从这个时候开始慢慢展开，当滚动到顶部的时候完全展开。
 
-	* exitUntilCollapsed: 这个flag是定义何时退出，当你定义了一个minHeight，这个view将在滚动到达这个最小高度的时候消失。
+	* exitUntilCollapsed: 当本 View 离开屏幕时，会被“折叠”直到达到其最小高度。我们可以这样理解这个效果：当我们开始向上滚动 Scrolling view 时，本 View 会先接管滚动事件，这样本 View 会先进行滚动，直到滚动到了最小高度（折叠了），Scrolling view 才开始实际滚动。而当本 View 已完全折叠后，再向下滚动 Scrolling view，直到 Scrolling view 顶部的内容完全显示后，本 View 才会开始向下滚动以显现出来。
+
+	* snap: 在一次滚动结束时，本 View 很可能只处于“部分显示”的状态，加上这个标记能够达到“要么完全隐藏，要么完全显示”的效果。
 
 	* 注意:这些flag的模式一般是前两个一起使用或者 scroll与enterAlwaysCollapsed 一起使用,而最后一个flag只有在CollapsingToolbarLayout中才有用,所以这些flag的使用场景,一般都是固定的;
 
@@ -2623,6 +2626,8 @@ CollapsingToobarLayout的属性及用法:
 “parallax”：视差模式，在折叠的时候会有个视差折叠的效果。我们可以在布局中使用属性app:layout_collapseMode=”parallax”来改变。
 
 6. layout_anchor : 这个是CoordinatorLayout提供的属性,与layout_anchorGravity 一起使用,可以用来放置与其他视图关联在一起的悬浮视图（如 FloatingActionButton）或者头像
+
+
 
 ---
 
@@ -2868,29 +2873,6 @@ CollapsingToobarLayout的属性及用法:
 
 ---
 
-## CoordinatorLayout中可滑动子View的layout_behavior属性值
-
-* scroll
-	
-	设成这个值的效果就好比本 View 和 Scrolling view 是“一体”的。具体示例我们在上面已经给出。有一点特别需要我们的注意，为了其他的滚动行为生效，必须同时指定 Scroll 和相应的标记，比如我们想要 exitUntilCollapsed 所表现的滚动行为，必须将 layout_scrollFlags 指定为 scroll|exitUntilCollapsed 。
-
-* exitUntilCollapsed
-
-	当本 View 离开屏幕时，会被“折叠”直到达到其最小高度。我们可以这样理解这个效果：当我们开始向上滚动 Scrolling view 时，本 View 会先接管滚动事件，这样本 View 会先进行滚动，直到滚动到了最小高度（折叠了），Scrolling view 才开始实际滚动。而当本 View 已完全折叠后，再向下滚动 Scrolling view，直到 Scrolling view 顶部的内容完全显示后，本 View 才会开始向下滚动以显现出来。
-
-* enterAlways
-
-	当 Scrolling view 向下滚动时，本 View 会一起跟着向下滚动。实际上就好比我们同时对 Scrolling view 和本 View 进行向下滚动。 　
-
-* enterAlwaysCollapsed
-
-	从名字上就可以看出，这是在 enterAlways 的基础上，加上了“折叠”的效果。当我们开始向下滚动 Scrolling View 时，本 View 会一起跟着滚动直到达到其“折叠高度”（即最小高度）。然后当 Scrolling View 滚动至顶部内容完全显示后，再向下滚动 Scrolling View，本 View 会继续滚动到完全显示出来。　
-
-* snap
-
-	在一次滚动结束时，本 View 很可能只处于“部分显示”的状态，加上这个标记能够达到“要么完全隐藏，要么完全显示”的效果。
-
----
 
 ## WebView及其用法
 

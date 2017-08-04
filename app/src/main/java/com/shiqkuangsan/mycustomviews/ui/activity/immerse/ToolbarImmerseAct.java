@@ -127,6 +127,8 @@ public class ToolbarImmerseAct extends AppCompatActivity {
 
     @TargetApi(21)
     private void setStatusBarColor(int colorId, int alpha) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+            return;
         int color = getResources().getColor(colorId);
         Window window = getWindow();
         // 1. 添加绘制系统bar 相当于style中配置windowDrawsSystemBarBackgrounds -> true
@@ -147,6 +149,8 @@ public class ToolbarImmerseAct extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void translucentBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+            return;
         Window window = getWindow();
         // 添加2个半透明的flag
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -157,6 +161,8 @@ public class ToolbarImmerseAct extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void transparentBar() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+            return;
         Window window = getWindow();
         // 去除2个半透明flag
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

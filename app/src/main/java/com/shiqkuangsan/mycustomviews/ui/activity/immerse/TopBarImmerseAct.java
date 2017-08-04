@@ -95,6 +95,8 @@ public class TopBarImmerseAct extends AppCompatActivity {
 
     @TargetApi(21)
     private void setStatusBarColor(int colorId, int alpha) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+            return;
         int color = getResources().getColor(colorId);
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
