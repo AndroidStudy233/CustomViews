@@ -17,6 +17,7 @@
             android:layout_height="48dp"
             android:background="@color/colorPrimary"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:titleTextColor="@color/white"
             app:title="Toolbar沉浸式" />
 
         <TextView

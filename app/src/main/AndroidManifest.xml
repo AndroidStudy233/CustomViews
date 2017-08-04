@@ -50,28 +50,28 @@
             android:label="小开关" />
         <activity
             android:name=".ui.activity.PullRefreshActivity"
-            android:screenOrientation="portrait"
-            android:label="测试下拉刷新" />
+            android:label="测试下拉刷新"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.SlideMenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.PtrDemoActivity"
-            android:screenOrientation="portrait"
-            android:label="测试下拉刷新" />
+            android:label="测试下拉刷新"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.PicChooserActivity"
-            android:screenOrientation="portrait"
-            android:label="测试图片选择" />
+            android:label="测试图片选择"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.PicLookerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.XUtilsActivity"
-            android:screenOrientation="portrait"
-            android:label="测试xUtils3" />
+            android:label="测试xUtils3"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.qzone.MomentListActivity"
             android:screenOrientation="portrait"
@@ -81,13 +81,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/theme_picchose_act" />
         <activity
-            android:name=".ui.activity.CoordinatorActivity"
+            android:name=".ui.activity.coodinator.EmmaInfoDemoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/coordinator_emma_immerse" />
         <activity
             android:name=".ui.activity.RecyclerViewActivity"
-            android:screenOrientation="portrait"
             android:label="RecyclerView使用"
+            android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.MyImmerseActivity"
@@ -116,66 +116,70 @@
             android:windowSoftInputMode="adjustPan|stateUnspecified" />
         <activity
             android:name=".ui.activity.TestSwipeBackActivity"
-            android:screenOrientation="portrait"
             android:label="大猪是不是傻"
+            android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
-        <activity android:name=".ui.activity.testswipeback.Activity2" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.activity.testswipeback.Activity3" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.testswipeback.Activity2"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.testswipeback.Activity3"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.MDSettingsActivity"
-            android:screenOrientation="portrait"
-            android:label="测试MD风格的设置" />
+            android:label="测试MD风格的设置"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.api21.Api21Activity"
-            android:screenOrientation="portrait"
             android:label="5.0简单测试页面"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.transition" />
         <activity
             android:name=".ui.activity.Api21ExploseActivity"
-            android:screenOrientation="portrait"
             android:label="测试碎裂效果和5.0"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.RealmTestActivity"
-            android:screenOrientation="portrait"
-            android:label="realm数据库测试" />
+            android:label="realm数据库测试"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.BottomSheetActivity"
-            android:screenOrientation="portrait"
             android:label="底部上拉布局"
+            android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.ConstraintActivity"
-            android:screenOrientation="portrait"
-            android:label="Constraint学习" />
+            android:label="Constraint学习"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.QQEffectsActivity"
-            android:screenOrientation="portrait"
-            android:label="QQ简单特效" />
+            android:label="QQ简单特效"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.piclook.PhotoDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.AddDeleteActivity"
-            android:screenOrientation="portrait"
-            android:label="动态添加" />
+            android:label="动态添加"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.VLayoutMainActivity"
-            android:screenOrientation="portrait"
-            android:label="V-Layout" />
+            android:label="V-Layout"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.vlayout.ui.VLayoutActivity"
-            android:screenOrientation="portrait"
-            android:label="V-Layout" />
+            android:label="V-Layout"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.RecyclerItemDecorationActivity"
-            android:screenOrientation="portrait"
-            android:label="条目装饰分割线" />
+            android:label="条目装饰分割线"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.RecyclerSideslipSectionActivity"
-            android:screenOrientation="portrait"
-            android:label="粘性头部 + 侧滑" />
+            android:label="粘性头部 + 侧滑"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.CustomChatActivity"
             android:label="自定义图表" />
@@ -184,16 +188,17 @@
             android:label="引导页" />
         <activity
             android:name=".ui.activity.BoomMenuActivity"
-            android:screenOrientation="portrait"
-            android:label="BoomMenu界面1" />
+            android:label="BoomMenu界面1"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.BoomMenu2ndActivity"
-            android:screenOrientation="portrait"
-            android:label="BoomMenu界面2" />
+            android:label="BoomMenu界面2"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.ImmerseActivity"
-            android:screenOrientation="portrait"
-            android:label="沉浸式解析" />
+            android:label="沉浸式解析"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.immerse.ToolbarImmerseAct"
             android:screenOrientation="portrait"
@@ -209,6 +214,14 @@
         <activity
             android:name=".ui.activity.immerse.CompleteImmerseAct"
             android:screenOrientation="landscape"
+            android:theme="@style/AppNoActionBar" />
+        <activity
+            android:name=".ui.activity.CoodinatorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.activity.coodinator.FollowScollToolbarAct"
+            android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
 
         <!-- 高德地图相关的service和meta -->

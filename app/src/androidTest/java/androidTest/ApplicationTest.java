@@ -14,5 +14,6 @@ import org.junit.runner.RunWith;
 public class ApplicationTest {
     @Test
     public void useAppContext() throws Exception {
+
     }
 }
