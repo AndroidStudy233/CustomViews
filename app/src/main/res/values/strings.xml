@@ -78,6 +78,7 @@
         与艾玛沃特森仅看过几场电影。曾经暗恋过扮演哈利波特中德拉科·马尔福的汤姆·费尔顿。前男友及绯闻男友：
         Tom Ducker、Johnny Borrell、Francis Boulle、Jay Barrymore、拉斐尔·西布莱恩、Johnny Simmons，
         现任男友是威尔·亚当沃茨。[23] </string>
+    <string name="english_text">By providing a custom LayoutManager to RecyclerView, VirtualLayout is able to layout child views with different style at single view elegantly. The custom LayoutManager manages a serial of layoutHelpers where each one implements the specific layout logic for a certain position range items. By the way, implementing your custom layoutHelper and provding it to the framework is also supported.</string>
 
     <string name="text_inside_circle_button_text_normal">Text Inside Circle Button(Normal)</string>
     <string name="text_inside_circle_button_text_highlighted">Text Inside Circle Button(Highlighted)</string>

@@ -23,6 +23,7 @@ import org.xutils.x;
  * Description: 跟随滚动的Toolbar demo.根布局采用CoordinatorLayout, 实现Toolbar的跟随滚动需要AppbarLayout,
  * 通过给他设置layout_scrollFlags(AppbarLayout子View才可以)属性, 或者代码中使用setScrollFlags()方法
  * 为了让AppBarLayout能够知道何时滚动其子View，必须要在CoordinatorLayout布局中提供一个可滚动View.
+ * 如果界面用不到RecyclerView等列表的话, 有提供NestedScrollView. 这个界面有用到{@link EmmaInfoDemoActivity}
  * 而此View的和AppbarLayout之间的关联通过给该View设置Behavior(layout_behavior属性)来决定<p>
  * Tip:
  * <p>1.滚动View -> ListView不生效. 一般都用RecyclerView

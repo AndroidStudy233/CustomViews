@@ -66,8 +66,9 @@ public class StickyTabScrollToolbarAct extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
+        if (item.getItemId() == android.R.id.home){
             finish();
+        }
         switch (item.getItemId()) {
             case R.id.menu_coordinator_1:
                 break;

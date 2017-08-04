@@ -54,7 +54,7 @@
             android:id="@+id/tablayout_emma_intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#e1e1e1"
+            android:background="#FFF1F1F1"
             app:tabGravity="fill"
             app:tabIndicatorColor="#4052B5"
             app:tabMode="fixed" />

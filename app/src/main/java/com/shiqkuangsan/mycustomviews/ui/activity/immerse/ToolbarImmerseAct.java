@@ -149,8 +149,8 @@ public class ToolbarImmerseAct extends AppCompatActivity {
     private void translucentBar() {
         Window window = getWindow();
         // 添加2个半透明的flag
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         // 上面会导致Toolbar陷进状态栏. 需要给根布局添加fitSystemWindows属性. 可以用代码也布局文件中加
         fitSystemWindows();
     }

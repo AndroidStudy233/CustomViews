@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CollapsingToolbarAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.EmmaInfoDemoActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FollowScollToolbarAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.StickyTabScrollToolbarAct;
@@ -23,12 +24,14 @@ public class CoodinatorActivity extends ListActivity {
     String[] itemTexts = new String[]{
             "1. Toolbar跟随滚动",
             "2. Toolbar跟随滚动, Tab固定",
+            "3. Collapsing演示parallax效果",
             "5. Emma个人信息demo",
     };
 
     Class[] activities = new Class[]{
             FollowScollToolbarAct.class,
             StickyTabScrollToolbarAct.class,
+            CollapsingToolbarAct.class,
             EmmaInfoDemoActivity.class,
     };
 
