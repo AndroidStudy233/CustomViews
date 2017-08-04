@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.EmmaInfoDemoActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FollowScollToolbarAct;
+import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.StickyTabScrollToolbarAct;
 
 /**
  * Created by shiqkuangsan on 2017/7/27. <p>
@@ -21,11 +22,13 @@ public class CoodinatorActivity extends ListActivity {
 
     String[] itemTexts = new String[]{
             "1. Toolbar跟随滚动",
+            "2. Toolbar跟随滚动, Tab固定",
             "5. Emma个人信息demo",
     };
 
     Class[] activities = new Class[]{
             FollowScollToolbarAct.class,
+            StickyTabScrollToolbarAct.class,
             EmmaInfoDemoActivity.class,
     };
 

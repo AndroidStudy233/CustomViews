@@ -197,8 +197,8 @@
         <activity
             android:name=".ui.activity.ImmerseActivity"
             android:label="沉浸式解析"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.immerse.ToolbarImmerseAct"
             android:screenOrientation="portrait"
@@ -221,6 +221,10 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.activity.coodinator.FollowScollToolbarAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionBar" />
+        <activity
+            android:name=".ui.activity.coodinator.StickyTabScrollToolbarAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
 

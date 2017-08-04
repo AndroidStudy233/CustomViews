@@ -5,19 +5,19 @@
     <item
         android:id="@+id/menu_coordinator_1"
         android:orderInCategory="100"
-        android:title="测试菜单1"
+        android:title="Google"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_coordinator_2"
         android:orderInCategory="100"
-        android:title="测试菜单2"
+        android:title="YouTube"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_coordinator_3"
         android:orderInCategory="100"
-        android:title="测试菜单3"
+        android:title="Chrome"
         app:showAsAction="never" />
 
 </menu>
