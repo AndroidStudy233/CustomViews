@@ -20,7 +20,8 @@ import org.xutils.x;
  * Created by shiqkuangsan on 2017/8/4. <p>
  * ClassName: FollowScollToolbarAct <p>
  * Author: shiqkuangsan <p>
- * Description: 跟随滚动的Toolbar, 下面的TabLayout的tab却会固定
+ * Description: 跟随滚动的Toolbar, 下面的TabLayout的tab却会固定, 其实就是AppBarLayout中的Toolbar有
+ * ScrollFlag而TabLayout没有, 因此导致TabLayout粘性
  */
 public class StickyTabScrollToolbarAct extends AppCompatActivity {
 

@@ -24,7 +24,9 @@ import org.xutils.x;
  * ClassName: CollapsingToolbarAct <p>
  * Author: shiqkuangsan <p>
  * Description: 头部视差效果parallax.<p>
- *
+ * 头部视差效果需要用到CollapsingToolbarLayout, 他的属性和介绍在笔记中直接可以搜到.
+ * AppBarLayout里面放入CollapsingToolbarLayout, 里面再放入ImageView和Toolbar. 通过调整layout_collapseMode
+ * 即可实现. 通过设置儿子(这里是ImageView)的app:layout_collapseParallaxMultiplier属性值(0.0 - 1.0)调整视差效果
  */
 public class CollapsingToolbarAct extends AppCompatActivity {
 

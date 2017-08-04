@@ -231,6 +231,10 @@
             android:name=".ui.activity.coodinator.CollapsingToolbarAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
+        <activity
+            android:name=".ui.activity.coodinator.CustomBehaviorAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionBar" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
