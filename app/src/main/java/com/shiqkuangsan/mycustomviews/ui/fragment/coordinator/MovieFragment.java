@@ -1,7 +1,10 @@
 package com.shiqkuangsan.mycustomviews.ui.fragment.coordinator;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,6 +16,7 @@ import android.widget.ImageView;
 
 import com.rd.PageIndicatorView;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -47,8 +51,19 @@ public class MovieFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        compatToolbar();
         pager.setAdapter(new ImageAdapter());
         indicator.setViewPager(pager);
+    }
+
+    private void compatToolbar() {
+        // 投机取巧暂且实现
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            CollapsingToolbarLayout.LayoutParams params = (CollapsingToolbarLayout.LayoutParams) toolbar.getLayoutParams();
+            params.height = UIUitl.dip2px(getActivity(), 72);
+            toolbar.setLayoutParams(params);
+            toolbar.setPadding(0, UIUitl.dip2px(getActivity(), 24), 0, 0);
+        }
     }
 
     private class ImageAdapter extends PagerAdapter {
