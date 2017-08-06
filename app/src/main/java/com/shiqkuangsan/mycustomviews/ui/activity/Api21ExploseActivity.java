@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.activity.api21.Api21Activity;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -24,6 +25,7 @@ import tyrantgit.explosionfield.ExplosionField;
  * 'tyrantgit:explosionfield:1.0.1'
  */
 @TargetApi(21)
+@ContentView(R.layout.activity_api21_demo)
 public class Api21ExploseActivity extends AppCompatActivity {
 
     @ViewInject(R.id.iv_explode_1)
@@ -43,7 +45,6 @@ public class Api21ExploseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_api21_demo);
         x.view().inject(this);
         explose = ExplosionField.attach2Window(this);
 

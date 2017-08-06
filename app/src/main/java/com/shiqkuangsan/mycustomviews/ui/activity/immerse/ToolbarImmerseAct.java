@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -31,6 +32,7 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Description: 纯色沉浸 -> setStatusBarColor()、半透明 -> translucentBar()、全透明 -> transparentBar()
  * 了解addFlags / clearFlags / View下的FLAG的使用和fitSystemWindows属性的配置即可.
  */
+@ContentView(R.layout.activity_toolbar_immerse)
 public class ToolbarImmerseAct extends AppCompatActivity {
 
     @ViewInject(R.id.llroot_toolbar_immerse)
@@ -47,7 +49,6 @@ public class ToolbarImmerseAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_toolbar_immerse);
         x.view().inject(this);
 
         initToolbar();

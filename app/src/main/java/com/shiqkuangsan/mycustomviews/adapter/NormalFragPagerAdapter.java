@@ -9,16 +9,16 @@ import java.util.List;
 
 /**
  * Created by shiqkuangsan on 2017/8/4. <p>
- * ClassName: NormalPagerAdapter <p>
+ * ClassName: NormalFragPagerAdapter <p>
  * Author: shiqkuangsan <p>
  * Description: 简单的FragmentPagerAdapter
  */
-public class NormalPagerAdapter extends FragmentPagerAdapter {
+public class NormalFragPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> mFragments = new ArrayList<>();
     private String[] titles;
 
-    public NormalPagerAdapter(FragmentManager fm, String[] titles) {
+    public NormalFragPagerAdapter(FragmentManager fm, String[] titles) {
         super(fm);
         this.titles = titles;
     }

@@ -16,6 +16,7 @@ import android.view.Window;
 
 import com.shiqkuangsan.mycustomviews.R;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -28,6 +29,7 @@ import org.xutils.x;
  * AppBarLayout里面放入CollapsingToolbarLayout, 里面再放入ImageView和Toolbar. 通过调整layout_collapseMode
  * 即可实现. 通过设置儿子(这里是ImageView)的app:layout_collapseParallaxMultiplier属性值(0.0 - 1.0)调整视差效果
  */
+@ContentView(R.layout.activity_collapsing_simple)
 public class CollapsingToolbarAct extends AppCompatActivity {
 
     @ViewInject(R.id.collapsing_coordinator_demo)
@@ -38,7 +40,6 @@ public class CollapsingToolbarAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collapsing_simple);
         x.view().inject(this);
 
         collapsing.setTitle("Collapsing");

@@ -11,7 +11,6 @@ import com.amap.api.location.AMapLocationListener;
 import com.shiqkuangsan.cityselector.CitySelectorActivity;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
-import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.EmmaInfoDemoActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 /**

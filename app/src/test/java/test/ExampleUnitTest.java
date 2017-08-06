@@ -2,8 +2,7 @@ package test;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -11,24 +10,18 @@ import java.util.List;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
     @Test
     public void test() throws Exception {
-        int a = 10;
-        int b = 10;
-        method(a, b);
-        System.out.println("a=" + a);
-        System.out.println("b=" + b);
+        File origin = new File("D:\\Game\\地下城与勇士\\SoungdPacks");
+        File[] files = origin.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            String originName = files[i].getName();
+            String newName = originName.replace(" - 副本", "");
+            File newFile = new File("D:\\Game\\地下城与勇士\\SoungdPacks", newName);
+            boolean result = files[i].renameTo(newFile);
+            System.out.println(result);
+        }
     }
 
-    private void method(int a, int b) {
-        a = 100;
-        b = 200;
-        System.out.println("a=" + a);
-        System.out.println("b=" + b);
-        System.exit(0);
-    }
-
-    public void test2(){
-        List list = new ArrayList();
-    }
 }

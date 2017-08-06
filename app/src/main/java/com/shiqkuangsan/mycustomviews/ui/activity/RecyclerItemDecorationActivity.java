@@ -9,6 +9,7 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalRecyclerAdapter;
 import com.shiqkuangsan.mycustomviews.adapter.itemdecoration.NormalLineDecoration;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -19,6 +20,7 @@ import org.xutils.x;
  * Author: shiqkuangsan
  * Description: RecyclerView的条目装饰ItemDecoration使用初步
  */
+@ContentView(R.layout.activity_recycler_item_decoration)
 public class RecyclerItemDecorationActivity extends AppCompatActivity {
 
     @ViewInject(R.id.recycler_itemdecoration)
@@ -27,7 +29,6 @@ public class RecyclerItemDecorationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_item_decoration);
         x.view().inject(this);
 
         initUI();

@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.adapter.ViewPagerAdapter;
+import com.shiqkuangsan.mycustomviews.adapter.EasyPagerAdapter;
 import com.shiqkuangsan.mycustomviews.ui.custom.IndicatorView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -33,7 +33,7 @@ public class IndicatorActivity extends AppCompatActivity {
         indicatorView.setCircleNum(9);//和数据个数关联
         indicatorView.setDefautSelectPosition(2);//设置默认选中
         indicatorView.setViewPager(viewPager);//设置指示view和viewpager关联
-        viewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new EasyPagerAdapter(getSupportFragmentManager()));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

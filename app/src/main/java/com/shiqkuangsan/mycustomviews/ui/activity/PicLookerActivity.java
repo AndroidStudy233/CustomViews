@@ -60,7 +60,7 @@ public class PicLookerActivity extends BaseActivity {
 //                }
 //                parent.getChildAt(position);
 //                bundle.putParcelableArrayList("infos", imgImageInfos);
-//                getSupportFragmentManager().beginTransaction().replace(Window.ID_ANDROID_CONTENT, ViewPagerFragment.getInstance(bundle), "ViewPagerFragment")
+//                getSupportFragmentManager().beginTransaction().replace(Window.ID_ANDROID_CONTENT, EasyPagerFragment.getInstance(bundle), "EasyPagerFragment")
 //                        .addToBackStack(null).commit();
 
                 Intent intent = new Intent(PicLookerActivity.this, PhotoDetailActivity.class);

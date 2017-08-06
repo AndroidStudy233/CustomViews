@@ -17,6 +17,7 @@ import com.shiqkuangsan.mycustomviews.adapter.itemdecoration.StickyHeaderDecorat
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -32,6 +33,7 @@ import in.srain.cube.views.ptr.header.MaterialHeader;
  * Author: shiqkuangsan
  * Description: 使用类库实现Recycler的侧滑删除和分组黏性头部效果
  */
+@ContentView(R.layout.activity_recycler_sideslip_section)
 public class RecyclerSideslipSectionActivity extends AppCompatActivity {
 
     @ViewInject(R.id.recycler_sideslip)
@@ -44,7 +46,6 @@ public class RecyclerSideslipSectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_sideslip_section);
         x.view().inject(this);
 
         initUI();

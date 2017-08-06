@@ -15,6 +15,7 @@ import com.shiqkuangsan.mycustomviews.utils.InputMethodUtil;
 import com.shiqkuangsan.mycustomviews.utils.StringUtil;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -28,6 +29,7 @@ import io.realm.RealmResults;
  * author: shiqkuangsan
  * description: realm数据基本功能测试
  */
+@ContentView(R.layout.activity_realm_test)
 public class RealmTestActivity extends AppCompatActivity {
 
     @ViewInject(R.id.btn_realm_insert)
@@ -54,7 +56,6 @@ public class RealmTestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_realm_test);
         x.view().inject(this);
 
         realm = RealmManager.getInstance(Constant.name_test_realm, 1).getRealm();

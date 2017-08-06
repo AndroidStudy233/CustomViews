@@ -16,6 +16,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.MaterialProgressBar;
 import com.shiqkuangsan.mycustomviews.ui.custom.OverScrollViewPager;
 import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -32,6 +33,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * Description: 图片详情查看页面
  * 依赖   'com.romandanylyk:pageindicatorview:X.X.X' 指示器类库
  */
+@ContentView(R.layout.activity_photo_detail)
 public class PhotoDetailActivity extends AppCompatActivity {
 
     @ViewInject(R.id.pager_pic_detail)
@@ -46,7 +48,6 @@ public class PhotoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // 去状态
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_photo_detail);
         x.view().inject(this);
 
         list_pics = getIntent().getExtras().getStringArrayList("photos");

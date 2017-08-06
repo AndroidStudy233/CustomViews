@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.shiqkuangsan.mycustomviews.ui.fragment.ViewPagerFragment;
+import com.shiqkuangsan.mycustomviews.ui.fragment.EasyPagerFragment;
 
 /**
  * <p>创建人：余志伟</p>
@@ -16,14 +16,14 @@ import com.shiqkuangsan.mycustomviews.ui.fragment.ViewPagerFragment;
  *
  * @version V3.1
  */
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class EasyPagerAdapter extends FragmentPagerAdapter {
     private String[] TITLES = {"全部", "成都", "重庆", "全部1", "成都1", "重庆1", "全部2", "成都2", "重庆2",};
 
-    public ViewPagerAdapter(FragmentManager fm) {
+    public EasyPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public void setTITLES(String[] titles){
+    public void setTitles(String[] titles){
         TITLES = titles;
     }
 
@@ -36,7 +36,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
-        return ViewPagerFragment.getInstance(position);
+        return EasyPagerFragment.getInstance(position);
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -23,6 +24,7 @@ import org.xutils.x;
  * Author: shiqkuangsan
  * Description: 演示BoomMenu方式2
  */
+@ContentView(R.layout.activity_boom_menu2nd)
 public class BoomMenu2ndActivity extends AppCompatActivity {
 
     @ViewInject(R.id.bmb_boom2nd)
@@ -31,7 +33,6 @@ public class BoomMenu2ndActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_boom_menu2nd);
         x.view().inject(this);
 
         initBoomButton();

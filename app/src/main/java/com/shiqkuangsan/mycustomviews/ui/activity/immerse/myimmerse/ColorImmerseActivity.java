@@ -12,12 +12,15 @@ import android.view.View;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
 
+import org.xutils.view.annotation.ContentView;
+
 /**
  * Created by shiqkuangsan on 2016/10/20.
  *
  * @author shiqkuangsan
  * @summary 着色沉浸式页面
  */
+@ContentView(R.layout.activity_color_immerse)
 public class ColorImmerseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int color;
@@ -26,7 +29,6 @@ public class ColorImmerseActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_color_immerse);
         initView();
 
         color = ContextCompat.getColor(this, R.color.colorPrimary);

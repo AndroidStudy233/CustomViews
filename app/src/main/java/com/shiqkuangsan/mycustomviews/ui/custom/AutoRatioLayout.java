@@ -15,7 +15,7 @@ import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 /**
  * 图片流查看的时候,如果RecyclerView或者ListView的item的高度写死了
  * 适配上回有一点问题.而且图片的scaleType也不好写,写centerCrop会裁剪
- * 写fitXY会拉伸.如果有一个布局他的宽高比就是根据加载的图片的宽高比
+ * 写fitXY会拉伸.如果有一个布局他的宽高比就是根据加载的图片的宽高比来确定
  * 而他的宽高比又是可以在布局文件中定义.这样宽度每次都使用屏幕宽度
  * 高度会自动根据宽高比计算出来,centerCrop下的图片就是完美展示的
  * (适用于所有图片大小不一但是宽高比一样,而且不用做适配)

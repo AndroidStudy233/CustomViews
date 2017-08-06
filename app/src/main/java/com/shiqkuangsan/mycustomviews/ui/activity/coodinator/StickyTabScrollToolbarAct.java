@@ -10,9 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.adapter.NormalPagerAdapter;
-import com.shiqkuangsan.mycustomviews.ui.fragment.NormalSimpleRecyclerFragment;
+import com.shiqkuangsan.mycustomviews.adapter.NormalFragPagerAdapter;
+import com.shiqkuangsan.mycustomviews.ui.fragment.NormalSimpleFragment;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -23,6 +24,7 @@ import org.xutils.x;
  * Description: 跟随滚动的Toolbar, 下面的TabLayout的tab却会固定, 其实就是AppBarLayout中的Toolbar有
  * ScrollFlag而TabLayout没有, 因此导致TabLayout粘性
  */
+@ContentView(R.layout.activity_coordinator_stickytab)
 public class StickyTabScrollToolbarAct extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar_coordinator_stickytab)
@@ -39,7 +41,6 @@ public class StickyTabScrollToolbarAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinator_stickytab);
         x.view().inject(this);
 
         initToolbar();
@@ -92,9 +93,9 @@ public class StickyTabScrollToolbarAct extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        NormalPagerAdapter adapter = new NormalPagerAdapter(getSupportFragmentManager(), shiningTitles);
+        NormalFragPagerAdapter adapter = new NormalFragPagerAdapter(getSupportFragmentManager(), shiningTitles);
         for (int i = 0; i < shiningTitles.length; i++) {
-            adapter.addFragment(NormalSimpleRecyclerFragment.newInstance());
+            adapter.addFragment(NormalSimpleFragment.newInstance());
         }
         viewPager.setAdapter(adapter);
     }

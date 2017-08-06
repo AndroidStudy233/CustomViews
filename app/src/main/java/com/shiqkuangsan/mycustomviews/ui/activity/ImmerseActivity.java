@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.EmmaInfoDemoActivity;
+import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.DrawerEmmaInfoActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.CompleteImmerseAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.ToolbarImmerseAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.TopBarImmerseAct;
@@ -22,7 +22,7 @@ import com.shiqkuangsan.mycustomviews.ui.activity.immerse.DemoImmerseAct;
  * 前言: 沉浸式是Android Api19-4.4 以后出现的一种利用状态栏背景更好展示App的方式, 由于4.4的沉浸式是只能实现半透明的样式,
  * 不太好看, 这次就不兼容了. 所以5.0以下的运行效果都一样
  * 但是兼容方法想看的可以去{@link MyImmerseActivity}
- * 另外针对DrawerLayout的操作可以去看{@link EmmaInfoDemoActivity}
+ * 另外针对DrawerLayout的操作可以去看{@link DrawerEmmaInfoActivity}
  * <p>
  * 这里我们做三种沉浸式(名字自己瞎取的):
  * 1. 着色沉浸(纯色). 自定义状态栏、Toolbar/Actionbar/Topbar、导航栏的颜色

@@ -81,7 +81,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/theme_picchose_act" />
         <activity
-            android:name=".ui.activity.coodinator.EmmaInfoDemoActivity"
+            android:name=".ui.activity.coodinator.DrawerEmmaInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/coordinator_emma_immerse" />
         <activity
@@ -233,6 +233,10 @@
             android:theme="@style/AppNoActionBar" />
         <activity
             android:name=".ui.activity.coodinator.CustomBehaviorAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionBar" />
+        <activity
+            android:name=".ui.activity.coodinator.FragmentSurppotAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
 

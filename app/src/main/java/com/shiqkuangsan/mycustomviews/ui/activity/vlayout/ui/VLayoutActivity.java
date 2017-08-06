@@ -22,6 +22,7 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.subadapter.SimpleVLayoutAdapter;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.subadapter.VLayout1thAdapter;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -35,6 +36,7 @@ import java.util.List;
  * Author: shiqkuangsan
  * Description: 学习使用V-Layout
  */
+@ContentView(R.layout.activity_v_layout)
 public class VLayoutActivity extends AppCompatActivity {
 
     @ViewInject(R.id.recycler_vlayout)
@@ -43,7 +45,6 @@ public class VLayoutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_v_layout);
         x.view().inject(this);
 
         initUI();

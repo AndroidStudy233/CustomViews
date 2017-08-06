@@ -16,12 +16,12 @@ import com.shiqkuangsan.cityselector.utils.ToastUtil;
 import com.shiqkuangsan.mycustomviews.R;
 
 /**
- * Created by shiqkuangsan on 2016/11/18.
- *
- * @author shiqkuangsan
- * @summary MD风格使用Preference搭建设置页面
+ * Created by shiqkuangsan on 2017/8/6.
+ * <p>
+ * ClassName: SimpleSettingsFragment
+ * Author: shiqkuangsan
+ * Description: Material Design风格设置界面
  */
-
 public class SimpleSettingsFragment extends PreferenceFragment {
 
     @Override

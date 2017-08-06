@@ -21,6 +21,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.OnRecyclerItemTouchCallBack;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -37,6 +38,7 @@ import static com.shiqkuangsan.mycustomviews.R.color.swipe_schema_blue;
  * 具体宽度和比例(布局中属性定义)来达到自动计算高度的效果,图片展示使用CardView.
  * 添加了条目的侧滑移除功能和长按拖拽功能.
  */
+@ContentView(R.layout.activity_recycler)
 public class RecyclerViewActivity extends BaseActivity {
 
     private Toolbar toolbar;
@@ -49,7 +51,6 @@ public class RecyclerViewActivity extends BaseActivity {
     @Override
     public void initView() {
         // 页面主要承担了两个framlayout,一个是主页面,另一个是drawer
-        setContentView(R.layout.activity_recycler);
         x.view().inject(this);
 
         // ToolBar的基础上支持ActionBar,先在style文件中样式使用NoActionBar

@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -27,6 +28,7 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Author: shiqkuangsan <p>
  * Description: 纯色沉浸、半透明、全透明. 道理和ToolbarImmerse一样的
  */
+@ContentView(R.layout.activity_topbar_immerse)
 public class TopBarImmerseAct extends AppCompatActivity {
 
     @ViewInject(R.id.rl_immerse_topbar)
@@ -41,7 +43,6 @@ public class TopBarImmerseAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topbar_immerse);
         x.view().inject(this);
 
     }

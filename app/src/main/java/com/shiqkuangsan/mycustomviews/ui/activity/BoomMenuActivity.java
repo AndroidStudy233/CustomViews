@@ -16,10 +16,11 @@ import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.adapter.ViewPagerAdapter;
+import com.shiqkuangsan.mycustomviews.adapter.EasyPagerAdapter;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -30,6 +31,7 @@ import org.xutils.x;
  * Author: shiqkuangsan
  * Description: 弹出多个按钮的菜单界面
  */
+@ContentView(R.layout.activity_boom_menu)
 public class BoomMenuActivity extends AppCompatActivity {
 
     @ViewInject(R.id.navigation_menu)
@@ -44,7 +46,6 @@ public class BoomMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_boom_menu);
         x.view().inject(this);
 
         initNavigation();
@@ -53,8 +54,8 @@ public class BoomMenuActivity extends AppCompatActivity {
     }
 
     private void initViewPager() {
-        ViewPagerAdapter pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.setTITLES(new String[]{"Movies","Music","Picture","Books","Newpaper"});
+        EasyPagerAdapter pagerAdapter = new EasyPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.setTitles(new String[]{"Movies","Music","Picture","Books","Newpaper"});
         viewpager_boommenu.setAdapter(pagerAdapter);
         viewpager_boommenu.setCurrentItem(2);
         viewpager_boommenu.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

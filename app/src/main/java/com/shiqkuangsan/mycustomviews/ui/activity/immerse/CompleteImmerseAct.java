@@ -1,5 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
 
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +11,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
+import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -22,6 +26,7 @@ import org.xutils.x;
  * Description: 完全沉浸式. 模拟器上可能会拉不回来状态栏和导航栏. 但是真机OK的
  * 实现方式很简单, 重写onWindowFocusChanged 添加相应flag即可. 注意添加fitSystemWindows属性
  */
+@ContentView(R.layout.activity_complete_immerse)
 public class CompleteImmerseAct extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar_complete_immerse)
@@ -34,10 +39,16 @@ public class CompleteImmerseAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complete_immerse);
         x.view().inject(this);
 
         initToolbar();
+        // TODO: 2017/8/6  有导航栏的手机隐藏的时候右边有margin
+    }
+
+    private void compatLeftMargin() {
+        int naviShowId = getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        boolean naviShow = getResources().getBoolean(naviShowId);
+        MyLogUtil.d(naviShow ? "true" : "false");
     }
 
     private void initToolbar() {

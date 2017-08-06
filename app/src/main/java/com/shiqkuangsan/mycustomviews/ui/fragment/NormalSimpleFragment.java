@@ -7,28 +7,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalRecyclerAdapter;
 
-import org.xutils.view.annotation.ViewInject;
-import org.xutils.x;
-
 /**
  * Created by shiqkuangsan on 2017/8/4. <p>
- * ClassName: NormalSimpleRecyclerFragment <p>
+ * ClassName: NormalSimpleFragment <p>
  * Author: shiqkuangsan <p>
  * Description: 包含一个简单RecyclerView的fragment
  */
-public class NormalSimpleRecyclerFragment extends Fragment {
+public class NormalSimpleFragment extends Fragment {
 
     RecyclerView recyclerView;
 
-    public static NormalSimpleRecyclerFragment newInstance() {
+    public static NormalSimpleFragment newInstance() {
         Bundle args = new Bundle();
-        NormalSimpleRecyclerFragment fragment = new NormalSimpleRecyclerFragment();
+        NormalSimpleFragment fragment = new NormalSimpleFragment();
         fragment.setArguments(args);
         return fragment;
     }

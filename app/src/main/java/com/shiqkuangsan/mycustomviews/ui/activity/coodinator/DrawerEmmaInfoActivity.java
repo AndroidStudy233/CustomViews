@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -28,14 +27,11 @@ import java.util.List;
 /**
  * Created by shiqkuangsan on 2016/9/28.
  * <p>
- * ClassName: EmmaInfoDemoActivity
+ * ClassName: DrawerEmmaInfoActivity
  * Author: shiqkuangsan
- * Description: CoordinatorLayout测试界面, 头部显示图片, 上滑显示ToolBar, 下拉显示图片.其实是用了layout_behavior
- * 需要注意的时候为了实现这种滑动效果.CoordinatorLayout需要一个可滚动的子类.我这里的TabLayout绑定的fragment中就用了
- * 一个叫做NestedScrollView的东西包裹.当然你也可以用RecyclerView.(ListView和ScrollView很遗憾)
- * 侧滑显示DrawerLayout,drawer采用NavigationView
+ * Description: DrawerLayout(drawer采用NavigationView)下的沉浸式+parallax效果
  */
-public class EmmaInfoDemoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DrawerEmmaInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager mViewPager;
     protected Toast toast;
@@ -44,7 +40,7 @@ public class EmmaInfoDemoActivity extends AppCompatActivity implements Navigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coordinator);
+        setContentView(R.layout.activity_emma_coordinator);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_coordinator);
         setSupportActionBar(toolbar);
         // 显示返回键并响应

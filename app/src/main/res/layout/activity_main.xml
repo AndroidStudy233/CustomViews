@@ -64,6 +64,11 @@
 
             <Button
                 style="@style/style_main_normal_button"
+                android:onClick="customchat"
+                android:text="自定义图表" />
+
+            <Button
+                style="@style/style_main_normal_button"
                 android:onClick="piclooker"
                 android:text="图片查看" />
 
@@ -71,11 +76,6 @@
                 style="@style/style_main_normal_button"
                 android:onClick="xutils"
                 android:text="xUtils测试" />
-
-            <Button
-                style="@style/style_main_normal_button"
-                android:onClick="coordinator"
-                android:text="Coordinator" />
 
         </LinearLayout>
 
@@ -161,8 +161,8 @@
 
             <Button
                 style="@style/style_main_normal_button"
-                android:onClick="constraint"
-                android:text="Constraint" />
+                android:onClick="coordinator"
+                android:text="Coordinator" />
 
             <Button
                 style="@style/style_main_normal_button"
@@ -188,8 +188,8 @@
 
             <Button
                 style="@style/style_main_normal_button"
-                android:onClick="customchat"
-                android:text="自定义图表" />
+                android:onClick="constraint"
+                android:text="Constraint" />
 
             <Button
                 style="@style/style_main_normal_button"

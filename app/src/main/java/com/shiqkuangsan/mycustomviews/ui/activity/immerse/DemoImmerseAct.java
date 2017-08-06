@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.shiqkuangsan.mycustomviews.R;
 
+import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -20,8 +21,9 @@ import org.xutils.x;
  * Created by shiqkuangsan on 2017/8/2. <p>
  * ClassName: DemoImmerseAct <p>
  * Author: shiqkuangsan <p>
- * Description: demo1
+ * Description: demo. 布局中已设置fitSystemWindows
  */
+@ContentView(R.layout.activity_demo_immerse)
 public class DemoImmerseAct extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar_image_immerse1)
@@ -30,7 +32,6 @@ public class DemoImmerseAct extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo_immerse);
         x.view().inject(this);
 
         initToolbar();

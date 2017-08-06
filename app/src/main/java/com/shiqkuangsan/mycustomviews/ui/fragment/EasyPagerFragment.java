@@ -21,12 +21,12 @@ import com.shiqkuangsan.mycustomviews.R;
  *
  * @version V3.1
  */
-public class ViewPagerFragment extends Fragment {
+public class EasyPagerFragment extends Fragment {
 
     private View view;
 
-    public static ViewPagerFragment getInstance(int position) {
-        ViewPagerFragment fragment = new ViewPagerFragment();
+    public static EasyPagerFragment getInstance(int position) {
+        EasyPagerFragment fragment = new EasyPagerFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("position", position);
         fragment.setArguments(bundle);
