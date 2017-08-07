@@ -22,6 +22,12 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+/**
+ * Created by shiqkuangsan on 2017/8/7. <p>
+ * ClassName: PictureFrament <p>
+ * Author: shiqkuangsan <p>
+ * Description: Coordinator中的Picture界面
+ */
 @ContentView(R.layout.fragment_parallax_picture)
 public class PictureFrament extends Fragment {
 

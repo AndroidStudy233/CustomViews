@@ -41,6 +41,8 @@
         <attr name="ios" format="boolean" />
         <attr name="leftSwipe" format="boolean" />
     </declare-styleable>
+
+    <!--白点指示器自定义属性-->
     <declare-styleable name="IndicatorView">
         <attr name="selectCircleColor" format="reference"/>
         <attr name="unSelectCircleColor" format="reference"/>
@@ -49,4 +51,5 @@
         <attr name="unSelectCircleBorderWidth" format="dimension"/>
         <attr name="defautSelectPosition" format="integer"/>
     </declare-styleable>
+
 </resources>

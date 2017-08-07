@@ -1,7 +1,6 @@
 package com.shiqkuangsan.mycustomviews.ui.activity.coodinator;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,13 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalFragPagerAdapter;
-import com.shiqkuangsan.mycustomviews.ui.fragment.NormalSimpleFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.BooksFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MovieFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MusicFragment;
@@ -37,7 +33,8 @@ import java.lang.reflect.Field;
  * <p>
  * ClassName: FragmentSurppotAct
  * Author: shiqkuangsan
- * Description: 比如有的App是一个主界面, 然后BottomBar做的, 其中只有首页和个人信息页需要沉浸+parallax
+ * Description: 比如有的App是一个主界面, 然后BottomBar做的, 其中只有首页和个人信息页需要沉浸+parallax <p>
+ * tips: bug -> 如果viewpagerlimit为3, 那么movie界面回收再重建会高度bug
  */
 @ContentView(R.layout.activity_fragment_parallax)
 public class FragmentSurppotAct extends AppCompatActivity {
@@ -82,6 +79,7 @@ public class FragmentSurppotAct extends AppCompatActivity {
     }
 
     private void initViewPager() {
+        viewPager.setOffscreenPageLimit(5);
         NormalFragPagerAdapter pagerAdapter = new NormalFragPagerAdapter(getSupportFragmentManager(), TITLES);
         pagerAdapter.addFragment(new MovieFragment());
         pagerAdapter.addFragment(new MusicFragment());

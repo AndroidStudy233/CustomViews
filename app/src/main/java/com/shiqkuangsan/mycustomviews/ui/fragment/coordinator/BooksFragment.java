@@ -34,7 +34,7 @@ import org.xutils.x;
  * Created by shiqkuangsan on 2017/8/7. <p>
  * ClassName: MusicFragment <p>
  * Author: shiqkuangsan <p>
- * Description: Coordinator中的Music界面
+ * Description: Coordinator中的Book界面
  */
 @ContentView(R.layout.fragment_parallax_book)
 public class BooksFragment extends Fragment {

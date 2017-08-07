@@ -27,7 +27,7 @@ public class CoodinatorActivity extends ListActivity {
             "2. Toolbar跟随滚动, Tab固定",
             "3. Collapsing演示parallax效果",
             "4. DrawerLayout下parallax效果",
-            "6. BottomBar模式fragment沉浸 + parallax",
+            "5. BottomBar模式fragment沉浸 + parallax",
     };
 
     Class[] activities = new Class[]{

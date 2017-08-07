@@ -11,7 +11,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/red"
         android:fitsSystemWindows="true"
-        app:title="电影专区"
+        app:title="图片专区"
         app:titleTextColor="@color/white" />
 
     <android.support.v7.widget.RecyclerView

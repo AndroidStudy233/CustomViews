@@ -7,7 +7,12 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-
+/**
+ * Created by shiqkuangsan on 2017/8/7. <p>
+ * ClassName: BottomNavigationBehavior <p>
+ * Author: shiqkuangsan <p>
+ * Description: 自定义behavior
+ */
 public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<View> {
 
     public BottomNavigationBehavior() {
