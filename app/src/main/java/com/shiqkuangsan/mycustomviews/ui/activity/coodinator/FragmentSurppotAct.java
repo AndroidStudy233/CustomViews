@@ -60,7 +60,6 @@ public class FragmentSurppotAct extends AppCompatActivity {
         updateNavigation(0);
         disableShiftMode(navigationView);
 
-        // TODO: 2017/8/6 待调试该界面的沉浸式
         transparentStatus();
     }
 

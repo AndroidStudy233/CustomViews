@@ -42,7 +42,7 @@ public class CompleteImmerseAct extends AppCompatActivity {
         x.view().inject(this);
 
         initToolbar();
-        // TODO: 2017/8/6  有导航栏的手机隐藏的时候右边有margin
+        // 有导航栏的手机隐藏的时候右边有margin
     }
 
     private void compatLeftMargin() {
