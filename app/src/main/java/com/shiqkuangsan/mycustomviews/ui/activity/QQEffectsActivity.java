@@ -41,7 +41,6 @@ public class QQEffectsActivity extends AppCompatActivity implements View.OnClick
 
         initData();
         initView();
-
     }
 
     ArrayList<String> dataList = new ArrayList<>();
