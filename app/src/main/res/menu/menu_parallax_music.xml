@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_parallax_search"
+        android:icon="@drawable/icon_search"
+        android:orderInCategory="1"
+        android:title="search"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_parallax_scan"
+        android:icon="@drawable/icon_qrscan"
+        android:orderInCategory="2"
+        android:title="scan"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_parallax_share"
+        android:icon="@drawable/icon_share"
+        android:orderInCategory="3"
+        android:title="share"
+        app:showAsAction="always" />
+</menu>

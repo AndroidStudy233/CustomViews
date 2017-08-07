@@ -46,7 +46,7 @@
                     android:layout_marginBottom="10dp"
                     app:piv_animationType="color"
                     app:piv_interactiveAnimation="true"
-                    app:piv_radius="5dp"
+                    app:piv_radius="3dp"
                     app:piv_viewPager="@id/pager_parallax_movie" />
             </RelativeLayout>
 

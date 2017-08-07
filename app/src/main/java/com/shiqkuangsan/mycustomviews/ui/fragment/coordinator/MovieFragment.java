@@ -10,6 +10,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -60,9 +62,9 @@ public class MovieFragment extends Fragment {
         // 投机取巧暂且实现
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             CollapsingToolbarLayout.LayoutParams params = (CollapsingToolbarLayout.LayoutParams) toolbar.getLayoutParams();
-            params.height = UIUitl.dip2px(getActivity(), 72);
+            params.height = UIUitl.dip2px(getActivity(), 64);
             toolbar.setLayoutParams(params);
-            toolbar.setPadding(0, UIUitl.dip2px(getActivity(), 24), 0, 0);
+            toolbar.setPadding(0, UIUitl.dip2px(getActivity(), 20), 0, 0);
         }
     }
 
@@ -92,4 +94,5 @@ public class MovieFragment extends Fragment {
             container.removeView((View) object);
         }
     }
+
 }

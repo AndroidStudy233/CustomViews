@@ -1,20 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_parallax_music"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="音乐专区"
+            android:background="@color/green"
+            app:titleTextColor="@color/white" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_parallax_music"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:tabGravity="center"
+            android:background="@color/green"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabMode="scrollable"
+            app:tabTextAppearance="?android:attr/textAppearanceListItem" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_parallax_music"
+        android:layout_width="match_parent"
+        android:overScrollMode="never"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <TextView
-            android:id="@+id/tv_Info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="#3b3b3b"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-</android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

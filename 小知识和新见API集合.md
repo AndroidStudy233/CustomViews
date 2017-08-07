@@ -73,6 +73,24 @@
 
 ---
 
+## fragment中使用Toolbar, 添加menu无效
+
+1. onCreate方法中  setHasOptionsMenu(true);
+
+2. onActivityCreated方法中  
+
+	// 建议用第二个
+	// ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);toolbar.inflateMenu(R.menu.menu_parallax_music);
+
+3. onCreateOptionsMenu方法中
+
+	menu.clear();
+	inflater.inflate(R.menu.menu_parallax_music, menu);
+
+4. toolbar.setOnMenuItemClickListener中自己处理item点击事件
+
+---
+
 ## android给空包签名
 
 	jarsigner -verbose -keystore 'keystorePath' -signedjar 'apkOut' 'apkIn' 'alias'

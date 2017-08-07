@@ -20,7 +20,11 @@ import android.view.WindowManager;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalFragPagerAdapter;
 import com.shiqkuangsan.mycustomviews.ui.fragment.NormalSimpleFragment;
+import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.BooksFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MovieFragment;
+import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MusicFragment;
+import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.NewspaperFrament;
+import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.PictureFrament;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -80,10 +84,10 @@ public class FragmentSurppotAct extends AppCompatActivity {
     private void initViewPager() {
         NormalFragPagerAdapter pagerAdapter = new NormalFragPagerAdapter(getSupportFragmentManager(), TITLES);
         pagerAdapter.addFragment(new MovieFragment());
-        pagerAdapter.addFragment(new NormalSimpleFragment());
-        pagerAdapter.addFragment(new NormalSimpleFragment());
-        pagerAdapter.addFragment(new NormalSimpleFragment());
-        pagerAdapter.addFragment(new NormalSimpleFragment());
+        pagerAdapter.addFragment(new MusicFragment());
+        pagerAdapter.addFragment(new PictureFrament());
+        pagerAdapter.addFragment(new BooksFragment());
+        pagerAdapter.addFragment(new NewspaperFrament());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalRecyclerAdapter;
+import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MusicFragment;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -64,4 +66,5 @@ public class FollowScollToolbarAct extends AppCompatActivity {
         NormalRecyclerAdapter adapter = new NormalRecyclerAdapter(this);
         recyclerView.setAdapter(adapter);
     }
+
 }
