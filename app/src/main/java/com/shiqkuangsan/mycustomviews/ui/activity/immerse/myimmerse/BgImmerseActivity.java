@@ -35,7 +35,6 @@ import static com.shiqkuangsan.mycustomviews.utils.MyLogUtil.d;
  * @author shiqkuangsan
  * @summary 背景沉浸式页面, 主题NoActionBar, 外加实现ToolBar实现搜索框, 并且关联ListView
  */
-@ContentView(R.layout.activity_bg_immerse)
 public class BgImmerseActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private ListView lv_test;
@@ -43,7 +42,7 @@ public class BgImmerseActivity extends AppCompatActivity implements SearchView.O
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_bg_immerse);
         initTestListView();
 
         initToolBar();

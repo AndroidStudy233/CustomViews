@@ -20,7 +20,6 @@ import org.xutils.view.annotation.ContentView;
  * @author shiqkuangsan
  * @summary 着色沉浸式页面
  */
-@ContentView(R.layout.activity_color_immerse)
 public class ColorImmerseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int color;
@@ -29,6 +28,7 @@ public class ColorImmerseActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_color_immerse);
         initView();
 
         color = ContextCompat.getColor(this, R.color.colorPrimary);
