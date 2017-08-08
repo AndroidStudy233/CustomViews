@@ -28,6 +28,7 @@ public class CoodinatorActivity extends ListActivity {
             "3. Collapsing演示parallax效果",
             "4. DrawerLayout下parallax效果",
             "5. BottomBar模式fragment沉浸 + parallax",
+
     };
 
     Class[] activities = new Class[]{
