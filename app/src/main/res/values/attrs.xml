@@ -52,4 +52,7 @@
         <attr name="defautSelectPosition" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomBottomSheetBehavior">
+        <attr name="anchorPoint" format="dimension"/>
+    </declare-styleable>
 </resources>

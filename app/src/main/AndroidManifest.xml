@@ -133,7 +133,7 @@
             android:name=".ui.activity.api21.Api21Activity"
             android:label="5.0简单测试页面"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.transition" />
+            android:theme="@style/AppNoActionBar.transition" />
         <activity
             android:name=".ui.activity.Api21ExploseActivity"
             android:label="测试碎裂效果和5.0"
@@ -232,13 +232,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
-            android:name=".ui.activity.coodinator.CustomBehaviorAct"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppNoActionBar" />
-        <activity
             android:name=".ui.activity.coodinator.FragmentSurppotAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
+        <activity
+            android:name=".ui.activity.coodinator.CustomBehaviorAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.bottombehavior" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

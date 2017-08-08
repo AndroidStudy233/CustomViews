@@ -29,7 +29,7 @@ public class Api21Activity extends AppCompatActivity {
         setContentView(R.layout.activity_api21);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_activity_explose);
         toolbar.setTitleTextColor(0xde000000);
-        toolbar.setNavigationIcon(R.drawable.img_back);
+        toolbar.setNavigationIcon(R.drawable.icon_back_black);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_explose);
         fab.setOnClickListener(new View.OnClickListener() {

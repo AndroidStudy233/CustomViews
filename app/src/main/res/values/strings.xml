@@ -95,4 +95,5 @@
     <string name="text_ham_button_sub_text_highlighted">Ham Button Sub Text(Highlighted)</string>
     <string name="text_ham_button_sub_text_unable">Ham Button Sub Text(Unable)</string>
 
+    <string name="key_binding_default_toolbar_name">Modal-Toolbar-Title</string>
 </resources>

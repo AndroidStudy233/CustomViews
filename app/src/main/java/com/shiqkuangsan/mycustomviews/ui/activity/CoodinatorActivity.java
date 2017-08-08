@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CollapsingToolbarAct;
+import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CustomBehaviorAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.DrawerEmmaInfoActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FollowScollToolbarAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FragmentSurppotAct;
@@ -28,7 +29,7 @@ public class CoodinatorActivity extends ListActivity {
             "3. Collapsing演示parallax效果",
             "4. DrawerLayout下parallax效果",
             "5. BottomBar模式fragment沉浸 + parallax",
-
+            "6. 自定义Behavior实现Slidingup + parallax",
     };
 
     Class[] activities = new Class[]{
@@ -37,6 +38,7 @@ public class CoodinatorActivity extends ListActivity {
             CollapsingToolbarAct.class,
             DrawerEmmaInfoActivity.class,
             FragmentSurppotAct.class,
+            CustomBehaviorAct.class,
     };
 
     @Override
