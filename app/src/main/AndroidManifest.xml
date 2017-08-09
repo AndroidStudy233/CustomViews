@@ -239,6 +239,13 @@
             android:name=".ui.activity.coodinator.CustomBehaviorAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.bottombehavior" />
+        <activity
+            android:name=".ui.activity.api21.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activity.DragViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.dragView" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

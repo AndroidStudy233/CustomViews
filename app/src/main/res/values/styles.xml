@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--DragView的样式-->
+    <style name="AppTheme.dragView">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 
     <!-- App主题没有ActionBar的 -->
     <style name="AppNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">

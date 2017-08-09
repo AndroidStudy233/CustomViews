@@ -52,7 +52,14 @@
         <attr name="defautSelectPosition" format="integer"/>
     </declare-styleable>
 
+    <!--自定义behavior-->
     <declare-styleable name="CustomBottomSheetBehavior">
         <attr name="anchorPoint" format="dimension"/>
+    </declare-styleable>
+
+    <!--自定义dragView-->
+    <declare-styleable name="DragView">
+        <attr name="bottomDragVisibleHeight" format="dimension" />
+        <attr name="bototmExtraIndicatorHeight" format="dimension" />
     </declare-styleable>
 </resources>

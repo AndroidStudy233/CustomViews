@@ -318,5 +318,13 @@ public class MainActivity extends BaseActivity {
     public void immerse(View view) {
         startActivity(new Intent(this, ImmerseActivity.class));
     }
+    /**
+     * 拖动的View界面.配合ViewPager
+     *
+     * @param view
+     */
+    public void dragview(View view) {
+        startActivity(new Intent(this, DragViewActivity.class));
+    }
 
 }
