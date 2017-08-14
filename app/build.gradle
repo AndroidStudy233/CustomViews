@@ -99,6 +99,7 @@ android {
         // compile files('libs/xxx-1.0.jar')
         // fileTree()要相对简单, 一次可以配置所有jar包, aar包. 比如include属性值是个数组['*.jar', '*.aar']
         compile fileTree(include: ['*.jar'], dir: 'libs')
+        testCompile 'junit:junit:4.12'
         androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
             exclude group: 'com.android.support', module: 'support-annotations'
         })

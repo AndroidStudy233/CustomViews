@@ -21,7 +21,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.ui.custom.CustPagerTransformer;
+import com.shiqkuangsan.mycustomviews.ui.custom.CustomPagerTransformer;
 import com.shiqkuangsan.mycustomviews.ui.fragment.CommonFragment;
 
 import java.lang.reflect.Field;
@@ -76,7 +76,7 @@ public class DragViewActivity extends FragmentActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // 1. viewPager添加parallax效果，使用PageTransformer就足够了
-        viewPager.setPageTransformer(false, new CustPagerTransformer(this));
+        viewPager.setPageTransformer(false, new CustomPagerTransformer(this));
 
         // 2. viewPager添加adapter
         for (int i = 0; i < 10; i++) {

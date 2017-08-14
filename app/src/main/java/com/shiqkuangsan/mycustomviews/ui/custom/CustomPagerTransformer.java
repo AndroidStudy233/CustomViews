@@ -5,15 +5,15 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 /**
- * 实现ViewPager左右滑动时的时差
+ * 实现ViewPager左右滑动时的视差
  * Created by xmuSistone on 2016/9/18.
  */
-public class CustPagerTransformer implements ViewPager.PageTransformer {
+public class CustomPagerTransformer implements ViewPager.PageTransformer {
 
     private int maxTranslateOffsetX;
     private ViewPager viewPager;
 
-    public CustPagerTransformer(Context context) {
+    public CustomPagerTransformer(Context context) {
         this.maxTranslateOffsetX = dp2px(context, 180);
     }
 
