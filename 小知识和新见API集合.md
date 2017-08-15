@@ -153,6 +153,24 @@ onPrepareOptionsMenu() 建议在该方法中操作
 
 ---
 
+## Nexus wifi已连接但无法访问互联网
+
+1.首先开启usb调试，然后用数据线连接电脑和手机。
+
+2.然后解决好您的adb驱动问题
+
+3.在电脑开始菜单-运行 输入cmd，打开命令提示符依次输入下面语句
+
+(以下办法支持安卓7.1.2/7.1.1)
+adb shell settings put global captive_portal_https_url https://www.google.cn/generate_204
+然后开启飞行模式，然后关闭飞行模式解决！
+
+下面语句对安卓7.1/7.0有效
+adb shell settings delete global captive_portal_server  
+adb shell settings put global captive_portal_detection_enabled 0
+
+---
+
 ## Android修改AVD的路径
 
 android 虚拟机的保存目录默认的是C:\Documents and Settings\用户名\.android。如想自己更改AVD的位置只需要做如下三步操作即可。
