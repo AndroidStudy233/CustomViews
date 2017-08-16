@@ -82,13 +82,13 @@ public class ScaleHeadListView extends ListView {
         iv_header.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                iv_header.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 // 获取ImageView高度
                 ivHeight = iv_header.getHeight();
                 // 获取图片原始高度
                 srcHeight = iv_header.getDrawable().getIntrinsicHeight();
                 // 如果ImageView高度(布局中写的200dp)比原图大,那最大高度就设置为ImageView的2倍(400dp),不然就以图片最大高度
                 maxHeight = ivHeight > srcHeight ? ivHeight * 2 : srcHeight;
+                iv_header.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
 

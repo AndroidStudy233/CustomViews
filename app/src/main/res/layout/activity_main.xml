@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:scrollbars="none"
+    android:overScrollMode="never"
     android:layout_height="wrap_content"
     tools:context=".ui.activity.MainActivity">
 
@@ -24,7 +25,7 @@
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="myonoff"
-                android:text="开关" />
+                android:text="小开关" />
 
             <Button
                 style="@style/style_main_normal_button"
@@ -164,7 +165,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:onClick="api21"
-                android:text="5.0效果" />
+                android:text="5.0效果浅析" />
         </LinearLayout>
 
         <LinearLayout
@@ -199,7 +200,7 @@
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="dragview"
-                android:text="DragView" />
+                android:text="DragView+转场动画" />
         </LinearLayout>
 
         <LinearLayout
@@ -210,7 +211,7 @@
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="citypicker"
-                android:text="城市选择" />
+                android:text="城市选择页面" />
 
             <Button
                 style="@style/style_main_normal_button"
@@ -226,13 +227,13 @@
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="coordinator"
-                android:text="Coordinator" />
+                android:text="CoordinatorLayout" />
 
             <Button
                 android:id="@+id/button6"
                 style="@style/style_main_normal_button"
                 android:onClick="constraint"
-                android:text="Constraint" />
+                android:text="ConstraintLayout" />
         </LinearLayout>
 
     </LinearLayout>

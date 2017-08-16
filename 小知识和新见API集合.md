@@ -332,6 +332,11 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 >其中E盘是你要转的目标盘符
 
 	convert E:/FS:NTFS 
+-------------------
+
+## git添加到.ignore的文件还是在控制之内
+
+    git rm --cached --force rxandroidmvp/src/test/java/test/ExampleUnitTest.java
 
 ---
 
@@ -606,13 +611,31 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 		// 这是只有一个fab_main View的情况,如果有多个共享元素.用Pair.create(),这是可变参数
 
 	
-		
 
 ---
 
 ### 屏幕适配中的不同分辨率dimens
 
 ![dimens](/others/images/dimens.png)
+
+>Android中以160dpi为基准. 为mdpi.
+
+
+* px: 像素, 就是图像的基本单位. 没什么好解释的
+
+* ppi: pixels per inch的缩写，表示1 inch包含多少像素. 
+
+* dpi: dot per inch 每英寸点数. 160dpi的屏幕就表示一个Inch包含160个Dot(Android). 在Android中可以理解为表示一个Inch包含多少像素，也即PPI. 
+
+	计算方式: 你知道一个手机的分辨率(1920x1080), 知道尺寸5英寸(对角线),  就能算出他的dpi. 算出对角线的像素总数 / 对角线尺寸. 比如上述情况他的dpi就是 根号下(1920^2+1080^2) / 5 = 441dpi. 这时候, 宽度为1080/(441/160)=391dp.
+
+	简单查看方式: 命令行 adb shell dumpsys window displays 直接可以看到
+
+	* tip: 然而实际制作商制作的时候是有偏差的. 还是以adb为实际.
+
+* dp也叫dip: Density-Independent pixel, 密度无关像素. Android中的虚拟像素.
+
+#### px = dpi / 160 × dp. 也就是说160dpi的手机上1dp = 1px
 
 ## 屏幕适配 ##
 
