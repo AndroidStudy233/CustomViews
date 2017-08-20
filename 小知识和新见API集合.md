@@ -629,7 +629,11 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 	计算方式: 你知道一个手机的分辨率(1920x1080), 知道尺寸5英寸(对角线),  就能算出他的dpi. 算出对角线的像素总数 / 对角线尺寸. 比如上述情况他的dpi就是 根号下(1920^2+1080^2) / 5 = 441dpi. 这时候, 宽度为1080/(441/160)=391dp.
 
-	简单查看方式: 命令行 adb shell dumpsys window displays 直接可以看到
+	简单查看方式: 命令行 adb shell dumpsys window displays 直接可以看到.
+	或者调用: 拿到的dm对象即可看到相关参数
+		
+		DisplayMetrics dm = new DisplayMetrics();
+	    getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 
 	* tip: 然而实际制作商制作的时候是有偏差的. 还是以adb为实际.
 
@@ -2215,7 +2219,7 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 #Activity的四种启动模式
 >每个应用会有一个Activity任务栈，存放已启动的Activity
 
->Activity的启动模式，修改任务栈的排列情况
+>Activity的启动模式launchMode，修改任务栈的排列情况
 
 * standard 标准启动模式
 * singleTop 单一顶部模式 
