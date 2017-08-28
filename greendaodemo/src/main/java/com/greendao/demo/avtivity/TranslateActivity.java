@@ -32,7 +32,9 @@ import com.greendaodemo.R;
 * y = top+translationY
 * 
 * 
-* 
+* scrollBy 表示的是移动的增量dx和dy，如果为负值则移动的是相反方向(整个view没有动，是view的内容移动 也可以理解成view的画布在移动)
+* scrollTo 表示的是移动到哪个坐标点，坐标点的位置就会移动到屏幕原点的位置
+* view本身没有动，是他的内容 ，例如viewgroup 就是子view动
 * */
 public class TranslateActivity extends AppCompatActivity {
     private View yDown;
@@ -41,6 +43,13 @@ public class TranslateActivity extends AppCompatActivity {
     private View reset;
     private ObjectAnimator objectAnimatorDown;
     private ObjectAnimator objectAnimatorUp;
+    private LinearLayout greenLayout;
+    private View gYDown;
+    private View gYUp;
+    private View greset;
+    private int scrollX;
+    private int scrollY;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +58,50 @@ public class TranslateActivity extends AppCompatActivity {
         yUp = findViewById(R.id.yup);
         layoutContain = (LinearLayout) findViewById(R.id.layout);
         reset = findViewById(R.id.reset);
+        greenLayout = (LinearLayout) findViewById(R.id.lay);
+        scrollX = greenLayout.getScrollX();
+        scrollY = greenLayout.getScrollY();
+        gYDown = findViewById(R.id.gydown);
+        gYUp = findViewById(R.id.gyup);
+        greset = findViewById(R.id.greset);
+        gYDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int scrollX = greenLayout.getScrollX();   //用这里获取的值 最后得到的效果和scrollBy一致
+                int scrollY = greenLayout.getScrollY();
+                greenLayout.scrollTo(scrollX, scrollY + 10);
+//                greenLayout.scrollBy(0, 10);
+            }
+        });
+        gYUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int scrollX = greenLayout.getScrollX();   //用这里获取的值 最后得到的效果和scrollBy一致
+                int scrollY = greenLayout.getScrollY();
+                greenLayout.scrollTo(scrollX, scrollY - 10);
+//                greenLayout.scrollBy(0,  -10);
+            }
+        });
+        greset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int scrollX = greenLayout.getScrollX();   //用这里获取的值 最后得到的效果和scrollBy一致
+                int scrollY = greenLayout.getScrollY();
+                greenLayout.scrollTo(scrollX, scrollY);
+//                greenLayout.scrollBy(0,  -10);
+            }
+        });
         layoutContain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TranslateActivity.this,"...点击",Toast.LENGTH_SHORT).show();
+                Toast.makeText(TranslateActivity.this, "...点击", Toast.LENGTH_SHORT).show();
             }
         });
         yDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 float translationY = layoutContain.getTranslationY();
-                objectAnimatorDown = ObjectAnimator.ofFloat(layoutContain, "translationY", translationY+50);
+                objectAnimatorDown = ObjectAnimator.ofFloat(layoutContain, "translationY", translationY + 50);
                 objectAnimatorDown.setDuration(300);
                 objectAnimatorDown.addListener(new Animator.AnimatorListener() {
                     @Override
@@ -88,7 +130,7 @@ public class TranslateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 float translationY = layoutContain.getTranslationY();
-                objectAnimatorUp = ObjectAnimator.ofFloat(layoutContain, "translationY", translationY-50);
+                objectAnimatorUp = ObjectAnimator.ofFloat(layoutContain, "translationY", translationY - 50);
                 objectAnimatorUp.setDuration(300);
                 objectAnimatorUp.addListener(new Animator.AnimatorListener() {
                     @Override

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <LinearLayout
+    android:id="@+id/pinklayout"
     android:layout_alignParentBottom="true"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -13,27 +14,65 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Y下移" />
+        android:text="粉色Y下移" />
 
     <Button
         android:id="@+id/yup"
         android:layout_above="@id/ydown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Y上移" />
+        android:text="粉色Y上移" />
     <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="复原" />
+        android:text="粉色复原" />
 
 </LinearLayout>
+    <LinearLayout
+        android:id="@+id/greenlayout"
+        android:layout_above="@id/pinklayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/gydown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="scrollToY下移" />
+
+        <Button
+            android:id="@+id/gyup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scrollToY上移" />
+        <Button
+            android:id="@+id/greset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="scrollTo绿色复原" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/layout"
         android:background="#ff00ff"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp"/>
+    <LinearLayout
+        android:id="@+id/lay"
+        android:layout_below="@id/layout"
+        android:background="#00ff00"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <TextView
+            android:text="22111111111111111eqwe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>
