@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/ydown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Y下移" />
+
+    <Button
+        android:id="@+id/yup"
+        android:layout_above="@id/ydown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Y上移" />
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="复原" />
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout"
+        android:background="#ff00ff"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+</RelativeLayout>
