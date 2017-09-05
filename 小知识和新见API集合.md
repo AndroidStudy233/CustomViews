@@ -236,11 +236,14 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 ---
 ## 查看指定端口占用情况
 		
-		1. 查看跟该端口所有关联进程
-		netstat -aon|findstr "5037"
+	1. 查看跟该端口所有关联进程
+	netstat -aon|findstr "5037"
 
-		2. 根据不同的PID查找具体的进程
-		tasklist|findstr "2360"
+	2. 根据不同的PID查找具体的进程
+	tasklist|findstr "2360"
+
+	3. 杀死占用该pid的进程
+	tskill pid
 
 ---
 
@@ -325,6 +328,12 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 	android:background="@drawable/selector_button_left"(/后面是selector文件名)
 
+
+---
+
+### Git回退到某个commit
+
+	git reset --hard (跟revisionId)
 
 ---
 
@@ -623,7 +632,8 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 * px: 像素, 就是图像的基本单位. 没什么好解释的
 
-* ppi: pixels per inch的缩写，表示1 inch包含多少像素. 
+* 
+* : pixels per inch的缩写，表示1 inch包含多少像素. 
 
 * dpi: dot per inch 每英寸点数. 160dpi的屏幕就表示一个Inch包含160个Dot(Android). 在Android中可以理解为表示一个Inch包含多少像素，也即PPI. 
 
@@ -759,6 +769,68 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
  	 if (view != null) {
 	   (InputMethodManager) getSystemServic(Context.INPUT_METHOD_SERVICE).hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 	  }
+
+---
+
+## 输入框输入类型限定
+
+android:inputType="none"--输入普通字符
+
+android:inputType="text"--输入普通字符
+
+Android:inputType="textCapCharacters"--输入普通字符
+
+android:inputType="textCapWords"--单词首字母大小
+
+android:inputType="textCapSentences"--仅第一个字母大小
+
+android:inputType="textAutoCorrect"--前两个自动完成
+
+android:inputType="textAutoComplete"--前两个自动完成
+
+android:inputType="textMultiLine"--多行输入
+
+android:inputType="textImeMultiLine"--输入法多行（不一定支持）
+
+android:inputType="textNoSuggestions"--不提示
+
+android:inputType="textUri"--URI格式
+
+android:inputType="textEmailAddress"--电子邮件地址格式
+
+android:inputType="textEmailSubject"--邮件主题格式
+
+android:inputType="textShortMessage"--短消息格式
+
+android:inputType="textLongMessage"--长消息格式
+
+android:inputType="textPersonName"--人名格式
+
+android:inputType="textPostalAddress"--邮政格式
+
+android:inputType="textPassword"--密码格式
+
+android:inputType="textVisiblePassword"--密码可见格式
+
+android:inputType="textWebEditText"--作为网页表单的文本格式
+
+android:inputType="textFilter"--文本筛选格式
+
+android:inputType="textPhonetic"--拼音输入格式
+
+android:inputType="number"--数字格式
+
+android:inputType="numberSigned"--有符号数字格式
+
+android:inputType="numberDecimal"--可以带小数点的浮点格式
+
+android:inputType="phone"--拨号键盘
+
+android:inputType="datetime"
+
+android:inputType="date"--日期键盘
+
+android:inputType="time"--时间键盘
 
 ---
 

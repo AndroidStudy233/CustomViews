@@ -1,1 +1,2 @@
-include ':app', ':cityselector', ':rxandroidmvp', ':dagger2demo', ':greendaodemo'
+include ':app', ':rxandroidmvp', ':greendaodemo'
+include ':cityselector'
