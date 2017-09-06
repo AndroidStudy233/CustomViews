@@ -18,24 +18,29 @@ import green.DaoSession;
  *********************************/
 
 public class MyApplication extends Application {
+
     private DaoMaster daoMaster;
     private DaoSession daoSession;
     private static MyApplication myApplication;
+
     @Override
     public void onCreate() {
         super.onCreate();
         myApplication = this;
         initDb();
     }
-    public void initDb(){
-       DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "lenve.db", null);
+
+    public void initDb() {
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "lenve.db", null);
         daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
         daoSession = daoMaster.newSession();
     }
-    public DaoSession getDaoSession(){
+
+    public DaoSession getDaoSession() {
         return daoSession;
     }
-    public static MyApplication getApplication(){
+
+    public static MyApplication getApplication() {
         return myApplication;
     }
 }
