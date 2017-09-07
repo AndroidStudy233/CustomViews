@@ -24,10 +24,12 @@ import java.util.List;
  *********************************/
 
 public class UserAdapter extends BaseAdapter {
+
     private List<User> users;
+
     @Override
     public int getCount() {
-        return users==null?0:users.size();
+        return users == null ? 0 : users.size();
     }
 
     @Override
@@ -42,21 +44,22 @@ public class UserAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView =  LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item_layout,null);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_item_layout, null);
         TextView tvUserId = (TextView) convertView.findViewById(R.id.item_user_id);
         TextView tvUserName = (TextView) convertView.findViewById(R.id.item_user_name);
-        TextView tvUserAge= (TextView) convertView.findViewById(R.id.item_user_age);
-        TextView tvUserSex= (TextView) convertView.findViewById(R.id.item_user_sex);
+        TextView tvUserAge = (TextView) convertView.findViewById(R.id.item_user_age);
+        TextView tvUserSex = (TextView) convertView.findViewById(R.id.item_user_sex);
         User user = users.get(position);
-        tvUserId.setText(user.getId()+"");
+        tvUserId.setText(user.getId() + "");
         tvUserName.setText(user.getUserName());
-        tvUserAge.setText(user.getAge()+"");
+        tvUserAge.setText(user.getAge() + "");
         tvUserSex.setText(user.getSex());
         return convertView;
     }
-    public void setData(List<User> data){
-        if(data!=null&&data.size()>0){
-            if(users==null){
+
+    public void setData(List<User> data) {
+        if (data != null && data.size() > 0) {
+            if (users == null) {
                 users = new ArrayList<>();
             }
             users.clear();

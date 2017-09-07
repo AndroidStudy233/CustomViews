@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ListView listView;
     private UserAdapter adapter;
     private View translate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnDelete.setOnClickListener(this);
         btnUpdata.setOnClickListener(this);
         btnSelect.setOnClickListener(this);
-        btnSelectAll .setOnClickListener(this);
+        btnSelectAll.setOnClickListener(this);
         translate.setOnClickListener(this);
         daoSession = MyApplication.getApplication().getDaoSession();
         userDao = daoSession.getUserDao();
@@ -104,9 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        name = TextUtils.isEmpty(etName.getText().toString())?null:etName.getText().toString();
+        name = TextUtils.isEmpty(etName.getText().toString()) ? null : etName.getText().toString();
         age = TextUtils.isEmpty(etAge.getText().toString()) ? 0 : Integer.parseInt(etAge.getText().toString());
-        sex = TextUtils.isEmpty(etSex.getText().toString())?null:etSex.getText().toString();
+        sex = TextUtils.isEmpty(etSex.getText().toString()) ? null : etSex.getText().toString();
         switch (v.getId()) {
             case R.id.bt_add:
                 User user = new User(null, name, age, sex);
@@ -166,12 +167,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 List<User> list2 = userQueryBuilder2.list();
                 adapter.setData(list2);
                 break;
-            case  R.id.bt_select_all:
+            case R.id.bt_select_all:
                 List<User> list3 = userDao.queryBuilder().list();
                 adapter.setData(list3);
                 break;
             case R.id.translante:
-                Intent intent = new Intent(this,TranslateActivity.class);
+                Intent intent = new Intent(this, TranslateActivity.class);
                 startActivity(intent);
                 break;
         }
