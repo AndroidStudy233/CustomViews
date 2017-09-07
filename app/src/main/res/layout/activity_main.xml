@@ -236,5 +236,16 @@
                 android:text="ConstraintLayout" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="circlechat"
+                android:text="自定义饼状图" />
+
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
