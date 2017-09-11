@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -15,15 +17,19 @@ import android.widget.Toast;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.Moment;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cn.bingoogolapple.androidcommon.adapter.BGAOnRVItemClickListener;
 import cn.bingoogolapple.androidcommon.adapter.BGAOnRVItemLongClickListener;
 import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewAdapter;
-import cn.bingoogolapple.androidcommon.adapter.BGARecyclerViewHolder;
 import cn.bingoogolapple.androidcommon.adapter.BGAViewHolderHelper;
-import cn.bingoogolapple.photopicker.activity.BGAPPToolbarActivity;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPreviewActivity;
 import cn.bingoogolapple.photopicker.imageloader.BGARVOnScrollListener;
 import cn.bingoogolapple.photopicker.widget.BGANinePhotoLayout;
@@ -31,31 +37,34 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
- * 模拟发说说的界面
+ * Created by shiqkuangsan on 2017/9/11. <p>
+ * ClassName: MomentListActivity <p>
+ * Author: shiqkuangsan <p>
+ * Description: 模拟发说说的页面
  */
-public class MomentListActivity extends BGAPPToolbarActivity implements EasyPermissions.PermissionCallbacks, BGANinePhotoLayout.Delegate, BGAOnRVItemClickListener, BGAOnRVItemLongClickListener {
-    private static final int REQUEST_CODE_PERMISSION_PHOTO_PREVIEW = 1;
+@ContentView(R.layout.activity_moment_list)
+public class MomentListActivity extends AppCompatActivity implements View.OnClickListener,
+        EasyPermissions.PermissionCallbacks, BGANinePhotoLayout.Delegate, BGAOnRVItemClickListener, BGAOnRVItemLongClickListener {
 
+    private static final int REQUEST_CODE_PERMISSION_PHOTO_PREVIEW = 1;
     private static final int REQUEST_CODE_ADD_MOMENT = 1;
 
+    @ViewInject(R.id.rv_moment_list_moments)
     private RecyclerView mMomentRv;
-    private MomentAdapter mMomentAdapter;
-
-    /**
-     * 设置图片预览时是否具有保存图片功能「测试接口用的」
-     */
+    @ViewInject(R.id.cb_moment_list_downloadable)
     private CheckBox mDownLoadableCb;
 
+    private MomentAdapter mMomentAdapter;
     private BGANinePhotoLayout mCurrentClickNpl;
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_moment_list);
-        mDownLoadableCb = getViewById(R.id.cb_moment_list_downloadable);
-        mMomentRv = getViewById(R.id.rv_moment_list_moments);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        x.view().inject(this);
+        setListener();
+        processLogic();
     }
 
-    @Override
     protected void setListener() {
         mMomentAdapter = new MomentAdapter(mMomentRv);
         mMomentAdapter.setOnRVItemClickListener(this);
@@ -64,16 +73,36 @@ public class MomentListActivity extends BGAPPToolbarActivity implements EasyPerm
         mMomentRv.addOnScrollListener(new BGARVOnScrollListener(this));
     }
 
-    @Override
-    protected void processLogic(Bundle savedInstanceState) {
+    protected void processLogic() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         setTitle("朋友圈列表");
 
-
         mMomentRv.setLayoutManager(new LinearLayoutManager(this));
         mMomentRv.setAdapter(mMomentAdapter);
+
+        addNetImageTestData();
     }
 
+    /**
+     * 添加网络图片测试数据
+     */
+    private void addNetImageTestData() {
+        List<Moment> moments = new ArrayList<>();
+
+        moments.add(new Moment("1张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered1.png"))));
+        moments.add(new Moment("2张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered2.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered3.png"))));
+        moments.add(new Moment("3张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered4.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered5.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered6.png"))));
+        moments.add(new Moment("4张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered7.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered8.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered9.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered10.png"))));
+        moments.add(new Moment("5张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered11.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered12.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered13.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered14.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered15.png"))));
+        moments.add(new Moment("6张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered11.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered12.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered13.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered14.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered15.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered16.png"))));
+        moments.add(new Moment("7张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered11.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered12.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered13.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered14.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered15.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered16.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered17.png"))));
+        moments.add(new Moment("8张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered11.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered12.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered13.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered14.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered15.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered16.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered17.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered18.png"))));
+        moments.add(new Moment("9张网络图片", new ArrayList<>(Arrays.asList("http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered11.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered12.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered13.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered14.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered15.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered16.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered17.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered18.png", "http://7xk9dj.com1.z0.glb.clouddn.com/refreshlayout/images/staggered19.png"))));
+
+        mMomentAdapter.setData(moments);
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.tv_moment_list_add) {
             startActivityForResult(new Intent(this, MomentAddActivity.class), REQUEST_CODE_ADD_MOMENT);
@@ -141,12 +170,6 @@ public class MomentListActivity extends BGAPPToolbarActivity implements EasyPerm
     }
 
     @Override
-    public boolean onLongClickNinePhotoItem(BGANinePhotoLayout ninePhotoLayout, View view, int position, String model, List<String> models) {
-        Toast.makeText(this, "长按了图片 " + position, Toast.LENGTH_SHORT).show();
-        return true;
-    }
-
-    @Override
     public void onRVItemClick(ViewGroup viewGroup, View view, int position) {
         Toast.makeText(this, "点击了item " + position, Toast.LENGTH_SHORT).show();
     }
@@ -173,17 +196,8 @@ public class MomentListActivity extends BGAPPToolbarActivity implements EasyPerm
             }
 
             BGANinePhotoLayout ninePhotoLayout = helper.getView(R.id.npl_item_moment_photos);
-            ninePhotoLayout.init(MomentListActivity.this);
             ninePhotoLayout.setDelegate(MomentListActivity.this);
             ninePhotoLayout.setData(moment.photos);
-        }
-
-        @Override
-        public void onViewRecycled(BGARecyclerViewHolder holder) {
-            super.onViewRecycled(holder);
-            BGANinePhotoLayout ninePhotoLayout = holder.getViewHolderHelper().getView(R.id.npl_item_moment_photos);
-            ninePhotoLayout.init(null);
-            ninePhotoLayout.setDelegate(null);
         }
     }
 }

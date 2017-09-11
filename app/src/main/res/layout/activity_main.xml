@@ -2,9 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:scrollbars="none"
-    android:overScrollMode="never"
     android:layout_height="wrap_content"
+    android:overScrollMode="never"
+    android:scrollbars="none"
     tools:context=".ui.activity.MainActivity">
 
     <LinearLayout
@@ -240,10 +240,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 style="@style/style_main_normal_button"
                 android:onClick="circlechat"
                 android:text="自定义饼状图" />
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="fragment"
+                android:text="fragment进阶" />
 
         </LinearLayout>
 

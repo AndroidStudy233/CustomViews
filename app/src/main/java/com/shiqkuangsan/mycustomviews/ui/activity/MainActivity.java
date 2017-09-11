@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
 
     private AMapLocationClient mLocationClient;
     View view;
+
     @Override
     public void initView() {
         setContentView(R.layout.activity_main);
@@ -314,6 +315,7 @@ public class MainActivity extends BaseActivity {
     public void customchat(View view) {
         startActivity(new Intent(this, CustomChatActivity.class));
     }
+
     public void indicator(View view) {
         startActivity(new Intent(this, IndicatorActivity.class));
     }
@@ -335,6 +337,7 @@ public class MainActivity extends BaseActivity {
     public void immerse(View view) {
         startActivity(new Intent(this, ImmerseActivity.class));
     }
+
     /**
      * 拖动的View界面.配合ViewPager
      *
@@ -344,10 +347,21 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, DragViewActivity.class));
     }
 
-    public void btnanimation(View view){
-            startActivity(new Intent(this, BtnAnimationActivity.class));
+    public void btnanimation(View view) {
+//            startActivity(new Intent(this, BtnAnimationActivity.class));
     }
-    public void circlechat(View view){
+
+    public void circlechat(View view) {
         startActivity(new Intent(this, CircleChatActivity.class));
     }
+
+    /**
+     * fragment相关知识
+     *
+     * @param view
+     */
+    public void fragment(View view) {
+        startActivity(new Intent(this, FragmentAdvancedActivity.class));
+    }
+
 }

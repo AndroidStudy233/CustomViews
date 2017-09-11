@@ -57,7 +57,7 @@
     </style>
 
     <!--图片选择页面的activity主题-->
-    <style name="theme_picchose_act" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="theme_picchose_act" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- 状态栏颜色 -->
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <!-- toolbar（actionbar）背景颜色 -->

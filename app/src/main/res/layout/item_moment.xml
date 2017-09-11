@@ -10,9 +10,9 @@
         android:id="@+id/v_item_moment_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher"
         android:layout_marginRight="8dp"
-        app:bga_iv_isCircle="true" />
+        android:src="@drawable/icon_avatar"
+        app:bga_iv_circle="true" />
 
     <TextView
         android:id="@+id/tv_item_moment_username"

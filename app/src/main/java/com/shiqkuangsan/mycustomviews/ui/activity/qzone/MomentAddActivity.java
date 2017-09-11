@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -13,11 +15,14 @@ import android.widget.Toast;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.bean.Moment;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bingoogolapple.photopicker.activity.BGAPPToolbarActivity;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
@@ -25,37 +30,35 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
- * 从发说说界面调过来,操作选择图片并编辑说说的界面
+ * Created by shiqkuangsan on 2017/9/11. <p>
+ * ClassName: MomentAddActivity <p>
+ * Author: shiqkuangsan <p>
+ * Description: 从发说说界面调过来, 操作选择图片并编辑说说的界面
  */
-public class MomentAddActivity extends BGAPPToolbarActivity implements
+@ContentView(R.layout.activity_moment_add)
+public class MomentAddActivity extends AppCompatActivity implements View.OnClickListener,
         EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate {
 
     private static final int REQUEST_CODE_PERMISSION_PHOTO_PICKER = 1;
-
     private static final int REQUEST_CODE_CHOOSE_PHOTO = 1;
     private static final int REQUEST_CODE_PHOTO_PREVIEW = 2;
-
     private static final String EXTRA_MOMENT = "EXTRA_MOMENT";
 
-    /**
-     * 是否是单选「测试接口用的」
-     */
+    /**是否是单选「测试接口用的」*/
+    @ViewInject(R.id.cb_moment_add_single_choice)
     private CheckBox mSingleChoiceCb;
-    /**
-     * 是否具有拍照功能「测试接口用的」
-     */
+    /**是否具有拍照功能「测试接口用的」*/
+    @ViewInject(R.id.cb_moment_add_take_photo)
     private CheckBox mTakePhotoCb;
-    /**
-     * 是否显示九图控件的加号按钮「测试接口用的」
-     */
+    /**是否显示九图控件的加号按钮「测试接口用的」*/
+    @ViewInject(R.id.cb_moment_add_plus)
     private CheckBox mPlusCb;
-    /**
-     * 是否开启拖拽排序功能「测试接口用的」
-     */
+    /**是否开启拖拽排序功能「测试接口用的」*/
+    @ViewInject(R.id.cb_moment_add_sortable)
     private CheckBox mSortableCb;
-
-
+    @ViewInject(R.id.et_moment_add_content)
     private EditText mContentEt;
+    @ViewInject(R.id.snpl_moment_add_photos)
     private BGASortableNinePhotoLayout mPhotosSnpl;
 
     public static Moment getMoment(Intent intent) {
@@ -63,29 +66,37 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements
     }
 
     @Override
-    protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_moment_add);
-        mSingleChoiceCb = getViewById(R.id.cb_moment_add_single_choice);
-        mTakePhotoCb = getViewById(R.id.cb_moment_add_take_photo);
-        mPlusCb = getViewById(R.id.cb_moment_add_plus);
-        mSortableCb = getViewById(R.id.cb_moment_add_sortable);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        x.view().inject(this);
 
-        mContentEt = getViewById(R.id.et_moment_add_content);
-        mPhotosSnpl = getViewById(R.id.snpl_moment_add_photos);
+        setListener();
+        processLogic();
     }
 
-    @Override
+
     protected void setListener() {
+        mSingleChoiceCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+                if (checked) {
+                    mPhotosSnpl.setData(null);
+                    mPhotosSnpl.setMaxItemCount(1);
+                } else {
+                    mPhotosSnpl.setMaxItemCount(9);
+                }
+            }
+        });
         mPlusCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                mPhotosSnpl.setIsPlusSwitchOpened(checked);
+                mPhotosSnpl.setPlusEnable(checked);
             }
         });
         mSortableCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
-                mPhotosSnpl.setIsSortable(checked);
+                mPhotosSnpl.setSortable(checked);
             }
         });
 
@@ -93,10 +104,10 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements
         mPhotosSnpl.setDelegate(this);
     }
 
-    @Override
-    protected void processLogic(Bundle savedInstanceState) {
+    protected void processLogic() {
         setTitle("图片选择");
-        mPhotosSnpl.init(this);
+        mPlusCb.setChecked(mPhotosSnpl.isPlusEnable());
+        mSortableCb.setChecked(mPhotosSnpl.isSortable());
     }
 
     @Override
@@ -166,7 +177,11 @@ public class MomentAddActivity extends BGAPPToolbarActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_CHOOSE_PHOTO) {
-            mPhotosSnpl.setData(BGAPhotoPickerActivity.getSelectedImages(data));
+            if (mSingleChoiceCb.isChecked()) {
+                mPhotosSnpl.setData(BGAPhotoPickerActivity.getSelectedImages(data));
+            } else {
+                mPhotosSnpl.addMoreData(BGAPhotoPickerActivity.getSelectedImages(data));
+            }
         } else if (requestCode == REQUEST_CODE_PHOTO_PREVIEW) {
             mPhotosSnpl.setData(BGAPhotoPickerPreviewActivity.getSelectedImages(data));
         }
