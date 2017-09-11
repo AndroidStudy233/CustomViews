@@ -19,7 +19,8 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def todayWeather = properties.getProperty("weather.desc")
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    // 这边的值也可以在gradle.properties文件中定义, 比如
+    compileSdkVersion APP_COMPILE_SDK_VERSION as int
     buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     // Manifest中的一下配置会直接被这里覆盖
