@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.alibaba.fastjson.JSON.toJSON;
 import static com.shiqkuangsan.mycustomviews.R.id.btn_xutils_db;
 
 /**

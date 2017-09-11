@@ -47,7 +47,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_api21" />
+    <include layout="@layout/layout_api21" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_explose"

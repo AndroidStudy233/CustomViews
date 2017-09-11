@@ -348,6 +348,6 @@ public class MainActivity extends BaseActivity {
             startActivity(new Intent(this, BtnAnimationActivity.class));
     }
     public void circlechat(View view){
-        startActivity(new Intent(this, circleChatActivity.class));
+        startActivity(new Intent(this, CircleChatActivity.class));
     }
 }

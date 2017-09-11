@@ -17,10 +17,10 @@ import com.shiqkuangsan.mycustomviews.R;
  * @version V3.1
  *********************************/
 
-public class circleChatActivity extends AppCompatActivity {
+public class CircleChatActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.circlechat_activity);
+        setContentView(R.layout.activity_circlechat);
     }
 }

@@ -28,7 +28,7 @@ public class IndicatorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.indicator_activity);
+        setContentView(R.layout.activity_indicator);
         x.view().inject(this);
         indicatorView.setCircleNum(9);//和数据个数关联
         indicatorView.setDefautSelectPosition(2);//设置默认选中
