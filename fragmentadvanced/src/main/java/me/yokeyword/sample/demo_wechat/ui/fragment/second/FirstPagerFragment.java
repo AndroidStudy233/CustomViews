@@ -22,6 +22,8 @@ import me.yokeyword.sample.demo_wechat.event.TabSelectedEvent;
 import me.yokeyword.sample.demo_wechat.listener.OnItemClickListener;
 import me.yokeyword.sample.demo_wechat.ui.fragment.MainFragment;
 
+import static android.os.Build.VERSION_CODES.M;
+
 /**
  * Created by YoKeyword on 16/6/30.
  */
@@ -80,8 +82,8 @@ public class FirstPagerFragment extends SupportFragment implements SwipeRefreshL
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view, RecyclerView.ViewHolder holder) {
-                // 通知MainFragment跳转至NewFeatureFragment
-                ((MainFragment) getParentFragment()).startBrotherFragment(NewFeatureFragment.newInstance());
+                // 通知MaiFragment跳转至NewFeatureFragment
+                ((MainFragment)(getParentFragment().getParentFragment())).startBrotherFragment(NewFeatureFragment.newInstance());
             }
         });
 
