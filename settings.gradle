@@ -1,2 +1,2 @@
-include ':app', ':rxandroidmvp', ':greendaodemo'
+include ':app', ':rxandroidmvp', ':greendaodemo', ':fragmentadvanced'
 include ':cityselector'

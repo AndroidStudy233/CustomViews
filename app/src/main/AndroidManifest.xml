@@ -250,10 +250,6 @@
             android:name=".ui.activity.CircleChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.dragView" />
-        <activity
-            android:name=".ui.activity.FragmentAdvancedActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />

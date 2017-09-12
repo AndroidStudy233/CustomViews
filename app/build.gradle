@@ -114,17 +114,19 @@ android {
         compile rootProject.ext.dependencies.xUtils
         // Glide库
         compile rootProject.ext.dependencies.glide
+        compile rootProject.ext.dependencies.glidePro
+        // ImageLoader
+        compile rootProject.ext.dependencies.imageloader
         // 汉字转拼音
         compile 'com.github.promeg:tinypinyin:1.0.0'
         // 下拉刷新
         compile 'in.srain.cube:ultra-ptr:1.0.11'
-        // ImageLoader
-        compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
         // 图片选择器
         compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
         compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
         // 6.0简易申请权限
         compile 'pub.devrel:easypermissions:0.2.0'
+        // Alibaba json工具
         compile 'com.alibaba:fastjson:1.2.17'
         // recyclerview的adapter / item / viewholder动画
         compile 'jp.wasabeef:recyclerview-animators:2.2.5'
@@ -146,12 +148,18 @@ android {
         compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
         // BoomMenu
         compile 'com.nightonke:boommenu:2.1.0'
+
         // 依赖本地module(library)
         compile(project(':cityselector')) {
             // 示例: 配置依赖该类库时不包括这些lib(当引起冲突时)
-//        exclude group: 'com.google.code.gson'
-//        exclude group: 'com.squareup.okhttp3'
+            // exclude group: 'com.google.code.gson'
+            // exclude group: 'com.squareup.okhttp3'
         }
 
+    }
+
+    // 依赖glide后会出jsr305版本冲突.这里强制使用更高的, 也可以在上面androidTestCompile中剔除group->'com.google.code.findbugs'
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
     }
 }

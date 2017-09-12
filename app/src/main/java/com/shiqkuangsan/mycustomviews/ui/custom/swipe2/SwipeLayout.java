@@ -204,7 +204,7 @@ public class SwipeLayout extends FrameLayout {
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
-            if (contentView.getLeft() < -deleteWidth / 2) {
+            if (contentView.getLeft() < -deleteWidth / 2.5) {
                 //应该打开
                 open();
             } else {

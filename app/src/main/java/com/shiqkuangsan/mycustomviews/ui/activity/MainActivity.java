@@ -355,13 +355,4 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, CircleChatActivity.class));
     }
 
-    /**
-     * fragment相关知识
-     *
-     * @param view
-     */
-    public void fragment(View view) {
-        startActivity(new Intent(this, FragmentAdvancedActivity.class));
-    }
-
 }

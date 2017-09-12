@@ -246,11 +246,6 @@
                 android:onClick="circlechat"
                 android:text="自定义饼状图" />
 
-            <Button
-                style="@style/style_main_normal_button"
-                android:onClick="fragment"
-                android:text="fragment进阶" />
-
         </LinearLayout>
 
     </LinearLayout>

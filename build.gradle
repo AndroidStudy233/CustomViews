@@ -13,7 +13,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.1'
         // realm插件
-        classpath "io.realm:realm-gradle-plugin:2.2.1"
+        classpath 'io.realm:realm-gradle-plugin:2.2.1'
         // retrolambda
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
         // Butterknife
@@ -28,9 +28,8 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven {
-            url "https://jitpack.io"
-        }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
     }
 }
 
@@ -38,23 +37,24 @@ allprojects {
 ext {
     android = [
             compileSdkVersion: 25,
-            buildToolsVersion: "25.0.3",
+            buildToolsVersion: '25.0.3',
             minSdkVersion    : 18,
             targetSdkVersion : 25
     ]
 
     dependencies = [
-            supportv4      : "com.android.support:support-v4:25.3.1",
-            appcompatv7    : "com.android.support:appcompat-v7:25.3.1",
-            recyclerview   : "com.android.support:recyclerview-v7:25.3.1",
-            cardview       : "com.android.support:cardview-v7:25.3.1",
-            design         : "com.android.support:design:25.3.1",
-            vector_drawable: "com.android.support:support-vector-drawable:25.3.1",
-            testCompile    : "junit:junit:4.12",
-            constraint     : "com.android.support.constraint:constraint-layout:1.0.2",
-            xUtils         : "org.xutils:xutils:3.3.40",
-            imageloader    : "com.nostra13.universalimageloader:universal-image-loader:1.9.5",
-            glide          : "com.github.bumptech.glide:glide:3.7.0"
+            supportv4      : 'com.android.support:support-v4:25.3.1',
+            appcompatv7    : 'com.android.support:appcompat-v7:25.3.1',
+            recyclerview   : 'com.android.support:recyclerview-v7:25.3.1',
+            cardview       : 'com.android.support:cardview-v7:25.3.1',
+            design         : 'com.android.support:design:25.3.1',
+            vector_drawable: 'com.android.support:support-vector-drawable:25.3.1',
+            testCompile    : 'junit:junit:4.12',
+            constraint     : 'com.android.support.constraint:constraint-layout:1.0.2',
+            xUtils         : 'org.xutils:xutils:3.5.0',
+            imageloader    : 'com.nostra13.universalimageloader:universal-image-loader:1.9.5',
+            glide          : 'com.github.bumptech.glide:glide:4.1.1',
+            glidePro       : 'com.github.bumptech.glide:compiler:4.1.1'
     ]
 }
 

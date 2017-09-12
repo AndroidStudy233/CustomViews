@@ -632,8 +632,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 * px: 像素, 就是图像的基本单位. 没什么好解释的
 
-* 
-* : pixels per inch的缩写，表示1 inch包含多少像素. 
+* ppi: pixels per inch的缩写，表示1 inch包含多少像素. 
 
 * dpi: dot per inch 每英寸点数. 160dpi的屏幕就表示一个Inch包含160个Dot(Android). 在Android中可以理解为表示一个Inch包含多少像素，也即PPI. 
 
