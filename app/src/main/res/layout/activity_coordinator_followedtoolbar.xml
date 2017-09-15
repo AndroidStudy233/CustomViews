@@ -34,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
+        app:fabSize="mini"
         app:layout_anchor="@id/recycler_coordinator_follow"
         app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="com.shiqkuangsan.mycustomviews.ui.custom.behavior.ScrollAwareFABBehavior"
