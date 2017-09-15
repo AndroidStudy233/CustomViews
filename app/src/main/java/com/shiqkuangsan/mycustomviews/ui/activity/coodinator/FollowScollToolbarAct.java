@@ -45,6 +45,8 @@ public class FollowScollToolbarAct extends AppCompatActivity {
     @ViewInject(R.id.fab_coordinator_follow)
     FloatingActionButton floatingBtn;
 
+    private LinearLayoutManager layoutManager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +60,31 @@ public class FollowScollToolbarAct extends AppCompatActivity {
         floatingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "I am coming ~", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Fly to position 0 ~", Snackbar.LENGTH_SHORT)
+//                        .setAction("Action", null).show();
+//                layoutManager.scrollToPositionWithOffset(0, 0);
+//                layoutManager.setStackFromEnd(true);
+                smoothMoveToPosition(recyclerView, 0);
             }
         });
     }
 
     private void initRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         NormalRecyclerAdapter adapter = new NormalRecyclerAdapter(this);
         recyclerView.setAdapter(adapter);
+        // 控制FAB点击滑动(这里是滑动到0所以无所谓  但是要是滑动到后面的位置就要这样做)
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (mShouldScroll) {
+                    mShouldScroll = false;
+                    smoothMoveToPosition(recyclerView, mToPosition);
+                }
+            }
+        });
     }
 
     private boolean isInitializeFAB = false;
@@ -111,5 +128,46 @@ public class FollowScollToolbarAct extends AppCompatActivity {
                         .start();
             }
         }, 500);
+    }
+
+    /**
+     * 目标项是否在最后一个可见项之后
+     */
+    private boolean mShouldScroll;
+    /**
+     * 记录目标项位置
+     */
+    private int mToPosition;
+
+    /**
+     * 滑动到指定位置
+     *
+     * @param mRecyclerView
+     * @param position
+     */
+    private void smoothMoveToPosition(RecyclerView mRecyclerView, final int position) {
+        // 第一个可见位置
+        int firstItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(0));
+        // 最后一个可见位置
+        int lastItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(mRecyclerView.getChildCount() - 1));
+
+        if (position < firstItem) {
+            // 如果跳转位置在第一个可见位置之前，就smoothScrollToPosition可以直接跳转
+            mRecyclerView.smoothScrollToPosition(position);
+        } else if (position <= lastItem) {
+            // 跳转位置在第一个可见项之后，最后一个可见项之前
+            // smoothScrollToPosition根本不会动，此时调用smoothScrollBy来滑动到指定位置
+            int movePosition = position - firstItem;
+            if (movePosition >= 0 && movePosition < mRecyclerView.getChildCount()) {
+                int top = mRecyclerView.getChildAt(movePosition).getTop();
+                mRecyclerView.smoothScrollBy(0, top);
+            }
+        } else {
+            // 如果要跳转的位置在最后可见项之后，则先调用smoothScrollToPosition将要跳转的位置滚动到可见位置
+            // 再通过onScrollStateChanged控制再次调用smoothMoveToPosition，执行上一个判断中的方法
+            mRecyclerView.smoothScrollToPosition(position);
+            mToPosition = position;
+            mShouldScroll = true;
+        }
     }
 }
