@@ -23,11 +23,12 @@ import com.shiqkuangsan.mycustomviews.ui.custom.behavior.MergedAppBarLayoutBehav
 
 /**
  * Created by shiqkuangsan on 2017/8/4. <p>
- * ClassName: CustomBehaviorAct <p>
+ * ClassName: CustomBehaviorAct22 <p>
  * Author: shiqkuangsan <p>
- * Description: 自定义Behavior展示效果
+ * Description: 自定义Behavior展示效果. 有bug暂时不会改. 该页面暂时不用
  */
-public class CustomBehaviorAct extends AppCompatActivity {
+@Deprecated
+public class CustomBehaviorAct22 extends AppCompatActivity {
     int[] mDrawables = {
             R.drawable.img_cheese,
             R.drawable.img_cheese,

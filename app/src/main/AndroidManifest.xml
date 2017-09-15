@@ -235,8 +235,11 @@
             android:name=".ui.activity.coodinator.FragmentSurppotAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
+        <activity android:name=".ui.activity.coodinator.CustomBehaviorAct1"
+            android:screenOrientation="portrait"
+            />
         <activity
-            android:name=".ui.activity.coodinator.CustomBehaviorAct"
+            android:name=".ui.activity.coodinator.CustomBehaviorAct22"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.bottombehavior" />
         <activity

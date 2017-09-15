@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CollapsingToolbarAct;
-import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CustomBehaviorAct;
+import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.CustomBehaviorAct1;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.DrawerEmmaInfoActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FollowScollToolbarAct;
 import com.shiqkuangsan.mycustomviews.ui.activity.coodinator.FragmentSurppotAct;
@@ -38,7 +38,7 @@ public class CoodinatorActivity extends ListActivity {
             CollapsingToolbarAct.class,
             DrawerEmmaInfoActivity.class,
             FragmentSurppotAct.class,
-            CustomBehaviorAct.class,
+            CustomBehaviorAct1.class
     };
 
     @Override

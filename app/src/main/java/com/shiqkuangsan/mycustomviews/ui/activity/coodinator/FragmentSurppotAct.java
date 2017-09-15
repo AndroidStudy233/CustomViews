@@ -161,9 +161,7 @@ public class FragmentSurppotAct extends AppCompatActivity {
                 item.setShiftingMode(false);
                 item.setChecked(item.getItemData().isChecked());
             }
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

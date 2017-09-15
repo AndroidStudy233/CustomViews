@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -67,4 +70,46 @@ public class FollowScollToolbarAct extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    private boolean isInitializeFAB = false;
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (!isInitializeFAB) {
+            isInitializeFAB = true;
+            // 进入界面的时候隐藏FAB.
+//            hideFAB();
+        }
+    }
+
+    private void hideFAB() {
+        floatingBtn.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ViewCompat.animate(floatingBtn)
+                        .scaleX(0.0f)
+                        .scaleY(0.0f)
+                        .alpha(0.0f)
+                        .setDuration(500)
+                        .setInterpolator(new FastOutSlowInInterpolator())
+                        .setListener(new ViewPropertyAnimatorListener() {
+                            @Override
+                            public void onAnimationStart(View view) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(View view) {
+                                floatingBtn.setVisibility(View.GONE);
+                            }
+
+                            @Override
+                            public void onAnimationCancel(View view) {
+
+                            }
+                        })
+                        .start();
+            }
+        }, 500);
+    }
 }
