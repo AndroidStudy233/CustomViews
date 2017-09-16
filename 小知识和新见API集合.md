@@ -1009,6 +1009,37 @@ android:inputType="time"--时间键盘
 	info.baseActivity.getPackageName().equals("com.shiqkaungsan.hello")
 
 ---
+
+### 控制dialog宽度/dialogfragment宽高
+
+1. dialog
+
+	 private void showDialog() {
+        Dialog dialog = xxx;
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.setCancelable(true);
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.show();
+    }
+
+2. dialogfragment
+
+	@Override
+    public void onResume() {
+        super.onResume();
+        Window mWindow = getDialog().getWindow();
+        WindowManager.LayoutParams mLayoutParams = mWindow.getAttributes();
+        mLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        mLayoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        mLayoutParams.gravity = Gravity.CENTER;
+        mWindow.setAttributes(mLayoutParams);
+    }
+
+---
 ## Service里面弹对话框(吐司是可以直接的)
 
 		AlertDialog dialog = new AlertDialog.Builder(this).setTitle("标题").setMessage("内容").setPositiveButton("确定", null).create();
