@@ -36,23 +36,6 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
         setContentView(R.layout.activity_main);
-//         view = findViewById(R.id.main_ac_layout);
-//        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-////                new SpringAnimation(view, DynamicAnimation.TRANSLATION_X, 1f)
-////                        .setSpring(new SpringForce())
-////                        .setStartValue(0)
-////                        .setStartVelocity(5000).start();
-////                SpringForce springForce = new SpringForce(0)
-////                        .setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
-////                        .setStiffness(SpringForce.STIFFNESS_VERY_LOW);
-////                final SpringAnimation anim = new SpringAnimation(view ,SpringAnimation.TRANSLATION_Y).setSpring(springForce);
-////                anim.setStartValue(-1000);
-////                anim.start();
-//            }
-//        });
-
     }
 
     @Override

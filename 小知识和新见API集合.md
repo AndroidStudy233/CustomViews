@@ -69,6 +69,28 @@
 
 ---
 
+### 调用.so 文件时报错has text relocations
+
+说明编译.so文件时使用了较低版本sdk 而project 中的配置 targetSdkVersion22 大于so编译时使用的sdkversion，所以只需要把功能中 的targetSdkVersion降低即可 
+
+---
+### android app logo尺寸
+
+* mdpi						48x48
+
+* hdpi						72x72
+	
+* xhdpi						96x96
+
+* xxhdpi					144x144
+
+* xxxhdpi					192x192
+
+* Google Play Store			512x512
+
+
+---
+
 ### adb -s emulator-5554 install app-debug.apk    
 
 ---
@@ -1629,7 +1651,7 @@ fastjson
 
 2. 开发版: 随便在哪儿打开命令行,输入
 
-	keytool -list -v -keystore	(这后面跟的是你的keystore的全路径)
+	keytool -list -v -keystore	xxx(这后面跟的是你的keystore的全路径)
 
 密码就是你自己设置的密码
 
