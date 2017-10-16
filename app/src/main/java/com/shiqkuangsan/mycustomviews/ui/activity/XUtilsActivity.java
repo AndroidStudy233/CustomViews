@@ -19,7 +19,10 @@ import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil.SimpleRequestParams;
 
 import org.xutils.DbManager;
+import org.xutils.common.util.KeyValue;
 import org.xutils.ex.DbException;
+import org.xutils.http.RequestParams;
+import org.xutils.http.body.MultipartBody;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -261,6 +264,15 @@ public class XUtilsActivity extends AppCompatActivity {
      */
     private void upploadFile() {
         showToast("功能写了,没有接口,没法测试");
+//        RequestParams params = new RequestParams(MlnxConfigDataFactory.getMlnxUrlRoot() + "api/file/");
+//        List<KeyValue> list = new ArrayList<>();
+//        for (PhotoInfo info : photoInfos) {
+//            File file = new File(info.getPhotoPath());
+//            list.add(new KeyValue("file", file));
+//        }
+//        MultipartBody body = new MultipartBody(list, "UTF-8");
+//        params.setRequestBody(body);
+//        params.setMultipart(true);
     }
 
     /**
