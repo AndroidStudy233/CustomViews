@@ -54,6 +54,7 @@ import java.io.InputStream;
  * 关于android6.0动态权限申请的问题,图库选择图片的逻辑已经处理了,拍照获取大多定制机目前不需要处理,暂且是注释状态
  * 另外需要提的裁剪框的大小你如果不满意自己可以调,在crop()方法中
  */
+// TODO: 2017/10/18 从fragment中打开要求还是传入activity的话, fragment收不到回调的
 public class ChoosePicUtil {
 
     /**

@@ -91,7 +91,9 @@
 
 ---
 
-### adb -s emulator-5554 install app-debug.apk    
+### adb -s emulator-5554 install app-debug.apk  
+
+### adb reverse tcp:8081 tcp:8081  
 
 ---
 
