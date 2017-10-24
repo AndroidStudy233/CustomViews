@@ -1282,6 +1282,40 @@ Theme.Sherlock.Light.DarkActionBar无法找到
 
 ---
 
+
+## 注解@SuppressWarnings
+
+>使用：
+
+* @SuppressWarnings("")
+* @SuppressWarnings({})
+* @SuppressWarnings(value={})
+
+根据sun的官方文档描述：
+value -将由编译器在注释的元素中取消显示的警告集。允许使用重复的名称。忽略第二个和后面出现的名称。出现未被识别的警告名不是错误：编译器必须忽略无法识别的所有警告名。但如果某个注释包含未被识别的警告名，那么编译器可以随意发出一个警告。
+各编译器供应商应该将它们所支持的警告名连同注释类型一起记录。鼓励各供应商之间相互合作，确保在多个编译器中使用相同的名称。
+
+示例：
+
+*  @SuppressWarnings("unchecked")
+告诉编译器忽略 unchecked 警告信息，如使用List，ArrayList等未进行参数化产生的警告信息。
+
+*  @SuppressWarnings("serial")
+如果编译器出现这样的警告信息：The serializable class WmailCalendar does notdeclare a static final serialVersionUID field of type long
+      使用这个注释将警告信息去掉。
+
+*  @SuppressWarnings("deprecation")
+如果使用了使用@Deprecated注释的方法，编译器将出现警告信息。
+      使用这个注释将警告信息去掉。
+
+*  @SuppressWarnings("unchecked", "deprecation")
+告诉编译器同时忽略unchecked和deprecation的警告信息。
+
+*  @SuppressWarnings(value={"unchecked", "deprecation"})
+等同于@SuppressWarnings("unchecked", "deprecation")
+
+---
+
 ## 项目中自行配置jni的路径
 >在module的defaultConfig{}中
 
