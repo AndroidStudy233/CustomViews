@@ -130,6 +130,10 @@
             android:label="测试MD风格的设置"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.activity.DragHelperActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppNoActionBar" />
+        <activity
             android:name=".ui.activity.api21.Api21Activity"
             android:label="5.0简单测试页面"
             android:screenOrientation="portrait"

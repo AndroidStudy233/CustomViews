@@ -245,7 +245,10 @@
                 style="@style/style_main_normal_button"
                 android:onClick="circlechat"
                 android:text="自定义饼状图" />
-
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="draghelper"
+                android:text="draghelper示例" />
         </LinearLayout>
 
     </LinearLayout>
