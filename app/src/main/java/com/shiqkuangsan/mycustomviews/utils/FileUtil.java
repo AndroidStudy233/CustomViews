@@ -1,4 +1,4 @@
-﻿package com.shiqkuangsan.mycustomviews.utils;
+package com.shiqkuangsan.mycustomviews.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -28,7 +28,7 @@ import android.util.Log;
  *
  * @version 1.0 包含多种通用文件操作的方法
  */
-public final class FileUtil {
+public class FileUtil {
     private static final String TAG = "FileUtil";
 
     /**
