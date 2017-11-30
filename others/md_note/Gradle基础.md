@@ -351,9 +351,9 @@ module中使用:
 
 >##小结: 
 
->1. 设置use default, 如果配置了path变量GRADLE_USER_HOME并且正确, 则直接使用gradle-wrapper.properties下配置的distributionBase + distributionPath + distributionUrl的版本号 得到对应的gradle-version-all进行编译. 如果path没有则去distributionUrl去下载并根据zipStoreBase和zipStorePath进行存放解压然后进行编译. 编译下载的jar包等缓存文件存储于distributionBase下的caches中
+>1. 设置use default gradle wrapper, 如果配置了path变量GRADLE_USER_HOME并且正确, 则直接使用gradle-wrapper.properties下配置的distributionBase + distributionPath + distributionUrl的版本号 得到对应的gradle-version-all进行编译. 如果path没有则去distributionUrl去下载并根据zipStoreBase和zipStorePath进行存放解压然后进行编译. 编译下载的jar包等缓存文件存储于distributionBase下的caches中
 
-> 2. 设置use local, 如果配置正确, 则直接使用配置的路径进行编译. 如果不正确会回到第一步
+> 2. 设置use local gradle distribution, 如果配置正确, 则直接使用配置的路径进行编译. 如果不正确会回到第一步
 
 
 [Gradle官方文档](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html#N27330)
