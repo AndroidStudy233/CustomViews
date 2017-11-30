@@ -295,3 +295,65 @@ module中使用:
     gradlew taskName --xxx
     第二个参数: 运行报错会有what went wrong, 会有个':名字: 具体task', 这儿就填报错的task
     第三个参数: 你要查看的方式(有三种): --stacktrace    /   --info  /   --debug
+
+
+## Gradle之gradle依赖和wrapper初步解析
+>当AS中设置为use default gradle wrapper. 那么编译的时候就会去该路径下查找:
+{project.dir}\gradle\wrapper\gradle-wrapper.properties.就是该文件
+
+>当AS中设置为use local gradle distribution时, 根据配置的路径初始化gradle, 如果没有则去下载, 下载配置如下
+
+>当AS中设置为Offline work时, 会去配置的service path中获取缓存的马偕库文件, 任何一个没有则直接fail
+
+1. Thu May 04 23:08:44 CST 2017
+
+	无需多说, 时间
+
+2. distributionBase=GRADLE\_USER\_HOME
+
+	####distributionBase: gradle的zip包下载解压后目标基础目录, *GRADLE\_USER\_HOME* 和 PROJECT两个取值, 一般不会用后者. 
+
+	* *GRADLE\_USER\_HOME*: 不配置则默认windows下为: %USERPROFILE%/.gradle. 例如 C:\Users\shiqkuangsan\\.gradle\; 
+	
+		* 当然你也可以在环境变量中配置GRADLE\_USER\_HOME并赋值;
+		* 而且还可以在项目根目录下的gradle.properties中配置, gradle.user.home=D:/xx/xx
+	
+	* PROJECT: 当前工程目录(gradlew所在同级目录), 一般不会把gradle的zip包等文件放在工程下吧
+
+
+3. distributionPath=wrapper/dists
+
+	distributionPath: gradle的zip包下载后 解压 解压 解压的目录延伸, 即上面目录下的wrapper/dists
+
+	distributionBase和distributionPath组合在一起, 是对应版本gradle的zip包解压之后所存放的位置
+	
+4. zipStoreBase=GRADLE\_USER\_HOME
+
+	相对于上边的distributionBase就是gradle的zip包存放的目录
+
+5. zipStorePath=wrapper/dists
+
+	相对于上边的distributionPath就是gradle的zip包存放的目录延伸
+
+	zipStoreBase和zipStorePath组合在一起, 是对应版本gradle的zip所存放的位置
+
+6. distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
+
+	要下载的gradle的地址, 如果前面配置的目录下没找到对应的zip包, 就去该地址下载. 其实该地址换成本地路径下的zip下载地址分分钟解决问题(比如文件存在于D:\DevSoft\Gradle/package/gradle-3.3-all.zip, 那么直接拖进浏览器, 然后复制下载地址填写在distributionUrl. 相当于直接下载好了)
+	
+	此外提一下gradle文件的三种格式:
+
+		* gradle-xx-all.zip是完整版，包含了各种二进制文件，源代码文件，和离线的文档。例如，https://services.gradle.org/distributions/gradle-3.3-all.zip
+		
+		* gradle-xx-bin.zip是二进制版，只包含了二进制文件（可执行文件），没有文档和源代码, 但是可以用于编译。例如，https://services.gradle.org/distributions/gradle-3.3-bin.zip
+		
+		* gradle-xx-src.zip是源码版，只包含了Gradle源代码，不能用来编译你的工程。例如，https://services.gradle.org/distributions/gradle-3.3-src.zip  
+
+>##小结: 
+
+>1. 设置use default, 如果配置了path变量GRADLE_USER_HOME并且正确, 则直接使用gradle-wrapper.properties下配置的distributionBase + distributionPath + distributionUrl的版本号 得到对应的gradle-version-all进行编译. 如果path没有则去distributionUrl去下载并根据zipStoreBase和zipStorePath进行存放解压然后进行编译. 编译下载的jar包等缓存文件存储于distributionBase下的caches中
+
+> 2. 设置use local, 如果配置正确, 则直接使用配置的路径进行编译. 如果不正确会回到第一步
+
+
+[Gradle官方文档](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html#N27330)
