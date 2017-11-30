@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.shiqkuangsan.mycustomviews.ui.custom.DragHelperView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/view1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#ff00ff"
+            android:gravity="center"
+            android:text="随意拖动" />
+
+        <TextView
+            android:id="@+id/view2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#00ff00"
+            android:gravity="center"
+            android:text="只能从侧边拖动   - - ！" />
+
+        <TextView
+            android:id="@+id/view3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#ffff00"
+            android:gravity="center"
+            android:text="拖动后会回到原位" />
+    </com.shiqkuangsan.mycustomviews.ui.custom.DragHelperView>
+</LinearLayout>

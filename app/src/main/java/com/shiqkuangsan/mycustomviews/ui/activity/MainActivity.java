@@ -349,5 +349,7 @@ public class MainActivity extends BaseActivity {
     public void circlechat(View view) {
         startActivity(new Intent(this, CircleChatActivity.class));
     }
-
+    public void draghelper(View view) {
+        startActivity(new Intent(this, DragHelperActivity.class));
+    }
 }
