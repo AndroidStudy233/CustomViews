@@ -353,7 +353,9 @@ module中使用:
 
 >1. 设置use default gradle wrapper, 如果配置了path变量GRADLE_USER_HOME并且正确, 则直接使用gradle-wrapper.properties下配置的distributionBase + distributionPath + distributionUrl的版本号 得到对应的gradle-version-all进行编译. 如果path没有则去distributionUrl去下载并根据zipStoreBase和zipStorePath进行存放解压然后进行编译. 编译下载的jar包等缓存文件存储于distributionBase下的caches中
 
-> 2. 设置use local gradle distribution, 如果配置正确, 则直接使用配置的路径进行编译. 如果不正确会回到第一步
+>2. 设置use local gradle distribution, 如果配置正确, 则直接使用配置的路径进行编译. 如果不正确会回到第一步
+
+>tips: 所以配置gradle环境变量的时候, <1> GRADLE_HOME: 一般在Studio安装目录下gradle里面用比较新的版本(当前是3.3或者4.1), 就是gradle-3.3/4.1-all.zip解压后的目录, 然后path中引用并配到bin下. <2> GRADLE_USER_HOME: 此目录可配可不配, 不配默认为C下面的user\.gradle. 如果要配置的话建议单独弄个比如D:\File\Gradle. 一般里面的目录为caches、daemon、native、wrapper这几层
 
 
 [Gradle官方文档](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.wrapper.Wrapper.html#N27330)
