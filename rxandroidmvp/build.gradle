@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'  // lambda
-apply plugin: 'android-apt' // Butterknife
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion

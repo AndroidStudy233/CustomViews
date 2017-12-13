@@ -376,22 +376,6 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
-## ButterKnife的完整依赖
-
-* 在项目的project 的build.gredle 文件中的dependencies标签下添加。
-
-		classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-
-* 在module的build.gredle 文件中添加
-
-		apply plugin: 'android-apt'
-
-* 在module的build.gredle 文件中的dependencies标签中添加
-
-		compile 'com.jakewharton:butterknife:8.4.0'
-		apt 'com.jakewharton:butterknife-compiler:8.4.0'
-
----
 ### android中的百分比布局
 
 	 compile 'com.android.support:percent:22.2.0'
