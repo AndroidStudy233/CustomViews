@@ -1,2 +1,5 @@
-include ':app', ':rxandroidmvp', ':greendaodemo', ':fragmentadvanced'
+// others/fragmentation.apk 是关于fragment使用的dmeo, 并且有依赖库, 详情可以看 https://github.com/YoKeyword/Fragmentation
+
+include ':app', ':rxandroidmvp', ':greendaodemo'
+
 include ':cityselector'

@@ -1086,6 +1086,12 @@ android:inputType="time"--时间键盘
 
 ---
 
+### Android Button/按钮英文总是大写
+
+    android:textAllCaps="false"
+
+---
+
 ### 打开已有的数据库 
 
 		SQLiteDatabase.openDatabase()
