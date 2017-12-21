@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 
@@ -57,9 +58,9 @@ public class UIUitl {
     }
 
     /**
-     * 根据手机的分辨率从 dip 的单位 转成为 px(像素)
+     * 根据手机的像素密度从 dip 的单位 转成为 px(像素)
      *
-     * @return 像素值
+     * @return 对应的px值
      */
     public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;  //获取屏幕的密度
@@ -67,13 +68,33 @@ public class UIUitl {
     }
 
     /**
-     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     * 根据手机的像素密度从 px(像素) 的单位 转成为 dp
      *
-     * @return dp值
+     * @return 对应的dp值
      */
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+
+    /**
+     * sp转px
+     *
+     * @return 对应的sp值
+     */
+    public static int sp2px(Context context, float spVal) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                spVal, context.getResources().getDisplayMetrics());
+    }
+
+    /**
+     * px转sp
+     *
+     * @return 对应的sp值
+     */
+    public static float px2sp(Context context, float pxVal) {
+        return (pxVal / context.getResources().getDisplayMetrics().scaledDensity);
     }
 
     /**
