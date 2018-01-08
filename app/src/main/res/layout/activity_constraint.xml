@@ -8,32 +8,158 @@
     android:orientation="vertical"
     tools:context="com.shiqkuangsan.mycustomviews.ui.activity.ConstraintActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/albumback"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        tools:text="待完成" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Button"
-        app:layout_constraintDimensionRatio="H,2:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <!--layout_constraintDimensionRatio="X,W:H"
+        （麻痹W:H和网上不一样说的不一样 ，测了基本所有场景，就是固定宽高比。）
+        X指的是要约束的边,可不写，约束边不写自动匹配最适合约束边，不会让控件超出屏幕-->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/cons_imageview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="9:16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher" />
+        <!--用来约束cons_imageview-->
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <!--BaseLine可以用在字体大小不一样的金额上 -->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/AppCompatTextView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="26sp"
+            app:layout_constraintLeft_toLeftOf="@+id/cons_imageview"
+            app:layout_constraintTop_toBottomOf="@+id/cons_imageview"
+            app:layout_goneMarginTop="20dp"
+            android:text="￥" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/AppCompatTextView1"
+            app:layout_constraintLeft_toRightOf="@+id/AppCompatTextView1"
+            android:text="3.98" />
+
+        <!--layout_constraintHorizontal_bias layout_constraintVertical_bias 横竖位置比例-->
+        <TextView
+            android:id="@+id/text_constraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
+            android:background="@color/colorAccent"
+            android:text="constraint"
+            android:textColor="@color/colorPrimary" />
+        <!--
+            app:layout_constraintCircle="@+id/text_constraint"
+            app:layout_constraintCircleAngle="135"
+            app:layout_constraintCircleRadius="66dp"
+            （1.1之后才支持）
+        -->
+        <TextView
+            android:id="@+id/text_constraint_Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintCircle="@+id/text_constraint"
+            app:layout_constraintCircleAngle="135"
+            app:layout_constraintCircleRadius="66dp"
+            android:background="@color/colorAccent"
+            android:text="constraint_Circle"
+            android:textColor="@color/colorPrimary" />
+
+        <!--选取在特定方向最边缘的的控件创建一条Guideline
+            可以省下一个嵌套布局（1.1之后才支持）
+        -->
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="text_constraint,text_constraint_Circle" />
+        <!--Group 用于控制所引用的一组控件的可见性(Visibility) （1.1之后才支持）觉得后续还会扩展功能-->
+        <android.support.constraint.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="text_constraint,text_constraint_Circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="barrier"
+            app:layout_constraintBottom_toBottomOf="@+id/text_constraint"
+            app:layout_constraintLeft_toRightOf="@id/barrier"
+            app:layout_constraintTop_toTopOf="@+id/text_constraint" />
+
+        <!--Chain Style
+        layout_constraintHorizontal_chainStyle 只写在链的第一个
+            spread - 元素将被展开（默认样式）
+            * 加权链 - 在spread模式下，如果某些小部件设置为MATCH_CONSTRAINT，则它们将拆分可用空间
+            * spread_inside - 类似，但链的端点将不会扩展
+            * packed - 链的元素将被打包在一起。 孩子的水平或垂直偏差属性将影响包装元素的定位
+            spread 类似权重等分居中
+            spread_inside 类似权重等分两侧不留间距
+            packed 相邻居中于约束条件（父布局）
+        -->
+        <Button
+            android:id="@+id/buttonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/buttonB" />
+        <!--
+            layout_width="0dp"正常会占用所有剩余空间
+            layout_constraintHorizontal_weight加了权重比与linearlayout的权重类似
+            margin一样会占用权重的位置
+        -->
+        <Button
+            android:id="@+id/buttonB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Buttonb"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintLeft_toRightOf="@+id/buttonA"
+            app:layout_constraintRight_toLeftOf="@+id/buttonC" />
+
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="buttonC"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/buttonB"
+            app:layout_constraintRight_toLeftOf="@+id/buttonD" />
+
+        <Button
+            android:id="@+id/buttonD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="buttonD"
+            app:layout_constraintLeft_toRightOf="@+id/buttonC"
+            app:layout_constraintRight_toRightOf="parent" />
+        <!--Chain Style END-->
+
+
 
 </android.support.constraint.ConstraintLayout>
