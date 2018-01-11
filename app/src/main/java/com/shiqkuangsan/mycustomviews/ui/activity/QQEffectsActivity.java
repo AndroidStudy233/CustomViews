@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.ScaleHeadListView;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipe2.SwipeLayout;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipe2.SwipeLayoutManager;
@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Author: shiqkuangsan
  * Description: 简单的QQ特效.头部放大.侧滑删除
  */
-public class QQEffectsActivity extends AppCompatActivity implements View.OnClickListener {
+public class QQEffectsActivity extends BaseActivity implements View.OnClickListener {
 
     private ScaleHeadListView lv_main;
     private MyAdapter adapter;

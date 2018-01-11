@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.PicPagerAdapter;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by shiqkuangsan on 2016/5/4.
  */
 // 演示可以切换图片广告的界面
-public class SwitchPictureActivity extends BaseActivity {
+public class SwitchPictureActivity extends FrameBaseActivity {
 
     private ViewPager pager;
     private TextView tv_msg;

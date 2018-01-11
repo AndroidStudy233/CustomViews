@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -30,7 +30,7 @@ import org.xutils.x;
  * 即可实现. 通过设置儿子(这里是ImageView)的app:layout_collapseParallaxMultiplier属性值(0.0 - 1.0)调整视差效果
  */
 @ContentView(R.layout.activity_collapsing_simple)
-public class CollapsingToolbarAct extends AppCompatActivity {
+public class CollapsingToolbarAct extends BaseActivity {
 
     @ViewInject(R.id.collapsing_coordinator_demo)
     CollapsingToolbarLayout collapsing;

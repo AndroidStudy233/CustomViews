@@ -2,7 +2,6 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +10,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.Province;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.db.SimpleDbHelper;
@@ -19,10 +19,7 @@ import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
 import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil.SimpleRequestParams;
 
 import org.xutils.DbManager;
-import org.xutils.common.util.KeyValue;
 import org.xutils.ex.DbException;
-import org.xutils.http.RequestParams;
-import org.xutils.http.body.MultipartBody;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -39,7 +36,7 @@ import static com.shiqkuangsan.mycustomviews.R.id.btn_xutils_db;
  * 学习使用xUtils的界面,配合笔记里面的说明食用味道更佳
  */
 @ContentView(R.layout.activity_xutils)  // UI注解
-public class XUtilsActivity extends AppCompatActivity {
+public class XUtilsActivity extends BaseActivity {
 
     // View注解,需要在Activity的onCreate()方法中注入
     @ViewInject(R.id.btn_xutils_sendget)

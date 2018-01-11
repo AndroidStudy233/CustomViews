@@ -1,9 +1,9 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.MpChat;
 
 import org.xutils.view.annotation.ViewInject;
@@ -18,7 +18,7 @@ import org.xutils.x;
  *
  * @version V3.1
  *********************************/
-public class CustomChatActivity extends AppCompatActivity {
+public class CustomChatActivity extends BaseActivity {
     @ViewInject(R.id.customac_mpchat)
     MpChat mpChat;
     @Override

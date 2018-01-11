@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -14,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -29,7 +29,7 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * Description: 纯色沉浸、半透明、全透明. 道理和ToolbarImmerse一样的
  */
 @ContentView(R.layout.activity_topbar_immerse)
-public class TopBarImmerseAct extends AppCompatActivity {
+public class TopBarImmerseAct extends BaseActivity {
 
     @ViewInject(R.id.rl_immerse_topbar)
     LinearLayout topbar;

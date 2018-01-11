@@ -2,10 +2,10 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.EasyPagerAdapter;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.IndicatorView;
 
 import org.xutils.view.annotation.ViewInject;
@@ -20,7 +20,7 @@ import org.xutils.x;
  *
  * @version V3.1
  *********************************/
-public class IndicatorActivity extends AppCompatActivity {
+public class IndicatorActivity extends BaseActivity {
     @ViewInject(R.id.indicator_viewpager)
     ViewPager viewPager;
     @ViewInject(R.id.indicator_view)

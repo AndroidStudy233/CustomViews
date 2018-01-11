@@ -3,7 +3,6 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,6 +13,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.StickySideAdapter;
 import com.shiqkuangsan.mycustomviews.adapter.itemdecoration.StickyHeaderDecoration;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
@@ -34,7 +34,7 @@ import in.srain.cube.views.ptr.header.MaterialHeader;
  * Description: 使用类库实现Recycler的侧滑删除和分组黏性头部效果
  */
 @ContentView(R.layout.activity_recycler_sideslip_section)
-public class RecyclerSideslipSectionActivity extends AppCompatActivity {
+public class RecyclerSideslipSectionActivity extends BaseActivity {
 
     @ViewInject(R.id.recycler_sideslip)
     LRecyclerView recycler_sideslip;

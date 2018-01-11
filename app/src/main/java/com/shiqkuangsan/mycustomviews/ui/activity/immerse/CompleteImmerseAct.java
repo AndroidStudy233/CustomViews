@@ -1,18 +1,16 @@
 package com.shiqkuangsan.mycustomviews.ui.activity.immerse;
 
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
-import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -27,7 +25,7 @@ import org.xutils.x;
  * 实现方式很简单, 重写onWindowFocusChanged 添加相应flag即可. 注意添加fitSystemWindows属性
  */
 @ContentView(R.layout.activity_complete_immerse)
-public class CompleteImmerseAct extends AppCompatActivity {
+public class CompleteImmerseAct extends BaseActivity {
 
     @ViewInject(R.id.toolbar_complete_immerse)
     Toolbar toolbar;

@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.MyPullRefreshListView;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
  * Created by shiqkuangsan on 2016/5/5.
  */
 // 演示下拉刷新的界面
-public class PullRefreshActivity extends BaseActivity {
+public class PullRefreshActivity extends FrameBaseActivity {
 
     private List<String> list = new ArrayList<>();
     private MyPullRefreshListView mListView;

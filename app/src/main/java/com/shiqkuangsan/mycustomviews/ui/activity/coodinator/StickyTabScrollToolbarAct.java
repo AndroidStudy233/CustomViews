@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalFragPagerAdapter;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.fragment.NormalSimpleFragment;
 
 import org.xutils.view.annotation.ContentView;
@@ -25,7 +25,7 @@ import org.xutils.x;
  * ScrollFlag而TabLayout没有, 因此导致TabLayout粘性
  */
 @ContentView(R.layout.activity_coordinator_stickytab)
-public class StickyTabScrollToolbarAct extends AppCompatActivity {
+public class StickyTabScrollToolbarAct extends BaseActivity {
 
     @ViewInject(R.id.toolbar_coordinator_stickytab)
     Toolbar toolbar;

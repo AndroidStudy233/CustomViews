@@ -5,7 +5,6 @@ import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewAnimationUtils;
@@ -14,12 +13,13 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 /**
  * 配合展示Activity切换动画和共享元素的界面
  */
 @TargetApi(21)
-public class Api21Activity extends AppCompatActivity {
+public class Api21Activity extends BaseActivity {
 
     private TextView tv_text;
 

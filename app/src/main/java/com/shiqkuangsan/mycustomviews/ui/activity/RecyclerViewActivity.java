@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.SimpleRecyclerAdapter;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.ImgAndText;
 import com.shiqkuangsan.mycustomviews.ui.custom.OnRecyclerItemTouchCallBack;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
@@ -39,7 +39,7 @@ import static com.shiqkuangsan.mycustomviews.R.color.swipe_schema_blue;
  * 添加了条目的侧滑移除功能和长按拖拽功能.
  */
 @ContentView(R.layout.activity_recycler)
-public class RecyclerViewActivity extends BaseActivity {
+public class RecyclerViewActivity extends FrameBaseActivity {
 
     private Toolbar toolbar;
     @ViewInject(R.id.frame_recycler_main)

@@ -3,14 +3,14 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 import android.view.View;
 import android.widget.Toast;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.MyOnOffView;
 
 /**
  * Created by shiqkuangsan on 2016/5/4.
  */
 // 演示自定义开关的界面
-public class MyOnOffActivity extends BaseActivity{
+public class MyOnOffActivity extends FrameBaseActivity {
 
     private MyOnOffView mySwtich;
 

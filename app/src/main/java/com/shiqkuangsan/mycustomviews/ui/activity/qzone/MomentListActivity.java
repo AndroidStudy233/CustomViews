@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -15,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.Moment;
 
 import org.xutils.view.annotation.ContentView;
@@ -43,7 +43,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * Description: 模拟发说说的页面
  */
 @ContentView(R.layout.activity_moment_list)
-public class MomentListActivity extends AppCompatActivity implements View.OnClickListener,
+public class MomentListActivity extends BaseActivity implements View.OnClickListener,
         EasyPermissions.PermissionCallbacks, BGANinePhotoLayout.Delegate, BGAOnRVItemClickListener, BGAOnRVItemLongClickListener {
 
     private static final int REQUEST_CODE_PERMISSION_PHOTO_PREVIEW = 1;

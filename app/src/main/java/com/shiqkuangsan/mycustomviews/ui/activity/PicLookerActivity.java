@@ -8,7 +8,7 @@ import android.widget.GridView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.PicGridAdapter;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.piclook.PhotoDetailActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.photoview.Info;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Author: shiqkuangsan
  * Description: 图片查看住页面
  */
-public class PicLookerActivity extends BaseActivity {
+public class PicLookerActivity extends FrameBaseActivity {
 
     private GridView gv_pics;
     private ArrayList<String> picsList = new ArrayList<>();

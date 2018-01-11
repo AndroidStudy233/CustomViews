@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.view.WindowManager;
 
 import com.rd.PageIndicatorView;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.MaterialProgressBar;
 import com.shiqkuangsan.mycustomviews.ui.custom.OverScrollViewPager;
 import com.shiqkuangsan.mycustomviews.utils.MySimplexUtil;
@@ -34,7 +34,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
  * 依赖   'com.romandanylyk:pageindicatorview:X.X.X' 指示器类库
  */
 @ContentView(R.layout.activity_photo_detail)
-public class PhotoDetailActivity extends AppCompatActivity {
+public class PhotoDetailActivity extends BaseActivity {
 
     @ViewInject(R.id.pager_pic_detail)
     OverScrollViewPager pager_detail;

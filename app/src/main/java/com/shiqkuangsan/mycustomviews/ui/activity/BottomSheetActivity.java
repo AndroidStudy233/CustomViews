@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 import org.xutils.view.annotation.ContentView;
@@ -34,7 +34,7 @@ import static android.support.design.widget.BottomSheetBehavior.STATE_SETTLING;
  * description: 底部上拉菜单,Api23之后系统封装了(另外还有BottomSheetDialog,BottomSheetDialogFragment)
  */
 @ContentView(R.layout.activity_bottom_sheet)
-public class BottomSheetActivity extends AppCompatActivity {
+public class BottomSheetActivity extends BaseActivity {
 
     @ViewInject(R.id.ll_bottom_sheet)
     LinearLayout ll_bottom_sheet;

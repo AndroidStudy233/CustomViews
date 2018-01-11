@@ -8,7 +8,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalImagePagerAdapter;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.behavior.BottomSheetBehaviorGoogleMapsLike;
 import com.shiqkuangsan.mycustomviews.ui.custom.behavior.MergedAppBarLayoutBehavior;
 
@@ -28,7 +28,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.behavior.MergedAppBarLayoutBehav
  * Description: 自定义Behavior展示效果. 有bug暂时不会改. 该页面暂时不用
  */
 @Deprecated
-public class CustomBehaviorAct22 extends AppCompatActivity {
+public class CustomBehaviorAct22 extends BaseActivity {
     int[] mDrawables = {
             R.drawable.img_cheese,
             R.drawable.img_cheese,

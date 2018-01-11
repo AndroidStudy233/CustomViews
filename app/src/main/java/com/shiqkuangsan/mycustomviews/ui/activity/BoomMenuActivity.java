@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
@@ -17,6 +16,7 @@ import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.EasyPagerAdapter;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
@@ -32,7 +32,7 @@ import org.xutils.x;
  * Description: 弹出多个按钮的菜单界面
  */
 @ContentView(R.layout.activity_boom_menu)
-public class BoomMenuActivity extends AppCompatActivity {
+public class BoomMenuActivity extends BaseActivity {
 
     @ViewInject(R.id.navigation_menu)
     BottomNavigationView navigationView;

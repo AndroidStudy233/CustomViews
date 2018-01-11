@@ -1,9 +1,9 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.x;
@@ -16,7 +16,7 @@ import org.xutils.x;
  * Description: 学习使用ConstraintLayout的界面
  */
 @ContentView(R.layout.activity_constraint)
-public class ConstraintActivity extends AppCompatActivity {
+public class ConstraintActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

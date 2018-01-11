@@ -3,7 +3,6 @@ package com.shiqkuangsan.mycustomviews.ui.activity.vlayout.ui;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import com.alibaba.android.vlayout.layout.OnePlusNLayoutHelper;
 import com.alibaba.android.vlayout.layout.StaggeredGridLayoutHelper;
 import com.alibaba.android.vlayout.layout.StickyLayoutHelper;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.subadapter.SimpleVLayoutAdapter;
 import com.shiqkuangsan.mycustomviews.ui.activity.vlayout.subadapter.VLayout1thAdapter;
 
@@ -37,7 +37,7 @@ import java.util.List;
  * Description: 学习使用V-Layout
  */
 @ContentView(R.layout.activity_v_layout)
-public class VLayoutActivity extends AppCompatActivity {
+public class VLayoutActivity extends BaseActivity {
 
     @ViewInject(R.id.recycler_vlayout)
     RecyclerView recyclerView;

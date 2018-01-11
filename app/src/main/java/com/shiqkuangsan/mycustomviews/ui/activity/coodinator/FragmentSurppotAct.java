@@ -9,13 +9,13 @@ import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalFragPagerAdapter;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.BooksFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MovieFragment;
 import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MusicFragment;
@@ -37,7 +37,7 @@ import java.lang.reflect.Field;
  * tips: bug -> 如果viewpagerlimit为3, 那么movie界面回收再重建会高度bug
  */
 @ContentView(R.layout.activity_fragment_parallax)
-public class FragmentSurppotAct extends AppCompatActivity {
+public class FragmentSurppotAct extends BaseActivity {
 
     @ViewInject(R.id.navigation_parallax)
     BottomNavigationView navigationView;

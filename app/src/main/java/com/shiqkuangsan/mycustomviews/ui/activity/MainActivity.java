@@ -2,7 +2,6 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,15 +12,13 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.shiqkuangsan.cityselector.CitySelectorActivity;
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
-
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 
 /**
  * 主界面.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends FrameBaseActivity {
 
     private AMapLocationClient mLocationClient;
     View view;

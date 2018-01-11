@@ -1,13 +1,13 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalRecyclerAdapter;
 import com.shiqkuangsan.mycustomviews.adapter.itemdecoration.NormalLineDecoration;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -21,7 +21,7 @@ import org.xutils.x;
  * Description: RecyclerView的条目装饰ItemDecoration使用初步
  */
 @ContentView(R.layout.activity_recycler_item_decoration)
-public class RecyclerItemDecorationActivity extends AppCompatActivity {
+public class RecyclerItemDecorationActivity extends BaseActivity {
 
     @ViewInject(R.id.recycler_itemdecoration)
     RecyclerView recycler_main;

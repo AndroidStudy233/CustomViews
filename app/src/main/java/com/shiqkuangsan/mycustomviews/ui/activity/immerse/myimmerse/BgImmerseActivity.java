@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -20,9 +19,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
-
-import org.xutils.view.annotation.ContentView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,7 @@ import static com.shiqkuangsan.mycustomviews.utils.MyLogUtil.d;
  * @author shiqkuangsan
  * @summary 背景沉浸式页面, 主题NoActionBar, 外加实现ToolBar实现搜索框, 并且关联ListView
  */
-public class BgImmerseActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class BgImmerseActivity extends BaseActivity implements SearchView.OnQueryTextListener {
 
     private ListView lv_test;
 

@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.CommentView;
 
 /*************************************************
@@ -22,7 +23,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.CommentView;
  *
  * @version V3.1
  *********************************/
-public class AddDeleteActivity extends AppCompatActivity implements CommentView.onCommentViewClickListener {
+public class AddDeleteActivity extends BaseActivity implements CommentView.onCommentViewClickListener {
     private LinearLayout mRootView;
     private CommentView commentView;
 

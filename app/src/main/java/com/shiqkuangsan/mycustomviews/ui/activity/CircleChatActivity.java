@@ -2,9 +2,9 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 /*************************************************
  * <p>类描述：${todo}(用一句话描述该文件做什么)</p>
@@ -17,7 +17,7 @@ import com.shiqkuangsan.mycustomviews.R;
  * @version V3.1
  *********************************/
 
-public class CircleChatActivity extends AppCompatActivity {
+public class CircleChatActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

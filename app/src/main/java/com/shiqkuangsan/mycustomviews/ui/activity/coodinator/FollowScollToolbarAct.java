@@ -3,20 +3,17 @@ package com.shiqkuangsan.mycustomviews.ui.activity.coodinator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.NormalRecyclerAdapter;
-import com.shiqkuangsan.mycustomviews.ui.fragment.coordinator.MusicFragment;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -36,7 +33,7 @@ import org.xutils.x;
  * <p>2. CoordinatorLayout下使用FloatingActionButton会默认有个Behavior弹出SnackBar的时候上移
  */
 @ContentView(R.layout.activity_coordinator_followedtoolbar)
-public class FollowScollToolbarAct extends AppCompatActivity {
+public class FollowScollToolbarAct extends BaseActivity {
 
     @ViewInject(R.id.toolbar_coordinator_follow)
     Toolbar toolbar;

@@ -1,13 +1,13 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.Doctor;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.db.RealmManager;
@@ -30,7 +30,7 @@ import io.realm.RealmResults;
  * description: realm数据基本功能测试
  */
 @ContentView(R.layout.activity_realm_test)
-public class RealmTestActivity extends AppCompatActivity {
+public class RealmTestActivity extends BaseActivity {
 
     @ViewInject(R.id.btn_realm_insert)
     Button btn_inset;

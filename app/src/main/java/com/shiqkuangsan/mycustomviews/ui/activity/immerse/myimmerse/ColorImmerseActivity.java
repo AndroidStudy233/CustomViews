@@ -4,15 +4,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
-
-import org.xutils.view.annotation.ContentView;
 
 /**
  * Created by shiqkuangsan on 2016/10/20.
@@ -20,7 +18,7 @@ import org.xutils.view.annotation.ContentView;
  * @author shiqkuangsan
  * @summary 着色沉浸式页面
  */
-public class ColorImmerseActivity extends AppCompatActivity implements View.OnClickListener {
+public class ColorImmerseActivity extends BaseActivity implements View.OnClickListener {
 
     private int color;
     private Toolbar toolbar;

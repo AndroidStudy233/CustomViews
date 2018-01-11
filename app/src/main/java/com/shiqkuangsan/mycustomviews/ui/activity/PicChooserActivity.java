@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.qzone.MomentListActivity;
 import com.shiqkuangsan.mycustomviews.utils.ChoosePicUtil;
 
@@ -18,7 +18,7 @@ import com.shiqkuangsan.mycustomviews.utils.ChoosePicUtil;
 /**
  * 图片选择演示界面,其中有个按钮使用三方类库可以选图演示发说说
  */
-public class PicChooserActivity extends BaseActivity {
+public class PicChooserActivity extends FrameBaseActivity {
 
     private Button btn_gallery_chose;
     private Button btn_camera_chose;

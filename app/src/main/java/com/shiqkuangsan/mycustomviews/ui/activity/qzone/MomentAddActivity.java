@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -13,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.bean.Moment;
 
 import org.xutils.view.annotation.ContentView;
@@ -36,7 +36,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * Description: 从发说说界面调过来, 操作选择图片并编辑说说的界面
  */
 @ContentView(R.layout.activity_moment_add)
-public class MomentAddActivity extends AppCompatActivity implements View.OnClickListener,
+public class MomentAddActivity extends BaseActivity implements View.OnClickListener,
         EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate {
 
     private static final int REQUEST_CODE_PERMISSION_PHOTO_PICKER = 1;

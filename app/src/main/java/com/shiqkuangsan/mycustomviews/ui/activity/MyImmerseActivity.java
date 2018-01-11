@@ -2,11 +2,11 @@ package com.shiqkuangsan.mycustomviews.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse.BgImmerseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.immerse.myimmerse.ColorImmerseActivity;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
@@ -22,7 +22,7 @@ import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
  * 2. 背景沉浸式-沉浸背景
  * 具体实现戳ColorImmerseActivity / BgImmerseActivity
  */
-public class MyImmerseActivity extends AppCompatActivity {
+public class MyImmerseActivity extends BaseActivity {
 
     private Toolbar toolbar;
     private int color;

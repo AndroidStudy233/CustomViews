@@ -6,10 +6,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.utils.FinishHelper;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.utils.SharePreferenceUtil;
 import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.utils.StatusBarUtil;
@@ -28,7 +28,7 @@ import com.shiqkuangsan.mycustomviews.ui.custom.swipeback.utils.SwipeBackLayout;
  * 2.styles下面的SwipeBackLayout的几个样式
  * 3.SwipeBackActivityHelper中需要R.layout.swipeback_layout布局文件(根布局为SwipeBackLayout的空布局)
  */
-public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
+public class SwipeBackActivity extends BaseActivity implements SwipeBackActivityBase {
 
     private SwipeBackActivityHelper mHelper;
 

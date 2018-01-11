@@ -6,9 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +16,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
@@ -34,7 +33,7 @@ import static com.shiqkuangsan.mycustomviews.utils.UIUitl.calculateColorWithOpac
  * 了解addFlags / clearFlags / View下的FLAG的使用和fitSystemWindows属性的配置即可.
  */
 @ContentView(R.layout.activity_toolbar_immerse)
-public class ToolbarImmerseAct extends AppCompatActivity {
+public class ToolbarImmerseAct extends BaseActivity {
 
     @ViewInject(R.id.llroot_toolbar_immerse)
     LinearLayout rootLayout;

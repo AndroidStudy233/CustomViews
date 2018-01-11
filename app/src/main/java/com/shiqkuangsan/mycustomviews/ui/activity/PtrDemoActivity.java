@@ -8,7 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.utils.UIUitl;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import in.srain.cube.views.ptr.header.MaterialHeader;
 /**
  * 测试PtrFrameLayout的界面
  */
-public class PtrDemoActivity extends BaseActivity {
+public class PtrDemoActivity extends FrameBaseActivity {
 
     private PtrFrameLayout mPtrFrameLayout;
     private ListView lv_ptrdemo;

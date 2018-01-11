@@ -5,13 +5,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -24,7 +24,7 @@ import org.xutils.x;
  * Description: demo. 布局中已设置fitSystemWindows
  */
 @ContentView(R.layout.activity_demo_immerse)
-public class DemoImmerseAct extends AppCompatActivity {
+public class DemoImmerseAct extends BaseActivity {
 
     @ViewInject(R.id.toolbar_image_immerse1)
     Toolbar toolbar;

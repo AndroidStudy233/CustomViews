@@ -5,13 +5,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.shiqkuangsan.mycustomviews.R;
-import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.custom.SlideDeleteView;
 
 /**
  * Created by shiqkuangsan on 2016/5/6.
  */
-public class SlideMenuActivity extends BaseActivity {
+public class SlideMenuActivity extends FrameBaseActivity {
 
     private SlideDeleteView slidemenu;
     private ImageButton ib_back;

@@ -2,42 +2,19 @@ package com.shiqkuangsan.mycustomviews.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+
+import org.xutils.x;
 
 /**
- * Created by shiqkuangsan on 2016/5/4.
+ * Created by currency on 2018/1/10.
  */
-// 基类Activity
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
+public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initView();
-        initDataAndListener();
-    }
-
-    public abstract void initView();
-
-    public abstract void initDataAndListener();
-
-    public abstract void processClick(View view);
-
-    @Override
-    public void onClick(View v) {
-        processClick(v);
-    }
-
-    protected Toast toast;
-
-    protected void showToast(String msg) {
-        if (toast != null) {
-            toast.cancel();
-            toast = null;
-        }
-        toast = Toast.makeText(this, msg + "", Toast.LENGTH_SHORT);
-        toast.show();
+        //xUtils注解框架
+        x.view().inject(this);
     }
 }

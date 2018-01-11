@@ -1,6 +1,5 @@
 package com.shiqkuangsan.mycustomviews.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.nightonke.boommenu.BoomButtons.ButtonPlaceEnum;
@@ -10,6 +9,7 @@ import com.nightonke.boommenu.BoomMenuButton;
 import com.nightonke.boommenu.ButtonEnum;
 import com.nightonke.boommenu.Piece.PiecePlaceEnum;
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
@@ -25,7 +25,7 @@ import org.xutils.x;
  * Description: 演示BoomMenu方式2
  */
 @ContentView(R.layout.activity_boom_menu2nd)
-public class BoomMenu2ndActivity extends AppCompatActivity {
+public class BoomMenu2ndActivity extends BaseActivity {
 
     @ViewInject(R.id.bmb_boom2nd)
     BoomMenuButton bmb_boom2nd;
