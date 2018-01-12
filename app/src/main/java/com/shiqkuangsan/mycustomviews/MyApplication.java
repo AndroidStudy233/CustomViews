@@ -23,7 +23,6 @@ import java.io.File;
 
 import io.realm.Realm;
 
-
 /**
  * Created by shiqkuangsan on 2016/9/19.
  */
