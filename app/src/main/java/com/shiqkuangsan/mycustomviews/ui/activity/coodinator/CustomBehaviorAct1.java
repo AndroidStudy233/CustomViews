@@ -16,6 +16,6 @@ public class CustomBehaviorAct1 extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: 2017/9/15 查找GoogleMap的Behavior效果.添加demo
+        // TODO: 2018/1/16 查找GoogleMap的Behavior效果并添加demo
     }
 }

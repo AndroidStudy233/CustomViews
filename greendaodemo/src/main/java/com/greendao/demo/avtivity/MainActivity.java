@@ -134,7 +134,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.bt_updata:
-                //// TODO: 2017/8/25 再做几个输入框 装新数据就行 
+                // TODO: 2018/1/16 再做几个输入框 装新数据就行
+
                 QueryBuilder<User> userQueryBuilder1 = userDao.queryBuilder();
                 if (age != 0) {
                     userQueryBuilder1.where(UserDao.Properties.Age.eq(age));
