@@ -22,6 +22,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -54,7 +55,6 @@ import java.io.InputStream;
  * 关于android6.0动态权限申请的问题,图库选择图片的逻辑已经处理了,拍照获取大多定制机目前不需要处理,暂且是注释状态
  * 另外需要提的裁剪框的大小你如果不满意自己可以调,在crop()方法中
  */
-// TODO: 2017/10/18 从fragment中打开要求还是传入activity的话, fragment收不到回调的
 public class ChoosePicUtil {
 
     /**
@@ -187,9 +187,12 @@ public class ChoosePicUtil {
      * @param activity activity
      */
     private static void openGallery(Activity activity) {
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-        galleryIntent.setType("image/*");
-        activity.startActivityForResult(galleryIntent, REQUEST_CODE_GALLERY);
+//        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+//        galleryIntent.setType("image/*");
+//        activity.startActivityForResult(galleryIntent, REQUEST_CODE_GALLERY);
+        Intent pickIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        pickIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        activity.startActivityForResult(pickIntent, REQUEST_CODE_GALLERY);
     }
 
 
@@ -214,13 +217,31 @@ public class ChoosePicUtil {
                 解决方法1: 使用ContentProvider传递uri(如下)
                 解决方法2: 使用官方提供的FileProvider(较麻烦)
              */
-//            Uri uri = Uri.fromFile(tempFile);
+//            Uri uri = Uri.fromFile(tempFile); // 这里会报错
 //            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 //            activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
 
-            ContentValues contentValues = new ContentValues(1);
-            contentValues.put(MediaStore.Images.Media.DATA, tempFile.getAbsolutePath());
-            Uri uri = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,contentValues);
+            // 解决
+            // 方式1
+//            Uri uri;
+//            if (Build.VERSION.SDK_INT < 24) {
+//                uri = Uri.fromFile(tempFile);
+//            } else {
+//                ContentValues contentValues = new ContentValues(1);
+//                contentValues.put(MediaStore.Images.Media.DATA, tempFile.getAbsolutePath());
+//                uri = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+//            }
+//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//            activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
+
+            // 方式2 (需要在清单文件中配置provider并添加相应xml文件)
+            Uri uri;
+            if (Build.VERSION.SDK_INT < 24) {
+                uri = Uri.fromFile(tempFile);
+            } else {
+                uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile);
+                cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            }
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
         } else {
@@ -231,12 +252,14 @@ public class ChoosePicUtil {
     /**
      * 根据返回的结果进行不同的解析,获取bitmap对象
      *
-     * @param requestCode    请求码
-     * @param resultCode     结果码
-     * @param data           返回数据(里边封装这一个uri)
-     * @param activity       当前activity
-     * @param needCrop       获取完之后是否需要裁剪? true - 进入裁剪界面
-     * @param needDeleteTemp 如果是拍照获取,获取完之后是否需要删除缓存照片? true - 删除
+     * @param requestCode     请求码
+     * @param resultCode      结果码
+     * @param data            返回数据(里边封装这一个uri)
+     * @param activity        当前activity
+     * @param imageViewWidth  imageView的宽度-px值
+     * @param imageViewHeight imageView的高度-px值
+     * @param needCrop        获取完之后是否需要裁剪? true - 进入裁剪界面
+     * @param needDeleteTemp  如果是拍照获取,获取完之后是否需要删除缓存照片? true - 删除
      * @return Bitmap对象, null - 解析失败(注意了返回的bitmap对象很容易OOM的)
      */
     public static Bitmap getBitmapFromResult(int requestCode, int resultCode, Intent data, Activity activity,
@@ -253,7 +276,7 @@ public class ChoosePicUtil {
                     // 根据返回的数据利用内容解决者解析出bitmap对象
                     Uri uri = data.getData();
                     if (needCrop)
-                        crop(uri, activity);
+                        startCrop(uri, activity);
 
                     else
                         try {
@@ -270,10 +293,9 @@ public class ChoosePicUtil {
             // 从相机返回
             case REQUEST_CODE_CAMERA:
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                    if (needCrop)
-                        crop(Uri.fromFile(tempFile), activity);
-
-                    else
+                    if (needCrop) {
+                        startCrop(FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile), activity);
+                    } else
                         try {
                             InputStream stream = resolver.openInputStream(Uri.fromFile(tempFile));
                             bitmap = readBitmapFromStream(stream, imageViewWidth, imageViewHeight);
@@ -308,29 +330,6 @@ public class ChoosePicUtil {
 
         return bitmap;
 
-    }
-
-
-    /**
-     * 剪切图片,可以自定义剪切参数
-     *
-     * @param uri 数据标识
-     */
-    private static void crop(Uri uri, Activity activity) {
-        // 裁剪图片意图
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        intent.putExtra("crop", "true");
-        // 裁剪框的比例，pic1：pic1
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // 裁剪后输出图片的尺寸大小
-        intent.putExtra("outputX", 250);
-        intent.putExtra("outputY", 250);
-        intent.putExtra("outputFormat", "JPEG");// 图片格式
-        intent.putExtra("noFaceDetection", true);// 取消人脸识别
-        intent.putExtra("return-data", true);
-        activity.startActivityForResult(intent, REQUEST_CODE_CROP);
     }
 
 
@@ -370,6 +369,45 @@ public class ChoosePicUtil {
         return imgPath;
 
     }
+
+    /**
+     * 剪切图片,可以自定义剪切参数
+     *
+     * @param uri 数据标识
+     */
+    private static void startCrop(Uri uri, Activity activity) {
+        // 创建File对象，用于存储裁剪后的图片，避免更改原图
+        File file = new File(activity.getExternalCacheDir(), "crop_image.jpg");
+        try {
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Uri outputUri = Uri.fromFile(file);
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        if (Build.VERSION.SDK_INT >= 24) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+        intent.setDataAndType(uri, "image/*");
+        // 裁剪框的宽高比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        intent.putExtra("crop", "true");//可裁剪
+        // 裁剪后输出图片的尺寸大小
+//        intent.putExtra("outputX", 250);
+//        intent.putExtra("outputY", 250);
+        intent.putExtra("scale", true);//支持缩放
+        intent.putExtra("return-data", false);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+        intent.putExtra("outputFormat", "JPEG");//输出图片格式
+        intent.putExtra("noFaceDetection", true);//取消人脸识别
+        activity.startActivityForResult(intent, REQUEST_CODE_CROP);
+    }
+
 
     /**
      * 根据图片的uri返回图片的路径

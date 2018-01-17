@@ -239,9 +239,9 @@
             android:name=".ui.activity.coodinator.FragmentSurppotAct"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
-        <activity android:name=".ui.activity.coodinator.CustomBehaviorAct1"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".ui.activity.coodinator.CustomBehaviorAct1"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.coodinator.CustomBehaviorAct22"
             android:screenOrientation="portrait"
@@ -260,6 +260,17 @@
 
         <!-- 高德地图相关的service和meta -->
         <service android:name="com.amap.api.location.APSService" />
+
+        <!--权限认证名称-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.shiqkuangsan.mycustomviews.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

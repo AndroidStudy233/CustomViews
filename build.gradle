@@ -49,6 +49,7 @@ ext {
             design         : 'com.android.support:design:25.3.1',
             vector_drawable: 'com.android.support:support-vector-drawable:25.3.1',
             testCompile    : 'junit:junit:4.12',
+//            constraint     : 'com.android.support.constraint:constraint-layout:+',
             constraint     : 'com.android.support.constraint:constraint-layout:1.1.0-beta4',
             xUtils         : 'org.xutils:xutils:3.5.0',
             imageloader    : 'com.nostra13.universalimageloader:universal-image-loader:1.9.5',

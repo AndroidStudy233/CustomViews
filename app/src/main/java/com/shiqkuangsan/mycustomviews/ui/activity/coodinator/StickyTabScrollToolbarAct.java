@@ -46,6 +46,7 @@ public class StickyTabScrollToolbarAct extends BaseActivity {
         initToolbar();
         initTabLayout();
         setupViewPager();
+        tabLayout.getTabAt(1).select(); // 默认选择第二个tab
     }
 
     private void initToolbar() {
@@ -89,7 +90,6 @@ public class StickyTabScrollToolbarAct extends BaseActivity {
         }
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(1).select();// 默认选中第2个页面
     }
 
     private void setupViewPager() {

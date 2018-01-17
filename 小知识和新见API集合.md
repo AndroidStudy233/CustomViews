@@ -336,13 +336,25 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+## Activity中的Fragment中使用startActivityForResult()
+
+一、fragment中启动，为了让**activity**获取结果并处理
+
+调用`getActivity().startActivityForResult()`方法启动，可以在Activity的onActivityResult()方法中根据requestCode就可以获得返回值，无论是否在Activity的onActivityResult()调用super.onActivityResult()方法，fragment不会获得任何值
+
+二、fragment中启动，为了在**fragment**中获取结果并处理
+
+使用`this.startActivityForResult()`方法启动，可以在fragment的onActivityResult()方法中根据requestCode就可以获得返回值，如果activity中也重写了onActivityResult()，那么必须调用super.onActivityResult()方法，不然fragment不会回调，注意即使这里activity中重写了onActivityResult，我们也无法处理，因为得到的requestcode是无法识别的。
+
+
+
 ## 自定义字体,设置字体
 
 >在activity的onCreate()或者onStart()方法中设置,有两个ttf文件在MyCustomViews项目下
 
 	AssetManager mgr=getAssets();//得到AssetManager
-    Typeface tf=Typeface.createFromAsset(mgr, "fonts/rm_albion.ttf");//根据路径得到Typeface
-    tv_splash_info.setTypeface(tf);//设置字体
+	Typeface tf=Typeface.createFromAsset(mgr, "fonts/rm_albion.ttf");//根据路径得到
+	Typeface tv_splash_info.setTypeface(tf);//设置字体
 
 ---
 ## 按钮的点击与否两种状态对应两张图片的方法
