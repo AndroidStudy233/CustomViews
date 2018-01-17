@@ -350,7 +350,7 @@ public class ChoosePicUtil {
      */
     private static void startCrop(Uri uri, Activity activity) throws IOException {
         // 创建File对象，用于存储裁剪后的图片，避免更改原图
-        File tempFile_crop = new File(activity.getExternalCacheDir(), String.valueOf(System.currentTimeMillis()).concat("crop_image.jpg"));
+        File tempFile_crop = new File(temppath_crop);
         if (tempFile_crop.exists()) {
             tempFile_crop.delete();
         }
