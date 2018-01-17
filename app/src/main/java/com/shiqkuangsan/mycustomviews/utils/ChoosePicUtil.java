@@ -77,12 +77,12 @@ public class ChoosePicUtil {
     private static final int REQUEST_PERMISSION_SDCARD_6_0 = 777;
 
     /**
-     * 拍照图片暂存文件对象
+     * 拍照图片暂存文件对象, 默认是外部存储卡下每次当前时间+camera.jpg
      */
     private static String temppath_camera = "";
 
     /**
-     * 裁剪图片暂存文件对象
+     * 裁剪图片暂存文件对象, 默认是外部存储卡下每次当前时间+crop.jpg
      */
     private static String temppath_crop = "";
 
@@ -350,7 +350,7 @@ public class ChoosePicUtil {
      */
     private static void startCrop(Uri uri, Activity activity) throws IOException {
         // 创建File对象，用于存储裁剪后的图片，避免更改原图
-        temppath_crop = activity.getCacheDir().getAbsolutePath()
+        temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
         if (tempFile_crop.exists()) {
