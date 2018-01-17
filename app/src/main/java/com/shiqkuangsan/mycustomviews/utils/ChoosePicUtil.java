@@ -1,9 +1,5 @@
 package com.shiqkuangsan.mycustomviews.utils;
 
-/**
- * Created by shiqkuangsan on 2016/9/6.
- */
-
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -29,15 +25,21 @@ import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by shiqkuangsan on 2018/1/17. <p>
- * ClassName: ChoosePicUtil <p>
- * Author: shiqkuangsan <p>
- * Description:
+ * Created by shiqkuangsan on 2018/1/17. <br>
+ * ClassName: ChoosePicUtil <br>
+ * Author: shiqkuangsan <br>
+ * Description: 简单的图片选择 Util, 一键从图库和拍照, 支持裁剪. 兼容6.0运行时权限, 兼容7.0Content uri协议, 暂且只支持 activit 中回调<br>
+ * 用法:
+ * <p>1. 需要从图库选择的时候: 调用ChoosePicUtil.startActivityFor(ChoosePicUtil.MATCHING_CODE_GALLERY, activity);方法</p>
+ * <p>2. 需要拍照获取的时候: 调用ChoosePicUtil.startActivityFor(ChoosePicUtil.MATCHING_CODE_CAMERA, activity);</p>
+ * <p>3. 在你的onRequestPermissionsResult方法中调用调用ChoosePicUtil.onRequestPermissionsResult, 在你onActivityResult中调用
+ * ChoosePicUtil.onActivityResult(), 该方法返回绝对路径 path 的字符串.</p>
+ * <p>tip: 如果使用裁剪(裁剪参数在 startCrop 方法中), 那么返回的是裁剪后的文件路径, 如果需要删除缓存图片, 每次 <b>用完用完用完</b> 之后手动调用 deleteTemp 方法, .
+ * 默认的拍照路径为: 存储卡+当前时间+camera.jpg, 默认的裁剪图片路径为: 存储卡+当前时间+crop.jpg. 分别在 openCamera 方法和 startCrop 方法中定义写死, 要改自行修改</p>
  */
 public class ChoosePicUtil {
 
@@ -85,16 +87,6 @@ public class ChoosePicUtil {
      * 裁剪图片暂存文件对象, 默认是外部存储卡下每次当前时间+crop.jpg
      */
     private static String temppath_crop = "";
-
-    /**
-     * 裁剪后输出的图片宽度 px 值
-     */
-    private static int pixelWidthCrop = 200;
-
-    /**
-     * 裁剪后输出的图片高度 px 值
-     */
-    private static int pixelHeightCrop = 200;
 
     /**
      * 根据不同匹配码确定是从图库选择还是相机获取,并启动相应activity
@@ -365,8 +357,8 @@ public class ChoosePicUtil {
         intent.putExtra("aspectY", 1);
         intent.putExtra("crop", "true");//可裁剪
         // 裁剪后输出图片的尺寸大小
-        intent.putExtra("outputX", pixelWidthCrop);
-        intent.putExtra("outputY", pixelHeightCrop);
+        intent.putExtra("outputX", 200);
+        intent.putExtra("outputY", 200);
         intent.putExtra("scale", true);//支持缩放
         intent.putExtra("return-data", false);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置
@@ -404,7 +396,8 @@ public class ChoosePicUtil {
      * @param height      要加载的imageView的高
      * @return 缩放后的bitmap对象
      */
-    private static Bitmap readBitmapFromStream(InputStream inputStream, int width, int height) {
+    @Deprecated
+    public static Bitmap readBitmapFromStream(InputStream inputStream, int width, int height) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeStream(inputStream, null, options);
@@ -433,6 +426,7 @@ public class ChoosePicUtil {
      */
     public static boolean deleteCameraTemp() {
         File file = new File(temppath_camera);
+        temppath_camera = "";
         return file.delete();
     }
 
@@ -443,6 +437,7 @@ public class ChoosePicUtil {
      */
     public static boolean deleteCropTemp() {
         File file = new File(temppath_crop);
+        temppath_crop = "";
         return file.delete();
     }
 
