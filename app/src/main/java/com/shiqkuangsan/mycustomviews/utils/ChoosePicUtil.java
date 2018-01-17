@@ -5,9 +5,10 @@ package com.shiqkuangsan.mycustomviews.utils;
  */
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
-import android.content.ContentValues;
+import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -24,78 +26,77 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by shiqkuangsan on 2016/11/6.
- *
- * @author shiqkuangsan
- * @summary: 开发中经常会遇到让用户从自己图库还是拍照获取图片的需求, 每次写写写...因此写了个选择图片的工具类
- * <p>
- * 使用:
- * step1. 在你的两个选择按钮分别调用startActivityFor()方法传入不同参数选择获取方式进入对应界面
- * <p>
- * 只是需要选择图片--step2          需要加载选择的图片到ImageView--step3
- * <p>
- * step2. 如果你只是需要选择图片拿到图片的bitmap对象/图片的绝对路径,那你需要在你的onActivityResult()方法处调用:
- * choice1、getBitmapFromResult()方法,将会获取到选择的图片的bitmap对象.(注意直接加载到ImageView容易OOM)
- * choice2、如果调用getPathFromResult()方法,将会获取到图片的路径,如果你需要路径的话.(有了路径你就可以用图片加载框架加载拉)
- * (choice2不支持裁剪且从相册获取使用过之后,使用过之后,使用过之后(重要的事情)若想删除缓存需要手动调用deleteTemp())
- * <p>
- * step3. 如果你是需要选择完图片之后加载到ImageView上,我也为你提供了两个方法并且解决了OOM的问题,同样也是在onActivityResult()处调用
- * 1> String loadImageView()不支持裁剪但是可以返回图片的绝对路径,使用完,使用完,使用完(重要的事情),若想删除缓存需要手动调用deleteTemp()
- * 2> void loadImageViewWithCrop()支持裁剪,支持自动删除缓存图片.
- * <p>
- * 关于android6.0动态权限申请的问题,图库选择图片的逻辑已经处理了,拍照获取大多定制机目前不需要处理,暂且是注释状态
- * 另外需要提的裁剪框的大小你如果不满意自己可以调,在crop()方法中
+ * Created by shiqkuangsan on 2018/1/17. <p>
+ * ClassName: ChoosePicUtil <p>
+ * Author: shiqkuangsan <p>
+ * Description:
  */
 public class ChoosePicUtil {
 
     /**
-     * 从图库获取的匹配码
+     * 打开图库选择获取图片的匹配码
      */
-    public static final int MATCHING_CODE_GALLERY = 0;
+    public static final int MATCHING_CODE_GALLERY = 111;
 
     /**
-     * 从相机获取的匹配码
+     * 使用相机拍照获取图片的匹配码
      */
-    public static final int MATCHING_CODE_CAMERA = 1;
+    public static final int MATCHING_CODE_CAMERA = 222;
 
     /**
      * 从图库获取的请求码
      */
-    private static final int REQUEST_CODE_GALLERY = 100;
+    private static final int REQUEST_CODE_GALLERY = 333;
 
     /**
      * 从相机获取的请求码
      */
-    private static final int REQUEST_CODE_CAMERA = 200;
+    private static final int REQUEST_CODE_CAMERA = 444;
 
     /**
      * 进入裁剪界面的请求码
      */
-    private static final int REQUEST_CODE_CROP = 300;
-
-    /**
-     * 临时存储的文件对象
-     */
-    private static File tempFile;
+    private static final int REQUEST_CODE_CROP = 555;
 
     /**
      * 6.0相机权限请求码
      */
-    private static final int REQUEST_PERMISSION_CAMERA_6_0 = 400;
+    private static final int REQUEST_PERMISSION_CAMERA_6_0 = 666;
 
     /**
      * 6.0读写SD卡权限请求码
      */
-    private static final int REQUEST_PERMISSION_SDCARD_6_0 = 500;
+    private static final int REQUEST_PERMISSION_SDCARD_6_0 = 777;
+
+    /**
+     * 拍照图片暂存文件对象
+     */
+    private static String temppath_camera = Environment.getExternalStorageDirectory().getAbsolutePath()
+            + "/" + String.valueOf(System.currentTimeMillis()) + "camera.jpg";
+
+    /**
+     * 裁剪图片暂存文件对象
+     */
+    private static String temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
+            + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
+
+    /**
+     * 裁剪后输出的图片宽度 px 值
+     */
+    private static int pixelWidthCrop = 200;
+
+    /**
+     * 裁剪后输出的图片高度 px 值
+     */
+    private static int pixelHeightCrop = 200;
 
     /**
      * 根据不同匹配码确定是从图库选择还是相机获取,并启动相应activity
@@ -104,11 +105,15 @@ public class ChoosePicUtil {
      */
     public static void startActivityFor(int MATCHING_CODE, final Activity activity) {
         switch (MATCHING_CODE) {
+
+            // 图库获取
             case MATCHING_CODE_GALLERY:
+                // 6.0调用图库处理
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
                         openGallery(activity);
+
                     } else {
                         // 该方法在用户上次拒绝后调用,因为已经拒绝了这次你还要申请授权你得给用户解释一波
                         // 一般建议弹个对话框告诉用户 该方法在6.0之前的版本永远返回的是fasle
@@ -141,6 +146,7 @@ public class ChoosePicUtil {
                 openGallery(activity);
                 break;
 
+            // 拍照获取
             case MATCHING_CODE_CAMERA:
                 // 6.0调用相机的处理
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -176,8 +182,10 @@ public class ChoosePicUtil {
                 // 6.0之前的版本直接走这里
                 openCamera(activity);
                 break;
+
             default:
-                Toast.makeText(activity, "匹配码有误!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "匹配码异常!", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -195,7 +203,6 @@ public class ChoosePicUtil {
         activity.startActivityForResult(pickIntent, REQUEST_CODE_GALLERY);
     }
 
-
     /**
      * 打开系统相机
      *
@@ -203,12 +210,9 @@ public class ChoosePicUtil {
      */
     private static void openCamera(Activity activity) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-//            Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            if (tempFile != null)
-                tempFile = null;
             // 创建资源标识,设置额外信息
-            tempFile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
+            File tempFile_camera = new File(temppath_camera);
 
             /*
                 FileUriExposedException
@@ -217,7 +221,7 @@ public class ChoosePicUtil {
                 解决方法1: 使用ContentProvider传递uri(如下)
                 解决方法2: 使用官方提供的FileProvider(较麻烦)
              */
-//            Uri uri = Uri.fromFile(tempFile); // 这里会报错
+//            Uri uri = Uri.fromFile(tempFile_camera); // 这里会报错
 //            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 //            activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
 
@@ -225,10 +229,10 @@ public class ChoosePicUtil {
             // 方式1
 //            Uri uri;
 //            if (Build.VERSION.SDK_INT < 24) {
-//                uri = Uri.fromFile(tempFile);
+//                uri = Uri.fromFile(tempFile_camera);
 //            } else {
 //                ContentValues contentValues = new ContentValues(1);
-//                contentValues.put(MediaStore.Images.Media.DATA, tempFile.getAbsolutePath());
+//                contentValues.put(MediaStore.Images.Media.DATA, tempFile_camera.getAbsolutePath());
 //                uri = activity.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
 //            }
 //            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
@@ -237,56 +241,52 @@ public class ChoosePicUtil {
             // 方式2 (需要在清单文件中配置provider并添加相应xml文件)
             Uri uri;
             if (Build.VERSION.SDK_INT < 24) {
-                uri = Uri.fromFile(tempFile);
+                uri = Uri.fromFile(tempFile_camera);
             } else {
-                uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile);
+                uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_camera);
                 cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             }
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             activity.startActivityForResult(cameraIntent, REQUEST_CODE_CAMERA);
         } else {
-            Toast.makeText(activity, "未检测到储存卡", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "存储设备异常", Toast.LENGTH_SHORT).show();
         }
     }
 
     /**
-     * 根据返回的结果进行不同的解析,获取bitmap对象
+     * 根据返回的结果进行不同的解析,获取文件路径
      *
-     * @param requestCode     请求码
-     * @param resultCode      结果码
-     * @param data            返回数据(里边封装这一个uri)
-     * @param activity        当前activity
-     * @param imageViewWidth  imageView的宽度-px值
-     * @param imageViewHeight imageView的高度-px值
-     * @param needCrop        获取完之后是否需要裁剪? true - 进入裁剪界面
-     * @param needDeleteTemp  如果是拍照获取,获取完之后是否需要删除缓存照片? true - 删除
-     * @return Bitmap对象, null - 解析失败(注意了返回的bitmap对象很容易OOM的)
+     * @param requestCode 请求码
+     * @param resultCode  结果码
+     * @param data        返回数据(里边封装一个uri)
+     * @param activity    activity
+     * @param needCrop    是否需要裁剪
+     * @return 文件路径的字符串, 默认的是裁剪后的图片路径, 不是原图
      */
-    public static Bitmap getBitmapFromResult(int requestCode, int resultCode, Intent data, Activity activity,
-                                             int imageViewWidth, int imageViewHeight, boolean needCrop, boolean needDeleteTemp) {
-        if (resultCode != Activity.RESULT_OK)
-            return null;
+    public static String onActivityResult(int requestCode, int resultCode, Intent data, Activity activity, boolean needCrop) throws IOException {
 
-        Bitmap bitmap = null;
-        ContentResolver resolver = activity.getContentResolver();
+        if (resultCode != Activity.RESULT_OK) {
+            // 模拟器裁剪的时候可能就算你点了保存返回码也不是RESULT_OK
+            return "Canceled or ResultCode does not match 'RESULT_OK' !";
+        }
+
         switch (requestCode) {
             // 从图库返回
             case REQUEST_CODE_GALLERY:
                 if (data != null) {
-                    // 根据返回的数据利用内容解决者解析出bitmap对象
-                    Uri uri = data.getData();
-                    if (needCrop)
-                        startCrop(uri, activity);
 
-                    else
-                        try {
-                            InputStream stream = resolver.openInputStream(uri);
-                            bitmap = readBitmapFromStream(stream, imageViewWidth, imageViewHeight);
-//                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(uri));
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
+                    if (needCrop) {
+                        startCrop(data.getData(), activity);
+                    } else {
+
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            //4.4及以上系统使用这个方法处理图片
+                            return handlerImageAfterKitKat(activity, data);
+                        } else {
+                            //4.4以下系统使用这个方法处理图片
+                            return handlerImageBeforeKitKat(activity, data);
                         }
-
+                    }
                 }
                 break;
 
@@ -294,100 +294,69 @@ public class ChoosePicUtil {
             case REQUEST_CODE_CAMERA:
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                     if (needCrop) {
-                        startCrop(FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile), activity);
-                    } else
-                        try {
-                            InputStream stream = resolver.openInputStream(Uri.fromFile(tempFile));
-                            bitmap = readBitmapFromStream(stream, imageViewWidth, imageViewHeight);
-//                            bitmap = BitmapFactory.decodeStream(resolver.openInputStream(Uri.fromFile(tempFile)));
-                            if (needDeleteTemp)
-                                try {
-                                    tempFile.delete();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
-
-                }
-                break;
-
-            // 从剪切界面返回
-            case REQUEST_CODE_CROP:
-                if (data != null) {
-                    bitmap = data.getParcelableExtra("data");
-                }
-                if (needDeleteTemp)
-                    try {
-                        tempFile.delete();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        startCrop(FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(temppath_camera)), activity);
+                    } else {
+                        return temppath_camera;
                     }
+                } else {
+                    Toast.makeText(activity, "存储设备异常!", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
+            //裁剪界面返回
+            case REQUEST_CODE_CROP:
+                return temppath_crop;
         }
 
-        return bitmap;
+        return "";
 
     }
 
+    private static String handlerImageBeforeKitKat(Activity activity, Intent data) {
+        Uri uri = data.getData();
+        return getImagePath(uri, activity, null);
+    }
 
-    /**
-     * 根据返回的结果进行不同的解析,获取文件路径
-     * (如果调用此方法,拍照获取路径后需要手动调用deleteTemp方法删除缓存照片)
-     *
-     * @param requestCode 请求码
-     * @param resultCode  结果码
-     * @param data        返回数据(里边封装这一个uri)
-     * @param activity    activity
-     * @return 文件路径的字符串, "" / null - 获取失败
-     */
-    public static String getPathFromResult(int requestCode, int resultCode, Intent data, Activity activity) {
-
-        if (resultCode != Activity.RESULT_OK)
-            return null;
-
-        String imgPath = null;
-        switch (requestCode) {
-            // 从图库返回
-            case REQUEST_CODE_GALLERY:
-                if (data != null) {
-                    // 根据返回的数据利用内容解决者解析出文件路径
-                    Uri uri = data.getData();
-                    imgPath = getImagePath(uri, activity);
-                }
-                break;
-
-            // 从相机返回
-            case REQUEST_CODE_CAMERA:
-                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED))
-                    imgPath = tempFile.getPath();
-                break;
+    @TargetApi(19)
+    private static String handlerImageAfterKitKat(Activity activity, Intent data) {
+        String imagePath = null;
+        Uri uri = data.getData();
+        if (DocumentsContract.isDocumentUri(activity, uri)) {
+            //如果是document类型的Uri,则通过document id处理
+            String docId = DocumentsContract.getDocumentId(uri);
+            if ("com.android.providers.media.documents".equals(uri.getAuthority())) {
+                String id = docId.split(":")[1];//解析出数字格式的id
+                String selection = MediaStore.Images.Media._ID + "=" + id;
+                imagePath = getImagePath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, activity, selection);
+            } else if ("com.android.providers.downloads.documents".equals(uri.getAuthority())) {
+                Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(docId));
+                imagePath = getImagePath(contentUri, activity, null);
+            }
+        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            //如果是content类型的URI，则使用普通方式处理
+            imagePath = getImagePath(uri, activity, null);
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            //如果是file类型的Uri,直接获取图片路径即可
+            imagePath = uri.getPath();
         }
-        // 这里如果删除了临时文件,返回的imgPath也没有意义了,因为文件已经没了,所以提供方法
-        return imgPath;
-
+        return imagePath;
     }
 
     /**
      * 剪切图片,可以自定义剪切参数
      *
-     * @param uri 数据标识
+     * @param uri      数据标识
+     * @param activity context对象
      */
-    private static void startCrop(Uri uri, Activity activity) {
+    private static void startCrop(Uri uri, Activity activity) throws IOException {
         // 创建File对象，用于存储裁剪后的图片，避免更改原图
-        File file = new File(activity.getExternalCacheDir(), "crop_image.jpg");
-        try {
-            if (file.exists()) {
-                file.delete();
-            }
-            file.createNewFile();
-        } catch (Exception e) {
-            e.printStackTrace();
+        File tempFile_crop = new File(activity.getExternalCacheDir(), String.valueOf(System.currentTimeMillis()).concat("crop_image.jpg"));
+        if (tempFile_crop.exists()) {
+            tempFile_crop.delete();
         }
+        tempFile_crop.createNewFile();
 
-        Uri outputUri = Uri.fromFile(file);
+        Uri outputUri = Uri.fromFile(tempFile_crop);
         Intent intent = new Intent("com.android.camera.action.CROP");
         if (Build.VERSION.SDK_INT >= 24) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -398,16 +367,15 @@ public class ChoosePicUtil {
         intent.putExtra("aspectY", 1);
         intent.putExtra("crop", "true");//可裁剪
         // 裁剪后输出图片的尺寸大小
-//        intent.putExtra("outputX", 250);
-//        intent.putExtra("outputY", 250);
+        intent.putExtra("outputX", pixelWidthCrop);
+        intent.putExtra("outputY", pixelHeightCrop);
         intent.putExtra("scale", true);//支持缩放
         intent.putExtra("return-data", false);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置
         intent.putExtra("outputFormat", "JPEG");//输出图片格式
         intent.putExtra("noFaceDetection", true);//取消人脸识别
         activity.startActivityForResult(intent, REQUEST_CODE_CROP);
     }
-
 
     /**
      * 根据图片的uri返回图片的路径
@@ -416,11 +384,11 @@ public class ChoosePicUtil {
      * @param activity activity界面
      * @return 图片的路径
      */
-    private static String getImagePath(Uri uri, Activity activity) {
+    private static String getImagePath(Uri uri, Activity activity, String selection) {
         String[] proj = {MediaStore.Images.Media.DATA};
         // 利用内容提供者去查询图片
         ContentResolver resolver = activity.getContentResolver();
-        Cursor cursor = resolver.query(uri, proj, null, null, null);
+        Cursor cursor = resolver.query(uri, proj, selection, null, null);
         String path = "";
         if (cursor != null) {
             cursor.moveToFirst();
@@ -428,80 +396,6 @@ public class ChoosePicUtil {
             cursor.close();
         }
         return path;
-    }
-
-    /**
-     * 带有裁剪功能的加载图片方法,如果你需要知道图片路径请调用另一个方法
-     *
-     * @param requestCode    请求码
-     * @param resultCode     结果码
-     * @param data           data数据
-     * @param activity       Activity
-     * @param view           需要加载的imageView
-     * @param needCrop       是否需要裁剪
-     * @param needDeleteTemp 是否需要删除缓存
-     */
-    public static void loadImageViewWithCrop(int requestCode, int resultCode, Intent data, Activity activity,
-                                             ImageView view, boolean needCrop, boolean needDeleteTemp) {
-        Bitmap bitmap = getBitmapFromResult(requestCode, resultCode, data, activity, view.getWidth(), view.getHeight(), needCrop, needDeleteTemp);
-        if (bitmap != null)
-            view.setImageBitmap(bitmap);
-    }
-
-    /**
-     * 加载图片但是不支持裁剪功能,不过可以返回图片的路径
-     *
-     * @param requestCode 请求码
-     * @param resultCode  结果吗
-     * @param data        data数据
-     * @param activity    Activity
-     * @param view        需要加载的imageView
-     * @return 图片的绝对路径
-     */
-    public static String loadImageView(int requestCode, int resultCode, Intent data, Activity activity, ImageView view) {
-        String path = getPathFromResult(requestCode, resultCode, data, activity);
-        if (path != null) {
-            Bitmap bitmap = readBitmapFromFilePath(path, view.getWidth(), view.getHeight());
-            view.setImageBitmap(bitmap);
-            return path;
-        } else
-            return null;
-    }
-
-    /**
-     * 获取缩放后的本地图片
-     *
-     * @param filePath 文件路径
-     * @param width    要加载的imageView的宽
-     * @param height   要加载的imageView的高
-     * @return 缩放后的bitmap对象
-     */
-    private static Bitmap readBitmapFromFilePath(String filePath, int width, int height) {
-        try {
-            FileInputStream fis = new FileInputStream(filePath);
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inJustDecodeBounds = true;
-            BitmapFactory.decodeFileDescriptor(fis.getFD(), null, options);
-            float srcWidth = options.outWidth;
-            float srcHeight = options.outHeight;
-            int inSampleSize = 1;
-
-            if (srcHeight > height || srcWidth > width) {
-                if (srcWidth > srcHeight) {
-                    inSampleSize = Math.round(srcHeight / height);
-                } else {
-                    inSampleSize = Math.round(srcWidth / width);
-                }
-            }
-
-            options.inJustDecodeBounds = false;
-            options.inSampleSize = inSampleSize;
-
-            return BitmapFactory.decodeFileDescriptor(fis.getFD(), null, options);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return null;
     }
 
     /**
@@ -535,15 +429,23 @@ public class ChoosePicUtil {
     }
 
     /**
-     * 如果是拍照获取的图片,调用此方法删除缓存照片
+     * 删除拍照的缓存图片, 请用完再删, 不然onResult返回的 path 就无效了
      *
      * @return 删除是否成功
      */
-    public static boolean deleteTemp() {
-        boolean result = false;
-        if (tempFile != null)
-            result = tempFile.delete();
-        return result;
+    public static boolean deleteCameraTemp() {
+        File file = new File(temppath_camera);
+        return file.delete();
+    }
+
+    /**
+     * 删除裁剪的缓存图片, 请用完再删, 不然onResult返回的 path 就无效了
+     *
+     * @return 删除是否成功
+     */
+    public static boolean deleteCropTemp() {
+        File file = new File(temppath_crop);
+        return file.delete();
     }
 
     /**

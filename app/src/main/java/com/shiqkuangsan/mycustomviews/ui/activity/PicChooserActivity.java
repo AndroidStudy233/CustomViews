@@ -5,11 +5,19 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.shiqkuangsan.mycustomviews.MyApplication;
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.FrameBaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.activity.qzone.MomentListActivity;
 import com.shiqkuangsan.mycustomviews.utils.ChoosePicUtil;
+import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
+
+import org.xutils.x;
+
+import java.io.IOException;
 
 /**
  * Created by dell on 2016/9/6.
@@ -68,11 +76,13 @@ public class PicChooserActivity extends FrameBaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-//        ChoosePicUtil.loadImageViewWithCrop(requestCode,resultCode,data,this,iv_image,false,true);
-        ChoosePicUtil.loadImageView(requestCode, resultCode, data, this, iv_image);
-//        ChoosePicUtil.deleteTemp();
         super.onActivityResult(requestCode, resultCode, data);
+        try {
+            String result = ChoosePicUtil.onActivityResult(requestCode, resultCode, data, this, false);
+            ToastUtil.toastLong(this, result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
