@@ -79,7 +79,7 @@ public class PicChooserActivity extends FrameBaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         try {
             String result = ChoosePicUtil.onActivityResult(requestCode, resultCode, data, this, false);
-            ToastUtil.toastLong(this, result);
+            ToastUtil.toastShort(this, result);
         } catch (IOException e) {
             e.printStackTrace();
         }

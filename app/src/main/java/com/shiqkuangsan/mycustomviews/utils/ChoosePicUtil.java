@@ -353,10 +353,6 @@ public class ChoosePicUtil {
         temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
-        if (tempFile_crop.exists()) {
-            tempFile_crop.delete();
-        }
-        tempFile_crop.createNewFile();
 
         Uri outputUri = Uri.fromFile(tempFile_crop);
         Intent intent = new Intent("com.android.camera.action.CROP");
