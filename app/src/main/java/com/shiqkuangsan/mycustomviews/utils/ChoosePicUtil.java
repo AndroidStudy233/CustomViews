@@ -79,14 +79,12 @@ public class ChoosePicUtil {
     /**
      * 拍照图片暂存文件对象
      */
-    private static String temppath_camera = Environment.getExternalStorageDirectory().getAbsolutePath()
-            + "/" + String.valueOf(System.currentTimeMillis()) + "camera.jpg";
+    private static String temppath_camera = "";
 
     /**
      * 裁剪图片暂存文件对象
      */
-    private static String temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
-            + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
+    private static String temppath_crop = "";
 
     /**
      * 裁剪后输出的图片宽度 px 值
@@ -212,6 +210,8 @@ public class ChoosePicUtil {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             // 创建资源标识,设置额外信息
+            temppath_camera = Environment.getExternalStorageDirectory().getAbsolutePath()
+                    + "/" + String.valueOf(System.currentTimeMillis()) + "camera.jpg";
             File tempFile_camera = new File(temppath_camera);
 
             /*
@@ -350,6 +350,8 @@ public class ChoosePicUtil {
      */
     private static void startCrop(Uri uri, Activity activity) throws IOException {
         // 创建File对象，用于存储裁剪后的图片，避免更改原图
+        temppath_crop = activity.getCacheDir().getAbsolutePath()
+                + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
         if (tempFile_crop.exists()) {
             tempFile_crop.delete();
