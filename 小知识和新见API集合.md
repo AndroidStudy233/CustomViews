@@ -2401,7 +2401,7 @@ dispatchTouchEvent -> onInterceptTouchEvent -> onTouchEvent
 
 ---
 
-## Error:The number of method references in a .dex file cannot exceed 64K.
+## Error:The number of method references in a .dex file cannot  exceed 64K /  com.android.dex.DexIndexOverflowException:
 
 1. 在app的build.gradle中, 在 defaultConfig 中添加
 
