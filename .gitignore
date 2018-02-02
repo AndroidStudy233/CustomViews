@@ -6,3 +6,4 @@ build/
 local.properties
 test/
 /app/src/androidTest/java/androidTest/
+.Ds_Store
