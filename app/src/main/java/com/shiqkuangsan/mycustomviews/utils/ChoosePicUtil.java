@@ -5,6 +5,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -38,8 +40,9 @@ import java.io.InputStream;
  * <p>2. 需要拍照获取的时候: 调用ChoosePicUtil.startActivityFor(ChoosePicUtil.MATCHING_CODE_CAMERA, activity);</p>
  * <p>3. 在你的onRequestPermissionsResult方法中调用调用ChoosePicUtil.onRequestPermissionsResult, 在你onActivityResult中调用
  * ChoosePicUtil.onActivityResult(), 该方法返回绝对路径 path 的字符串.</p>
- * <p>tip: 如果使用裁剪(裁剪参数在 startCrop 方法中), 那么返回的是裁剪后的文件路径, 如果需要删除缓存图片, 每次 <b>用完用完用完</b> 之后手动调用 deleteTemp 方法, .
+ * <p>tip1: 如果使用裁剪(裁剪参数在 startCrop 方法中), 那么返回的是裁剪后的文件路径, 如果需要删除缓存图片, 每次 <b>用完用完用完</b> 之后手动调用 deleteTemp 方法, .
  * 默认的拍照路径为: 存储卡+当前时间+camera.jpg, 默认的裁剪图片路径为: 存储卡+当前时间+crop.jpg. 分别在 openCamera 方法和 startCrop 方法中定义写死, 要改自行修改</p>
+ * <p>tip2: 注意使用 util 之前要在清单文件中配置 provider, 并且提供 provider_paths 申明</p>
  */
 public class ChoosePicUtil {
 
@@ -341,30 +344,75 @@ public class ChoosePicUtil {
      * @param activity context对象
      */
     private static void startCrop(Uri uri, Activity activity) throws IOException {
-        // 创建File对象，用于存储裁剪后的图片，避免更改原图
+        // 定义缓存路径, 创建File对象，用于存储裁剪后的图片，避免更改原图
         temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
 
-        Uri outputUri = Uri.fromFile(tempFile_crop);
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        if (Build.VERSION.SDK_INT >= 24) {
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        Uri outputUri = Uri.fromFile(tempFile_crop); // 报错
+
+//        Uri outputUri = getImageContentUri(activity, tempFile_crop);
+        Intent cropIntent = new Intent("com.android.camera.action.CROP");
+
+        Uri outputUri;
+        if (Build.VERSION.SDK_INT < 24) {
+            outputUri = Uri.fromFile(tempFile_crop);
+        } else {
+            outputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_crop);
+            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
-        intent.setDataAndType(uri, "image/*");
+        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+
+        if (Build.VERSION.SDK_INT >= 24) {
+            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+        cropIntent.setDataAndType(outputUri, "image/*");
         // 裁剪框的宽高比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        intent.putExtra("crop", "true");//可裁剪
+        cropIntent.putExtra("aspectX", 1);
+        cropIntent.putExtra("aspectY", 1);
+        cropIntent.putExtra("crop", "true");//可裁剪
         // 裁剪后输出图片的尺寸大小
-        intent.putExtra("outputX", 200);
-        intent.putExtra("outputY", 200);
-        intent.putExtra("scale", true);//支持缩放
-        intent.putExtra("return-data", false);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置
-        intent.putExtra("outputFormat", "JPEG");//输出图片格式
-        intent.putExtra("noFaceDetection", true);//取消人脸识别
-        activity.startActivityForResult(intent, REQUEST_CODE_CROP);
+        cropIntent.putExtra("outputX", 200);
+        cropIntent.putExtra("outputY", 200);
+        cropIntent.putExtra("scale", true);//支持缩放
+        cropIntent.putExtra("return-data", false);
+        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置
+        cropIntent.putExtra("outputFormat", "JPEG");//输出图片格式
+        cropIntent.putExtra("noFaceDetection", true);//取消人脸识别
+        activity.startActivityForResult(cropIntent, REQUEST_CODE_CROP);
+    }
+
+    /**
+     * 从 File 对象中获取 Uri
+     *
+     * @param context   上下文
+     * @param imageFile file
+     * @return Uri
+     */
+    public static Uri getImageContentUri(Context context, File imageFile) {
+        String filePath = imageFile.getAbsolutePath();
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                new String[]{MediaStore.Images.Media._ID},
+                MediaStore.Images.Media.DATA + "=? ",
+                new String[]{filePath}, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor
+                    .getColumnIndex(MediaStore.MediaColumns._ID));
+            Uri baseUri = Uri.parse("content://media/external/images/media");
+            cursor.close();
+            return Uri.withAppendedPath(baseUri, "" + id);
+        } else {
+            if (imageFile.exists()) {
+                ContentValues values = new ContentValues();
+                values.put(MediaStore.Images.Media.DATA, filePath);
+                return context.getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            } else {
+                return null;
+            }
+        }
     }
 
     /**
