@@ -358,13 +358,13 @@ public class ChoosePicUtil {
 //        Uri outputUri = getImageContentUri(activity, tempFile_crop);
 
         Uri inputUri;
-        Uri outputUri;
+//        Uri outputUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             inputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(inputPath));
-            outputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_crop);
+//            outputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_crop);
         } else {
             inputUri = Uri.fromFile(new File(inputPath));
-            outputUri = Uri.fromFile(tempFile_crop);
+//            outputUri = Uri.fromFile(tempFile_crop);
         }
         Intent cropIntent = new Intent("com.android.camera.action.CROP");
 
@@ -382,7 +382,7 @@ public class ChoosePicUtil {
         cropIntent.putExtra("outputY", 200);
         cropIntent.putExtra("scale", true);//支持缩放
         cropIntent.putExtra("return-data", false);
-        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置outputFile
+        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile_crop));// 剪切后输出图片位置outputFile
         cropIntent.putExtra("outputFormat", "JPEG");//输出图片格式
         cropIntent.putExtra("noFaceDetection", true);//取消人脸识别
         activity.startActivityForResult(cropIntent, REQUEST_CODE_CROP);
