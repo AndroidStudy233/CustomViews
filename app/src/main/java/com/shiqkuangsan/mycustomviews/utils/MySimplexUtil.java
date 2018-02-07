@@ -238,7 +238,11 @@ public class MySimplexUtil {
      */
     public static void loadImage(ImageView image, String url, ImageOptions options,
                                  @Nullable Callback.CommonCallback<Drawable> callback) {
-        x.image().bind(image, url, options, callback);
+        if (callback == null) {
+            x.image().bind(image, url, options, new SimpleRequstCallBack<Drawable>());
+        } else {
+            x.image().bind(image, url, options, callback);
+        }
     }
 
     /**

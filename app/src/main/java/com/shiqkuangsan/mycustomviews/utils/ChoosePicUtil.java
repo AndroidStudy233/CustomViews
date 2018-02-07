@@ -357,6 +357,9 @@ public class ChoosePicUtil {
         tempFile_crop.getParentFile().mkdirs();
 //        Uri outputUri = getImageContentUri(activity, tempFile_crop);
 
+        /*
+            输入图片采用 contentUri 协议传输, 输出图片采用 FileUri 协议写入.
+        */
         Uri inputUri;
 //        Uri outputUri;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
