@@ -1,6 +1,7 @@
 package com.shiqkuangsan.mycustomviews.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shiqkuangsan.mycustomviews.R;
+import com.shiqkuangsan.mycustomviews.utils.ChoosePicUtil;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 
 /**
  * <p>创建人：余志伟</p>
@@ -42,6 +45,12 @@ public class EasyPagerFragment extends Fragment {
         TextView textView = (TextView) view.findViewById(R.id.tv_fragment);
         pisotion = getArguments().getInt("position");
         textView.setText("这是第" + pisotion + "个fragment");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChoosePicUtil.startActivityFor(ChoosePicUtil.MATCHING_CODE_CAMERA, getActivity());
+            }
+        });
         return view;
     }
 
@@ -71,5 +80,11 @@ public class EasyPagerFragment extends Fragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        MyLogUtil.debug(requestCode + "---" + resultCode + "---" + data);
     }
 }

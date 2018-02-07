@@ -18,11 +18,15 @@ import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.adapter.EasyPagerAdapter;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 import com.shiqkuangsan.mycustomviews.ui.BuilderManager;
+import com.shiqkuangsan.mycustomviews.utils.ChoosePicUtil;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.utils.ToastUtil;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
+import java.io.IOException;
 
 /**
  * Created by shiqkuangsan on 2017/6/14.
@@ -43,6 +47,7 @@ public class BoomMenuActivity extends BaseActivity {
 
     MenuItem prevMenuItem;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +60,7 @@ public class BoomMenuActivity extends BaseActivity {
 
     private void initViewPager() {
         EasyPagerAdapter pagerAdapter = new EasyPagerAdapter(getSupportFragmentManager());
-        pagerAdapter.setTitles(new String[]{"Movies","Music","Picture","Books","Newpaper"});
+        pagerAdapter.setTitles(new String[]{"Movies", "Music", "Picture", "Books", "Newpaper"});
         viewpager_boommenu.setAdapter(pagerAdapter);
         viewpager_boommenu.setCurrentItem(2);
         viewpager_boommenu.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -142,6 +147,23 @@ public class BoomMenuActivity extends BaseActivity {
             }
         });
         navigationView.setSelectedItemId(R.id.menu_picture);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            String result = ChoosePicUtil.onActivityResult(requestCode, resultCode, data, this, false);
+            MyLogUtil.info("result: " + result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ChoosePicUtil.onActRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
 }

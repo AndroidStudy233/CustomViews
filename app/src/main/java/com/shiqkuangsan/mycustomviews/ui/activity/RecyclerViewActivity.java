@@ -110,7 +110,7 @@ public class RecyclerViewActivity extends FrameBaseActivity {
                 System.arraycopy(hits, 1, hits, 0, hits.length - 1);
                 hits[hits.length - 1] = SystemClock.uptimeMillis();
                 if (hits[0] >= SystemClock.uptimeMillis() - 500) {
-                    MyLogUtil.d("position: " + position);
+                    MyLogUtil.debug("position: " + position);
                     adapter.removeItem(position);
                 } else {
                     ToastUtil.toastShort(RecyclerViewActivity.this, "点击了图片");

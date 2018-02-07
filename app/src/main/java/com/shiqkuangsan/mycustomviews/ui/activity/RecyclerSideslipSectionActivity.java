@@ -65,7 +65,7 @@ public class RecyclerSideslipSectionActivity extends BaseActivity {
         recycler_sideslip.setLayoutManager(new LinearLayoutManager(this));
         recycler_sideslip.addItemDecoration(divider);
 
-        StickySideAdapter stickyAdapter = new StickySideAdapter(this);
+        final StickySideAdapter stickyAdapter = new StickySideAdapter(this);
         decoration = new StickyHeaderDecoration(stickyAdapter);
         stickyAdapter.setOnSwipeMenuClickListener(new StickySideAdapter.OnSwipeMenuClick() {
             @Override
@@ -81,7 +81,8 @@ public class RecyclerSideslipSectionActivity extends BaseActivity {
 
             @Override
             public void onClickDelete(RecyclerView.ViewHolder holder, int position) {
-                String text = " 侧滑 \n"
+//                stickyAdapter.notifyItemRemoved(position);
+                String text = " 删除 \n"
                         .concat("position: ")
                         .concat(String.valueOf(position))
                         .concat("\n")

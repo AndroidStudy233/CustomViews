@@ -30,7 +30,7 @@ public class ThreadUtil {
                     // 核心线程数根据CPU核心数确定,最大线程数就直接用核心线程数了,休息时间随便给
                     int cpuCount = Runtime.getRuntime().availableProcessors();
                     int threadCount = cpuCount * 4 + 1;
-                    MyLogUtil.d("CPU个数: " + cpuCount);
+                    MyLogUtil.debug("CPU个数: " + cpuCount);
                     mThreadPool = new ThreadPool(threadCount, threadCount, 1L);
                 }
             }

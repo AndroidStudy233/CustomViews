@@ -72,7 +72,7 @@ public class AutoRatioLayout extends FrameLayout {
             // 根据图片应该显示的高度,计算控件的高度(其实如果该控件用的时候不定义padding,图片的宽高就是
             // 控件的宽高,上面两步是就不用了)
             height = imageHeight + getPaddingTop() + getPaddingBottom();
-//            CLogUtil.d("height: " + height);
+//            CLogUtil.debug("height: " + height);
             // 控件的高度写好了,这时候重新定义下,然后让系统按照新的规则去测量
             heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
         }

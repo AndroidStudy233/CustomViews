@@ -258,7 +258,7 @@ public class BottomSheetBehaviorGoogleMapsLike<V extends View> extends Coordinat
         }
 
         if ( action == MotionEvent.ACTION_CANCEL ) {
-            // We don't want to trigger a BottomSheet fling as a result of a Cancel MotionEvent (e.g., parent horizontal scroll view taking over touch events)
+            // We don't want to trigger a BottomSheet fling as a result of a Cancel MotionEvent (error.g., parent horizontal scroll view taking over touch events)
             mScrollVelocityTracker.clear();
         }
 

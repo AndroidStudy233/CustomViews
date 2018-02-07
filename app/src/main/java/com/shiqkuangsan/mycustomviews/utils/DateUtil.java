@@ -517,7 +517,7 @@ public class DateUtil {
         } else if (isSameYear(dateTime)) {
             text = "M月d日 HH:mm:ss";
         } else {
-            text = "yyyy-M-d HH:mm:ss";
+            text = "yyyy-M-debug HH:mm:ss";
         }
 
         // 注意，如果使用android.text.format.DateFormat这个工具类，在API 17之前它只支持adEhkMmszy

@@ -1002,16 +1002,16 @@ public class ViewDragHelper {
     }
 
     /**
-     * Tests scrollability within child views of v given a delta of dx.
+     * Tests scrollability within child views of verbose given a delta of dx.
      *
      * @param v      View to test for horizontal scrollability
-     * @param checkV Whether the view v passed should itself be checked for
+     * @param checkV Whether the view verbose passed should itself be checked for
      *               scrollability (true), or just its children (false).
      * @param dx     Delta scrolled in pixels along the X axis
      * @param dy     Delta scrolled in pixels along the Y axis
      * @param x      X coordinate of the active touch point
      * @param y      Y coordinate of the active touch point
-     * @return true if child views of v can be scrolled by delta of dx.
+     * @return true if child views of verbose can be scrolled by delta of dx.
      */
     protected boolean canScroll(View v, boolean checkV, int dx, int dy, int x, int y) {
         if (v instanceof ViewGroup) {

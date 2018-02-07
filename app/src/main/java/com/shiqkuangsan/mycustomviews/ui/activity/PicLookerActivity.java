@@ -51,11 +51,11 @@ public class PicLookerActivity extends FrameBaseActivity {
 //                bundle.putParcelable("info", ((PhotoView) view).getInfo());
 //                bundle.putInt("position", position);
 //                imgImageInfos.clear();
-//                for (int i = 0; i < picsList.size(); i++) {
-//                    if (i < parent.getFirstVisiblePosition() || i > parent.getLastVisiblePosition()) {
+//                for (int info = 0; info < picsList.size(); info++) {
+//                    if (info < parent.getFirstVisiblePosition() || info > parent.getLastVisiblePosition()) {
 //                        imgImageInfos.add(new Info());
 //                    } else {
-//                        imgImageInfos.add(((PhotoView) parent.getChildAt(i - parent.getFirstVisiblePosition())).getInfo());
+//                        imgImageInfos.add(((PhotoView) parent.getChildAt(info - parent.getFirstVisiblePosition())).getInfo());
 //                    }
 //                }
 //                parent.getChildAt(position);

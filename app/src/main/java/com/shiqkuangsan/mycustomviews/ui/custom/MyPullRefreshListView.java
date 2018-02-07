@@ -86,7 +86,7 @@ public class MyPullRefreshListView extends ListView implements AbsListView.OnScr
          */
         // 该方法是测量控件自身的宽高, 参数给0,0意思是按照控件申明的时候规则,可以测量到自身的高度,但是本身显示的高度这时候还是0,因为还没渲染
         headView.measure(0, 0);
-//        Log.i("measure: ", headView.getMeasuredWidth() + " --- " + headView.getMeasuredHeight());
+//        Log.info("measure: ", headView.getMeasuredWidth() + " --- " + headView.getMeasuredHeight());
         topMeasuredHeight = headView.getMeasuredHeight();
         // 给头布局设置内边距, 隐藏自身
         headView.setPadding(0, -topMeasuredHeight, 0, 0);

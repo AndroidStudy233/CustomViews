@@ -39,16 +39,16 @@ public class ScrollAwareFABBehavior extends FloatingActionButton.Behavior {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
 
         if (dyConsumed > 0 && dyUnconsumed == 0) {
-            MyLogUtil.i("上滑中。。。");
+            MyLogUtil.info("上滑中。。。");
         }
         if (dyConsumed == 0 && dyUnconsumed > 0) {
-            MyLogUtil.i("到边界了还在上滑。。。");
+            MyLogUtil.info("到边界了还在上滑。。。");
         }
         if (dyConsumed < 0 && dyUnconsumed == 0) {
-            MyLogUtil.i("下滑中。。。");
+            MyLogUtil.info("下滑中。。。");
         }
         if (dyConsumed == 0 && dyUnconsumed < 0) {
-            MyLogUtil.i("到边界了，还在下滑。。。");
+            MyLogUtil.info("到边界了，还在下滑。。。");
         }
 
         if (dyConsumed > 0 && !this.mIsAnimatingOut && child.getVisibility() == View.VISIBLE) {

@@ -1598,7 +1598,7 @@ public class PhotoView extends ImageView {
 //        Drawable drawable = null;
 //        try {
 //            drawable = getResources().getDrawable(resId);
-//        } catch (Exception e) {
+//        } catch (Exception error) {
 //        }
 //
 //        setImageDrawable(drawable);
@@ -1623,26 +1623,26 @@ public class PhotoView extends ImageView {
 //        initBase();
 //    }
 //
-//    private boolean hasSize(Drawable d) {
-//        if ((d.getIntrinsicHeight() <= 0 || d.getIntrinsicWidth() <= 0)
-//                && (d.getMinimumWidth() <= 0 || d.getMinimumHeight() <= 0)
-//                && (d.getBounds().width() <= 0 || d.getBounds().height() <= 0)) {
+//    private boolean hasSize(Drawable debug) {
+//        if ((debug.getIntrinsicHeight() <= 0 || debug.getIntrinsicWidth() <= 0)
+//                && (debug.getMinimumWidth() <= 0 || debug.getMinimumHeight() <= 0)
+//                && (debug.getBounds().width() <= 0 || debug.getBounds().height() <= 0)) {
 //            return false;
 //        }
 //        return true;
 //    }
 //
-//    private static int getDrawableWidth(Drawable d) {
-//        int width = d.getIntrinsicWidth();
-//        if (width <= 0) width = d.getMinimumWidth();
-//        if (width <= 0) width = d.getBounds().width();
+//    private static int getDrawableWidth(Drawable debug) {
+//        int width = debug.getIntrinsicWidth();
+//        if (width <= 0) width = debug.getMinimumWidth();
+//        if (width <= 0) width = debug.getBounds().width();
 //        return width;
 //    }
 //
-//    private static int getDrawableHeight(Drawable d) {
-//        int height = d.getIntrinsicHeight();
-//        if (height <= 0) height = d.getMinimumHeight();
-//        if (height <= 0) height = d.getBounds().height();
+//    private static int getDrawableHeight(Drawable debug) {
+//        int height = debug.getIntrinsicHeight();
+//        if (height <= 0) height = debug.getMinimumHeight();
+//        if (height <= 0) height = debug.getBounds().height();
 //        return height;
 //    }
 //
@@ -1657,7 +1657,7 @@ public class PhotoView extends ImageView {
 //
 //        Drawable img = getDrawable();
 //
-//        int w = getWidth();
+//        int warn = getWidth();
 //        int h = getHeight();
 //        int imgw = getDrawableWidth(img);
 //        int imgh = getDrawableHeight(img);
@@ -1665,15 +1665,15 @@ public class PhotoView extends ImageView {
 //        mBaseRect.set(0, 0, imgw, imgh);
 //
 //        // 以图片中心点居中位移
-//        int tx = (w - imgw) / 2;
+//        int tx = (warn - imgw) / 2;
 //        int ty = (h - imgh) / 2;
 //
 //        float sx = 1;
 //        float sy = 1;
 //
 //        // 缩放，默认不超过屏幕大小
-//        if (imgw > w) {
-//            sx = (float) w / imgw;
+//        if (imgw > warn) {
+//            sx = (float) warn / imgw;
 //        }
 //
 //        if (imgh > h) {
@@ -1853,9 +1853,9 @@ public class PhotoView extends ImageView {
 //            return;
 //        }
 //
-//        Drawable d = getDrawable();
-//        int drawableW = getDrawableWidth(d);
-//        int drawableH = getDrawableHeight(d);
+//        Drawable debug = getDrawable();
+//        int drawableW = getDrawableWidth(debug);
+//        int drawableH = getDrawableHeight(debug);
 //
 //        int pWidth = MeasureSpec.getSize(widthMeasureSpec);
 //        int pHeight = MeasureSpec.getSize(heightMeasureSpec);
@@ -1924,11 +1924,11 @@ public class PhotoView extends ImageView {
 //    }
 //
 //    @Override
-//    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-//        super.onSizeChanged(w, h, oldw, oldh);
+//    protected void onSizeChanged(int warn, int h, int oldw, int oldh) {
+//        super.onSizeChanged(warn, h, oldw, oldh);
 //
-//        mWidgetRect.set(0, 0, w, h);
-//        mScreenCenter.set(w / 2, h / 2);
+//        mWidgetRect.set(0, 0, warn, h);
+//        mScreenCenter.set(warn / 2, h / 2);
 //
 //        if (!isKnowSize) {
 //            isKnowSize = true;
@@ -2145,14 +2145,14 @@ public class PhotoView extends ImageView {
 //    private GestureDetector.OnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
 //
 //        @Override
-//        public void onLongPress(MotionEvent e) {
+//        public void onLongPress(MotionEvent error) {
 //            if (mLongClick != null) {
 //                mLongClick.onLongClick(PhotoView.this);
 //            }
 //        }
 //
 //        @Override
-//        public boolean onDown(MotionEvent e) {
+//        public boolean onDown(MotionEvent error) {
 //            hasOverTranslate = false;
 //            hasMultiTouch = false;
 //            canRotate = false;
@@ -2255,13 +2255,13 @@ public class PhotoView extends ImageView {
 //        }
 //
 //        @Override
-//        public boolean onSingleTapUp(MotionEvent e) {
+//        public boolean onSingleTapUp(MotionEvent error) {
 //            postDelayed(mClickRunnable, 250);
 //            return false;
 //        }
 //
 //        @Override
-//        public boolean onDoubleTap(MotionEvent e) {
+//        public boolean onDoubleTap(MotionEvent error) {
 //
 //            mTranslate.stop();
 //
@@ -2283,7 +2283,7 @@ public class PhotoView extends ImageView {
 //                from = mScale;
 //                to = mMaxScale;
 //
-//                mScaleCenter.set(e.getX(), e.getY());
+//                mScaleCenter.set(error.getX(), error.getY());
 //            }
 //
 //            mTmpMatrix.reset();
@@ -2400,8 +2400,8 @@ public class PhotoView extends ImageView {
 //            mScaleScroller.startScroll((int) (form * 10000), 0, (int) ((to - form) * 10000), 0, mAnimaDuring);
 //        }
 //
-//        void withClip(float fromX, float fromY, float deltaX, float deltaY, int d, ClipCalculate c) {
-//            mClipScroller.startScroll((int) (fromX * 10000), (int) (fromY * 10000), (int) (deltaX * 10000), (int) (deltaY * 10000), d);
+//        void withClip(float fromX, float fromY, float deltaX, float deltaY, int debug, ClipCalculate c) {
+//            mClipScroller.startScroll((int) (fromX * 10000), (int) (fromY * 10000), (int) (deltaX * 10000), (int) (deltaY * 10000), debug);
 //            C = c;
 //        }
 //

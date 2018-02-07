@@ -59,11 +59,11 @@ public class MainActivity extends FrameBaseActivity {
                     if (aMapLocation.getErrorCode() == 0) {
                         String city = aMapLocation.getCity();
                         String district = aMapLocation.getDistrict();
-                        MyLogUtil.d("高德city: " + city);
-                        MyLogUtil.d("高德district: " + district);
+                        MyLogUtil.debug("高德city: " + city);
+                        MyLogUtil.debug("高德district: " + district);
                     } else {
                         //定位失败
-                        MyLogUtil.e("高德Error, ErrCode:" + aMapLocation.getErrorCode()
+                        MyLogUtil.error("高德Error, ErrCode:" + aMapLocation.getErrorCode()
                                 + ", errInfo:" + aMapLocation.getErrorInfo());
                     }
                 }

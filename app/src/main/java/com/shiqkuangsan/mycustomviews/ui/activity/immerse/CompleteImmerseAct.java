@@ -46,7 +46,7 @@ public class CompleteImmerseAct extends BaseActivity {
     private void compatLeftMargin() {
         int naviShowId = getResources().getIdentifier("config_showNavigationBar", "bool", "android");
         boolean naviShow = getResources().getBoolean(naviShowId);
-        MyLogUtil.d(naviShow ? "true" : "false");
+        MyLogUtil.debug(naviShow ? "true" : "false");
     }
 
     private void initToolbar() {

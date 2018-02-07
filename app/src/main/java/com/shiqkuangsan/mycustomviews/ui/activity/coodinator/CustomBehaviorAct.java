@@ -7,11 +7,11 @@ import com.shiqkuangsan.mycustomviews.base.BaseActivity;
 
 /**
  * Created by shiqkuangsan on 2017/9/15. <p>
- * ClassName: CustomBehaviorAct1 <p>
+ * ClassName: CustomBehaviorAct <p>
  * Author: shiqkuangsan <p>
  * Description: 预留展示自定义behavior(GoogleMap效果)
  */
-public class CustomBehaviorAct1 extends BaseActivity {
+public class CustomBehaviorAct extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

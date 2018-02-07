@@ -240,7 +240,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBar" />
         <activity
-            android:name=".ui.activity.coodinator.CustomBehaviorAct1"
+            android:name=".ui.activity.coodinator.CustomBehaviorAct"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.coodinator.CustomBehaviorAct22"

@@ -76,33 +76,33 @@ public class BottomSheetActivity extends BaseActivity {
                 switch (newState) {
                     // 这是中间状态，此时用户直接上下拖动 bottom sheet。
                     case STATE_DRAGGING:
-                        MyLogUtil.d("BottomSheet状态: STATE_DRAGGING");
+                        MyLogUtil.debug("BottomSheet状态: STATE_DRAGGING");
                         showToast("BottomSheet状态: STATE_DRAGGING");
                         break;
 
                     // 视图被释放之后到达最终位置之间的瞬间。
                     case STATE_SETTLING:
-                        MyLogUtil.d("BottomSheet状态: STATE_SETTLING");
+                        MyLogUtil.debug("BottomSheet状态: STATE_SETTLING");
                         showToast("BottomSheet状态: STATE_SETTLING");
                         break;
 
                     // bottom sheet完全展开的状态。 整个bottom sheet都是可见的（如果它的高度小于包含它的CoordinatorLayout）或者整个CoordinatorLayout都是填满的。
                     case STATE_EXPANDED:
                         iv_arrow.setImageResource(R.drawable.img_arrow_down);
-                        MyLogUtil.d("BottomSheet状态: STATE_EXPANDED");
+                        MyLogUtil.debug("BottomSheet状态: STATE_EXPANDED");
                         showToast("BottomSheet状态: STATE_EXPANDED");
                         break;
 
                     // 这是折叠状态 ，也是默认的状态。只是在底部边沿显示布局的一部分。其高度可以使用 app:behavior_peekHeight 属性来控制（默认是0）。
                     case STATE_COLLAPSED:
                         iv_arrow.setImageResource(R.drawable.img_arrow_up);
-                        MyLogUtil.d("BottomSheet状态: STATE_COLLAPSED");
+                        MyLogUtil.debug("BottomSheet状态: STATE_COLLAPSED");
                         showToast("BottomSheet状态: STATE_COLLAPSED");
                         break;
 
                     // 默认禁用是的(使用app:behavior_hideable属性来启用 ), 如果这个启用，用户可以在 bottom sheet中下滑以完全隐藏bottom sheet
                     case STATE_HIDDEN:
-                        MyLogUtil.d("BottomSheet状态: STATE_HIDDEN");
+                        MyLogUtil.debug("BottomSheet状态: STATE_HIDDEN");
                         showToast("BottomSheet状态: STATE_HIDDEN");
                         break;
                 }
@@ -110,7 +110,7 @@ public class BottomSheetActivity extends BaseActivity {
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                MyLogUtil.d("BottomSheet滑动中...");
+                MyLogUtil.debug("BottomSheet滑动中...");
             }
         });
     }
@@ -132,7 +132,7 @@ public class BottomSheetActivity extends BaseActivity {
                 break;
 
             case R.id.tv_bottom_hello:
-                MyLogUtil.d("点击HelloWorld");
+                MyLogUtil.debug("点击HelloWorld");
                 if (CURRENT_STATE != STATE_COLLAPSED ) {
                     behavior.setState(STATE_COLLAPSED);
                     CURRENT_STATE = STATE_COLLAPSED;

@@ -174,7 +174,7 @@ public class SwipeMenuView extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        //Log.d(TAG, "onMeasure() called with: " + "widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
+        //Log.debug(TAG, "onMeasure() called with: " + "widthMeasureSpec = [" + widthMeasureSpec + "], heightMeasureSpec = [" + heightMeasureSpec + "]");
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         setClickable(true);//令自己可点击，从而获取触摸事件
@@ -212,7 +212,7 @@ public class SwipeMenuView extends ViewGroup {
         setMeasuredDimension(getPaddingLeft() + getPaddingRight() + contentWidth,
                 mHeight + getPaddingTop() + getPaddingBottom());//宽度取第一个Item(Content)的宽度
         mLimit = mRightMenuWidths * 4 / 10;//滑动判断的临界值
-        //Log.d(TAG, "onMeasure() called with: " + "mRightMenuWidths = [" + mRightMenuWidths);
+        //Log.debug(TAG, "onMeasure() called with: " + "mRightMenuWidths = [" + mRightMenuWidths);
         if (isNeedMeasureChildHeight) {//如果子View的height有MatchParent属性的，设置子View高度
             forceUniformHeight(childCount, widthMeasureSpec);
         }
@@ -254,7 +254,7 @@ public class SwipeMenuView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        //LogUtils.e(TAG, "onLayout() called with: " + "changed = [" + changed + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
+        //LogUtils.error(TAG, "onLayout() called with: " + "changed = [" + changed + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
         int childCount = getChildCount();
         int left = 0 + getPaddingLeft();
         int right = 0 + getPaddingLeft();
@@ -276,12 +276,12 @@ public class SwipeMenuView extends ViewGroup {
                 }
             }
         }
-        //Log.d(TAG, "onLayout() called with: " + "maxScrollGap = [" + maxScrollGap + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
+        //Log.debug(TAG, "onLayout() called with: " + "maxScrollGap = [" + maxScrollGap + "], l = [" + l + "], t = [" + t + "], r = [" + r + "], b = [" + b + "]");
     }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        //LogUtils.d(TAG, "dispatchTouchEvent() called with: " + "ev = [" + ev + "]");
+        //LogUtils.debug(TAG, "dispatchTouchEvent() called with: " + "ev = [" + ev + "]");
         if (isSwipeEnable) {
             acquireVelocityTracker(ev);
             final VelocityTracker verTracker = mVelocityTracker;
@@ -394,7 +394,7 @@ public class SwipeMenuView extends ViewGroup {
                     }
                     //释放
                     releaseVelocityTracker();
-                    //LogUtils.i(TAG, "onTouch A ACTION_UP ACTION_CANCEL:velocityY:" + velocityX);
+                    //LogUtils.info(TAG, "onTouch A ACTION_UP ACTION_CANCEL:velocityY:" + velocityX);
                     isTouching = false;//没有手指在摸我了
                     break;
                 default:
@@ -470,7 +470,7 @@ public class SwipeMenuView extends ViewGroup {
     private boolean isExpand;//代表当前是否是展开状态 2016 11 03 add
 
     public void smoothExpand() {
-        //Log.d(TAG, "smoothExpand() called" + this);
+        //Log.debug(TAG, "smoothExpand() called" + this);
         /*mScroller.startScroll(getScrollX(), 0, mRightMenuWidths - getScrollX(), 0);
         invalidate();*/
         //展开就加入ViewCache：
@@ -515,7 +515,7 @@ public class SwipeMenuView extends ViewGroup {
      * 平滑关闭
      */
     public void smoothClose() {
-        //Log.d(TAG, "smoothClose() called" + this);
+        //Log.debug(TAG, "smoothClose() called" + this);
 /*        mScroller.startScroll(getScrollX(), 0, -getScrollX(), 0);
         invalidate();*/
         mViewCache = null;
@@ -542,7 +542,7 @@ public class SwipeMenuView extends ViewGroup {
             }
         });
         mCloseAnim.setDuration(300).start();
-        //LogUtils.d(TAG, "smoothClose() called with:getScrollX() " + getScrollX());
+        //LogUtils.debug(TAG, "smoothClose() called with:getScrollX() " + getScrollX());
     }
 
 

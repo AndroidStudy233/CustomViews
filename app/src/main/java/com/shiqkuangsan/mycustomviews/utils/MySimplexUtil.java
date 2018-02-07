@@ -305,7 +305,7 @@ public class MySimplexUtil {
                     public void onDbOpened(DbManager db) {
                         // 开启WAL, 对写入加速提升巨大
                         db.getDatabase().enableWriteAheadLogging();
-                        MyLogUtil.d("数据库打开...");
+                        MyLogUtil.debug("数据库打开...");
                     }
                 })
                 .setDbUpgradeListener(listener);

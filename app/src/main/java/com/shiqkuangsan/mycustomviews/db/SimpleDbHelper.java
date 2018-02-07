@@ -32,7 +32,7 @@ public class SimpleDbHelper {
             synchronized (SimpleDbHelper.class) {
                 if (manager == null) {
                     init(context, dbName);
-                    MyLogUtil.d("数据库管理者初始化完成...");
+                    MyLogUtil.debug("数据库管理者初始化完成...");
                 }
             }
         return manager;

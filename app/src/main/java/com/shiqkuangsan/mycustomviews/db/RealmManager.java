@@ -50,8 +50,8 @@ public class RealmManager {
                 .migration(new RealmMigration() {
                     @Override
                     public void migrate(DynamicRealm realm, long oldVersion, long newVersion) {
-                        MyLogUtil.d("oldVersion: " + oldVersion);
-                        MyLogUtil.d("newVersion: " + newVersion);
+                        MyLogUtil.debug("oldVersion: " + oldVersion);
+                        MyLogUtil.debug("newVersion: " + newVersion);
                         RealmObjectSchema schema = realm.getSchema().get("Doctor");
                         Set<String> names = schema.getFieldNames();
                         if (names.contains("id"))

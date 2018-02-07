@@ -20,12 +20,12 @@ import android.widget.Toast;
 
 import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+import com.shiqkuangsan.mycustomviews.utils.MyLogUtil;
 import com.shiqkuangsan.mycustomviews.utils.MyStatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.shiqkuangsan.mycustomviews.utils.MyLogUtil.d;
 
 /**
  * Created by shiqkuangsan on 2016/10/20.
@@ -106,7 +106,7 @@ public class BgImmerseActivity extends BaseActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        d("输入文字: " + newText);
+        MyLogUtil.debug("输入文字: " + newText);
         // 如果是空还原数据
         if (TextUtils.isEmpty(newText.trim()))
             dataList = new ArrayList<>(tempList);

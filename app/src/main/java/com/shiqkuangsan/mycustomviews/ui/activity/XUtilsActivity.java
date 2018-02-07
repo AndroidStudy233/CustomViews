@@ -135,7 +135,7 @@ public class XUtilsActivity extends BaseActivity {
                                 for (int i = 0; i < list.size(); i++) {
                                     Province province = list.get(i);
                                     manager.save(province);
-                                    MyLogUtil.d("存入省: " + province.name);
+                                    MyLogUtil.debug("存入省: " + province.name);
                                 }
                                 showToast("你重新存入了" + list.size() + "个省");
                             } catch (DbException e1) {
@@ -149,7 +149,7 @@ public class XUtilsActivity extends BaseActivity {
                 if (isDbInited) {
                     try {
                         Province last = manager.selector(Province.class).where("id", "=", "30").findFirst();
-                        MyLogUtil.d("原名: " + last.name);
+                        MyLogUtil.debug("原名: " + last.name);
                         // 方式1:找到bean类设置新属性,然后告诉manager你改了那些属性
                         last.name = "日本省";
                         manager.update(last, "name");
@@ -158,7 +158,7 @@ public class XUtilsActivity extends BaseActivity {
 //                        manager.update(Province.class, WhereBuilder.b("id", "=", "30"), new KeyValue("name", "日本省"));
 
                         Province now = manager.selector(Province.class).where("id", "=", "30").findFirst();
-                        MyLogUtil.d("改完后的名字: " + now.name);
+                        MyLogUtil.debug("改完后的名字: " + now.name);
                         showToast("成功改掉了一个省的名字");
                     } catch (DbException e1) {
                         e1.printStackTrace();
@@ -176,7 +176,7 @@ public class XUtilsActivity extends BaseActivity {
                                 showToast("你查到了" + provinces.size() + "个省");
                                 for (int i = 0; i < provinces.size(); i++) {
                                     Province province = provinces.get(i);
-                                    MyLogUtil.d(province.toString());
+                                    MyLogUtil.debug(province.toString());
                                 }
                             } catch (DbException e1) {
                                 e1.printStackTrace();
@@ -296,13 +296,13 @@ public class XUtilsActivity extends BaseActivity {
 
                         @Override
                         public void onSuccess(File result) {
-                            MyLogUtil.d("onSuccess");
+                            MyLogUtil.debug("onSuccess");
                             showToast("下载完成");
                         }
 
                         @Override
                         public void onError(Throwable ex, boolean isOnCallback) {
-                            MyLogUtil.d("onError");
+                            MyLogUtil.debug("onError");
                             showToast("下载失败");
                         }
 
