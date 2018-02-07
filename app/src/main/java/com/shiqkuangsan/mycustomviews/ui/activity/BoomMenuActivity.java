@@ -149,21 +149,4 @@ public class BoomMenuActivity extends BaseActivity {
         navigationView.setSelectedItemId(R.id.menu_picture);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        try {
-            String result = ChoosePicUtil.onActivityResult(requestCode, resultCode, data, this, false);
-            MyLogUtil.info("result: " + result);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        ChoosePicUtil.onActRequestPermissionsResult(requestCode, permissions, grantResults, this);
-    }
-
 }

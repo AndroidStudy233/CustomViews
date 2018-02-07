@@ -45,12 +45,6 @@ public class EasyPagerFragment extends Fragment {
         TextView textView = (TextView) view.findViewById(R.id.tv_fragment);
         pisotion = getArguments().getInt("position");
         textView.setText("这是第" + pisotion + "个fragment");
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChoosePicUtil.startActivityFor(ChoosePicUtil.MATCHING_CODE_CAMERA, getActivity());
-            }
-        });
         return view;
     }
 

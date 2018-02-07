@@ -17,6 +17,7 @@ public class ExampleUnitTest {
         Random random2 = new Random();
         System.out.println(random1.nextInt(8) + 1);
         System.out.println(random2.nextInt(8) + 1);
+
     }
 
 }
