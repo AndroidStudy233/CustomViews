@@ -355,16 +355,24 @@ public class ChoosePicUtil {
                 + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
         tempFile_crop.getParentFile().mkdirs();
+//        Uri outputUri = getImageContentUri(activity, tempFile_crop);
 
-//        Uri outputUri = Uri.fromFile(tempFile_crop); // 报错
-
-        Uri outputUri = getImageContentUri(activity, tempFile_crop);
+        Uri inputUri;
+        Uri outputUri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            inputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(inputPath));
+            outputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_crop);
+        } else {
+            inputUri = Uri.fromFile(new File(inputPath));
+            outputUri = Uri.fromFile(tempFile_crop);
+        }
         Intent cropIntent = new Intent("com.android.camera.action.CROP");
 
         if (Build.VERSION.SDK_INT >= 24) {
             cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
-        cropIntent.setDataAndType(getImageContentUri(activity, new File(inputPath)), "image/*");// inputFile
+        cropIntent.setDataAndType(inputUri, "image/*");// inputFile
+//        cropIntent.setDataAndType(getImageContentUri(activity, new File(inputPath)), "image/*");// inputFile
         // 裁剪框的宽高比例
         cropIntent.putExtra("aspectX", 1);
         cropIntent.putExtra("aspectY", 1);
