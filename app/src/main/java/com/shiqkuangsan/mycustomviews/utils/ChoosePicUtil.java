@@ -351,22 +351,13 @@ public class ChoosePicUtil {
 
 //        Uri outputUri = Uri.fromFile(tempFile_crop); // 报错
 
-//        Uri outputUri = getImageContentUri(activity, tempFile_crop);
+        Uri outputUri = getImageContentUri(activity, tempFile_crop);
         Intent cropIntent = new Intent("com.android.camera.action.CROP");
-
-        Uri outputUri;
-        if (Build.VERSION.SDK_INT < 24) {
-            outputUri = Uri.fromFile(tempFile_crop);
-        } else {
-            outputUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", tempFile_crop);
-            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        }
-        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
 
         if (Build.VERSION.SDK_INT >= 24) {
             cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
-        cropIntent.setDataAndType(outputUri, "image/*");
+        cropIntent.setDataAndType(uri, "image/*");
         // 裁剪框的宽高比例
         cropIntent.putExtra("aspectX", 1);
         cropIntent.putExtra("aspectY", 1);
