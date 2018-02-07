@@ -208,6 +208,7 @@ public class ChoosePicUtil {
             temppath_camera = Environment.getExternalStorageDirectory().getAbsolutePath()
                     + "/" + String.valueOf(System.currentTimeMillis()) + "camera.jpg";
             File tempFile_camera = new File(temppath_camera);
+            tempFile_camera.getParentFile().mkdirs();
 
             /*
                 FileUriExposedException
@@ -271,15 +272,19 @@ public class ChoosePicUtil {
                 if (data != null) {
 
                     if (needCrop) {
-                        startCrop(data.getData(), activity);
+                        if (Build.VERSION.SDK_INT >= 19) {
+                            startCrop(handlerImageAfter19(activity, data), activity);
+                        } else {
+                            startCrop(handlerImageBefore19(activity, data), activity);
+                        }
                     } else {
 
                         if (Build.VERSION.SDK_INT >= 19) {
                             //4.4及以上系统使用这个方法处理图片
-                            return handlerImageAfterKitKat(activity, data);
+                            return handlerImageAfter19(activity, data);
                         } else {
                             //4.4以下系统使用这个方法处理图片
-                            return handlerImageBeforeKitKat(activity, data);
+                            return handlerImageBefore19(activity, data);
                         }
                     }
                 }
@@ -289,7 +294,8 @@ public class ChoosePicUtil {
             case REQUEST_CODE_CAMERA:
                 if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                     if (needCrop) {
-                        startCrop(FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(temppath_camera)), activity);
+                        startCrop(temppath_camera, activity);
+//                        startCrop(FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(temppath_camera)), activity);
                     } else {
                         return temppath_camera;
                     }
@@ -307,13 +313,13 @@ public class ChoosePicUtil {
 
     }
 
-    private static String handlerImageBeforeKitKat(Activity activity, Intent data) {
+    private static String handlerImageBefore19(Activity activity, Intent data) {
         Uri uri = data.getData();
         return getImagePath(uri, activity, null);
     }
 
     @TargetApi(19)
-    private static String handlerImageAfterKitKat(Activity activity, Intent data) {
+    private static String handlerImageAfter19(Activity activity, Intent data) {
         String imagePath = null;
         Uri uri = data.getData();
         if (DocumentsContract.isDocumentUri(activity, uri)) {
@@ -340,14 +346,15 @@ public class ChoosePicUtil {
     /**
      * 剪切图片,可以自定义剪切参数
      *
-     * @param uri      数据标识
-     * @param activity context对象
+     * @param inputPath 数据标识
+     * @param activity  context对象
      */
-    private static void startCrop(Uri uri, Activity activity) throws IOException {
+    private static void startCrop(String inputPath, Activity activity) throws IOException {
         // 定义缓存路径, 创建File对象，用于存储裁剪后的图片，避免更改原图
         temppath_crop = Environment.getExternalStorageDirectory().getAbsolutePath()
                 + "/" + String.valueOf(System.currentTimeMillis()) + "crop.jpg";
         File tempFile_crop = new File(temppath_crop);
+        tempFile_crop.getParentFile().mkdirs();
 
 //        Uri outputUri = Uri.fromFile(tempFile_crop); // 报错
 
@@ -357,7 +364,7 @@ public class ChoosePicUtil {
         if (Build.VERSION.SDK_INT >= 24) {
             cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         }
-        cropIntent.setDataAndType(uri, "image/*");
+        cropIntent.setDataAndType(getImageContentUri(activity, new File(inputPath)), "image/*");// inputFile
         // 裁剪框的宽高比例
         cropIntent.putExtra("aspectX", 1);
         cropIntent.putExtra("aspectY", 1);
@@ -367,7 +374,7 @@ public class ChoosePicUtil {
         cropIntent.putExtra("outputY", 200);
         cropIntent.putExtra("scale", true);//支持缩放
         cropIntent.putExtra("return-data", false);
-        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置
+        cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);// 剪切后输出图片位置outputFile
         cropIntent.putExtra("outputFormat", "JPEG");//输出图片格式
         cropIntent.putExtra("noFaceDetection", true);//取消人脸识别
         activity.startActivityForResult(cropIntent, REQUEST_CODE_CROP);
