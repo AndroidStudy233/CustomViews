@@ -24,7 +24,7 @@ android {
     }
 }
 greendao {
-    schemaVersion 1
+    schemaVersion 2
     daoPackage 'green'  //生成的DAO，DaoMaster和DaoSession的包名。默认是实体的包名。
     targetGenDir 'src/main/java'  //生成源文件的路径。默认源文件目录是在build目录中的(build/generated/source/greendao)。
 }

@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.greendao.demo.MyApplication;
 import com.greendao.demo.UserAdapter;
 import com.greendao.demo.entity.User;
 import com.greendaodemo.R;
@@ -19,10 +18,15 @@ import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
-import green.DaoSession;
+
 import green.UserDao;
+import green.greendaoUtils.DBManager;
 
-
+/**
+ * 修改说明
+ * 李小米  2018.2.26
+ * 修改userDao的获取方式，去DBManager获取
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvUserName;
     private EditText etName;
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String name;
     private String sex;
     private int age;
-    private DaoSession daoSession;
+    //    private DaoSession daoSession;
     private UserDao userDao;
     private ListView listView;
     private UserAdapter adapter;
@@ -65,8 +69,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnSelect.setOnClickListener(this);
         btnSelectAll.setOnClickListener(this);
         translate.setOnClickListener(this);
-        daoSession = MyApplication.getApplication().getDaoSession();
-        userDao = daoSession.getUserDao();
+//        daoSession = MyApplication.getApplication().getDaoSession();
+        userDao = DBManager.getInstance().getDaoSession().getUserDao();
 //        userDao.delete(); 增删改查
 //        userDao.update();
 //        userDao.insert();
