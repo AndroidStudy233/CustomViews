@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.google.gson.Gson;
 import com.greendao.demo.entity.GreenDaoBean;
 import com.greendaodemo.R;
 
@@ -159,9 +160,9 @@ public class GreenDaoActivity extends AppCompatActivity {
                 List<GreenDaoBean> greenDaoBeans = getDao().loadAll();
                 if (greenDaoBeans.size() != 0) {
                     GreenDaoBean load = getDao().load(greenDaoBeans.get(0).getGreenDaoId());
-                    greendaotv.setText("查询完成全部：" + greenDaoBeans.toString() + "按主键查询：" + load.toString());
+                    greendaotv.setText("查询完成全部：" + new Gson().toJson(greenDaoBeans) +"按主键查询：" + new Gson().toJson(load));
                 } else {
-                    greendaotv.setText("查询完成全部：" + greenDaoBeans.toString());
+                    greendaotv.setText("查询完成全部：" + new Gson().toJson(greenDaoBeans));
                 }
 
             }
@@ -172,7 +173,7 @@ public class GreenDaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 List<GreenDaoBean> list = getDao().queryBuilder().orderAsc(GreenDaoBeanDao.Properties.GreenDaoIndex).list();
                 if (list != null) {
-                    greendaotv.setText("升序查询：" + list.toString());
+                    greendaotv.setText("升序查询：" + new Gson().toJson(list));
                 } else {
                     greendaotv.setText("升序查询：没有这个对象");
                 }
@@ -185,7 +186,7 @@ public class GreenDaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 List<GreenDaoBean> list = getDao().queryBuilder().orderDesc(GreenDaoBeanDao.Properties.GreenDaoIndex).list();
                 if (list != null) {
-                    greendaotv.setText("降序查询：" + list.toString());
+                    greendaotv.setText("降序查询：" + new Gson().toJson(list));
                 } else {
                     greendaotv.setText("降序查询：没有这个对象");
                 }
@@ -201,7 +202,7 @@ public class GreenDaoActivity extends AppCompatActivity {
                         list();
 
                 if (list != null) {
-                    greendaotv.setText("and查询：" + list.toString());
+                    greendaotv.setText("and查询：" + new Gson().toJson(list));
                 } else {
                     greendaotv.setText("and查询：没有这个对象");
                 }
@@ -218,7 +219,7 @@ public class GreenDaoActivity extends AppCompatActivity {
                         list();
 
                 if (list != null) {
-                    greendaotv.setText("and查询：" + list.toString());
+                    greendaotv.setText("and查询：" + new Gson().toJson(list));
                 } else {
                     greendaotv.setText("and查询：没有这个对象");
                 }
@@ -231,7 +232,7 @@ public class GreenDaoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 GreenDaoBean unique = getDao().queryBuilder().where(GreenDaoBeanDao.Properties.GreenDaoIndex.eq(4)).unique();
                 if (unique != null) {
-                    greendaotv.setText("查询完成：" + unique.toString());
+                    greendaotv.setText("查询完成：" + new Gson().toJson(unique));
                 } else {
                     greendaotv.setText("查询完成：没有这个对象");
                 }

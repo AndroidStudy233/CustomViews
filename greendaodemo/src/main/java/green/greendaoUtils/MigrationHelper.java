@@ -29,10 +29,10 @@ public class MigrationHelper {
 
     public void migrate(Database db, Class<? extends AbstractDao<?, ?>>... daoClasses) {
         Log.e("###", "####################################数据库升级操作####################################");
-        generateTempTables(db, daoClasses);
-        DaoMaster.dropAllTables(db, true);
-        DaoMaster.createAllTables(db, false);
-        restoreData(db, daoClasses);
+        generateTempTables(db, daoClasses);//创建出临时表，并且把数据转存到临时表中
+        DaoMaster.dropAllTables(db, true);//删除数据库
+        DaoMaster.createAllTables(db, false);//创建新的数据库
+        restoreData(db, daoClasses);//然后把临时表的数据转存到新的数据库中
     }
 
     /**
@@ -46,15 +46,15 @@ public class MigrationHelper {
             DaoConfig daoConfig = new DaoConfig(db, daoClasses[i]);
 
             String divider = "";
-            String tableName = daoConfig.tablename;
-            String tempTableName = daoConfig.tablename.concat("_TEMP");
+            String tableName = daoConfig.tablename;//拿到表名
+            String tempTableName = daoConfig.tablename.concat("_TEMP");//临时表名
             ArrayList<String> properties = new ArrayList<>();
 
             StringBuilder createTableStringBuilder = new StringBuilder();
 
             createTableStringBuilder.append("CREATE TABLE ").append(tempTableName).append(" (");
 
-            for (int j = 0; j < daoConfig.properties.length; j++) {
+            for (int j = 0; j < daoConfig.properties.length; j++) {//遍历每一个字段
                 String columnName = daoConfig.properties[j].columnName;
 
                 if (getColumns(db, tableName).contains(columnName)) {
@@ -63,14 +63,14 @@ public class MigrationHelper {
                     String type = null;
 
                     try {
-                        type = getTypeByClass(daoConfig.properties[j].type);
+                        type = getTypeByClass(daoConfig.properties[j].type);//获取字段类型
                     } catch (Exception exception) {
                         exception.printStackTrace();
                     }
 
-                    createTableStringBuilder.append(divider).append(columnName).append(" ").append(type);
+                    createTableStringBuilder.append(divider).append(columnName).append(" ").append(type);//拼接sql
 
-                    if (daoConfig.properties[j].primaryKey) {
+                    if (daoConfig.properties[j].primaryKey) {//如果是主键，就设置上主键
                         createTableStringBuilder.append(" PRIMARY KEY");
                     }
 
@@ -79,8 +79,10 @@ public class MigrationHelper {
             }
             createTableStringBuilder.append(");");
 
-            db.execSQL(createTableStringBuilder.toString());
+            db.execSQL(createTableStringBuilder.toString()); //执行sql,到这里创建出临时表
 
+
+            //这里把数据库里边的数据转存到临时表中
             StringBuilder insertTableStringBuilder = new StringBuilder();
 
             insertTableStringBuilder.append("INSERT INTO ").append(tempTableName).append(" (");
@@ -114,7 +116,7 @@ public class MigrationHelper {
                     properties.add(columnName);
                 }
             }
-
+            //存到新表里边
             StringBuilder insertTableStringBuilder = new StringBuilder();
 
             insertTableStringBuilder.append("INSERT INTO ").append(tableName).append(" (");
@@ -122,7 +124,7 @@ public class MigrationHelper {
             insertTableStringBuilder.append(") SELECT ");
             insertTableStringBuilder.append(TextUtils.join(",", properties));
             insertTableStringBuilder.append(" FROM ").append(tempTableName).append(";");
-
+            //删除临时表
             StringBuilder dropTableStringBuilder = new StringBuilder();
             dropTableStringBuilder.append("DROP TABLE ").append(tempTableName);
             db.execSQL(insertTableStringBuilder.toString());
