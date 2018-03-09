@@ -252,5 +252,15 @@
                 android:text="draghelper示例" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="iconfontclick"
+                android:text="使用阿里的矢量图" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

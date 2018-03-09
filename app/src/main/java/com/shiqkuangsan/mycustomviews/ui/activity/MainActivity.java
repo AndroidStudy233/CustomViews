@@ -346,7 +346,17 @@ public class MainActivity extends FrameBaseActivity {
     public void circlechat(View view) {
         startActivity(new Intent(this, CircleChatActivity.class));
     }
+
     public void draghelper(View view) {
         startActivity(new Intent(this, DragHelperActivity.class));
+    }
+
+    /**
+     * 使用Iconfont/FontAwesome矢量图
+     *
+     * @param view
+     */
+    public void iconfontclick(View view) {
+        startActivity(new Intent(this, IconfontActivity.class));
     }
 }

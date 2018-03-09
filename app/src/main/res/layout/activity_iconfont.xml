@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.joanzapata.iconify.widget.IconButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="{icon-bofang}"
+        android:textSize="50dp" />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:textSize="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="{icon-fenxiang}" />
+
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome {fa-smile-o} {fa-hand-peace-o} !"
+        android:textColor="#2A9BDA"
+        android:textSize="30sp" />
+
+</LinearLayout>

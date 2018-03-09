@@ -4,6 +4,9 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.os.Handler;
 
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
+import com.joanzapata.iconify.fonts.IoniconsModule;
 import com.nostra13.universalimageloader.cache.disc.impl.LimitedAgeDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -16,6 +19,7 @@ import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.shiqkuangsan.mycustomviews.constant.Constant;
 import com.shiqkuangsan.mycustomviews.db.RealmManager;
+import com.shiqkuangsan.mycustomviews.utils.font.TestFontModule;
 
 import org.xutils.x;
 
@@ -33,7 +37,7 @@ public class MyApplication extends Application {
         super.onCreate();
 
         initImageLoader();
-
+        initFont();
         x.Ext.init(this);
         x.Ext.setDebug(true);
 
@@ -95,8 +99,20 @@ public class MyApplication extends Application {
                 .build();
     }
 
+
+    /**
+     * 初始化字体
+     */
+    public void initFont() {
+        Iconify
+                .with(new FontAwesomeModule())
+                .with(new IoniconsModule())
+                .with(new TestFontModule());//自定义字体图标
+    }
+
     private static Handler handler;
-    public static Handler getHandler(){
+
+    public static Handler getHandler() {
         return handler;
     }
 
