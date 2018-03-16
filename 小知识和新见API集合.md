@@ -756,6 +756,12 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ---
 
+### Mac上使用 terminal 的时候 gradlew 命令没有权限.
+
+    sudo chmod +x gradlew  
+
+---
+
 ## 输入法相关
 
 	android:windowSoftInputMode
