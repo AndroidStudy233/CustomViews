@@ -154,6 +154,9 @@ android {
         compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
         compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
 
+        // 沉浸式测试    StatusBarCompat.setStatusBarColor
+        compile 'com.githang:status-bar-compat:0.7'
+
         // 依赖本地module(library)
         compile(project(':cityselector')) {
             // 示例: 配置依赖该类库时不包括这些lib(当引起冲突时)
