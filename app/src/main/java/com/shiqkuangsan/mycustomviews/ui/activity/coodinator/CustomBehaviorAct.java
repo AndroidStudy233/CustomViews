@@ -3,7 +3,10 @@ package com.shiqkuangsan.mycustomviews.ui.activity.coodinator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.shiqkuangsan.mycustomviews.R;
 import com.shiqkuangsan.mycustomviews.base.BaseActivity;
+
+import org.xutils.view.annotation.ContentView;
 
 /**
  * Created by shiqkuangsan on 2017/9/15. <p>
@@ -11,6 +14,7 @@ import com.shiqkuangsan.mycustomviews.base.BaseActivity;
  * Author: shiqkuangsan <p>
  * Description: 预留展示自定义behavior(GoogleMap效果)
  */
+@ContentView(R.layout.activity_custom_behavior)
 public class CustomBehaviorAct extends BaseActivity {
 
     @Override
