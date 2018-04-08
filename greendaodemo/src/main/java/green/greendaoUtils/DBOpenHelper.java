@@ -12,9 +12,9 @@ import green.UserDao;
 
 
 /**
- * @author 小东
+ * @author 李小米
  * @version v1.0
- * @date 2017/2/28 10:00
+ * @date 2018/4/08 10:00
  * @detail 数据库升级
  */
 public class DBOpenHelper extends DaoMaster.OpenHelper {
@@ -27,6 +27,16 @@ public class DBOpenHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         super.onUpgrade(db, oldVersion, newVersion);
-        MigrationHelper.getInstance().migrate(db, UserDao.class,GreenDaoBeanDao.class,TestBeanDao.class);
+        //这里把所有的数据库表都放进来就可以了，不用分别放
+        //在方法里边写了操作
+        MigrationHelper.getInstance().migrate(db, true, UserDao.class, GreenDaoBeanDao.class, TestBeanDao.class);
+    }
+
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//        super.onDowngrade(db, oldVersion, newVersion);
+        //数据库降级操作
+        //这里有个bug,版本高的数据库---》版本低   新的数据库表不会被删除
+        MigrationHelper.getInstance().migrate(wrap(db), false, UserDao.class, GreenDaoBeanDao.class, TestBeanDao.class);
     }
 }
