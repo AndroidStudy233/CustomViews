@@ -190,4 +190,23 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+
+    <style name="DialogList" parent="@android:style/Theme.Dialog">
+        <!--去掉边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--悬浮-->
+        <item name="android:windowIsFloating">true</item>
+        <!--不需要完全透明-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--背景颜色-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--不需要标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--充满全屏幕-->
+        <item name="android:windowFullscreen">true</item>
+        <!-- Dialog以外的区域模糊效果-->
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

@@ -359,4 +359,12 @@ public class MainActivity extends FrameBaseActivity {
     public void iconfontclick(View view) {
         startActivity(new Intent(this, IconfontActivity.class));
     }
+
+    /**
+     * 一个弹出框，单选或者多选
+     */
+    public void chooseDataClick(View view){
+        startActivity(new Intent(this, DialogListActivity.class));
+    }
+
 }

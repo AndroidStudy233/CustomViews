@@ -261,6 +261,11 @@
                 style="@style/style_main_normal_button"
                 android:onClick="iconfontclick"
                 android:text="使用阿里的矢量图" />
+
+            <Button
+                style="@style/style_main_normal_button"
+                android:onClick="chooseDataClick"
+                android:text="选择框" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
