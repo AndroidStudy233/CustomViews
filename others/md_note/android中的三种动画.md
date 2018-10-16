@@ -13,7 +13,7 @@
 		    <item android:drawable="@drawable/g3" android:duration="200" />
 		</animation-list>
 
-	(1) 根节点属性: android:oneshot="" 设置是否仅播放一次shurufa 
+	(1) 根节点属性: android:oneshot="" 设置是否仅播放一次
 	
 	(2) 子节点属性: android:drawable 设置每一帧图片
 	
