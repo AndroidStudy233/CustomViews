@@ -9,15 +9,16 @@ buildscript {
         jcenter()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        google()
     }
     // 依赖, 一般依赖的库名都是 组名:库名:版本号, 其中版本号可以使用通配符保证获取最新如2.2.1 -> 2.2.+ / 2.2+ / +
     // 由于项目创建的时间较早. 暂时的gradle插件请保持在 ≤ 2.3.3
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         // realm插件
-        classpath 'io.realm:realm-gradle-plugin:2.2.1'
+        classpath 'io.realm:realm-gradle-plugin:5.7.0'
         // retrolambda
-        classpath 'me.tatarka:gradle-retrolambda:3.4.0'
+//        classpath 'me.tatarka:gradle-retrolambda:3.4.0'
         //GreenDao
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
@@ -30,6 +31,7 @@ allprojects {
         mavenCentral()
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.google.com' }
+        google()
     }
 }
 
@@ -45,4 +47,9 @@ task hello {
 // 表示该task在执行阶段才会执行任务, 上面的编译过程直接执行
 task helloworld << {
     println 'Hello World'
+}
+
+// 闭包的委托对象，
+task delegateObject{
+    assert delegate == rootProject.delegateObject
 }

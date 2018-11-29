@@ -2,22 +2,18 @@
 // 其实是Groovy语法: 调用了project对象的apply方法, 传入了一个以plugin为key的map
 // 完整写法(包含下面那个) project.apply([plugin: 'com.android.application', plugin: 'realm-android'])
 apply plugin: 'com.android.application'
-
 apply plugin: 'realm-android'
-
 // 定义时间方法(一般用于app打包命名)
 def static getDate() {
     def date = new Date()
     def formattedDate = date.format('yyyyMMddHHmm')
     return formattedDate
 }
-
 // signingConfigs直接配置密钥密码什么的必然不太好, 所以一般在.properties(比如local.properties)中配置
 Properties properties = new Properties()
 // local.properties file in the root director
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def todayWeather = properties.getProperty("weather.desc")
-
 android {
     // 这边的值也可以在gradle.properties文件中定义, 比如
     compileSdkVersion APP_COMPILE_SDK_VERSION as int
@@ -35,25 +31,35 @@ android {
         versionName "1.0"
     }
 
+    flavorDimensions "api", "mode"
+
     // 编译类型配置, 不同的编译配置对应的有不同的编译配置, 每一个Build Type(只有1个fralvor)都会生成一个APK
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             // 指定签名配置
-            // signingConfig signingConfigs.release
-            applicationVariants.all { variant ->
-                // variant.buildType.name 写在release中该值即为release
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        // 输出apk名称为AndroidStudy_v1.0_flavor_201706060606.apk
-//                        def fileName = "AndroidStudy_v${defaultConfig.versionName}_${variant.productFlavors[0] ? variant.productFlavors[0].name : 'flavor'}_${getDate()}.apk"
+//            signingConfig signingConfigs.release
+
+            //--过时api
+//            applicationVariants.all { variant ->
+//                // variant.buildType.name 写在release中该值即为release
+//                variant.outputs.each { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                        // 输出apk名称为AndroidStudy_v1.0_flavor_201706060606.apk
+////                        def fileName = "AndroidStudy_v${defaultConfig.versionName}_${variant.productFlavors[0] ? variant.productFlavors[0].name : 'flavor'}_${getDate()}.apk"
+////                        output.outputFile = new File(outputFile.parent, fileName)
+//                        // 一般调试期间不要这样, 不然每次运行都会产生一个新apk, 用同名的导致覆盖就好了
+//                        def fileName = "AndroidStudy_v${defaultConfig.versionName}.apk"
 //                        output.outputFile = new File(outputFile.parent, fileName)
-                        // 一般调试期间不要这样, 不然每次运行都会产生一个新apk, 用同名的导致覆盖就好了
-                        def fileName = "AndroidStudy_v${defaultConfig.versionName}.apk"
-                        output.outputFile = new File(outputFile.parent, fileName)
-                    }
+//                    }
+//                }
+
+            // gradle 3.0之后的用法
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "AndroidStudy_v${variant.name}-${variant.versionName}.apk"
                 }
             }
         }
@@ -89,85 +95,104 @@ android {
 //    }
 
 //
-//    compile (project('xxx')){
+//    implementation (project('xxx')){
 //        exclude group: 'com.google.code.gson'
 //        exclude group: 'com.squareup.okhttp3'
 //    }
 
+}
+
 // 可以给单独的module指定仓库配置
-    dependencies {
-        // 使用files()方法或者fileTree()方法添加编译依赖, files()的话一般都是相对路径
-        // compile files('libs/xxx-1.0.jar')
-        // fileTree()要相对简单, 一次可以配置所有jar包, aar包. 比如include属性值是个数组['*.jar', '*.aar']
-        compile fileTree(include: ['*.jar'], dir: 'libs')
-        testCompile 'junit:junit:4.12'
-        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-            exclude group: 'com.android.support', module: 'support-annotations'
-        })
-        compile rootProject.ext.dependencies.appcompatv7
-        compile rootProject.ext.dependencies.supportv4
-        compile rootProject.ext.dependencies.recyclerview
-        compile rootProject.ext.dependencies.design
-        compile rootProject.ext.dependencies.cardview
-        compile rootProject.ext.dependencies.constraint
+dependencies {
 
-        // xUtils
-        compile rootProject.ext.dependencies.xUtils
-        // Glide库
-        compile rootProject.ext.dependencies.glide
-        compile rootProject.ext.dependencies.glidePro
-        // ImageLoader
-        compile rootProject.ext.dependencies.imageloader
-        // 汉字转拼音
-        compile 'com.github.promeg:tinypinyin:1.0.0'
-        // 下拉刷新
-        compile 'in.srain.cube:ultra-ptr:1.0.11'
-        // 图片选择器
-        compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
-        compile 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
-        // 6.0简易申请权限
-        compile 'pub.devrel:easypermissions:0.2.0'
-        // Alibaba json工具
-        compile 'com.alibaba:fastjson:1.2.17'
-        // recyclerview的adapter / item / viewholder动画
-        compile 'jp.wasabeef:recyclerview-animators:2.2.5'
-        // 图片缩放
-        compile 'com.bm.photoview:library:1.4.1'
-        // facebook的弹簧动画库
-        //    compile 'com.facebook.rebound:rebound:0.3.8'
-        // View碎裂效果
-        compile 'tyrantgit:explosionfield:1.0.1'
-        //  原版PhotoView库 (其中上面依赖的bga-photopicker其实已经依赖了PhotoView库)
-        //    compile 'com.github.chrisbanes:PhotoView:1.3.1'
-        // 小白点指示器
-        compile 'com.romandanylyk:pageindicatorview:0.0.9'
-        // alibaba的vlayout库
-        compile('com.alibaba.android:vlayout:1.0.5@aar') {
-            transitive = true
-        }
-        // 超级RecyclerView库, 可实现各种效果
-        compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
-        // BoomMenu
-        compile 'com.nightonke:boommenu:2.1.0'
+    // 使用files()方法或者fileTree()方法添加编译依赖, files()的话一般都是相对路径
 
-        //图标
-        compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
-        compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+    // implementation files('libs/xxx-1.0.jar')
 
-        // 沉浸式测试    StatusBarCompat.setStatusBarColor
-        compile 'com.githang:status-bar-compat:0.7'
+    // fileTree()要相对简单, 一次可以配置所有jar包, aar包. 比如include属性值是个数组['*.jar', '*.aar']
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation rootProject.ext.dependencies.appcompatv7
+    implementation rootProject.ext.dependencies.supportv4
+    implementation rootProject.ext.dependencies.recyclerview
+    implementation rootProject.ext.dependencies.design
+    implementation rootProject.ext.dependencies.cardview
+    implementation rootProject.ext.dependencies.constraint
 
-        // 依赖本地module(library)
-        compile(project(':cityselector')) {
-            // 示例: 配置依赖该类库时不包括这些lib(当引起冲突时)
-            // exclude group: 'com.google.code.gson'
-            // exclude group: 'com.squareup.okhttp3'
-        }
+    // xUtils
+    implementation rootProject.ext.dependencies.xUtils
 
+    // Glide库
+    implementation rootProject.ext.dependencies.glide
+
+    //        implementation rootProject.ext.dependencies.glidePro
+
+    // ImageLoader
+    implementation rootProject.ext.dependencies.imageloader
+
+    // 汉字转拼音
+    implementation 'com.github.promeg:tinypinyin:1.0.0'
+
+    // 下拉刷新
+    implementation 'in.srain.cube:ultra-ptr:1.0.11'
+
+    // 图片选择器
+    implementation 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
+    implementation 'cn.bingoogolapple:bga-photopicker:1.2.3@aar'
+
+    // 6.0简易申请权限
+    implementation 'pub.devrel:easypermissions:0.2.0'
+
+    // Alibaba json工具
+    implementation 'com.alibaba:fastjson:1.2.17'
+
+    // recyclerview的adapter / item / viewholder动画
+    implementation 'jp.wasabeef:recyclerview-animators:2.2.5'
+
+    // 图片缩放
+    implementation 'com.bm.photoview:library:1.4.1'
+
+    // facebook的弹簧动画库
+
+    //    implementation 'com.facebook.rebound:rebound:0.3.8'
+
+    // View碎裂效果
+    implementation 'tyrantgit:explosionfield:1.0.1'
+
+    //  原版PhotoView库 (其中上面依赖的bga-photopicker其实已经依赖了PhotoView库)
+
+    //    implementation 'com.github.chrisbanes:PhotoView:1.3.1'
+
+    // 小白点指示器
+    implementation 'com.romandanylyk:pageindicatorview:0.0.9'
+
+    // alibaba的vlayout库
+    implementation('com.alibaba.android:vlayout:1.0.5@aar') {
+        transitive = true
     }
 
-    // 依赖glide后会出jsr305版本冲突.这里强制使用更高的, 也可以在上面androidTestCompile中剔除group->'com.google.code.findbugs'
-    configurations.all {
-        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
-    }
+    // 超级RecyclerView库, 可实现各种效果
+    implementation 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+
+    // BoomMenu
+    implementation 'com.nightonke:boommenu:2.1.0'
+
+    //图标
+    implementation 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
+    implementation 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+
+    // 沉浸式测试    StatusBarCompat.setStatusBarColor
+    implementation 'com.githang:status-bar-compat:0.7'
+
+    // 依赖本地module(library)
+    implementation project(':cityselector')
+    implementation files('.././cityselector/libs/AMap_Location_V3.2.0_20161205.jar')
+}
+
+// 依赖glide后会出jsr305版本冲突.这里强制使用更高的, 也可以在上面androidTestCompile中剔除group->'com.google.code.findbugs'
+configurations.all {
+    resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
 }

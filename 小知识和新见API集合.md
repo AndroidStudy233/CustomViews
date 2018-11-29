@@ -51,7 +51,7 @@ shiqkuangsan-notebook
 
 ## 汉字转拼音类库
 
-		compile 'com.github.promeg:tinypinyin:1.0.0'
+		implementation 'com.github.promeg:tinypinyin:1.0.0'
 
 		/**
 		 * 如果c为汉字，则返回大写拼音；如果c不是汉字，则返回String.valueOf(c)
@@ -390,7 +390,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 
 ### android中的百分比布局
 
-	 compile 'com.android.support:percent:22.2.0'
+	 implementation 'com.android.support:percent:22.2.0'
 
 	// 支持的属性
 
@@ -594,7 +594,7 @@ path=D:\Android\AVDs\.android\avd\Android2.2.avd
 			
 			//gradle 添加依赖
 			dependencies {  
-			    compile 'com.android.support:palette-v7:24.0.0'
+			    implementation 'com.android.support:palette-v7:24.0.0'
 			}
 
 
@@ -1348,7 +1348,7 @@ value -将由编译器在注释的元素中取消显示的警告集。允许使�
 
 fastjson
 
-	compile 'com.alibaba:fastjson:1.2.17'
+	implementation 'com.alibaba:fastjson:1.2.17'
 
 ---
 
@@ -1435,8 +1435,8 @@ fastjson
 		}
 		
 		dependencies {
-		  compile 'com.github.bumptech.glide:glide:3.7.0'
-		  compile 'com.android.support:support-v4:19.1.0'
+		  implementation 'com.github.bumptech.glide:glide:3.7.0'
+		  implementation 'com.android.support:support-v4:19.1.0'
 		}
 
 2. 使用
