@@ -2,10 +2,6 @@ package test;
 
 import org.junit.Test;
 
-import java.io.File;
-
-import static org.junit.Assert.*;
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -13,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
+    public void addition_isCorrect() {
         String text = "23333";
         System.out.println(text);
     }

@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class ApplicationTest {
     @Test
-    public void useAppContext() throws Exception {
+    public void useAppContext() {
 
     }
 }

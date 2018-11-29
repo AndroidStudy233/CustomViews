@@ -1,9 +1,9 @@
 package com.shiqkuangsan.rxandroidmvp.retrofit;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /*************************************************
  * <p>版权所有：2016-深圳市赛为安全技术服务有限公司</p>

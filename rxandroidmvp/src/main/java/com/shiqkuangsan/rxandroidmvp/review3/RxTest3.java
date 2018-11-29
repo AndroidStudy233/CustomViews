@@ -1,16 +1,15 @@
 package com.shiqkuangsan.rxandroidmvp.review3;
 
+import android.annotation.SuppressLint;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.functions.Func2;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by shiqkuangsan on 2017/2/8.
@@ -54,8 +53,8 @@ public class RxTest3 {
 //        });
         // 箭头函数你好
         Observable<String> observable = Observable.create(
-                (Subscriber<? super String> subscriber) -> {
-                    if (!subscriber.isUnsubscribed()) {
+                (subscriber) -> {
+                    if (!subscriber.isDisposed()) {
                         // 如果还存在订阅关系的话
                         subscriber.onNext("hello");
                         subscriber.onNext("rxjava");
@@ -64,15 +63,15 @@ public class RxTest3 {
                         } else {
                             subscriber.onNext(getJsonData());
                         }
-                        subscriber.onCompleted();
+                        subscriber.onComplete();
                     }
                 }
         );
 
         // 创建观察者
-        Subscriber<String> subscriber = new Subscriber<String>() {
+        Observer<String> subscriber = new Observer<String>() {
             @Override
-            public void onCompleted() {
+            public void onComplete() {
                 System.out.println("已完成onCompleted");
                 count = 0;
             }
@@ -83,18 +82,28 @@ public class RxTest3 {
                 e.printStackTrace();
             }
 
+            /*
+            * 订阅时候回调
+            * 得到的 Disposable可以用来取消事件
+            * */
+            @Override
+            public void onSubscribe(Disposable d) {
+
+            }
+
             @Override
             public void onNext(String s) {
                 System.out.println("观察到改变" + (++count) + ": " + s);
             }
 
             /*
+                 RxJava 1的方法
                 另外提一下这个方法.会在 subscribe 刚开始，而事件还未发送之前被调用，可以用于做一些准备工作
              */
-            @Override
-            public void onStart() {
-                super.onStart();
-            }
+//            @Override
+//            public void onStart() {
+//                super.onStart();
+//            }
         };
 
         // 订阅 一旦被观察者(observable)被订阅了,其中的call方法就会被执行 从而触发观察者的回调
@@ -116,13 +125,19 @@ public class RxTest3 {
     /**
      * 实现观察者模式    方式2: just方式
      */
+    @SuppressLint("CheckResult")
     private static void method2() {
         // 将会依次调用 onNext(hello) --> onNext(world) --> onNext(rxjava) --> oncomplete
         // 值得一提的是just方式的参数可以是一个个数组.会依次遍历数组执行...这就厉害啦
         Observable.just("hello", "world", "rxjava")
-                .subscribe(new Subscriber<String>() {
+                .subscribe(new Observer<String>() {
                     @Override
-                    public void onCompleted() {
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
                         System.out.println("已完成onCompleted");
                         count = 0;
                     }
@@ -143,11 +158,8 @@ public class RxTest3 {
 
         // 如果你不需要其他操作,只需要onNext中处理可以使用 Action1 类(就是相当于一个onNext的subscriber)
         Observable.just("hello2", "world2", "rxjava2")
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
+                .subscribe(s-> {
                         System.out.println("观察到改变: " + s);
-                    }
                 });
 
         System.out.println("=================");
@@ -176,30 +188,25 @@ public class RxTest3 {
      * <p>
      * 2.数组
      */
+    @SuppressLint("CheckResult")
     private static void method3() {
         // 集合
         List<String> list = new ArrayList<>();
         list.add("hello");
         list.add("world");
         list.add("rxjava");
-        Observable.from(list)
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
+        Observable.fromIterable(list)
+                .subscribe(s-> {
                         System.out.println("观察到改变: " + s);
-                    }
                 });
 
         System.out.println("=================");
 
         // 数组
         String[] words = {"hello2", "world2", "rxjava2"};
-        Observable.from(words)
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
+        Observable.fromArray(words)
+                .subscribe(s-> {
                         System.out.println("观察到改变: " + s);
-                    }
                 });
     }
 
@@ -216,48 +223,34 @@ public class RxTest3 {
      * scan: 如下scan()
      * timer: 如下timer()
      */
+    @SuppressLint("CheckResult")
     void fitler() {
         Observable.just(1, 2, 3, 4, 5)
-                .filter(new Func1<Integer, Boolean>() {
-                    @Override
-                    public Boolean call(Integer integer) {
+                .filter(integer-> {
                         return integer < 3;// 小于3才返回true,于是过滤了3,4
-                    }
                 })
-                .subscribe(new Action1<Integer>() {
-                    @Override
-                    public void call(Integer integer) {
+                .subscribe(integer-> {
                         System.out.println("fitler---" + integer);
-                    }
                 });
     }
 
+    @SuppressLint("CheckResult")
     void scan() {
         // 第一次发射得到1，作为结果与2相加；发射得到3，作为结果与3相加
         Observable.just(1, 2, 3, 4, 5)
-                .scan(new Func2<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer call(Integer integer, Integer integer2) {
-                        return integer + integer2;
-                    }
-                })
-                .subscribe(new Action1<Integer>() {
-                    @Override
-                    public void call(Integer integer) {
+                .scan( (integer, integer2)-> integer + integer2)
+                .subscribe(integer-> {
                         System.out.println("scan---" + integer);
-                    }
                 });
     }
 
+    @SuppressLint("CheckResult")
     void timer() {
         // 3秒后输出 hello world . 该方法使用了android线程.因此不能在main中运行测试
         Observable.timer(3, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
+                .subscribe(aLong-> {
                         System.out.println("timer--hello world--" + aLong);
-                    }
                 });
     }
 }

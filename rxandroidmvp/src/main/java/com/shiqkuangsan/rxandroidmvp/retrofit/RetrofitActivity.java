@@ -1,5 +1,6 @@
 package com.shiqkuangsan.rxandroidmvp.retrofit;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -9,6 +10,10 @@ import com.shiqkuangsan.rxandroidmvp.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,11 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 /*************************************************
  * <p>创建人：余志伟</p>
@@ -31,6 +32,8 @@ import rx.schedulers.Schedulers;
  *
  * @version V3.1
  *********************************/
+
+@SuppressLint("CheckResult")
 public class RetrofitActivity extends AppCompatActivity {
 
     @Override
@@ -67,16 +70,11 @@ public class RetrofitActivity extends AppCompatActivity {
         weatherApi.getCityWeather("深圳")//rxjava方式
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<WeatherBean>() {
-                    @Override
-                    public void call(WeatherBean weatherBean) {
+                .subscribe(weatherBean-> {
                         MyLogUtil.e("rx回调call");
-                    }
-                }, new Action1<Throwable>() {   //异常必须加上，不然在无网络会崩溃
-                    @Override
-                    public void call(Throwable throwable) {
+                }, throwable-> {
+            //异常必须加上，不然在无网络会崩溃
                         MyLogUtil.e("rx回调throwable");
-                    }
                 });
     }
 
@@ -88,23 +86,15 @@ public class RetrofitActivity extends AppCompatActivity {
      **/
     public void rxRetroMap(Retrofit retrofit) {
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
-        weatherApi.getCityWeather("深圳").map(new Func1<WeatherBean, WeatherBean.DataBean>() {
-            @Override
-            public WeatherBean.DataBean call(WeatherBean weatherBean) {
+        weatherApi.getCityWeather("深圳")
+                .map(weatherBean-> {
                 return weatherBean.getData();
-            }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<WeatherBean.DataBean>() {
-                    @Override
-                    public void call(WeatherBean.DataBean dataBean) {
+                .subscribe(dataBean-> {
 
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
+                }, throwable-> {
                         MyLogUtil.e("rx map回调throwable");
-                    }
                 });
     }
 
@@ -118,31 +108,19 @@ public class RetrofitActivity extends AppCompatActivity {
     public void rxRetrofitFlatMap(Retrofit retrofit) {
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
         weatherApi.getCityWeather("深圳")
-                .flatMap(new Func1<WeatherBean, Observable<WeatherBean.DataBean>>() {
-                    @Override
-                    public Observable<WeatherBean.DataBean> call(WeatherBean weatherBean) {
+                .flatMap(weatherBean->{
                         //这里一般返回的数据是个集合时才用flatmap
                         List<WeatherBean.DataBean> list = new ArrayList<WeatherBean.DataBean>();
                         list.add(weatherBean.getData());
-                        return Observable.from(list);
-                    }
-                }).map(new Func1<WeatherBean.DataBean, String>() {
-            @Override
-            public String call(WeatherBean.DataBean dataBean) {
-                return dataBean.getCity();
-            }
-        }).subscribeOn(Schedulers.io())
+                        return Observable.fromIterable(list);
+                })
+                .map((Function<WeatherBean.DataBean, Object>) WeatherBean.DataBean::getCity)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
+                .subscribe(s-> {
                         MyLogUtil.e("rxFlatMap-" + s);
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
+                }, throwable-> {
                         MyLogUtil.e("rx flatmap回调throwable");
-                    }
                 });
     }
 

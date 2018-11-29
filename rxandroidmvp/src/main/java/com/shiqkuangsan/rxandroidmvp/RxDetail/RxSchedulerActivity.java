@@ -1,23 +1,23 @@
 package com.shiqkuangsan.rxandroidmvp.RxDetail;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.shiqkuangsan.rxandroidmvp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action0;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /*************************************************
  * <p>类描述 rx的线程变换</p>
@@ -65,15 +65,13 @@ public class RxSchedulerActivity extends AppCompatActivity {
      * <p>
      * observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。(我的理解是观察者的事件触发)
      */
+    @SuppressLint("CheckResult")
     public void changeScheduler() {
         Observable.just(1, 2, 3, 4)
-                .subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程        
-                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程()   
-                .subscribe(new Action1<Integer>() {
-                    @Override
-                    public void call(Integer number) {
-                        Log.d("aaa", "number:" + number);
-                    }
+                .subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
+                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程()
+                .subscribe(number -> {
+                    Log.d("aaa", "number:" + number);
                 });
 
         // doOnSubscribe, 就像subscriber的onstart()方法, 但是onstart不能确定是在哪儿执行的,
@@ -81,53 +79,50 @@ public class RxSchedulerActivity extends AppCompatActivity {
         // 当然相对应的还有doOnNext().
         Observable.just(1, 2, 3, 4)
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Action0() {
-                    @Override
-                    public void call() {
-                        // 比如有这么个操作需要在主线程执行
-                        // progressBar.setVisibility(View.VISIBLE);
-                    }
+                .doOnSubscribe(disposable -> {
+                    // 比如有这么个操作需要在主线程执行
+                    // progressBar.setVisibility(View.VISIBLE);
                 })
                 .subscribeOn(AndroidSchedulers.mainThread()) // 指定doOnSubscribe的操作在主线程
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Integer>() {
-                    @Override
-                    public void call(Integer integer) {
-                        // 比如这里又要隐藏
-                        // progressBar.setVisibility(View.INVISIBLE);
-                    }
+                .subscribe(integer -> {
+                    // 比如这里又要隐藏
+                    // progressBar.setVisibility(View.INVISIBLE);
                 });
 
-        Observable.create(new Observable.OnSubscribe<Drawable>() {
-            @Override
-            public void call(Subscriber<? super Drawable> subscriber) {
-                try {
-                    Thread.sleep(10 * 1000);//这里线程由subscribeOn决定
-                    Drawable drawable = getResources().getDrawable(R.drawable.pic_sample);
-                    subscriber.onNext(drawable);
-                    subscriber.onCompleted();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    subscriber.onError(e);
-                }
+        Observable.create((ObservableOnSubscribe<Drawable>) emitter -> {
+            try {
+                Thread.sleep(10 * 1000);//这里线程由subscribeOn决定
+                Drawable drawable = getResources().getDrawable(R.drawable.pic_sample);
+                emitter.onNext(drawable);
+                emitter.onComplete();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                emitter.onError(e);
             }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Drawable>() {
-                    //以下线程由observeOn决定
                     @Override
-                    public void onCompleted() {
-                        Log.e("GG", "onCompleted");
+                    public void onSubscribe(Disposable d) {
+                        //这里的 Disposable 可以用来取消事件
+                    }
+
+                    @Override
+                    public void onNext(Drawable t) {
+                        imageView.setImageDrawable(t);
                     }
 
                     @Override
                     public void onError(Throwable e) {
+
                         Log.e("GG", e.getMessage());
                     }
 
                     @Override
-                    public void onNext(Drawable drawable) {
-                        imageView.setImageDrawable(drawable);
+                    public void onComplete() {
+
+                        Log.e("GG", "onCompleted");
                     }
                 });
 

@@ -1,11 +1,12 @@
 package com.shiqkuangsan.rxandroidmvp.retrofit;
 
+import android.annotation.SuppressLint;
+
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 
 /*************************************************
  * <p>版权所有：2016-深圳市赛为安全技术服务有限公司</p>
@@ -19,30 +20,28 @@ import rx.schedulers.Schedulers;
  *
  * @version V3.1
  *********************************/
+
+@SuppressLint("CheckResult")
 public class RetrofitTest1 {
-    public static  void main(String[] args){
+    public static void main(String[] args) {
         Retrofit retrofit = getRetrofit("http://wthrcdn.etouch.cn");
         WeatherApi weatherApi = retrofit.create(WeatherApi.class);
         weatherApi.getCityWeather("深圳")
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.immediate())
-                .subscribe(new Action1<WeatherBean>() {
-                    @Override
-                    public void call(WeatherBean weatherBean) {
-                        System.out.print("onNext");
-                    }
+                .observeOn(Schedulers.computation())
+                .subscribe(weatherBean -> {
+                    System.out.print("onNext");
                 });
-        
-
     }
-    public static  Retrofit getRetrofit(String baseUrl){
-      return  new Retrofit.Builder().baseUrl(baseUrl)
-              //增加返回值为String支持
-              .addConverterFactory(ScalarsConverterFactory.create())
-              //增加返回值为Gson的支持（返回值是实体类）
-              .addConverterFactory(GsonConverterFactory.create())
-              //增加返回值为obserable<T>支持
-              .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-              .build();
+
+    public static Retrofit getRetrofit(String baseUrl) {
+        return new Retrofit.Builder().baseUrl(baseUrl)
+                //增加返回值为String支持
+                .addConverterFactory(ScalarsConverterFactory.create())
+                //增加返回值为Gson的支持（返回值是实体类）
+                .addConverterFactory(GsonConverterFactory.create())
+                //增加返回值为obserable<T>支持
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
     }
 }
