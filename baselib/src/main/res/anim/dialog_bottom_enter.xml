@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?> <!--从底部弹出的Dialog的进入动画-->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="300"
+        android:fromYDelta="100%p"/>
+</set>

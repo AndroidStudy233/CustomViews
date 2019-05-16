@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">政治监督</string>
+    <string name="enter_phone_code">手机验证码登入</string>
+    <string name="enter_phone_password">账号密码登入</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="input_phone_code">请输入验证码</string>
+    <string name="send_phone_code">点击获取验证码</string>
+    <string name="input_account">请输入11位手机号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="enter">立即登陆</string>
+    <string name="tip_register">还没注册账号?</string>
+    <string name="enter_register">注册***账号</string>
+    <string name="company_certification">公司认证</string>
+    <string name="community_certification">社区认证</string>
+    <string name="personal_register">个人认证</string>
+    <string name="msg_detail">消息详情</string>
+    <string name="missorder_detail">订单详情</string>
+    <string name="cerfication_tip">请填写您的真实身份信息以便物业认证，门禁支持部分证件刷卡开门。注册成功后、姓名、证件类型、证件号将不允许修改。</string>
+    <string name="img_select" formatted="false">%s/%s</string>
+</resources>

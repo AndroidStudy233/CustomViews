@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/C_F8F8F8"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y535"
+        android:background="@color/C_D70D19"
+        android:gravity="center">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y450"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@drawable/dr_bg_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/enter_password_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/y76"
+            android:layout_marginTop="@dimen/y119"
+            android:layout_marginRight="@dimen/y76"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:background="@drawable/dr_bg_stroken_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x43"
+                    android:background="@drawable/pic_account" />
+
+                <EditText
+                    android:id="@+id/tv_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y90"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x23"
+                    android:background="@null"
+                    android:hint="@string/input_account"
+                    android:inputType="number"
+                    android:textColor="@color/textColor_363636"
+                    android:textColorHint="@color/textColor_A6A6A6"
+                    android:textSize="@dimen/y30" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:layout_marginTop="@dimen/y36"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/dr_bg_stroken_gray"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x43"
+                            android:background="@drawable/pic_password" />
+
+                        <EditText
+                            android:id="@+id/et_pwd"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x23"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="@string/input_password"
+                            android:inputType="textPassword"
+                            android:textColor="@color/textColor_363636"
+                            android:textColorHint="@color/textColor_A6A6A6"
+                            android:textSize="@dimen/y30"
+                            android:imeOptions="actionDone"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/y112"
+            android:layout_marginTop="@dimen/y40"
+            android:layout_marginRight="@dimen/y112"
+            android:layout_marginBottom="@dimen/y20"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/ll_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/icon_auto_login"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/y26"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一个月免登录"
+                    android:textColor="@color/C_999999"
+                    android:textSize="@dimen/y24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_forget_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:textColor="@color/C_999999"
+                android:textSize="@dimen/y24" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_enter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y110"
+            android:layout_marginLeft="@dimen/y95"
+            android:layout_marginTop="@dimen/y60"
+            android:layout_marginRight="@dimen/y95"
+            android:layout_marginBottom="@dimen/y108"
+            android:background="@drawable/dr_bg_primary"
+            android:text="@string/enter"
+            android:textColor="@color/white"
+            android:textSize="@dimen/y36"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>

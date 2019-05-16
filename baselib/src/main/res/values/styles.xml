@@ -1,0 +1,64 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="ToolBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/c_white</item>
+
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/c_green</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorControlNormal" tools:targetApi="lollipop">@color/c_white</item>
+    </style>
+    <!--自定义Dialog的底部弹出的动画,直接从中间弹出的不加动画-->
+    <style name="DialogBottomAnimation"  parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_bottom_exit</item>
+    </style>
+
+
+    <!--默认样式 注意* 样式只可修改，不能删除任何一项 否则报错-->
+    <style name="picturedefault" parent="picture.default.style">
+        <!-- Customize your theme here. -->
+        <!--标题栏背景色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--预览界面标题栏背景色-->
+        <item name="picture.ac_preview.title.bg">@color/colorPrimary</item>
+        <!--预览界面底部背景色-->
+        <item name="picture.ac_preview.bottom.bg">@color/white</item>
+        <!--裁剪页面标题背景色-->
+        <item name="picture.crop.toolbar.bg">@color/colorPrimary</item>
+        <!--裁剪页面状态栏颜色-->
+        <item name="picture.crop.status.color">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="DialogTheme">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="AppStartTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--冷启动时间更慢 但是点击图标是立即打开视觉效果-->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@color/C_D70D19</item>
+    </style>
+
+
+</resources>

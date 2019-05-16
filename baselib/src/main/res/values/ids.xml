@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--statusbar-->
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+    <item type="id" name="tool_bar" />
+    <item type="id" name="expandable_text" />
+    <item type="id" name="expand_collapse" />
+    <item type="id" name="rl_empty" />
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_item"
+    android:layout_marginTop="@dimen/y20"
+    android:layout_width="@dimen/y180"
+    android:layout_height="@dimen/y180"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/iv_mask"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <ImageView
+        android:background="@drawable/pic__add_img"
+        android:id="@+id/iv_more"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</FrameLayout>
